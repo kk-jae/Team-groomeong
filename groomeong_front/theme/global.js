@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 17 Mar 2023 03:15:23 GMT
+ * Generated on Fri, 17 Mar 2023 09:27:03 GMT
  */
 
 module.exports = {
@@ -329,8 +329,8 @@ module.exports = {
   },
   "base": {
     "primary": "#0075ff",
-    "secondary": "#000000",
-    "tertiary": "#ffffff"
+    "secondary": "#ffffff",
+    "tertiary": "#000000"
   },
   "contents": {
     "contentPrimary": "#000000",
