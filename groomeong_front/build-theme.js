@@ -14,7 +14,8 @@ const THEMES = "global dark light";
 // 플랫폼 포멧
 // - js (ES6)
 // - jsModule (CommonJS)
-const PLATFORMS = "css scss js jsModule";
+// const PLATFORMS = "css scss js jsModule";
+const PLATFORMS = "jsModule";
 
 /* 스타일 딕셔너리 모듈 ------------------------------------------------------------ */
 
@@ -32,77 +33,77 @@ function transformShadow(shadow) {
   return `${x} ${y} ${blur} ${spread} ${color}`;
 }
 
-/* CSS 변수 포멧 ---------------------------------------------------------------- */
+// /* CSS 변수 포멧 ---------------------------------------------------------------- */
 
-S.registerFormat({
-  name: "css/variables",
-  formatter(dictionary /* , config */) {
-    return `${this.selector} {
-${dictionary.allProperties
-  .map(
-    ({ name, value }) =>
-      `  --${name}: ${name.includes("space-") ? `${value}px` : value};`
-  )
-  .join("\n")}
-}`;
-  },
-});
+// S.registerFormat({
+//   name: "css/variables",
+//   formatter(dictionary /* , config */) {
+//     return `${this.selector} {
+// ${dictionary.allProperties
+//   .map(
+//     ({ name, value }) =>
+//       `  --${name}: ${name.includes("space-") ? `${value}px` : value};`
+//   )
+//   .join("\n")}
+// }`;
+//   },
+// });
 
-// 포멧 구성 함수
-const setCSS = (theme) => ({
-  buildPath: `${OUTPUT_DIR}/`,
-  transforms: [
-    "attribute/cti",
-    "name/cti/kebab",
-    "sizes/px",
-    "shadow/shorthand",
-    "pxToRem",
-    "typography/shorthand",
-  ],
-  files: [
-    {
-      destination: `css/${theme}.css`,
-      format: "css/variables",
-      selector: theme.includes("global") ? ":root" : `.${theme}-theme`,
-    },
-  ],
-});
+// // 포멧 구성 함수
+// const setCSS = (theme) => ({
+//   buildPath: `${OUTPUT_DIR}/`,
+//   transforms: [
+//     "attribute/cti",
+//     "name/cti/kebab",
+//     "sizes/px",
+//     "shadow/shorthand",
+//     "pxToRem",
+//     "typography/shorthand",
+//   ],
+//   files: [
+//     {
+//       destination: `css/${theme}.css`,
+//       format: "css/variables",
+//       selector: theme.includes("global") ? ":root" : `.${theme}-theme`,
+//     },
+//   ],
+// });
 
-/* SCSS 변수 포멧 ---------------------------------------------------------------- */
+// /* SCSS 변수 포멧 ---------------------------------------------------------------- */
 
-S.registerFormat({
-  name: "scss/variables",
-  formatter(dictionary /* , config */) {
-    return `${this.selector} {
-${dictionary.allProperties
-  .map(
-    ({ name, value }) =>
-      `  --${name}: ${name.includes("space-") ? `${value}px` : value};`
-  )
-  .join("\n")}
-}`;
-  },
-});
+// S.registerFormat({
+//   name: "scss/variables",
+//   formatter(dictionary /* , config */) {
+//     return `${this.selector} {
+// ${dictionary.allProperties
+//   .map(
+//     ({ name, value }) =>
+//       `  --${name}: ${name.includes("space-") ? `${value}px` : value};`
+//   )
+//   .join("\n")}
+// }`;
+//   },
+// });
 
-/* SCSS 포멧 ------------------------------------------------------------------ */
+// /* SCSS 포멧 ------------------------------------------------------------------ */
 
-const setSCSS = (theme) => ({
-  buildPath: `${OUTPUT_DIR}/`,
-  transforms: [
-    "attribute/cti",
-    "name/cti/kebab",
-    "sizes/px",
-    "shadow/shorthand",
-    "pxToRem",
-    "typography/shorthand",
-  ],
-  files: [
-    {
-      destination: `scss/${theme}.scss`,
-      format: `scss/variables`,
-    },
-  ],
-});
+// const setSCSS = (theme) => ({
+//   buildPath: `${OUTPUT_DIR}/`,
+//   transforms: [
+//     "attribute/cti",
+//     "name/cti/kebab",
+//     "sizes/px",
+//     "shadow/shorthand",
+//     "pxToRem",
+//     "typography/shorthand",
+//   ],
+//   files: [
+//     {
+//       destination: `scss/${theme}.scss`,
+//       format: `scss/variables`,
+//     },
+//   ],
+// });
 
 /* JavaScript 변수 이름 포멧 ------------------------------------------------------ */
 // 예: `namespace.item.variant.property.modifier`
@@ -128,34 +129,34 @@ const setJS = (theme) => ({
 /* ES6 변수 이름 포멧 ------------------------------------------------------------- */
 // 예: `NamespaceItemVariantPropertyModifier`
 
-S.registerTransform({
-  name: "name/js/es6",
-  type: "name",
-  transformer(token) {
-    const tokenPath = token.path.join(" ");
-    const tokenPathItems = tokenPath.split(" ");
-    for (var i = 0, l = tokenPathItems.length; i < l; ++i) {
-      tokenPathItems[i] =
-        tokenPathItems[i].charAt(0).toUpperCase() + tokenPathItems[i].slice(1);
-    }
-    let tokenName = tokenPathItems.join("");
-    tokenName = tokenName.includes("-")
-      ? tokenName.replace("-", "")
-      : tokenName;
-    return tokenName;
-  },
-});
+// S.registerTransform({
+//   name: "name/js/es6",
+//   type: "name",
+//   transformer(token) {
+//     const tokenPath = token.path.join(" ");
+//     const tokenPathItems = tokenPath.split(" ");
+//     for (var i = 0, l = tokenPathItems.length; i < l; ++i) {
+//       tokenPathItems[i] =
+//         tokenPathItems[i].charAt(0).toUpperCase() + tokenPathItems[i].slice(1);
+//     }
+//     let tokenName = tokenPathItems.join("");
+//     tokenName = tokenName.includes("-")
+//       ? tokenName.replace("-", "")
+//       : tokenName;
+//     return tokenName;
+//   },
+// });
 
-S.registerTransform({
-  name: "value/js/es6",
-  type: "value",
-  matcher: function (token) {
-    return token.type === "spacing";
-  },
-  transformer(token) {
-    return `${token.value}px`;
-  },
-});
+// S.registerTransform({
+//   name: "value/js/es6",
+//   type: "value",
+//   matcher: function (token) {
+//     return token.type === "spacing";
+//   },
+//   transformer(token) {
+//     return `${token.value}px`;
+//   },
+// });
 
 // 포멧 구성 함수
 const setJsModule = (theme) => ({
@@ -163,7 +164,7 @@ const setJsModule = (theme) => ({
   transforms: ["pxToRem"],
   files: [
     {
-      destination: `js/module/${theme}.js`,
+      destination: `${theme}.js`,
       format: `javascript/module`,
     },
   ],
@@ -231,9 +232,9 @@ S.registerTransform({
 const getStyleDictionaryConfig = (theme) => ({
   source: [`${INPUT_DIR}/${theme}.json`],
   platforms: {
-    css: setCSS(theme),
-    scss: setSCSS(theme),
-    js: setJS(theme),
+    // css: setCSS(theme),
+    // scss: setSCSS(theme),
+    // js: setJS(theme),
     jsModule: setJsModule(theme),
   },
 });
@@ -301,27 +302,27 @@ console.log("\n🪩  테마 빌드 FINISHED ------------\n");
 
 /* JSON 변환 ------------------------------------------------------------------ */
 
-function transformThemeJSON(path) {
-  const fs = require("fs");
-  const globalTheme = require(path);
+// function transformThemeJSON(path) {
+//   const fs = require("fs");
+//   const globalTheme = require(path);
 
-  const result = Object.fromEntries(
-    Object.entries(globalTheme).map(([key, valueObject]) => {
-      if (key.includes("space-")) {
-        valueObject = {
-          ...valueObject,
-          value: `${valueObject.value}px`,
-        };
-      }
+//   const result = Object.fromEntries(
+//     Object.entries(globalTheme).map(([key, valueObject]) => {
+//       if (key.includes("space-")) {
+//         valueObject = {
+//           ...valueObject,
+//           value: `${valueObject.value}px`,
+//         };
+//       }
 
-      return [key, valueObject];
-    })
-  );
+//       return [key, valueObject];
+//     })
+//   );
 
-  fs.writeFileSync(
-    `${path.split(".json")[0]}.transformed.json`,
-    JSON.stringify(result, null, 2)
-  );
-}
+//   fs.writeFileSync(
+//     `${path.split(".json")[0]}.transformed.json`,
+//     JSON.stringify(result, null, 2)
+//   );
+// }
 
-transformThemeJSON("./theme/global.json");
+// transformThemeJSON("./theme/global.json");
