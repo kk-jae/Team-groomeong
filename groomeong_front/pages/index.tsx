@@ -2,6 +2,8 @@
 // import Image from "next/image";
 // import styles from "../styles/Home.module.css";
 
+import { ButtonIconDefaultLarge } from "../src/components/atomic/atoms/ButtonSize/ButtonLarge/ButtonIconsLarge/ButtonIconsDefaultLarge";
+
 export default function Home() {
   return (
     <>
@@ -56,6 +58,7 @@ export default function Home() {
           </div>
         </div>
       </main> */}
+      <ButtonIconDefaultLarge />
     </>
   );
 }
