@@ -1,0 +1,10 @@
+.light-theme {
+  --primary: #0075ff;
+  --secondary: #000000;
+  --tertiary: #ffffff;
+  --contents-content-primary: #000000;
+  --contents-content-secondary: #6b6b6b;
+  --contents-content-tertiary: #a6a6a6;
+  --border-border-primary: #898989;
+  --border-border-transparent: #DCDCDC;
+}

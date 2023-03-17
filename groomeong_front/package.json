@@ -7,11 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "default": "token-transformer data/tokens.json theme/global.json global",
+    "global": "token-transformer data/tokens.json theme/global.json global",
     "light": "token-transformer data/tokens.json theme/light.json global,light global",
     "dark": "token-transformer data/tokens.json theme/dark.json global,dark global",
     "theme:create": "node build-theme.js",
-    "theme:token": "run-p default light dark",
+    "theme:token": "run-p global light dark",
     "theme:delete": "rimraf -rf theme"
   },
   "dependencies": {
@@ -44,6 +44,8 @@
     "@types/apollo-upload-client": "^17.0.2",
     "@types/uuid": "^9.0.1",
     "npm-run-all": "^4.1.5",
-    "style-dictionary": "^3.7.2"
+    "style-dictionary": "^3.7.2",
+    "rimraf": "^4.4.0",
+    "token-transformer": "^0.0.30"
   }
 }
