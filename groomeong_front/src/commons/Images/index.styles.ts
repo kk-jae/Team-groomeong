@@ -6,6 +6,7 @@ import * as GS from "../../../theme/global";
 export const AddImagesBoxStyles = styled.div<ICommonsImagesProps>`
   width: 84px;
   height: 84px;
+  border-radius: 4px;
   padding: ${`${GS.Spacing[12]}px`}${`${GS.Spacing[8]}px`};
   background: ${(props) => {
     if (props.state === "disabled") return GS.state.disabled;
