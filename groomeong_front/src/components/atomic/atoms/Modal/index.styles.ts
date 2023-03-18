@@ -4,7 +4,7 @@ import ErrorIcon from "@mui/icons-material/Error";
 import * as GS from "../../../../../theme/global";
 
 interface IModalProps {
-  state: false;
+  state: boolean;
 }
 
 export const ModalStyles = styled(Modal)`
@@ -35,10 +35,6 @@ export const ModalStyles = styled(Modal)`
     }
 
     .ant-btn.css-dev-only-do-not-override-ph9edi.ant-btn-default {
-      display: none;
-    }
-
-    .ant-modal-close-x {
       display: none;
     }
 

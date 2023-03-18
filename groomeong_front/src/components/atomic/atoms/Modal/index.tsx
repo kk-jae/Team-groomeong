@@ -1,5 +1,6 @@
 import * as S from "./index.styles";
 import React, { useState } from "react";
+import { Button } from "../ButtonSize/ButtonSmall/Button";
 
 interface IModalProps {
   title: string;
@@ -7,39 +8,37 @@ interface IModalProps {
   state: boolean;
 }
 
-export const Modal: React.FC<IModalProps> = (props) => {
+export const Modal: React.FC<IModalProps> = (props): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const showModal = () => {
-    setIsModalOpen(true);
+  const showModal = (): void => {
+    void setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
+  const handleOk = (): void => {
+    void setIsModalOpen(false);
   };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
+  const handleCancel = (): void => {
+    void setIsModalOpen(false);
   };
 
   return (
-    <></>
-    //   <>
-    //     <button type="primary" onClick={showModal}>
-    //       Open Modal
-    //     </button>
+    <>
+      <button onClick={showModal}>오픈모달</button>
+      {/* <Button onClick={showModal}>모달 열기</Button> */}
 
-    //     <S.ModalStyles
-    //       centered
-    //       title={<S.ScreamerIcon state={props.state} />}
-    //       open={isModalOpen}
-    //       onOk={handleOk}
-    //       onCancel={handleCancel}
-    //       state={props.state}
-    //     >
-    //       <h3>{props.title}</h3>
-    //       <p>{props.contents}</p>
-    //     </S.ModalStyles>
-    //   </>
+      <S.ModalStyles
+        centered
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        title={<S.ScreamerIcon state={props.state} />}
+        state={props.state}
+      >
+        <h3>{props.title}</h3>
+        <p>{props.contents}</p>
+      </S.ModalStyles>
+    </>
   );
 };
