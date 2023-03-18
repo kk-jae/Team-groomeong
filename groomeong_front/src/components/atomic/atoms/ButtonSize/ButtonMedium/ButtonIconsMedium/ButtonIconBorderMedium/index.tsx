@@ -1,13 +1,14 @@
 import AddCircleSharpIcon from "@mui/icons-material/AddCircleSharp";
+import { IButtonProps } from "../../../../ButtonCommons/index.styles";
 import * as S from "../index.styles";
 
-export const ButtonIconBorderMedium = () => {
+export const ButtonIconBorderMedium = (props: IButtonProps) => {
   return (
     <>
       <S.ButtonIconsBorderMediumStyles>
         <span>
           <AddCircleSharpIcon />
-          Button
+          {props.label}
         </span>
       </S.ButtonIconsBorderMediumStyles>
     </>
