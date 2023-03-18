@@ -1,9 +1,10 @@
+import { IButtonProps } from "../../../ButtonCommons/index.styles";
 import { ButtonLargeStyle } from "./index.styles";
 
-export const ButtonLarge = () => {
+export const ButtonLarge = (props: IButtonProps) => {
   return (
     <>
-      <ButtonLargeStyle>Button</ButtonLargeStyle>
+      <ButtonLargeStyle>{props.label}</ButtonLargeStyle>
     </>
   );
 };

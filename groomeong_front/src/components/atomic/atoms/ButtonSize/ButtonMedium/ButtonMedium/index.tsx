@@ -1,9 +1,10 @@
+import { IButtonProps } from "../../../ButtonCommons/index.styles";
 import * as S from "./index.styles";
 
-export const ButtonMedium = () => {
+export const ButtonMedium = (props: IButtonProps) => {
   return (
     <>
-      <S.ButtonMediumStyle>Button</S.ButtonMediumStyle>
+      <S.ButtonMediumStyle>{props.label}</S.ButtonMediumStyle>
     </>
   );
 };
