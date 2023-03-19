@@ -10,7 +10,7 @@ interface IProps {
   error: string;
 }
 
-export const Input = (props: IProps) => {
+export const InputSmall = (props: IProps) => {
   const [focus, setFocus] = useState(false);
 
   const onFocusTest = () => {
