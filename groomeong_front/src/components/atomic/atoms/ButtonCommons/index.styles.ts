@@ -1,4 +1,8 @@
 import styled from "@emotion/styled";
+import {
+  DefaultComponentProps,
+  OverridableTypeMap,
+} from "@mui/material/OverridableComponent";
 import * as GS from "../../../../../theme/global";
 
 export interface IButtonProps {
@@ -7,6 +11,7 @@ export interface IButtonProps {
   border?: "border" | "none";
   size?: "small" | "medium" | "large";
   icon?: boolean;
+  iconImg?: DefaultComponentProps<OverridableTypeMap>;
   label?: string;
 }
 

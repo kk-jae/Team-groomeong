@@ -6,7 +6,7 @@ export const ButtonIconDefault = (props: IButtonProps) => {
     <>
       <S.ButtonIconsDefaultStyles>
         <span>
-          <AddCircleSharpIcon />
+          {props.iconImg}
           {props.label}
         </span>
       </S.ButtonIconsDefaultStyles>
