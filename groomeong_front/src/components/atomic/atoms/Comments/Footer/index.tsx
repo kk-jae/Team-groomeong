@@ -21,7 +21,7 @@ export const CommentsFooter = (props: IShopLabelProps) => {
           </S.FooterLabelNameStyles>
         </S.CommentsFooterModalLabelStyles>
         <S.FooterModalButtonBox>
-          <ButtonMedium label="Button" />
+          <ButtonMedium label="예약하기" />
         </S.FooterModalButtonBox>
       </S.CommentsFooterModalStyles>
     </>
