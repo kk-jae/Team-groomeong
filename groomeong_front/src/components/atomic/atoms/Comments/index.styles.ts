@@ -7,6 +7,7 @@ export const CommentsBoxModalStyles = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${`${GS.Spacing[16]}px`};
+  margin-bottom: 32px;
 `;
 export const CommentsHeaderModalTitleStyles = styled.div`
   display: flex;
@@ -17,26 +18,21 @@ export const CommentsHeaderModalTitleStyles = styled.div`
 
   padding: ${`${GS.Spacing[8]}px`};
   gap: ${`${GS.Spacing[32]}px`};
+
   & > h1 {
     ${GS.Heading.XXXL};
     color: ${GS.contents.contentPrimary};
   }
 `;
 
-export const CommentsHeaderModalStyles = styled(Modal)`
-  .ant-modal-content {
-    /* width: auto; */
-    width: 1124px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: ${`${GS.Spacing[20]}px ${GS.Spacing[20]}px 0 0 `};
-    padding: 0;
-  }
-  .ant-btn {
-    display: none;
-  }
+export const CommentsHeaderModalStyles = styled.div`
+  width: 1124px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: ${`${GS.Spacing[20]}px ${GS.Spacing[20]}px 0 0 `};
+  padding: 0;
 `;
 export const ShopIconStyles = styled(StoreSharpIcon)`
   width: 45px;
@@ -57,6 +53,7 @@ export const FooterLabelNameStyles = styled.span`
   flex-direction: column;
   & > label {
     ${GS.Paragraph.Medium}
+    margin-bottom: 8px;
   }
 `;
 export const FooterModalButtonBox = styled.div`

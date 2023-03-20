@@ -7,9 +7,10 @@ interface ITextAreaProps {
   date?: string;
   name?: string;
   iconView: boolean;
-  dateView: boolean;
+  dateView?: boolean;
   buttonView: boolean;
   placeholder?: string;
+  commentRating?: number;
 }
 
 export const TextArea = (props: ITextAreaProps) => {
@@ -35,7 +36,7 @@ export const TextArea = (props: ITextAreaProps) => {
             </S.TextArea_TopBox_Profile>
 
             <S.TextArea_TopBox_Rate>
-              <StarRate></StarRate>
+              <StarRate star={props.commentRating}></StarRate>
             </S.TextArea_TopBox_Rate>
           </>
         </S.TextArea_TopBox>

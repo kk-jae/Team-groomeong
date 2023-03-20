@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { StarRate } from "../../StarRate";
 import { CommentsFooter } from "../Footer";
 import * as S from "../index.styles";
 
@@ -8,38 +9,18 @@ export interface IShopLabelProps {
   address?: string;
   phone?: string;
   shoppingLabel?: string;
+  star?: number;
 }
 
 export const CommentsHeader = (props: IShopLabelProps) => {
-  const [open, setOpen] = useState(false);
-
-  const showModal = () => {
-    setOpen((prev) => !prev);
-  };
-
-  const handleOk = () => {
-    setOpen((prev) => !prev);
-  };
-
-  const handleCancel = () => {
-    setOpen((prev) => !prev);
-  };
   return (
     <>
-      <button onClick={showModal}>Open Modal with customized footer</button>
-      <S.CommentsHeaderModalStyles
-        open={open}
-        centered
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
+      <S.CommentsHeaderModalStyles>
         <S.CommentsBoxModalStyles>
           <S.CommentsHeaderModalTitleStyles>
             <S.ShopIconStyles />
             <h1>{props.shoppingLabel}</h1>
-            {/* <h1>Shop Label</h1> */}
-
-            <span>badge</span>
+            <StarRate star={props.star} state={true}></StarRate>
           </S.CommentsHeaderModalTitleStyles>
           <CommentsFooter
             address={props.address}
