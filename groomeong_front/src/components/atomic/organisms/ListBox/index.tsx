@@ -1,4 +1,4 @@
-import BookingBadge from "../../atoms/Badge/BookingBadge";
+import BookingBadge from "../../atoms/Badge/TextBadge";
 import * as S from "./index.styled";
 
 interface IProps {

@@ -6,7 +6,7 @@ import * as S from "./index.styled";
 // <SizeBadge setSize={setSize} />
 // size 를 string ( big / middle / small / special )로 return 합니다.)
 
-export default function SizeBadge(props: any) {
+export const SizeBadge = (props: any) => {
   const [big, setBig] = useState(false);
   const [middle, setMiddle] = useState(false);
   const [small, setSmall] = useState(false);
@@ -56,4 +56,4 @@ export default function SizeBadge(props: any) {
       </S.CheckBoxSpecial>
     </S.SizeBadgeWrapper>
   );
-}
+};
