@@ -10,7 +10,6 @@ export interface IButtonProps {
   variation?: "primary" | "tertiary" | "negative";
   border?: "border" | "none";
   size?: "small" | "medium" | "large";
-  icon?: boolean;
   iconImg?: DefaultComponentProps<OverridableTypeMap>;
   label?: string;
 }
@@ -21,5 +20,14 @@ export const ButtonCommons = styled.button<IButtonProps>`
 
   border-radius: ${`${GS.Spacing[12]}px`};
   ${GS.Paragraph.Medium};
-  padding: ${`${GS.Spacing[8]}px`} ${`${GS.Spacing[20]}px`};
+  padding: ${(props) => {
+    if (props.size === "small") {
+      return `${GS.Spacing[8]}px ${GS.Spacing[20]}px`;
+    } else if (props.size === "medium") {
+      return `${GS.Spacing[8]}px ${GS.Spacing[32]}px`;
+    } else if (props.size === "large") {
+      return `${GS.Spacing[8]}px ${GS.Spacing[64]}px`;
+    }
+    return `${GS.Spacing[8]}px ${GS.Spacing[20]}px`;
+  }};
 `;

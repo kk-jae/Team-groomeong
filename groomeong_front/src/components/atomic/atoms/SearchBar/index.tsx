@@ -1,5 +1,4 @@
 import { InputContent, SearchBox, SearchButton } from "./index.styles";
-import SearchIcon from "@mui/icons-material/Search";
 
 interface ISearchBarProps {
   size: "small" | "medium" | "large";
@@ -16,7 +15,7 @@ export const SearchBar = (props: ISearchBarProps) => {
         ></InputContent>
         <SearchButton>
           <span>
-            <SearchIcon></SearchIcon>
+            <img src="/image/icon-magnify_white.svg" />
           </span>
         </SearchButton>
       </SearchBox>

@@ -8,7 +8,7 @@ import {
 } from "./index.styles";
 
 interface IPageHeader {
-  icon: string;
+  icon?: string;
   title: string;
 }
 
@@ -16,7 +16,7 @@ const PageHeader = (props: IPageHeader) => {
   return (
     <PageHeaderWrapper>
       <PageHeaderContentsWrapper>
-        <PageHeaderIcon icon={props.icon} />
+        <PageHeaderIcon icon={props.icon ?? ""} />
         <PageHeaderTitle>{props.title}</PageHeaderTitle>
       </PageHeaderContentsWrapper>
       <PageHeaderDivider />
