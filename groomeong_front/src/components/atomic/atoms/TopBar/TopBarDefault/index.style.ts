@@ -8,11 +8,11 @@ export interface ITopBarDefault {
 export const TopBarBox = styled.div`
   width: 1136px;
   height: 112px;
+  margin-bottom: 46px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid red;
 `;
 
 export const TopBarLogo = styled.div`

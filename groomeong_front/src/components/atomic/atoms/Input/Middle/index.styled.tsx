@@ -11,6 +11,8 @@ interface IFocusInput {
 
 export const InputWrapper = styled.div`
   width: 500px;
+  margin-top: 32px;
+  margin-bottom: 32px;
   font: ${GS.Paragraph.Medium};
 `;
 
