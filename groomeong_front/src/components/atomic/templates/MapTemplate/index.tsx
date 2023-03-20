@@ -1,4 +1,4 @@
-import { MapSideList } from "../../organism/MapSideList";
+import { MapSideList } from "../../organisms/MapSideList";
 import Script from "next/script";
 import { useEffect } from "react";
 import * as S from "./index.styles";
