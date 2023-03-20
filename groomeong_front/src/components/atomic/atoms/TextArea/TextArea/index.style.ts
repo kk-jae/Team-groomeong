@@ -4,7 +4,7 @@ import * as GS from "../../../../../../theme/global";
 export interface ITextAreaProps {
   contents?: string;
   date?: string;
-  title?: string;
+  name?: string;
   dateView?: boolean;
   iconView?: boolean;
   buttonView?: boolean;
@@ -24,19 +24,17 @@ export const TextArea_TopBox = styled.div`
   height: 64px;
   display: flex;
   flex-direction: row;
-  justify-content: ${(props: ITextAreaProps) =>
-    props.dateView ? "space-between" : "center"};
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid ${GS.border.borderTransparent};
   margin-bottom: 8px;
 `;
 
 export const TextArea_TopBox_Profile = styled.div`
-  width: ${(props: ITextAreaProps) => (props.dateView ? "100%" : "50%")};
+  width: 60%;
   display: flex;
   flex-direction: row;
-  justify-content: ${(props: ITextAreaProps) =>
-    props.dateView ? "flex-start" : "center"};
+  justify-content: flex-start;
   align-items: center;
 
   span {
@@ -46,6 +44,7 @@ export const TextArea_TopBox_Profile = styled.div`
     justify-content: flex-start;
     align-items: center;
     ${GS.Paragraph.Medium}
+    margin-right: 32px;
   }
 `;
 
@@ -71,9 +70,17 @@ export const TextArea_Profile_Icon = styled.button`
   }
 `;
 
-export const TextArea_TopBox_Date = styled.div`
-  width: ${(props: ITextAreaProps) => (props.dateView ? "100%" : "50%")};
+export const TextArea_TopBox_Rate = styled.div`
+  width: 208px;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+export const TextArea_TopBox_Date = styled.div`
+  width: 82px;
+  display: ${(props: ITextAreaProps) => (props.dateView ? "flex" : "none")};
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
