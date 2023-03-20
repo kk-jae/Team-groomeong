@@ -1,4 +1,4 @@
-import BookingBadge from "../../atoms/Badge/TextBadge";
+import { StarRate } from "../StarRate";
 import * as S from "./index.styled";
 
 interface IProps {
@@ -6,25 +6,28 @@ interface IProps {
   shopHours: string;
   shopAddress: string;
   shopImg: string;
-  state: boolean;
+  star: number;
 }
 
 export const ListBox = (props: IProps) => {
   return (
     <S.ListBoxWrapper tabIndex={0}>
-      <S.Top>
+      <S.ListBoxTop>
         <S.ShopName>{props.shopName}</S.ShopName>
         <S.ShopImg
           src={
             props.shopImg !== ""
               ? `https://storage.googleapis.com/${props.shopImg}`
-              : "/ShopDefaultImg/defaultImg.png"
+              : "/image/icon-store.svg"
           }
         />
-        <S.ShopHours>{props.shopHours}</S.ShopHours>
-      </S.Top>
-      <S.ShopAddress>{props.shopAddress}</S.ShopAddress>
-      <BookingBadge state={props.state} />
+        <StarRate state={true} star={props.star} />
+      </S.ListBoxTop>
+      <S.ShopHours>{props.shopHours}</S.ShopHours>
+      <S.ListBoxBottom>
+        <S.ShopAddress>{props.shopAddress}</S.ShopAddress>
+        <S.ShopMoved>샵 보러가기</S.ShopMoved>
+      </S.ListBoxBottom>
     </S.ListBoxWrapper>
   );
 };
