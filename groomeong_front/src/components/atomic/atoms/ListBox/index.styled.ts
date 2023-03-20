@@ -7,26 +7,29 @@ export const ListBoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 32px;
-  cursor: pointer;
   margin-bottom: 8px;
 
-  :focus {
+  /* :focus {
     border: 2px solid ${GS.base.primary};
+  } */
+
+  :hover {
+    background-color: #f5f5f5;
   }
 `;
 
-export const Top = styled.div`
+export const ListBoxTop = styled.div`
   width: 100%;
-  height: 68px;
+  height: 70px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  margin-bottom: 10px;
 `;
 
 export const ShopName = styled.div`
   font: ${GS.Heading.XL};
-  padding-bottom: 8px;
   overflow: hidden;
 `;
 
@@ -42,10 +45,26 @@ export const ShopImg = styled.img`
 export const ShopHours = styled.div`
   font: ${GS.Paragraph.Medium};
   color: ${GS.contents.contentSecondary};
+  margin-bottom: 8px;
 `;
+
+export const ListBoxBottom = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const ShopMoved = styled.div`
+  padding: 4px 8px 4px 8px;
+  border-radius: 4px;
+  font: ${GS.Heading.Medium};
+  color: white;
+  background-color: ${GS.base.primary};
+  cursor: pointer;
+`;
+
 export const ShopAddress = styled.div`
   font: ${GS.Paragraph.Medium};
   color: ${GS.contents.contentSecondary};
-  margin-top: 8px;
-  margin-bottom: 8px;
 `;
