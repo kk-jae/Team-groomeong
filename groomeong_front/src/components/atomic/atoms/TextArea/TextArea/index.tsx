@@ -1,14 +1,15 @@
 import { Button } from "../../ButtonSize/ButtonSmall/Button";
+import { StarRate } from "../../StarRate";
 import * as S from "./index.style";
 
 interface ITextAreaProps {
   contents?: string;
   date?: string;
-  title?: string;
+  name?: string;
   iconView: boolean;
   dateView: boolean;
   buttonView: boolean;
-  placeholder: string;
+  placeholder?: string;
 }
 
 export const TextArea = (props: ITextAreaProps) => {
@@ -16,38 +17,27 @@ export const TextArea = (props: ITextAreaProps) => {
     <>
       <S.TextArea_Wrapper>
         <S.TextArea_TopBox>
-          {props.dateView ? (
-            <>
-              <S.TextArea_TopBox_Profile dateView={props.dateView}>
-                {props.iconView ? (
-                  <S.TextArea_Profile_Icon iconView={props.iconView}>
-                    <img src={"image/example_dog.png"} alt="" />
-                  </S.TextArea_Profile_Icon>
-                ) : (
-                  <S.TextArea_Profile_Icon iconView={props.iconView}>
-                    <img src={"image/icon_dog_profile.png"} alt="" />
-                  </S.TextArea_Profile_Icon>
-                )}
-                <span>{props.title}</span>
-              </S.TextArea_TopBox_Profile>
-              <S.TextArea_TopBox_Date>{props.date}</S.TextArea_TopBox_Date>
-            </>
-          ) : (
-            <>
-              <S.TextArea_TopBox_Profile>
-                {props.iconView ? (
-                  <S.TextArea_Profile_Icon iconView={props.iconView}>
-                    <img src={"image/example_dog.png"} alt="" />
-                  </S.TextArea_Profile_Icon>
-                ) : (
-                  <S.TextArea_Profile_Icon iconView={props.iconView}>
-                    <img src={"image/icon_dog_profile.png"} alt="" />
-                  </S.TextArea_Profile_Icon>
-                )}
-                <span>{props.title}</span>
-              </S.TextArea_TopBox_Profile>
-            </>
-          )}
+          <>
+            <S.TextArea_TopBox_Profile>
+              {props.iconView ? (
+                <S.TextArea_Profile_Icon iconView={props.iconView}>
+                  <img src={"image/example_dog.png"} alt="" />
+                </S.TextArea_Profile_Icon>
+              ) : (
+                <S.TextArea_Profile_Icon iconView={props.iconView}>
+                  <img src={"image/icon_dog_profile.png"} alt="" />
+                </S.TextArea_Profile_Icon>
+              )}
+              <span>{props.name}</span>
+              <S.TextArea_TopBox_Date dateView={props.dateView}>
+                {props.date}
+              </S.TextArea_TopBox_Date>
+            </S.TextArea_TopBox_Profile>
+
+            <S.TextArea_TopBox_Rate>
+              <StarRate></StarRate>
+            </S.TextArea_TopBox_Rate>
+          </>
         </S.TextArea_TopBox>
         <S.TextArea_MiddleBox_Input placeholder={props.placeholder}>
           {props.contents}
