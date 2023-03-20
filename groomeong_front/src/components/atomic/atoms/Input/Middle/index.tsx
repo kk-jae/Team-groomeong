@@ -11,10 +11,9 @@ interface IProps {
     label: string;
     name: string;
     placeholder: string;
-    error: string;
 }
 
-export const InputSmall = (props: IProps) => {
+export const InputMiddle = (props: IProps) => {
     const [focus, setFocus] = useState(false);
     const {
         register,
