@@ -1,7 +1,6 @@
 import { CommentsHeader } from "../../atoms/Comments/Header";
 import { TextArea } from "../../atoms/TextArea/TextArea";
 import React, { useState } from "react";
-import { Button } from "../../atoms/ButtonSize/ButtonSmall/Button";
 import * as S from "./index.style";
 import { Comment } from "../../atoms/Comment";
 
