@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 20 Mar 2023 02:38:23 GMT
+ * Generated on Mon, 20 Mar 2023 03:08:41 GMT
  */
 
 module.exports = {
@@ -328,7 +328,7 @@ module.exports = {
     "900": "#2c002d"
   },
   "base": {
-    "primary": "#78AEFF",
+    "primary": "#2094FF",
     "secondary": "#ffffff",
     "tertiary": "#000000"
   },
