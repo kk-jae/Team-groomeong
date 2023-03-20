@@ -18,7 +18,7 @@ export const TextArea = (props: ITextAreaProps) => {
         <S.TextArea_TopBox>
           {props.dateView ? (
             <>
-              <S.TextArea_TopBox_Profile>
+              <S.TextArea_TopBox_Profile dateView={props.dateView}>
                 {props.iconView ? (
                   <S.TextArea_Profile_Icon iconView={props.iconView}>
                     <img src={"image/example_dog.png"} alt="" />
@@ -54,7 +54,7 @@ export const TextArea = (props: ITextAreaProps) => {
         </S.TextArea_MiddleBox_Input>
         {props.buttonView ? (
           <S.TextArea_FooterBox>
-            <Button label={"댓글 등록"}></Button>
+            <Button variation="tertiary" label={"댓글 등록"}></Button>
           </S.TextArea_FooterBox>
         ) : (
           <></>

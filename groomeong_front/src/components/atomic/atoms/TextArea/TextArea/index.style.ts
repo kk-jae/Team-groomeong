@@ -40,8 +40,7 @@ export const TextArea_TopBox_Profile = styled.div`
   align-items: center;
 
   span {
-    width: ${(props: ITextAreaProps) =>
-      props.dateView ? "max-content" : "100%"};
+    width: max-content;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
