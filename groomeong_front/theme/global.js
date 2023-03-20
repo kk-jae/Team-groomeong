@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 17 Mar 2023 09:27:03 GMT
+ * Generated on Mon, 20 Mar 2023 02:38:23 GMT
  */
 
 module.exports = {
@@ -328,7 +328,7 @@ module.exports = {
     "900": "#2c002d"
   },
   "base": {
-    "primary": "#0075ff",
+    "primary": "#78AEFF",
     "secondary": "#ffffff",
     "tertiary": "#000000"
   },
@@ -339,6 +339,7 @@ module.exports = {
   },
   "border": {
     "borderPrimary": "#898989",
-    "borderTransparent": "#DCDCDC"
+    "borderTransparent": "#DCDCDC",
+    "borderOpaque": "#898989"
   }
 }

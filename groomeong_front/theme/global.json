@@ -705,7 +705,7 @@
   },
   "base": {
     "primary": {
-      "value": "#0075ff",
+      "value": "#78AEFF",
       "type": "color"
     },
     "secondary": {
@@ -738,6 +738,10 @@
     },
     "borderTransparent": {
       "value": "#DCDCDC",
+      "type": "color"
+    },
+    "borderOpaque": {
+      "value": "#898989",
       "type": "color"
     }
   }
