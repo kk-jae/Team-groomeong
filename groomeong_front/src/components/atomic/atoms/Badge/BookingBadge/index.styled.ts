@@ -4,6 +4,7 @@ import * as GS from "../../../../../../theme/global";
 export const BookingBadgeWrapper = styled.div``;
 
 export const Call_Button = styled.button`
+  cursor: pointer;
   width: 72px;
   height: 30px;
   border-radius: 4px;
@@ -16,6 +17,7 @@ export const Call_Button = styled.button`
 `;
 
 export const Booking_Button = styled.button`
+  cursor: pointer;
   width: 72px;
   height: 30px;
   border-radius: 4px;
