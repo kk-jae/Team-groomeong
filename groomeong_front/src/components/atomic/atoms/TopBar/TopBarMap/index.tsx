@@ -1,7 +1,6 @@
-import { Button } from "../../ButtonSize/ButtonSmall/Button";
 import * as S from "./index.style";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
-import { ButtonIconDefault } from "../../ButtonSize/ButtonSmall/ButtonIcon/ButtonIconDefault";
+import { Buttons } from "../../Buttons";
 
 interface ITopBarMapProps {
   loggedIn: boolean;
@@ -17,28 +16,37 @@ export const TopBarMap = (props: ITopBarMapProps) => {
         <S.TopBarButtons loggedIn={props.loggedIn}>
           {props.loggedIn ? (
             <>
-              <ButtonIconDefault
+              <Buttons
                 iconImg={<EventAvailableIcon />}
                 label="예약일정"
-                variation={"tertiary"}
-              ></ButtonIconDefault>
-              <Button
+                variation="tertiary"
+                size="small"
+                border="none"
+              ></Buttons>
+              <Buttons
                 size="small"
                 label="로그아웃"
                 variation="tertiary"
-              ></Button>
+                border="none"
+              ></Buttons>
               <S.TopBarProfile>
                 <img src={"image/icon_dog_profile.png"} alt="" />
               </S.TopBarProfile>
             </>
           ) : (
             <>
-              <Button size="small" label="로그인" variation="tertiary"></Button>
-              <Button
+              <Buttons
+                size="small"
+                label="로그인"
+                variation="tertiary"
+                border="none"
+              ></Buttons>
+              <Buttons
                 size="small"
                 label="회원가입"
                 variation="tertiary"
-              ></Button>
+                border="none"
+              ></Buttons>
             </>
           )}
         </S.TopBarButtons>
