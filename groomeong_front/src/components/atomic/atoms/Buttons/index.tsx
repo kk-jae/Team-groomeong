@@ -8,6 +8,7 @@ export const Buttons = (props: IButtonProps) => {
         size={props.size}
         variation={props.variation}
         border={props.border}
+        onClick={props.onClick}
       >
         {props.iconImg}
         {props.label}

@@ -1,4 +1,4 @@
-import { ButtonMedium } from "../../ButtonSize/ButtonMedium/ButtonMedium";
+import { Buttons } from "../../Buttons";
 import { IShopLabelProps } from "../Header";
 import * as S from "../index.styles";
 
@@ -21,7 +21,12 @@ export const CommentsFooter = (props: IShopLabelProps) => {
           </S.FooterLabelNameStyles>
         </S.CommentsFooterModalLabelStyles>
         <S.FooterModalButtonBox>
-          <ButtonMedium label="예약하기" />
+          <Buttons
+            label="예약하기"
+            variation="primary"
+            border="none"
+            size="medium"
+          />
         </S.FooterModalButtonBox>
       </S.CommentsFooterModalStyles>
     </>

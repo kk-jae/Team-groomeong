@@ -1,6 +1,5 @@
 import * as S from "./index.styles";
 import React, { useState } from "react";
-import { Button } from "../ButtonSize/ButtonSmall/Button";
 
 interface IModalProps {
   title: string;

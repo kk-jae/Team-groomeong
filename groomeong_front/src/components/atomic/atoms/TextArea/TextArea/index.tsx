@@ -1,4 +1,4 @@
-import { Button } from "../../ButtonSize/ButtonSmall/Button";
+import { Buttons } from "../../Buttons";
 import { StarRate } from "../../StarRate";
 import * as S from "./index.style";
 
@@ -45,7 +45,12 @@ export const TextArea = (props: ITextAreaProps) => {
         </S.TextArea_MiddleBox_Input>
         {props.buttonView ? (
           <S.TextArea_FooterBox>
-            <Button variation="tertiary" label={"댓글 등록"}></Button>
+            <Buttons
+              variation="primary"
+              label="댓글 등록"
+              border="none"
+              size="small"
+            ></Buttons>
           </S.TextArea_FooterBox>
         ) : (
           <></>
