@@ -1,5 +1,5 @@
 import React from "react";
-import Background from "../../organism/Background";
+import Background from "../../organisms/Background";
 import SignUp from "../../organisms/SignUp";
 
 const SignUpTemplate = () => {
