@@ -24,7 +24,6 @@ export const Label = styled.label<IFocusLabel>`
 
 export const InputTag = styled.input<IFocusInput>`
   width: 100%;
-  height: 46px;
   border-radius: 12px;
   padding: 20px 32px 20px 32px;
   margin: 20px 0px 20px 0px;
