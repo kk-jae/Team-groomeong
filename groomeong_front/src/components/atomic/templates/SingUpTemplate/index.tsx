@@ -1,6 +1,6 @@
 import React from "react";
 import Background from "../../organism/Background";
-import SignUp from "../../organism/SignUp";
+import SignUp from "../../organisms/SignUp";
 
 const SignUpTemplate = () => {
   return (

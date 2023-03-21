@@ -5,7 +5,7 @@ import {
   ValidationInput,
   Error,
   ValidateDiv,
-} from "../../atomic/organism/SignUp/index.styles";
+} from "../../atomic/organisms/SignUp/index.styles";
 import { useEffect } from "react";
 import { Buttons } from "../../atomic/atoms/Buttons";
 import useSignUp from "../../commons/hooks/custom/useSignUp";
