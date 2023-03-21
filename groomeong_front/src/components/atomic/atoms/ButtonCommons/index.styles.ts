@@ -18,6 +18,7 @@ export interface IButtonProps {
   iconImg?: DefaultComponentProps<OverridableTypeMap>;
   label?: string;
   onClick?: voidFunc | voidClickFunc | promiseClickFunc;
+  type?: "button" | "submit";
 }
 
 export const ButtonCommons = styled.button<IButtonProps>`

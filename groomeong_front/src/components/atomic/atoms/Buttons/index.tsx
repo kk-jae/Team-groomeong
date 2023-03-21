@@ -9,6 +9,7 @@ export const Buttons = (props: IButtonProps) => {
         variation={props.variation}
         border={props.border}
         onClick={props.onClick}
+        type={props.type}
       >
         {props.iconImg}
         {props.label}
