@@ -165,7 +165,7 @@ export const MapTemplate = () => {
       <Script
         async
         defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-xDF_EWyRLto1rH1B2edGOHkchBcRnaI&resion=KO&language=ko&callback=initAutocomplete&libraries=places&v=weekly"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-xDF_EWyRLto1rH1B2edGOHkchBcRnaI&resion=KR&language=ko&callback=initAutocomplete&libraries=places&v=weekly"
       ></Script>
       {/* <input
         id="pac-input"
