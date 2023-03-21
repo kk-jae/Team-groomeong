@@ -1,13 +1,13 @@
-import React from 'react'
-import Background from '../../organisms/Background'
-import DogDetail from '../../organisms/DogDetail'
+import React from "react";
+import Background from "../../organisms/Background";
+import DogDetail from "../../organisms/DogDetail";
 
-const DogDetailTamplate = () => {
+const DogDetailTemplate = () => {
   return (
-    <Background >
+    <Background>
       <DogDetail />
     </Background>
-  )
-}
+  );
+};
 
-export default DogDetailTamplate
+export default DogDetailTemplate;

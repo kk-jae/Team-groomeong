@@ -24,7 +24,7 @@ export const DogDetailContentWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 32px 64px;
+  padding: 32px 128px;
 `;
 export const DogDetailContentImg = styled.div<DogDetailContentImgProps>`
   width: 388px;
@@ -35,4 +35,3 @@ export const DogDetailContentImg = styled.div<DogDetailContentImgProps>`
   background-repeat: no-repeat;
   background-size: contain;
 `;
-

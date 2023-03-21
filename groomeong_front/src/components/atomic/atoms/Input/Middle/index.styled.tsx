@@ -21,6 +21,7 @@ export const Label = styled.label<IFocusLabel>`
   color: ${(props) =>
     props.focus ? GS.state.positive : GS.contents.contentSecondary};
   color: ${(props) => props.error && GS.state.negative};
+  ${GS.Label.Medium}
 `;
 
 export const InputTag = styled.input<IFocusInput>`
@@ -28,6 +29,7 @@ export const InputTag = styled.input<IFocusInput>`
   border-radius: 12px;
   padding: 20px 32px 20px 32px;
   margin: 20px 0px 20px 0px;
+  ${GS.Label.Medium}
   border: 2px solid
     ${(props) => (props.error && GS.state.negative) || GS.border.borderPrimary};
 
@@ -51,10 +53,11 @@ export const InputTag = styled.input<IFocusInput>`
   &:disabled {
     background: #f5f5f5;
     border: 2px solid ${GS.gray[100]};
-    color: ${GS.contents.contentSecondary}
+    color: ${GS.contents.contentSecondary};
   }
 `;
 
 export const Error = styled.span`
   color: red;
+  ${GS.Paragraph.Medium}
 `;

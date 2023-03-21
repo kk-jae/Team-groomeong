@@ -22,6 +22,7 @@ export const SignUpForm = styled.form`
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding: 32px 0px;
 `;
 
 export const SingUpDivider = styled.div`
@@ -32,7 +33,7 @@ export const SingUpDivider = styled.div`
 `;
 
 export const ValidateInputWrapper = styled.div`
-  padding: 32px 0;
+  padding: 32px 0px;
   position: relative;
 `;
 export const Label = styled.label`
@@ -89,4 +90,5 @@ export const ValidateWrapper = styled.div`
 
 export const Error = styled.span`
   color: red;
+  ${GS.Paragraph.Medium}
 `;
