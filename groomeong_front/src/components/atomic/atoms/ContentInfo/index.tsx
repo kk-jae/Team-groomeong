@@ -19,8 +19,8 @@ const ContentInfo = (props: IContentInfoProps) => {
     <ContentInfoWrapper
       left={props.left}
       right={props.right}
-      bottom={props.right}
-      top={props.top}
+      bottom={props.bottom} 
+      top={props.top} 
     >
       <ContetnInfoLabel>{props.label}</ContetnInfoLabel>
       <ContentInfoContent>{props.content}</ContentInfoContent>
