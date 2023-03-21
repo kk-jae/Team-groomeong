@@ -23,7 +23,7 @@ export const MapSideList = () => {
   return (
     <S.MapSideListWrapper>
       <S.SearchBarWrapper>
-        <SearchBar size="small" placeholder="placeholder" />
+        <SearchBar sizes="small" placeholder="placeholder" />
       </S.SearchBarWrapper>
       {fetchShops.length >= 1 ? (
         <S.ShopListWrapper>

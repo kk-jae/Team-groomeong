@@ -8,5 +8,5 @@ export const BackgroundWrapper = styled.div`
   align-items: center;
   background-color: ${GS.base.primary};
   width: 100%;
-  padding: 32px 64px;
+  padding: 0px 64px;
 `;
