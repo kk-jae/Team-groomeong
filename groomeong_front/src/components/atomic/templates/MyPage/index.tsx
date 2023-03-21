@@ -14,7 +14,7 @@ interface IMyPageProps {
   image?: string;
 }
 
-export const MyPage = (props: IMyPageProps) => {
+export const MyPageTemplate = (props: IMyPageProps) => {
   return (
     <>
       <Background>

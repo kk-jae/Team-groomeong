@@ -2,7 +2,7 @@ import { margin } from "@mui/system";
 import { SearchBar } from "../../atoms/SearchBar";
 import Background from "../../organisms/Background";
 
-export const Main = () => {
+export const HomeTemplate = () => {
   return (
     <>
       <Background>
