@@ -47,6 +47,11 @@ export const InputTag = styled.input<IFocusInput>`
       color: ${(props) => props.error && GS.state.negative};
     }
   }
+  &:disabled {
+    background: #f5f5f5;
+    border: 2px solid ${GS.gray[100]};
+    color: ${GS.contents.contentSecondary}
+  }
 `;
 
 export const Error = styled.span`
