@@ -1,16 +1,16 @@
 import { InputContent, SearchBox, SearchButton } from "./index.styles";
 
 interface ISearchBarProps {
-  size: "small" | "medium" | "large";
+  sizes: "small" | "medium" | "large";
   placeholder: string;
 }
 
 export const SearchBar = (props: ISearchBarProps) => {
   return (
     <>
-      <SearchBox size={props.size}>
+      <SearchBox sizes={props.sizes}>
         <InputContent
-          size={props.size}
+          sizes={props.sizes}
           placeholder={props.placeholder}
         ></InputContent>
         <SearchButton>
