@@ -6,7 +6,7 @@ interface ITextAreaProps {
   contents?: string;
   date?: string;
   name?: string;
-  iconView: boolean;
+  iconView?: boolean;
   dateView?: boolean;
   buttonView: boolean;
   placeholder?: string;
