@@ -6,6 +6,8 @@ export interface ITopBarDefault {
 }
 
 export const TopBarBox = styled.div`
+  position: absolute;
+  top: 0;
   width: 1136px;
   height: 112px;
   margin-bottom: 46px;
