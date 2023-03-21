@@ -4,14 +4,18 @@ import { BackgroundWrapper } from "./index.style";
 
 interface IBackgroundProps {
   children: React.ReactChild[] | React.ReactChild;
+  centered?: boolean;
+  viewport?: boolean;
 }
 
 const Background = (props: IBackgroundProps) => {
   return (
-    <BackgroundWrapper>
-      <TopBarDefault loggedIn={false} />
-      {props.children}
-    </BackgroundWrapper>
+    <>
+      <BackgroundWrapper centered={props.centered} viewport={props.viewport}>
+        <TopBarDefault loggedIn={false} />
+        {props.children}
+      </BackgroundWrapper>
+    </>
   );
 };
 

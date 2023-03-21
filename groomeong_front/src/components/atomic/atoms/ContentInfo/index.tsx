@@ -7,11 +7,12 @@ import {
 
 interface IContentInfoProps {
   label: string;
-  content: string;
+  content?: string;
   left?: string;
   right?: string;
   bottom?: string;
   top?: string;
+  badge?: React.ReactElement;
 }
 
 const ContentInfo = (props: IContentInfoProps) => {
@@ -19,11 +20,11 @@ const ContentInfo = (props: IContentInfoProps) => {
     <ContentInfoWrapper
       left={props.left}
       right={props.right}
-      bottom={props.bottom} 
-      top={props.top} 
+      bottom={props.bottom}
+      top={props.top}
     >
       <ContetnInfoLabel>{props.label}</ContetnInfoLabel>
-      <ContentInfoContent>{props.content}</ContentInfoContent>
+      <ContentInfoContent>{props.badge ?? props.content}</ContentInfoContent>
     </ContentInfoWrapper>
   );
 };
