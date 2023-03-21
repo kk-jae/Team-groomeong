@@ -4,7 +4,7 @@ import Background from "../../organisms/Background";
 import * as S from "./index.styled";
 import { Buttons } from "../../atoms/Buttons";
 
-export const LogIn = () => {
+export const LogInTemplate = () => {
   const method = useForm({
     mode: "onChange",
   });

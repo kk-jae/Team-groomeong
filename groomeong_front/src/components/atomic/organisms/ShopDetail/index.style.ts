@@ -29,3 +29,10 @@ export const ShopDetailWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const ShopImage = styled.img`
+  width: 100%;
+  height: 250px;
+  padding-bottom: 24px;
+  object-fit: cover;
+`;

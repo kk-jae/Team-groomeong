@@ -13,7 +13,7 @@ export const InputWrapper = styled.div`
   width: 500px;
   margin-top: 32px;
   margin-bottom: 32px;
-  font: ${GS.Paragraph.Medium};
+  ${GS.Paragraph.Medium};
 `;
 
 export const Label = styled.label<IFocusLabel>`

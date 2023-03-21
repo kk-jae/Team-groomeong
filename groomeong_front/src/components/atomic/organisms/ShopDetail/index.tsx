@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import * as S from "./index.style";
 import { Comment } from "../../atoms/Comment";
 import * as GS from "../../../../../theme/global";
+import { Buttons } from "../../atoms/Buttons";
 
 interface IShopDetailProps {
   isLoggedIn: boolean;
@@ -41,13 +42,14 @@ export const ShopDetail = (props: IShopDetailProps) => {
 
   return (
     <>
-      <button onClick={showModal}>Open Modal</button>
+      <Buttons onClick={showModal} label="샵 정보보기"></Buttons>
       <S.ShopDetailModal
         open={isModalOpen}
         onCancel={showModal}
         maskStyle={{ background: GS.blue[900], opacity: 0.8 }}
       >
         <S.ShopDetailWrapper>
+          <S.ShopImage src="image/example-shop.jpeg"></S.ShopImage>
           <CommentsHeader
             star={props.shopRating}
             date={"월, 화, 수, 목, 금, 토, 일"}

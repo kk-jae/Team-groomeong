@@ -11,7 +11,7 @@ interface IFocusInput {
 
 export const InputWrapper = styled.div`
   width: 200px;
-  font: ${GS.Paragraph.Medium};
+  ${GS.Paragraph.Medium};
 `;
 
 export const Label = styled.label<IFocusLabel>`

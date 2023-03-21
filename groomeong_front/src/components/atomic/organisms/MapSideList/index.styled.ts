@@ -35,7 +35,7 @@ export const NonShopListWrapper = styled.div`
 
 export const ShopListText = styled.div`
   color: ${GS.contents.contentTertiary};
-  font: ${GS.Heading.XL};
+  ${GS.Heading.XL};
   margin-bottom: 8px;
 `;
 

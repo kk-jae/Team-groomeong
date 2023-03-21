@@ -11,7 +11,7 @@ interface IPropsR {
 const openHour = "09:00";
 const closeHour = "20:00";
 
-export const Reservation = (props: IPropsR) => {
+export const ReservationTemplate = (props: IPropsR) => {
   const [reservationDate, setReservationDate] = useState("");
 
   const shopOpenTime = [];

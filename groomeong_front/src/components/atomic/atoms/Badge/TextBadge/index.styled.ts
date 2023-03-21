@@ -16,6 +16,6 @@ export const TextBadgeButton = styled.button<IProps>`
     props.state ? `${GS.base.primary}` : `${GS.gray[300]}`};
   border: none;
   color: #ffffff;
-  font: ${GS.Heading.Medium};
+  ${GS.Heading.Medium};
   padding: 4px 8px 4px 8px;
 `;

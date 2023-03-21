@@ -26,7 +26,7 @@ export const CheckBoxBig = styled.span<IPropsBig>`
   border-radius: 4px;
   background-color: ${(props) => (props.big ? GS.base.primary : GS.gray[300])};
   color: white;
-  font: ${GS.Heading.Medium};
+  ${GS.Heading.Medium};
   cursor: pointer;
 `;
 export const CheckBoxMiddle = styled.span<IPropsMiddle>`
@@ -38,7 +38,7 @@ export const CheckBoxMiddle = styled.span<IPropsMiddle>`
     props.middle ? GS.base.primary : GS.gray[300]};
 
   color: white;
-  font: ${GS.Heading.Medium};
+  ${GS.Heading.Medium};
   cursor: pointer;
 `;
 export const CheckBoxSmall = styled.span<IPropsSmall>`
@@ -50,7 +50,7 @@ export const CheckBoxSmall = styled.span<IPropsSmall>`
     props.small ? GS.base.primary : GS.gray[300]};
 
   color: white;
-  font: ${GS.Heading.Medium};
+  ${GS.Heading.Medium};
   cursor: pointer;
 `;
 export const CheckBoxSpecial = styled.span<IPropsSpecial>`
@@ -61,6 +61,6 @@ export const CheckBoxSpecial = styled.span<IPropsSpecial>`
   background-color: ${(props) =>
     props.special ? GS.base.primary : GS.gray[300]};
   color: white;
-  font: ${GS.Heading.Medium};
+  ${GS.Heading.Medium};
   cursor: pointer;
 `;
