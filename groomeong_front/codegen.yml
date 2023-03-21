@@ -1,10 +1,10 @@
 # 이후 백엔드 주소 만들어지면 추가
 
 # 예시
-# schema: http://backend-example.codebootcamp.co.kr/graphql
-# generates:
-#   ./src/commons/types/generated/types.ts:
-#     plugins:
-#       - typescript
-#     config:
-#       typesPrefix: I
+schema: http://34.64.53.80:3000/graphql
+generates:
+  ./src/commons/types/generated/types.ts:
+    plugins:
+      - typescript
+    config:
+      typesPrefix: I
