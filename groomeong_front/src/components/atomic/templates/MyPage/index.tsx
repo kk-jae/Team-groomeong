@@ -30,8 +30,7 @@ export const MyPage = (props: IMyPageProps) => {
               phone={props.phone}
               image={props.image}
             ></MyPageBody>
-            <ReservationList></ReservationList>
-            <ReservationHistoryList></ReservationHistoryList>
+            <DogsList></DogsList>
             <p>
               <Buttons size="large" label="수정하기"></Buttons>
             </p>

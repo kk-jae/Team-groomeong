@@ -29,7 +29,7 @@ const DogDetail = () => {
         </Div>
       </DogDetailContentWrapper>
       <Div>
-        <InfoTextArea title={"특이사항"} content={"이상없음"} disabled/>
+        <InfoTextArea title={"특이사항"} content={"이상없음"} disabled />
       </Div>
     </DogDetailWrapper>
   );

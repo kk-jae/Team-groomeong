@@ -15,7 +15,7 @@ export const Main = () => {
         ></SearchBar>
         <img
           src="/image/img-character-dog.svg"
-          style={{ margin: "56px 0px 150px 0px" }}
+          style={{ marginTop: "56px" }}
         ></img>
       </Background>
     </>
