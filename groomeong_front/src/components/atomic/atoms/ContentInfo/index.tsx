@@ -8,11 +8,20 @@ import {
 interface IContentInfoProps {
   label: string;
   content: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+  top?: string;
 }
 
 const ContentInfo = (props: IContentInfoProps) => {
   return (
-    <ContentInfoWrapper>
+    <ContentInfoWrapper
+      left={props.left}
+      right={props.right}
+      bottom={props.bottom} 
+      top={props.top} 
+    >
       <ContetnInfoLabel>{props.label}</ContetnInfoLabel>
       <ContentInfoContent>{props.content}</ContentInfoContent>
     </ContentInfoWrapper>

@@ -12,9 +12,9 @@ export const ContentInfoWrapper = styled.div<IContentInfoWrapperProps>`
   display: flex;
   flex-direction: column;
   margin-bottom: ${({ bottom }) => bottom ?? "64px"};
-  margin-left: ${({ left }) => left ?? "64px"};
-  margin-right: ${({ right }) => right ?? "64px"};
-  margin-top: ${({ top }) => top ?? "64px"};
+  margin-left: ${({ left }) => left ?? "0"};
+  margin-right: ${({ right }) => right ?? "0"};
+  margin-top: ${({ top }) => top ?? "0"};
 `;
 
 export const ContetnInfoLabel = styled.span`
