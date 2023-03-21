@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import * as GS from "../../../../../../theme/global";
+import * as GS from "../../../../theme/global";
+import { InputMiddle } from "../../atomic/atoms/Input/Middle";
 
 interface IValidInput {
   error?: string;
@@ -63,4 +64,12 @@ export const ValidateWrapper = styled.div`
 
 export const Error = styled.span`
   color: red;
+`;
+
+export const EmailInput = styled(ValidationInput)`
+  width: 100%;
+  &:disabled {
+    background-color: #525252;
+    color: ${GS.contents.contentSecondary};
+  }
 `;

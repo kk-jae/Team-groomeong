@@ -20,6 +20,11 @@ const useSignUp = () => {
         ...prev,
         emailAuth: true,
       }));
+    } else if (email === "") {
+      setValidation((prev) => ({
+        ...prev,
+        error: "잘못된 이메일형식 입니다.",
+      }));
     } else {
       setValidation((prev) => ({
         ...prev,
@@ -58,6 +63,7 @@ const useSignUp = () => {
       }));
     }
   };
+
   return {
     onClickEmailAuth,
     onChangeAuthNumber,

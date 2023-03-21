@@ -4,17 +4,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Buttons } from "../../atoms/Buttons";
 import { InputMiddle } from "../../atoms/Input/Middle";
 import PageHeader from "../../atoms/PageHeader";
-import {
-  SignUpForm,
-  SignUpWrapper,
-  SingUpDivider,
-  ValidateInputWrapper,
-} from "./index.styles";
+import { SignUpForm, SignUpWrapper, SingUpDivider } from "./index.styles";
 import { Schema } from "../../../commons/validation/signUp.validation";
-import SignUpValidateInput from "./SignUpValidateInput";
+import SignUpValidateInput from "../../../units/SignUpValidateInput";
 
 const SignUp = () => {
-  const [email, setEmail] = useState<string>("");
   const method = useForm({
     mode: "onChange",
     resolver: yupResolver(Schema),
@@ -25,11 +19,6 @@ const SignUp = () => {
       <PageHeader title="회원가입" />
       <FormProvider {...method}>
         <SignUpForm onSubmit={method.handleSubmit((data) => console.log(data))}>
-          <InputMiddle
-            label="이메일"
-            name="email"
-            placeholder="인증번호를 입력해주세요."
-          />
           <SignUpValidateInput />
           <InputMiddle
             label="닉네임"
