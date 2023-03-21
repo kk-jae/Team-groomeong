@@ -8,7 +8,6 @@ export const MyPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 32px;
-  margin-bottom: 57px;
 `;
 
 export const MyPageBodyWrapper = styled.div`

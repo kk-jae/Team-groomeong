@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
 
 interface IBackgroundWrapperProps {
-  centered?: boolean
-  viewport?: boolean
+  centered?: boolean;
+  viewport?: boolean;
 }
 
 export const BackgroundWrapper = styled.div<IBackgroundWrapperProps>`
@@ -13,6 +13,5 @@ export const BackgroundWrapper = styled.div<IBackgroundWrapperProps>`
   align-items: center;
   background-color: ${GS.base.primary};
   width: 100%;
-  height: ${({ viewport }) => viewport ? '100vh' : '100%'};
-  padding: 142px 64px;
+  padding: 0px 64px 150px 64px;
 `;

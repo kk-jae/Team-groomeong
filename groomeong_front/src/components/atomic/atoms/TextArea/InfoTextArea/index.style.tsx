@@ -22,6 +22,8 @@ export const InfoTextAreaWrapper = styled.div`
   width: 100%;
   flex-direction: column;
   align-items: center;
+  ${GS.Paragraph.Medium}
+  padding: 0px 128px;
 `;
 
 export const InfoTextAreaHeader = styled.div`

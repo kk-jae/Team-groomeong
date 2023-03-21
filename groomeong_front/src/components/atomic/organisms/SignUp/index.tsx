@@ -49,8 +49,6 @@ const SignUp = () => {
             border="none"
             variation="primary"
           />
-
-          <SingUpDivider />
         </SignUpForm>
       </FormProvider>
     </SignUpWrapper>
