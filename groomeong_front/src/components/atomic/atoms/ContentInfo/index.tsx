@@ -1,0 +1,31 @@
+import React from "react";
+import {
+  ContentInfoContent,
+  ContentInfoWrapper,
+  ContetnInfoLabel,
+} from "./index.style";
+
+interface IContentInfoProps {
+  label: string;
+  content: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+  top?: string;
+}
+
+const ContentInfo = (props: IContentInfoProps) => {
+  return (
+    <ContentInfoWrapper
+      left={props.left}
+      right={props.right}
+      bottom={props.right}
+      top={props.top}
+    >
+      <ContetnInfoLabel>{props.label}</ContetnInfoLabel>
+      <ContentInfoContent>{props.content}</ContentInfoContent>
+    </ContentInfoWrapper>
+  );
+};
+
+export default ContentInfo;
