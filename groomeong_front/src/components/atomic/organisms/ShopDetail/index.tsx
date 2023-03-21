@@ -3,11 +3,12 @@ import { TextArea } from "../../atoms/TextArea/TextArea";
 import React, { useState } from "react";
 import * as S from "./index.style";
 import { Comment } from "../../atoms/Comment";
+import * as GS from "../../../../../theme/global";
 
 interface IShopDetailProps {
   isLoggedIn: boolean;
 
-  icon: string;
+  icon?: string;
   date?: string;
   time?: string;
   address?: string;
@@ -18,7 +19,7 @@ interface IShopDetailProps {
   commentWriteContents?: string;
   commentWriteDate?: string;
   commentWriteName?: string;
-  commentWriteIconView: boolean;
+  commentWriteIconView?: boolean;
   buttonView?: boolean;
   commentWritePlaceholder?: string;
   commentWriteRating?: number;
@@ -41,7 +42,11 @@ export const ShopDetail = (props: IShopDetailProps) => {
   return (
     <>
       <button onClick={showModal}>Open Modal</button>
-      <S.ShopDetailModal open={isModalOpen} onCancel={showModal}>
+      <S.ShopDetailModal
+        open={isModalOpen}
+        onCancel={showModal}
+        maskStyle={{ background: GS.blue[900], opacity: 0.8 }}
+      >
         <S.ShopDetailWrapper>
           <CommentsHeader
             star={props.shopRating}
@@ -71,11 +76,11 @@ export const ShopDetail = (props: IShopDetailProps) => {
             date={props.commentListDate}
             name={props.commentListName}
             rate={props.commentListStarRate}
-            state={props.commentListStarState}
+            state={true}
             iconView={true}
           ></Comment>
-          <Comment iconView={true}></Comment>
-          <Comment iconView={true}></Comment>
+          <Comment iconView={true} state={true}></Comment>
+          <Comment iconView={true} state={true}></Comment>
         </S.ShopDetailWrapper>
       </S.ShopDetailModal>
     </>
