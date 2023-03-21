@@ -31,23 +31,13 @@ export const LogIn = () => {
               name="password"
               placeholder="비밀번호를 입력해주세요"
             />
-            <Buttons size="large" label="로그인하기" />
+            <Buttons size="large" label="로그인하기" border="none" />
           </S.LogInMiddle>
         </FormProvider>
         <S.LogInBottom>
           <S.LogInBottomSocial>
-            <Buttons
-              size="medium"
-              label="구글 로그인하기"
-              variation="primary"
-              border="none"
-            />
-            <Buttons
-              size="medium"
-              label="카카오 로그인하기"
-              border="none"
-              variation="primary"
-            />
+            <S.ButtonGoogle>구글 로그인하기</S.ButtonGoogle>
+            <S.ButtonKakao>카카오 로그인하기</S.ButtonKakao>
           </S.LogInBottomSocial>
           <S.LogInBottomSighUp>
             <S.LogInBottomSighUpTop>
