@@ -6,10 +6,11 @@ interface IDivProps {
   right?: string;
   top?: string;
   bottom?: string;
+  showButton?: boolean;
 }
 
 export const Div = styled.div<IDivProps>`
-  display: flex;
+  display: ${({ showButton }) => (showButton ? "flex" : "hidden")};
   margin-left: ${({ left }) => left ?? null};
   margin-right: ${({ right }) => right ?? null};
   margin-top: ${({ top }) => top ?? null};

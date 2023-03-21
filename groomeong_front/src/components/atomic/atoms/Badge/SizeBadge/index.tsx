@@ -1,4 +1,5 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
+import { useFormContext } from "react-hook-form";
 import * as S from "./index.styled";
 
 // 사용 방법
@@ -7,51 +8,53 @@ import * as S from "./index.styled";
 // size 를 string ( big / middle / small / special )로 return 합니다.)
 
 export const SizeBadge = (props: any) => {
+  const { setValue } = useFormContext();
   const [big, setBig] = useState(false);
   const [middle, setMiddle] = useState(false);
   const [small, setSmall] = useState(false);
   const [special, setSpecial] = useState(false);
 
   const onClickSize = (event: any) => {
-    if (event.target.id === "big") {
+    if (event.target.id === "BIG") {
       setBig(true);
       setMiddle(false);
       setSmall(false);
       setSpecial(false);
     }
-    if (event.target.id === "middle") {
+    if (event.target.id === "MIDDLE") {
       setBig(false);
       setMiddle(true);
       setSmall(false);
       setSpecial(false);
     }
-    if (event.target.id === "small") {
+    if (event.target.id === "SMALL") {
       setBig(false);
       setMiddle(false);
       setSmall(true);
       setSpecial(false);
     }
-    if (event.target.id === "special") {
+    if (event.target.id === "SPECIAL") {
       setBig(false);
       setMiddle(false);
       setSmall(false);
       setSpecial(true);
     }
-    props.setSize(event.target.id);
+    setValue("breed", event.target.id);
+    // props.setSize(event.target.id);
   };
 
   return (
     <S.SizeBadgeWrapper>
-      <S.CheckBoxBig onClick={onClickSize} id="big" big={big}>
+      <S.CheckBoxBig onClick={onClickSize} id="BIG" big={big}>
         대형
       </S.CheckBoxBig>
-      <S.CheckBoxMiddle onClick={onClickSize} id="middle" middle={middle}>
+      <S.CheckBoxMiddle onClick={onClickSize} id="MIDDLE" middle={middle}>
         중형
       </S.CheckBoxMiddle>
-      <S.CheckBoxSmall onClick={onClickSize} id="small" small={small}>
+      <S.CheckBoxSmall onClick={onClickSize} id="SMALL" small={small}>
         소형
       </S.CheckBoxSmall>
-      <S.CheckBoxSpecial onClick={onClickSize} id="special" special={special}>
+      <S.CheckBoxSpecial onClick={onClickSize} id="SPECIAL" special={special}>
         특수견
       </S.CheckBoxSpecial>
     </S.SizeBadgeWrapper>

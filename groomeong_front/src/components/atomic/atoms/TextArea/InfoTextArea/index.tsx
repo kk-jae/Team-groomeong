@@ -12,7 +12,9 @@ import {
 interface IInfoTextAreaProps {
   title: string;
   content: string;
+  placeholder?: string;
   disabled?: boolean;
+  showButton?: boolean;
 }
 
 const InfoTextArea = (props: IInfoTextAreaProps) => {
@@ -21,11 +23,14 @@ const InfoTextArea = (props: IInfoTextAreaProps) => {
       <InfoTextAreaHeader>
         <InfoTextAreaLabel>{props.title}</InfoTextAreaLabel>
       </InfoTextAreaHeader>
-      <InfoTextAreaContents disabled={props.disabled}>
+      <InfoTextAreaContents
+        placeholder={props.placeholder}
+        disabled={props.disabled}
+      >
         {props.content}
       </InfoTextAreaContents>
       <InfoTextAreaFooter>
-        <Div>
+        <Div showButton={props.showButton}>
           <Buttons
             border="border"
             label={"뒤로가기"}

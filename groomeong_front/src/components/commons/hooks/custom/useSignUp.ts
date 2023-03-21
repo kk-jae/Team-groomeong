@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
-const useSignUp = () => {
+export const useSignUp = () => {
   const { getValues } = useFormContext();
   const [validation, setValidation] = useState({
     authNumber: "",
@@ -73,5 +73,3 @@ const useSignUp = () => {
     setValidation,
   };
 };
-
-export default useSignUp;
