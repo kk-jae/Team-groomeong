@@ -4,12 +4,15 @@ import Background from "../../organisms/Background";
 import * as S from "./index.styled";
 import { Buttons } from "../../atoms/Buttons";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
+import { useLogInButton } from "../../../commons/hooks/custom/useLogIn";
+import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 
 export const LogInTemplate = () => {
   const method = useForm({
     mode: "onChange",
   });
   const { onClickMoveToPage } = useMoveToPage();
+  const { onClickHomePageLogIn } = useLogInButton();
 
   return (
     <Background>
@@ -19,9 +22,9 @@ export const LogInTemplate = () => {
         </S.LogInTop>
         <FormProvider {...method}>
           <S.LogInMiddle
-            onSubmit={method.handleSubmit((data) => {
-              console.log(data);
-            })}
+            onSubmit={method.handleSubmit(
+              withPromiseVoidFunc(onClickHomePageLogIn)
+            )}
           >
             <InputMiddle
               label="이메일"
@@ -32,6 +35,7 @@ export const LogInTemplate = () => {
               label="비밀번호"
               name="password"
               placeholder="비밀번호를 입력해주세요"
+              type="password"
             />
             <Buttons size="large" label="로그인하기" border="none" />
           </S.LogInMiddle>
