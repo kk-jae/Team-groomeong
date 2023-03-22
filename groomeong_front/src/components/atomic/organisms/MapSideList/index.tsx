@@ -17,9 +17,38 @@ const fetchShops = [
     shopImg: "",
     star: 2,
   },
+  {
+    shopName: "하은네",
+    shopHours: "09:00 ~ 18:00",
+    shopAddress: "경기도 모르는데요",
+    shopImg: "",
+    star: 2,
+  },
+  {
+    shopName: "하은네",
+    shopHours: "09:00 ~ 18:00",
+    shopAddress: "경기도 모르는데요",
+    shopImg: "",
+    star: 2,
+  },
+  {
+    shopName: "하은네",
+    shopHours: "09:00 ~ 18:00",
+    shopAddress: "경기도 모르는데요",
+    shopImg: "",
+    star: 2,
+  },
+  {
+    shopName: "하은네",
+    shopHours: "09:00 ~ 18:00",
+    shopAddress: "경기도 모르는데요",
+    shopImg: "",
+    star: 2,
+  },
 ];
 
 export const MapSideList = () => {
+  const onLoadMore = (): void => {};
   return (
     <S.MapSideListWrapper>
       <S.SearchBarWrapper>

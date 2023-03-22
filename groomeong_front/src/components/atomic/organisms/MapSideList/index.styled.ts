@@ -6,27 +6,27 @@ export const MapSideListWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #ededed;
 `;
 
 export const SearchBarWrapper = styled.div`
-  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
+  height: 124px;
   padding: 32px 16px 32px 16px;
 `;
 
 export const ShopListWrapper = styled.div`
   width: 100%;
   height: calc(100vh - 124px);
-  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 16px;
+  overflow: auto;
 `;
 
 export const NonShopListWrapper = styled.div`
   width: 100%;
   height: calc(100vh - 124px);
-  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
