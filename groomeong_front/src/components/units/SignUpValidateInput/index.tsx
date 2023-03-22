@@ -8,7 +8,7 @@ import {
 } from "../../atomic/organisms/SignUp/index.styles";
 import { useEffect } from "react";
 import { Buttons } from "../../atomic/atoms/Buttons";
-import useSignUp from "../../commons/hooks/custom/useSignUp";
+import { useSignUp } from "../../commons/hooks/custom/useSignUp";
 import { InputMiddle } from "../../atomic/atoms/Input/Middle";
 
 const SignUpValidateInput = () => {

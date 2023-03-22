@@ -6,11 +6,11 @@ import * as S from "./index.styled";
 // <Input label="라벨" placeholder="placeholder" error="에러메세지" />
 
 interface IProps {
-  type?: string;
   defaultValue?: string;
   label: string;
   name: string;
   placeholder: string;
+  type?: string;
   disabled?: boolean;
 }
 

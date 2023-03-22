@@ -17,6 +17,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const Label = styled.label<IFocusLabel>`
+  ${GS.Label.Medium}
   color: ${(props) =>
     props.focus ? GS.state.positive : GS.contents.contentSecondary};
   color: ${(props) => props.error && GS.state.negative};

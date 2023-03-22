@@ -38,5 +38,5 @@ export const PageHeaderTitle = styled.h1`
 export const PageHeaderDivider = styled.div`
   height: 1px;
   width: 100%;
-  background-color: ${GS.contents.contentPrimary};
+  background-color: ${GS.contents.contentSecondary};
 `;
