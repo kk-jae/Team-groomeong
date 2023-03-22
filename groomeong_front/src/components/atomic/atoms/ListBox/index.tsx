@@ -1,3 +1,5 @@
+import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
+import { ShopDetailModal } from "../../organisms/ShopDetail/index.style";
 import { StarRate } from "../StarRate";
 import * as S from "./index.styled";
 
@@ -10,6 +12,7 @@ interface IProps {
 }
 
 export const ListBox = (props: IProps) => {
+  const { onClickMoveToPage } = useMoveToPage();
   return (
     <S.ListBoxWrapper tabIndex={0}>
       <S.ListBoxTop>
@@ -26,7 +29,9 @@ export const ListBox = (props: IProps) => {
       <S.ShopHours>{props.shopHours}</S.ShopHours>
       <S.ListBoxBottom>
         <S.ShopAddress>{props.shopAddress}</S.ShopAddress>
-        <S.ShopMoved>샵 보러가기</S.ShopMoved>
+        <S.ShopMoved onClick={onClickMoveToPage("/shopDetail")}>
+          샵 보러가기
+        </S.ShopMoved>
       </S.ListBoxBottom>
     </S.ListBoxWrapper>
   );
