@@ -6,13 +6,12 @@ export interface ITopBarMapProps {
 }
 
 export const TopBarBox = styled.div`
-  width: 1052px;
+  width: calc(100vw - 680px);
   height: 112px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid red;
 `;
 
 export const TopBarLogo = styled.div`

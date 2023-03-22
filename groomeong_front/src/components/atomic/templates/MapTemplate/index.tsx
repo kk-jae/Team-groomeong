@@ -2,12 +2,17 @@ import { MapSideList } from "../../organisms/MapSideList";
 import Script from "next/script";
 import { useEffect } from "react";
 import * as S from "./index.styles";
+import { TopBarMap } from "../../atoms/TopBar/TopBarMap";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../../../commons/Store";
 declare const window: typeof globalThis & {
   google: any;
   initAutocomplete: () => void;
   // initMap: (latlng: google.maps.LatLngLiteral) => void;
 };
 export const MapTemplate = () => {
+  const [accessToken] = useRecoilState(accessTokenState);
+
   useEffect(() => {
     // This example adds a search box to a map, using the Google Place Autocomplete
     // feature. People can enter geographical searches. The search box will return a
@@ -173,7 +178,15 @@ export const MapTemplate = () => {
         type="text"
         placeholder="Search Box"
       /> */}
+
       <S.MapBoxStyles>
+        <S.Header>
+          {!accessToken ? (
+            <TopBarMap loggedIn={true} />
+          ) : (
+            <TopBarMap loggedIn={false} />
+          )}
+        </S.Header>
         <MapSideList />
         <S.MainMap id="map"></S.MainMap>
       </S.MapBoxStyles>
