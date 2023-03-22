@@ -8,7 +8,7 @@ import {
 } from "./index.styles";
 import { useEffect } from "react";
 import { Buttons } from "../../atomic/atoms/Buttons";
-import { useSignUp } from "../../commons/hooks/custom/useSignUp";
+import { useSignUpValidateInput } from "../../commons/hooks/custom/useSignUpValidateInput";
 import { InputMiddle } from "../../atomic/atoms/Input/Middle";
 
 const SignUpValidateInput = () => {
@@ -19,7 +19,7 @@ const SignUpValidateInput = () => {
     onChangeAuthNumber,
     onClickAuthValidate,
     onClickEmailAuth,
-  } = useSignUp();
+  } = useSignUpValidateInput();
 
   useEffect(() => {
     if (validation.emailAuth) {

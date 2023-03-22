@@ -1,24 +1,30 @@
-import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Buttons } from "../../atoms/Buttons";
 import { InputMiddle } from "../../atoms/Input/Middle";
 import PageHeader from "../../atoms/PageHeader";
-import { SignUpForm, SignUpWrapper, SingUpDivider } from "./index.styles";
+import { SignUpForm, SignUpWrapper } from "./index.styles";
 import { Schema } from "../../../commons/validation/signUp.validation";
 import SignUpValidateInput from "../../../units/SignUpValidateInput";
+import { IMutationCreateUserArgs } from "../../../../commons/types/generated/types";
+import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
+import { useSignUp } from "../../../commons/hooks/custom/useSignUp";
 
 const SignUp = () => {
-  const method = useForm({
+  const method = useForm<IMutationCreateUserArgs>({
     mode: "onChange",
     resolver: yupResolver(Schema),
   });
+  const { onClickSignUp } = useSignUp();
 
   return (
     <SignUpWrapper>
       <PageHeader title="회원가입" />
       <FormProvider {...method}>
-        <SignUpForm onSubmit={method.handleSubmit((data) => console.log(data))}>
+        <SignUpForm
+          // onSubmit={method.handleSubmit(withPromiseVoidFunc(onClickSignUp))}
+          onSubmit={method.handleSubmit(withPromiseVoidFunc(onClickSignUp))}
+        >
           <SignUpValidateInput />
           <InputMiddle
             label="닉네임"
