@@ -11,6 +11,7 @@ export const LogInTemplate = () => {
   const method = useForm({
     mode: "onChange",
   });
+
   const { onClickMoveToPage } = useMoveToPage();
   const { onClickHomePageLogIn } = useLogInButton();
 
