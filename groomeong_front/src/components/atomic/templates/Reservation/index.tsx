@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { UseQueryFetchShop } from "../../../commons/hooks/query/UseQueryFetchShop";
+import { UseQueryFetchShops } from "../../../commons/hooks/query/UseQueryFetchShops";
 import { DogSelect } from "../../../units/DogSelect";
 import { ReservationDate } from "../../../units/ReservationDate";
 import Background from "../../organisms/Background";
@@ -13,6 +15,9 @@ const closeHour = "20:00";
 
 export const ReservationTemplate = (props: IPropsR) => {
   const [reservationDate, setReservationDate] = useState("");
+  const { data } = UseQueryFetchShop("3791367a-8b26-4868-8cbc-dffac4a279bf");
+
+  console.log(data?.fetchShop.name);
 
   const shopOpenTime = [];
   const time = Number(closeHour.split(":")[0]) - Number(openHour.split(":")[0]);
@@ -56,12 +61,12 @@ export const ReservationTemplate = (props: IPropsR) => {
               시간
             </S.ReservationWrapperBottomItemTitle>
             <S.ReservationWrapperBottomItemTimeWrapper>
-              {shopOpenTime.map((el) => (
-                <>
+              {shopOpenTime.map((el, index) => (
+                <div key={index}>
                   <S.ReservationWrapperBottomItemTimeDetail tabIndex={0}>
                     {el}
                   </S.ReservationWrapperBottomItemTimeDetail>
-                </>
+                </div>
               ))}
             </S.ReservationWrapperBottomItemTimeWrapper>
           </S.ReservationWrapperBottomItem>

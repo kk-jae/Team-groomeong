@@ -5,7 +5,7 @@ import {
 } from "../../../../commons/types/generated/types";
 
 export const FETCH_SHOPS = gql`
-  query fetchShops($search: String!) {
+  query fetchShops($search: String) {
     fetchShops(search: $search) {
       id
       name
