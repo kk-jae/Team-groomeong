@@ -1,6 +1,7 @@
 import * as S from "./index.style";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Buttons } from "../../../atoms/Buttons";
+import { ReservationTable } from "../../../atoms/ReservationTable";
 
 interface IReservationListProps {
   shopName?: string;
@@ -27,19 +28,9 @@ export const ReservationList = (props: IReservationListProps) => {
                 <th>예약 취소</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th>{props.shopName}</th>
-                <th>{props.date}</th>
-                <th>{props.time}</th>
-                <th>{props.myDog}</th>
-                <th>
-                  <div>
-                    <Buttons label="예약 취소"></Buttons>
-                  </div>
-                </th>
-              </tr>
-            </tbody>
+            <ReservationTable></ReservationTable>
+            <ReservationTable></ReservationTable>
+            <ReservationTable></ReservationTable>
           </table>
         </S.Table>
       </S.ReservationListWrapper>
