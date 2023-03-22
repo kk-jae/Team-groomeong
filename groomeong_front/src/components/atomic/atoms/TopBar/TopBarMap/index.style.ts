@@ -21,6 +21,7 @@ export const TopBarLogo = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const TopBarButtons = styled.div`

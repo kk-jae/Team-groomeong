@@ -1,16 +1,19 @@
 import * as S from "./index.style";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { Buttons } from "../../Buttons";
+import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
 
 interface ITopBarMapProps {
   loggedIn: boolean;
 }
 
 export const TopBarMap = (props: ITopBarMapProps) => {
+  const { onClickMoveToPage } = useMoveToPage();
+
   return (
     <>
       <S.TopBarBox>
-        <S.TopBarLogo>
+        <S.TopBarLogo onClick={onClickMoveToPage("/home")}>
           <img src="/image/img_logo_raw_black.png" alt="" />
         </S.TopBarLogo>
         <S.TopBarButtons loggedIn={props.loggedIn}>
@@ -28,6 +31,7 @@ export const TopBarMap = (props: ITopBarMapProps) => {
                 label="로그아웃"
                 variation="tertiary"
                 border="none"
+                onClick={onClickMoveToPage("/home")}
               ></Buttons>
               <S.TopBarProfile>
                 <img src={"image/icon_dog_profile.png"} alt="" />
@@ -40,12 +44,14 @@ export const TopBarMap = (props: ITopBarMapProps) => {
                 label="로그인"
                 variation="tertiary"
                 border="none"
+                onClick={onClickMoveToPage("/login")}
               ></Buttons>
               <Buttons
                 size="small"
                 label="회원가입"
                 variation="tertiary"
                 border="none"
+                onClick={onClickMoveToPage("/signup")}
               ></Buttons>
             </>
           )}

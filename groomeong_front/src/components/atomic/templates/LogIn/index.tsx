@@ -3,11 +3,13 @@ import { InputMiddle } from "../../atoms/Input/Middle";
 import Background from "../../organisms/Background";
 import * as S from "./index.styled";
 import { Buttons } from "../../atoms/Buttons";
+import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 
 export const LogInTemplate = () => {
   const method = useForm({
     mode: "onChange",
   });
+  const { onClickMoveToPage } = useMoveToPage();
 
   return (
     <Background>
@@ -43,7 +45,9 @@ export const LogInTemplate = () => {
             <S.LogInBottomSighUpTop>
               아직 회원이 아니신가요?
             </S.LogInBottomSighUpTop>
-            <S.LogInBottomSighUpBottom>회원가입하기</S.LogInBottomSighUpBottom>
+            <S.LogInBottomSighUpBottom onClick={onClickMoveToPage("/signup")}>
+              회원가입하기
+            </S.LogInBottomSighUpBottom>
           </S.LogInBottomSighUp>
           <S.LogInBottomFindPassword>
             <S.LogInBottomFindPasswordTop>
