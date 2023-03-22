@@ -9,8 +9,9 @@ import SignUpValidateInput from "../../../units/SignUpValidateInput";
 import { IMutationCreateUserArgs } from "../../../../commons/types/generated/types";
 import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import { useSignUp } from "../../../commons/hooks/custom/useSignUp";
-
+import { useState } from "react";
 const SignUp = () => {
+  const [valid, setValid] = useState(false);
   const method = useForm<IMutationCreateUserArgs>({
     mode: "onChange",
     resolver: yupResolver(Schema),
@@ -22,10 +23,9 @@ const SignUp = () => {
       <PageHeader title="회원가입" />
       <FormProvider {...method}>
         <SignUpForm
-          // onSubmit={method.handleSubmit(withPromiseVoidFunc(onClickSignUp))}
           onSubmit={method.handleSubmit(withPromiseVoidFunc(onClickSignUp))}
         >
-          <SignUpValidateInput />
+          <SignUpValidateInput setValid={setValid} />
           <InputMiddle
             label="닉네임"
             name="nickName"
@@ -54,10 +54,8 @@ const SignUp = () => {
             type="submit"
             size="large"
             border="none"
+            state={valid ? undefined : "disabled"}
             variation="primary"
-            onClick={(data: any) => {
-              console.log(data);
-            }}
           />
         </SignUpForm>
       </FormProvider>

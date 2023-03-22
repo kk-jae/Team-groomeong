@@ -6,12 +6,16 @@ import {
   Error,
   ValidateDiv,
 } from "./index.styles";
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { Buttons } from "../../atomic/atoms/Buttons";
 import { useSignUpValidateInput } from "../../commons/hooks/custom/useSignUpValidateInput";
 import { InputMiddle } from "../../atomic/atoms/Input/Middle";
 
-const SignUpValidateInput = () => {
+interface ISignUpvalidateInputProps {
+  setValid: Dispatch<SetStateAction<boolean>>;
+}
+
+const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
   const {
     validation,
     setValidation,
@@ -19,7 +23,7 @@ const SignUpValidateInput = () => {
     onChangeAuthNumber,
     onClickAuthValidate,
     onClickEmailAuth,
-  } = useSignUpValidateInput();
+  } = useSignUpValidateInput(props.setValid);
 
   useEffect(() => {
     if (validation.emailAuth) {
@@ -43,7 +47,6 @@ const SignUpValidateInput = () => {
     }
   }, [setValidation, validation]);
 
-  console.log(validation);
   return (
     <>
       <InputMiddle

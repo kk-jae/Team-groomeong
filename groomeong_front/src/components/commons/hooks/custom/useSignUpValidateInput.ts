@@ -1,9 +1,11 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { UseMutationCheckValidToken } from "../mutation/UseMutationCheckValidToken";
 import { UseMutationGetTokenEmail } from "../mutation/UseMutationGetTokenEmail";
 
-export const useSignUpValidateInput = () => {
+export const useSignUpValidateInput = (
+  setValid: Dispatch<SetStateAction<boolean>>
+) => {
   const [getTokenEmail] = UseMutationGetTokenEmail();
   const [checkValidToken] = UseMutationCheckValidToken();
   const { getValues } = useFormContext();
@@ -68,7 +70,7 @@ export const useSignUpValidateInput = () => {
           token: validation.emailToken,
         },
       });
-      console.log(data);
+      setValid(data?.checkValidToken ?? false);
       setValidation((prev) => ({
         ...prev,
         valid: true,
