@@ -1,4 +1,5 @@
 import React from "react";
+import { Div } from "../../organisms/DogDetail/index.style";
 import {
   PageHeaderContentsWrapper,
   PageHeaderDivider,
@@ -8,6 +9,7 @@ import {
 } from "./index.styles";
 
 interface IPageHeader {
+  rating?: React.ReactElement
   icon?: string;
   title: string;
 }
@@ -18,6 +20,7 @@ const PageHeader = (props: IPageHeader) => {
       <PageHeaderContentsWrapper>
         <PageHeaderIcon icon={props.icon ?? ""} />
         <PageHeaderTitle>{props.title}</PageHeaderTitle>
+          {props.rating}
       </PageHeaderContentsWrapper>
       <PageHeaderDivider />
     </PageHeaderWrapper>

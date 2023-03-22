@@ -45,9 +45,13 @@ const SignUp = () => {
           />
           <Buttons
             label="회원가입하기"
+            type="submit"
             size="large"
             border="none"
             variation="primary"
+            onClick={(data: any) => {
+              console.log(data);
+            }}
           />
         </SignUpForm>
       </FormProvider>

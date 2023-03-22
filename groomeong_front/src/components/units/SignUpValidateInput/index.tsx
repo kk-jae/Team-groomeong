@@ -71,6 +71,7 @@ const SignUpValidateInput = () => {
           <div>
             <Buttons
               type="button"
+              variation="primary"
               label="인증하기"
               size="small"
               state={!validation.emailAuth ? "disabled" : undefined}
@@ -81,6 +82,7 @@ const SignUpValidateInput = () => {
           <div style={{ marginLeft: "1rem" }}>
             <Buttons
               type="button"
+              variation="primary"
               label="이메일 인증하기"
               size="small"
               border="none"

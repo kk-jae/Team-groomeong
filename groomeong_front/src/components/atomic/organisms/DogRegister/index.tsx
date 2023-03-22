@@ -55,7 +55,9 @@ const DogRegister = () => {
                   label="댕댕이 저장하기"
                   size="large"
                   variation="primary"
-                  onClick={(data) => console.log(data)}
+                  border="none"
+                  type="submit"
+                  onClick={(data: any) => console.log(data)}
                 />
               </DogRegisterFooterSpan>
             </DogRegisterWrapper>
