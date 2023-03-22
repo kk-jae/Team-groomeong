@@ -3,7 +3,7 @@ import PageHeader from "../../atoms/PageHeader";
 import Background from "../../organisms/Background";
 import * as S from "./index.styled";
 
-export const EmailAuth = () => {
+export const EmailAuthTemplates = () => {
   const [isOpenRandomCode, setIsOpenRandomCode] = useState(false);
   const [disabledState, setDisabledState] = useState(false);
   const [startTimer, setStartTimer] = useState(false);
