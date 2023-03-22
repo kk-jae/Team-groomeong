@@ -9,6 +9,7 @@ export const LogInTemplate = () => {
   const method = useForm({
     mode: "onChange",
   });
+
   const { onClickMoveToPage } = useMoveToPage();
 
   return (

@@ -1,17 +1,31 @@
 import { useState } from "react";
+import { useForm, FormProvider } from "react-hook-form";
+import { useEmailAuth } from "../../../commons/hooks/custom/useEmailAuth";
+import { InputMiddle } from "../../atoms/Input/Middle";
 import PageHeader from "../../atoms/PageHeader";
 import Background from "../../organisms/Background";
 import * as S from "./index.styled";
 
 export const EmailAuthTemplates = () => {
+  // const { onClickSendEmail } = useEmailAuth();
   const [isOpenRandomCode, setIsOpenRandomCode] = useState(false);
   const [disabledState, setDisabledState] = useState(false);
-  const [startTimer, setStartTimer] = useState(false);
+  const { sendEmail, onClickCheckToken } = useEmailAuth();
 
-  const onClickSendEmail = () => {
-    setIsOpenRandomCode((prev) => !prev);
-    setDisabledState((prev) => !prev);
-    setStartTimer((prev) => !prev);
+  const method = useForm({
+    mode: "onChange",
+  });
+
+  interface IEmailData {
+    email: string;
+  }
+
+  const onClickSendEmail = (data: IEmailData) => {
+    // sendEmail(data)();
+    if (data.email !== "") {
+      setIsOpenRandomCode((prev) => !prev);
+      setDisabledState((prev) => !prev);
+    }
   };
 
   return (
@@ -19,26 +33,40 @@ export const EmailAuthTemplates = () => {
       <S.EmailAuthWrapper>
         <PageHeader title="이메일 인증하기" icon="/image/icon-email-fast.svg" />
         <S.EmailAuthMiddle>
-          <S.EmailAuthMiddleLabel>이메일</S.EmailAuthMiddleLabel>
-          <S.EmailAuthMiddleTextButtonWrapper>
-            <S.EmailAuthMiddleText
-              type="email"
-              placeholder="이메일을 적어주세요"
-              disabled={disabledState}
-            />
-            <S.EmailAuthMiddleButton
-              onClick={onClickSendEmail}
-              disabledState={disabledState}
-            >
-              이메일 인증하기
-            </S.EmailAuthMiddleButton>
+          <S.EmailAuthMiddleTextButtonWrapper
+            onSubmit={method.handleSubmit(onClickSendEmail)}
+          >
+            <FormProvider {...method}>
+              <InputMiddle
+                label="이메일"
+                name="email"
+                placeholder="이메일을 입력해주세요"
+                type="email"
+                disabled={disabledState}
+              />
+              <S.EmailAuthMiddleButton
+                disabledState={disabledState}
+                disabled={disabledState}
+              >
+                이메일 인증하기
+              </S.EmailAuthMiddleButton>
+            </FormProvider>
           </S.EmailAuthMiddleTextButtonWrapper>
           {isOpenRandomCode ? (
             <>
-              <S.EmailAuthMiddleTime>03:00</S.EmailAuthMiddleTime>
-              <S.EmailAuthMiddleTextButtonWrapper>
-                <S.EmailAuthMiddleText placeholder="인증번호를 입력해주세요" />
-                <S.EmailAuthMiddleTimeButton>인증</S.EmailAuthMiddleTimeButton>
+              <S.EmailAuthMiddleTextButtonWrapper
+                onSubmit={method.handleSubmit(onClickCheckToken)}
+              >
+                <FormProvider {...method}>
+                  <InputMiddle
+                    label="03:00 타이머입니다. (아직 작동 안함)"
+                    name="token"
+                    placeholder="인증번호를 입력해주세요"
+                  />
+                  <S.EmailAuthMiddleTimeButton>
+                    인증
+                  </S.EmailAuthMiddleTimeButton>
+                </FormProvider>
               </S.EmailAuthMiddleTextButtonWrapper>
             </>
           ) : (
