@@ -5,7 +5,7 @@ import {
   ValidationInput,
   Error,
   ValidateDiv,
-} from "../../atomic/organisms/SignUp/index.styles";
+} from "./index.styles";
 import { useEffect } from "react";
 import { Buttons } from "../../atomic/atoms/Buttons";
 import { useSignUp } from "../../commons/hooks/custom/useSignUp";
@@ -50,7 +50,7 @@ const SignUpValidateInput = () => {
         label="이메일"
         name="email"
         placeholder="인증번호를 입력해주세요."
-        disabled={validation.valid}
+        disabled={validation.emailAuth || validation.valid}
       />
       <ValidateWrapper>
         <ValidateInputWrapper>
@@ -69,28 +69,28 @@ const SignUpValidateInput = () => {
         </ValidateInputWrapper>
         <ValidateDiv>
           <div>
-            <button type="button" onClick={onClickAuthValidate}>
-              인증하기
-            </button>
             <Buttons
+              type="button"
               label="인증하기"
               size="small"
-              state={
-                !validation.emailAuth || validation ? "disabled" : undefined
-              }
+              state={!validation.emailAuth ? "disabled" : undefined}
               border="none"
+              onClick={onClickAuthValidate}
             />
           </div>
           <div style={{ marginLeft: "1rem" }}>
-            <button type="button" onClick={onClickEmailAuth}>
-              이메일 인증하기
-            </button>
             <Buttons
+              type="button"
               label="이메일 인증하기"
               size="small"
               border="none"
+              onClick={onClickEmailAuth}
               state={
-                validation.emailAuth || validation ? "disabled" : undefined
+                validation.emailAuth
+                  ? "disabled"
+                  : !validation.emailAuth && validation.valid
+                  ? "disabled"
+                  : undefined
               }
             />
           </div>
