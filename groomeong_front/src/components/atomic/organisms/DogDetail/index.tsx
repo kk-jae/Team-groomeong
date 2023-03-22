@@ -1,5 +1,6 @@
 import React from "react";
 import { TextBadge } from "../../atoms/Badge/TextBadge";
+import { Buttons } from "../../atoms/Buttons";
 import ContentInfo from "../../atoms/ContentInfo";
 import PageHeader from "../../atoms/PageHeader";
 import InfoTextArea from "../../atoms/TextArea/InfoTextArea";
@@ -8,6 +9,7 @@ import {
   DogDetailContentImg,
   DogDetailContentWrapper,
   DogDetailWrapper,
+  DogDetailFooter,
 } from "./index.style";
 
 const DogDetail = () => {
@@ -29,8 +31,26 @@ const DogDetail = () => {
         </Div>
       </DogDetailContentWrapper>
       <Div>
-        <InfoTextArea title={"특이사항"} content={"이상없음"} disabled />
+        <InfoTextArea
+          name="significant"
+          title={"특이사항"}
+          content={"이상없음"}
+          disabled
+        />
       </Div>
+      <DogDetailFooter>
+        <Div>
+          <Buttons
+            border="border"
+            label={"뒤로가기"}
+            variation="primary"
+            size="medium"
+          />
+        </Div>
+        <Div left="32px">
+          <Buttons label={"댕댕이 프로필 삭제하기"} size="medium" />
+        </Div>
+      </DogDetailFooter>
     </DogDetailWrapper>
   );
 };

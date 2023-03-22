@@ -84,8 +84,8 @@ export const TextArea_TopBox_Date = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  ${GS.Paragraph.Medium}
-  color: ${GS.contents.contentTertiary}
+  ${GS.Paragraph.Medium};
+  color: ${GS.contents.contentTertiary};
 `;
 
 export const TextArea_MiddleBox_Input = styled.textarea`

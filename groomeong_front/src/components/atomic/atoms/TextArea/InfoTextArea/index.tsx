@@ -1,23 +1,29 @@
 import React from "react";
 import { Buttons } from "../../Buttons";
+import { useFormContext } from "react-hook-form";
 import {
-  Div,
   InfoTextAreaWrapper,
   InfoTextAreaHeader,
   InfoTextAreaLabel,
   InfoTextAreaContents,
-  InfoTextAreaFooter,
+  Error,
 } from "./index.style";
 
 interface IInfoTextAreaProps {
   title: string;
-  content: string;
+  name: string;
+  content?: string;
+  defaultValue?: string;
   placeholder?: string;
   disabled?: boolean;
-  showButton?: boolean;
 }
 
 const InfoTextArea = (props: IInfoTextAreaProps) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
   return (
     <InfoTextAreaWrapper>
       <InfoTextAreaHeader>
@@ -26,22 +32,12 @@ const InfoTextArea = (props: IInfoTextAreaProps) => {
       <InfoTextAreaContents
         placeholder={props.placeholder}
         disabled={props.disabled}
+        {...register(props.name)}
+        defaultValue={props.defaultValue}
       >
         {props.content}
       </InfoTextAreaContents>
-      <InfoTextAreaFooter>
-        <Div showButton={props.showButton}>
-          <Buttons
-            border="border"
-            label={"뒤로가기"}
-            variation="primary"
-            size="medium"
-          />
-        </Div>
-        <Div left="32px">
-          <Buttons label={"댕댕이 프로필 삭제하기"} size="medium" />
-        </Div>
-      </InfoTextAreaFooter>
+      <Error>{errors[props.name]?.message}</Error>
     </InfoTextAreaWrapper>
   );
 };

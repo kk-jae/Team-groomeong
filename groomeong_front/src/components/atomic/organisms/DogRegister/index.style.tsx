@@ -28,10 +28,30 @@ export const DogRegisterWrapper = styled(Div)`
   border-radius: 20px;
 `;
 
+export const DogRegisterContentWrapper = styled(Div)`
+  display: flex;
+  flex-direction: column;
+  padding: 32px 64px;
+  background-color: ${GS.base.secondary};
+  border-radius: 20px;
+`;
+
 export const DogRegisterForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
 `;
 
-export const DogRegisterBadgeButtonWrapper = styled(Div)``;
+export const DogRegisterFooter = styled(Div)`
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const DogRegisterFooterSpan = styled.span`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+// export const DogRegisterBadgeButtonWrapper = styled(Div)``;

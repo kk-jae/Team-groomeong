@@ -6,25 +6,15 @@ interface IDivProps {
   right?: string;
   top?: string;
   bottom?: string;
-  showButton?: boolean;
 }
 
-export const Div = styled.div<IDivProps>`
-  display: ${({ showButton }) => (showButton ? "flex" : "hidden")};
-  margin-left: ${({ left }) => left ?? null};
-  margin-right: ${({ right }) => right ?? null};
-  margin-top: ${({ top }) => top ?? null};
-  margin-bottom: ${({ bottom }) => bottom ?? null};
-`;
-
 export const InfoTextAreaWrapper = styled.div`
-  padding: 64px 32px;
   display: flex;
   width: 100%;
+  position: relative;
   flex-direction: column;
   align-items: center;
-  ${GS.Paragraph.Medium}
-  padding: 0px 128px;
+  ${GS.Paragraph.Medium}/* padding: 0px 128px; */
 `;
 
 export const InfoTextAreaHeader = styled.div`
@@ -47,11 +37,16 @@ export const InfoTextAreaContents = styled.textarea`
   width: 100%;
   height: 150px;
   background: #f2f2f2;
-  padding: 32px;
   resize: none;
+  padding: 32px;
 `;
 
-export const InfoTextAreaFooter = styled.div`
+export const Error = styled.span`
   display: flex;
-  margin: 32px;
+  position: absolute;
+  bottom: -32px;
+  width: 100%;
+  justify-content: start;
+  color: ${GS.state.negative};
+  ${GS.Paragraph.Medium};
 `;

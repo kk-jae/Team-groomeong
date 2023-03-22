@@ -1,13 +1,8 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import * as S from "./index.styled";
 
-// 사용 방법
-// const [size, setSize] = useState("");
-// <SizeBadge setSize={setSize} />
-// size 를 string ( big / middle / small / special )로 return 합니다.)
-
-export const SizeBadge = (props: any) => {
+export const SizeBadge = () => {
   const { setValue } = useFormContext();
   const [big, setBig] = useState(false);
   const [middle, setMiddle] = useState(false);
@@ -40,7 +35,6 @@ export const SizeBadge = (props: any) => {
       setSpecial(true);
     }
     setValue("breed", event.target.id);
-    // props.setSize(event.target.id);
   };
 
   return (
