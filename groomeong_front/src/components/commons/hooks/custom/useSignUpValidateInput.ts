@@ -2,6 +2,14 @@ import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { UseMutationCheckValidToken } from "../mutation/UseMutationCheckValidToken";
 import { UseMutationGetTokenEmail } from "../mutation/UseMutationGetTokenEmail";
+interface IValidation {
+  authName: string
+  emailToken: string,
+  time: number,
+  emailAuth: boolean,
+  valid: boolean,
+  error: string,
+}
 
 export const useSignUpValidateInput = (
   setValid: Dispatch<SetStateAction<boolean>>
@@ -9,7 +17,7 @@ export const useSignUpValidateInput = (
   const [getTokenEmail] = UseMutationGetTokenEmail();
   const [checkValidToken] = UseMutationCheckValidToken();
   const { getValues } = useFormContext();
-  const [validation, setValidation] = useState({
+  const [validation, setValidation] = useState<IValidation>({
     authNumber: "",
     emailToken: "",
     time: 180,
@@ -29,18 +37,18 @@ export const useSignUpValidateInput = (
         },
       });
       console.log(result.data);
-      setValidation((prev) => ({
+      setValidation((prev: IValidation) => ({
         ...prev,
         emailAuth: true,
         emailToken: String(result.data?.getTokenEmail),
       }));
     } else if (email === "") {
-      setValidation((prev) => ({
+      setValidation((prev: IValidation) => ({
         ...prev,
         error: "잘못된 이메일형식 입니다.",
       }));
     } else {
-      setValidation((prev) => ({
+      setValidation((prev: IValidation) => ({
         ...prev,
         error: "중복된 이메일 입니다.",
       }));
@@ -56,7 +64,7 @@ export const useSignUpValidateInput = (
   };
 
   const onChangeAuthNumber = (e: ChangeEvent<HTMLInputElement>) => {
-    setValidation((prev) => ({
+    setValidation((prev: IValidation) => ({
       ...prev,
       authNumber: e.target.value,
     }));
@@ -71,13 +79,13 @@ export const useSignUpValidateInput = (
         },
       });
       setValid(data?.checkValidToken ?? false);
-      setValidation((prev) => ({
+      setValidation((prev: IValidation) => ({
         ...prev,
         valid: true,
         error: "",
       }));
     } else {
-      setValidation((prev) => ({
+      setValidation((prev: IValidation) => ({
         ...prev,
         valid: false,
         error: "인증번호가 다릅니다.",

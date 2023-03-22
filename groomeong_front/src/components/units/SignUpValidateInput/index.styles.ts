@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../theme/global";
-import { InputMiddle } from "../../atomic/atoms/Input/Middle";
 import { InputTag } from "../../atomic/atoms/Input/Small/index.styled";
 
 export const ValidateInputWrapper = styled.div`

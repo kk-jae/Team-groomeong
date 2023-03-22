@@ -6,7 +6,8 @@ import {
   Error,
   ValidateDiv,
 } from "./index.styles";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import type { Dispatch, SetStateAction } from "react";
+import { useEffect } from "react";
 import { Buttons } from "../../atomic/atoms/Buttons";
 import { useSignUpValidateInput } from "../../commons/hooks/custom/useSignUpValidateInput";
 import { InputMiddle } from "../../atomic/atoms/Input/Middle";
@@ -14,6 +15,15 @@ import { InputMiddle } from "../../atomic/atoms/Input/Middle";
 interface ISignUpvalidateInputProps {
   setValid: Dispatch<SetStateAction<boolean>>;
 }
+interface IValidation {
+  authName: string
+  emailToken: string,
+  time: number,
+  emailAuth: boolean,
+  valid: boolean,
+  error: string,
+}
+
 
 const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
   const {
@@ -29,13 +39,13 @@ const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
     if (validation.emailAuth) {
       const id = setInterval(() => {
         if (validation.time > 0 && !validation.valid) {
-          setValidation((prev) => ({
+          setValidation((prev: IValidation) => ({
             ...prev,
             time: prev.time - 1,
           }));
         } else {
           clearInterval(id);
-          setValidation((prev) => ({
+          setValidation((prev: IValidation) => ({
             ...prev,
             time: 180,
             emailAuth: false,

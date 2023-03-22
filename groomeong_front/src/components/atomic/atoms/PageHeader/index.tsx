@@ -1,5 +1,3 @@
-import React from "react";
-import { Div } from "../../organisms/DogDetail/index.style";
 import {
   PageHeaderContentsWrapper,
   PageHeaderDivider,
