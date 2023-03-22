@@ -7,6 +7,9 @@ export const MainMap = styled.div`
   width: 1728px;
   height: 100vh;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Header = styled.div`
