@@ -3,11 +3,11 @@ import * as GS from "../../../../../theme/global";
 
 export const ListBoxWrapper = styled.div`
   width: 508px;
-  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   padding: 32px;
   margin-bottom: 8px;
+  background-color: #ffffff;
 
   /* :focus {
     border: 2px solid ${GS.base.primary};

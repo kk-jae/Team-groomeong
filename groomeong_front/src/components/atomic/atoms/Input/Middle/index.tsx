@@ -9,7 +9,7 @@ interface IProps {
   defaultValue?: string;
   label: string;
   name: string;
-  placeholder: string;
+  placeholder?: string;
   type?: string;
   disabled?: boolean;
 }

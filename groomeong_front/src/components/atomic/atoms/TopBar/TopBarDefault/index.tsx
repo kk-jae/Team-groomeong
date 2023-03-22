@@ -21,7 +21,7 @@ export const TopBarDefault = (props: ITopBarDefaultProps) => {
             <>
               <Buttons
                 size="small"
-                label="지도로가기"
+                label="지도 보기"
                 variation="tertiary"
                 border="none"
                 onClick={onClickMoveToPage("/map")}
@@ -60,7 +60,7 @@ export const TopBarDefault = (props: ITopBarDefaultProps) => {
               />
               <Buttons
                 size="small"
-                label="지도로가기"
+                label="지도 보기"
                 variation="tertiary"
                 border="none"
                 onClick={onClickMoveToPage("/map")}

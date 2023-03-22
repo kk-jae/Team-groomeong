@@ -43,7 +43,7 @@ export const EmailAuthMiddleLabel = styled.label`
   color: ${GS.contents.contentSecondary};
   margin-bottom: 32px;
 `;
-export const EmailAuthMiddleTextButtonWrapper = styled.div`
+export const EmailAuthMiddleTextButtonWrapper = styled.form`
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -1,3 +1,4 @@
+import { ReservationHistoryTable } from "../../../atoms/ReservationHistoryTable";
 import * as S from "./index.style";
 
 interface IReservationHistoryListProps {
@@ -24,14 +25,9 @@ export const ReservationHistoryList = (props: IReservationHistoryListProps) => {
                 <th>나의 댕댕이</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th>{props.shopName}</th>
-                <th>{props.date}</th>
-                <th>{props.time}</th>
-                <th>{props.myDog}</th>
-              </tr>
-            </tbody>
+            <ReservationHistoryTable></ReservationHistoryTable>
+            <ReservationHistoryTable></ReservationHistoryTable>
+            <ReservationHistoryTable></ReservationHistoryTable>
           </table>
         </S.Table>
       </S.ReservationListWrapper>
