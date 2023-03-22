@@ -44,36 +44,6 @@ export const Label = styled.label`
   top: 0px;
 `;
 
-export const ValidationInput = styled.input<IValidInput>`
-  outline: none;
-  width: 200px;
-  border-radius: 12px;
-  border: solid 2px
-    ${({ error }) => (error ? GS.state.negative : GS.border.borderOpaque)};
-  color: ${({ error }) =>
-    error ? GS.state.negative : GS.contents.contentPrimary};
-  padding: 16px 20px;
-  ${GS.Paragraph.Medium}
-  &::placeholder {
-    color: ${GS.contents.contentTertiary};
-  }
-  &:focus {
-    &::placeholder {
-      color: ${GS.base.primary};
-    }
-    color: ${GS.base.primary};
-    border: solid 2px
-      ${({ error }) => (error ? GS.state.negative : GS.base.primary)};
-    & ~ label {
-      color: ${GS.base.primary};
-    }
-  }
-  &:disabled {
-    background-color: #f5f5f5;
-    border: 2px solid ${GS.gray[100]};
-  }
-`;
-
 export const ValidateDiv = styled.div`
   display: flex;
   width: 500px;

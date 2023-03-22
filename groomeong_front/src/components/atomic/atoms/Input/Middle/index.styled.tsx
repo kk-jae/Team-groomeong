@@ -13,6 +13,7 @@ export const InputWrapper = styled.div`
   width: 500px;
   margin-top: 32px;
   margin-bottom: 32px;
+  position: relative;
   ${GS.Paragraph.Medium};
 `;
 
@@ -26,22 +27,36 @@ export const Label = styled.label<IFocusLabel>`
 
 export const InputTag = styled.input<IFocusInput>`
   width: 100%;
-  border-radius: 12px;
+  border: none;
   padding: 20px 32px 20px 32px;
   margin: 20px 0px 20px 0px;
+  outline: none;
   ${GS.Label.Medium}
-  border: 2px solid
+  background-color: ${(props) =>
+    props.error
+      ? GS.state.negativeTransparent
+      : props.disabled
+      ? GS.state.disabled
+      : GS.base.secondary};
+  border-bottom: 2px solid
     ${(props) => (props.error && GS.state.negative) || GS.border.borderPrimary};
 
   &::placeholder {
     color: ${GS.contents.contentTertiary};
     color: ${(props) => props.error && GS.state.negative};
+    ${GS.Paragraph.Medium}
   }
 
-  :focus {
+  &:focus {
     outline: none;
-    border: 2px solid ${GS.state.positive};
-    border: 2px solid ${(props) => props.error && GS.state.negative};
+    background-color: ${(props) =>
+      props.error
+        ? GS.state.negativeTransparent
+          ? props.disabled
+          : GS.state.disabled
+        : GS.base.secondary};
+    border-bottom: 2px solid ${GS.state.positive};
+    border-bottom: 2px solid ${(props) => props.error && GS.state.negative};
     color: ${GS.state.positive};
     color: ${(props) => props.error && GS.state.negative};
 
@@ -51,13 +66,20 @@ export const InputTag = styled.input<IFocusInput>`
     }
   }
   &:disabled {
-    background: #f5f5f5;
-    border: 2px solid ${GS.gray[100]};
+    background: ${GS.state.disabled};
+    border-bottom: 2px solid ${GS.border.borderOpaque};
     color: ${GS.contents.contentSecondary};
+    &::placeholder {
+      color: ${GS.contents.contentTertiary};
+    }
   }
 `;
 
 export const Error = styled.span`
   color: red;
   ${GS.Paragraph.Medium}
+  position: absolute;
+  width: 100%;
+  bottom: -24px;
+  left: 0;
 `;

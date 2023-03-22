@@ -44,7 +44,7 @@ const SignUp = () => {
             type="text"
           />
           <Buttons
-            label="로그인하기"
+            label="회원가입하기"
             size="large"
             border="none"
             variation="primary"

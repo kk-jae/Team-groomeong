@@ -1,10 +1,7 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../theme/global";
 import { InputMiddle } from "../../atomic/atoms/Input/Middle";
-
-interface IValidInput {
-  error?: string;
-}
+import { InputTag } from "../../atomic/atoms/Input/Small/index.styled";
 
 export const ValidateInputWrapper = styled.div`
   padding: 32px 0;
@@ -18,34 +15,8 @@ export const Label = styled.label`
   top: 0px;
 `;
 
-export const ValidationInput = styled.input<IValidInput>`
-  outline: none;
-  width: 200px;
-  border-radius: 12px;
-  border: solid 2px
-    ${({ error }) => (error ? GS.state.negative : GS.border.borderOpaque)};
-  color: ${({ error }) =>
-    error ? GS.state.negative : GS.contents.contentPrimary};
-  padding: 16px 20px;
-  ${GS.Paragraph.Medium}
-  &::placeholder {
-    color: ${GS.contents.contentTertiary};
-  }
-  &:focus {
-    &::placeholder {
-      color: ${GS.base.primary};
-    }
-    color: ${GS.base.primary};
-    border: solid 2px
-      ${({ error }) => (error ? GS.state.negative : GS.base.primary)};
-    & ~ label {
-      color: ${GS.base.primary};
-    }
-  }
-  &:disabled {
-    background-color: #f5f5f5;
-    border: 2px solid ${GS.gray[100]};
-  }
+export const ValidationInput = styled(InputTag)`
+  width: 220px;
 `;
 
 export const ValidateDiv = styled.div`
@@ -64,6 +35,10 @@ export const ValidateWrapper = styled.div`
 
 export const Error = styled.span`
   color: red;
+  width: 100%;
+  position: absolute;
+  bottom: 24px;
+  ${GS.Paragraph.Medium}
 `;
 
 export const EmailInput = styled(ValidationInput)`
