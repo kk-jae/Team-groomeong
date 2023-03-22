@@ -12,13 +12,13 @@ type promiseClickFunc = (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
 
 export interface IButtonProps {
   state?: "disabled";
-  variation?: "primary" | "tertiary" | "negative";
-  border?: "border" | "none";
-  size?: "small" | "medium" | "large";
+  variation: "primary" | "tertiary" | "negative";
+  border: "border" | "none";
+  size: "small" | "medium" | "large";
   iconImg?: DefaultComponentProps<OverridableTypeMap>;
-  label?: string;
-  onClick?: voidFunc | voidClickFunc | promiseClickFunc;
-  type?: "button" | "submit" | "reset";
+  label: string;
+  onClick: voidFunc | voidClickFunc | promiseClickFunc;
+  type: "button" | "submit" | "reset";
 }
 
 export const ButtonCommons = styled.button<IButtonProps>`

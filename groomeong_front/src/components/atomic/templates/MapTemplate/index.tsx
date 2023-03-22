@@ -5,6 +5,9 @@ import * as S from "./index.styles";
 import { TopBarMap } from "../../atoms/TopBar/TopBarMap";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/Store";
+import { HashLoader } from "react-spinners";
+import * as GS from "../../../../../theme/global";
+
 declare const window: typeof globalThis & {
   google: any;
   initAutocomplete: () => void;
@@ -13,6 +16,7 @@ declare const window: typeof globalThis & {
 export const MapTemplate = () => {
   const [accessToken] = useRecoilState(accessTokenState);
   const [myState, setMyState] = useState("");
+
   useEffect(() => {
     // This example adds a search box to a map, using the Google Place Autocomplete
     // feature. People can enter geographical searches. The search box will return a
@@ -189,7 +193,9 @@ export const MapTemplate = () => {
           )}
         </S.Header>
         <MapSideList />
-        <S.MainMap id="map"></S.MainMap>
+        <S.MainMap id="map">
+          <HashLoader color={`${GS.base.primary}`} />
+        </S.MainMap>
       </S.MapBoxStyles>
     </>
   );
