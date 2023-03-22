@@ -1,7 +1,11 @@
+import { Modal } from "antd";
 import { ChangeEvent, useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { IMutationCreateUserArgs } from "../../../../commons/types/generated/types";
+import { UseMutationCreateUser } from "../mutation/UseMutationCreateUser";
 
 export const useSignUp = () => {
+  const [createUser] = UseMutationCreateUser();
   const { getValues } = useFormContext();
   const [validation, setValidation] = useState({
     authNumber: "",
@@ -63,6 +67,24 @@ export const useSignUp = () => {
       }));
     }
   };
+  const onClickSignUp = async (
+    data: IMutationCreateUserArgs
+  ): Promise<void> => {
+    try {
+      const result = await createUser({
+        variables: {
+          name: data.name,
+          email: data.email,
+          password: data.password,
+          phone: data.phone,
+        },
+      });
+      console.log(result);
+      // 회원가입 성공 Modal
+    } catch (error) {
+      if (error instanceof Error) Modal.error({ content: error.message });
+    }
+  };
 
   return {
     onClickEmailAuth,
@@ -71,5 +93,6 @@ export const useSignUp = () => {
     onClickAuthValidate,
     validation,
     setValidation,
+    onClickSignUp,
   };
 };
