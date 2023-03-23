@@ -4,7 +4,7 @@ import * as S from "./index.styled";
 
 export const SizeBadge = () => {
   const { setValue } = useFormContext();
-  const [big, setBig] = useState(false);
+  const [big, setBig] = useState(true);
   const [middle, setMiddle] = useState(false);
   const [small, setSmall] = useState(false);
   const [special, setSpecial] = useState(false);
@@ -34,6 +34,7 @@ export const SizeBadge = () => {
       setSmall(false);
       setSpecial(true);
     }
+
     setValue("breed", event.target.id);
   };
 

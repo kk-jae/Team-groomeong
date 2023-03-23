@@ -6,44 +6,43 @@ import * as S from "./index.styled";
 // <Input label="라벨" placeholder="placeholder" error="에러메세지" />
 
 interface IProps {
-    type?: string;
-    defaultValue?: string;
-    label: string;
-    name: string;
-    placeholder: string;
-    error: string;
+  type?: string;
+  defaultValue?: string;
+  label: string;
+  name: string;
+  placeholder: string;
+  error: string;
+  maxLength?: number;
 }
 
 export const InputSmall = (props: IProps) => {
-    const [focus, setFocus] = useState(false);
-    const {
-        register,
-        formState: { errors },
-    } = useFormContext();
+  const [focus, setFocus] = useState(false);
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
-    const onFocusTest = () => {
-        setFocus(true);
-    };
-    const onBlurTest = () => {
-        setFocus(false);
-    };
+  const onFocusTest = () => {
+    setFocus(true);
+  };
+  const onBlurTest = () => {
+    setFocus(false);
+  };
 
-    return (
-        <S.InputWrapper onFocus={onFocusTest} onBlur={onBlurTest}>
-            <S.Label
-                focus={focus}
-                error={errors[props.name]?.message as string}
-            >
-                {props.label}
-            </S.Label>
-            <S.InputTag
-                type={props.type ?? "text"}
-                placeholder={props.placeholder}
-                error={errors[props.name]?.message as string}
-                {...register(props.name)}
-                defaultValue={props.defaultValue}
-            />
-            <S.Error>{errors[props.name]?.message}</S.Error>
-        </S.InputWrapper>
-    );
+  return (
+    <S.InputWrapper onFocus={onFocusTest} onBlur={onBlurTest}>
+      <S.Label focus={focus} error={errors[props.name]?.message as string}>
+        {props.label}
+      </S.Label>
+      <S.InputTag
+        type={props.type ?? "text"}
+        placeholder={props.placeholder}
+        error={errors[props.name]?.message as string}
+        {...register(props.name)}
+        defaultValue={props.defaultValue}
+        maxLength={props.maxLength ?? undefined}
+      />
+      <S.Error>{errors[props.name]?.message}</S.Error>
+    </S.InputWrapper>
+  );
 };
