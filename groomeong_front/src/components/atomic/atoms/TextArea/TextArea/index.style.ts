@@ -76,6 +76,7 @@ export const TextArea_TopBox_Rate = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
 `;
 
 export const TextArea_TopBox_Date = styled.div`
@@ -102,6 +103,12 @@ export const TextArea_MiddleBox_Input = styled.textarea`
   background-color: ${GS.gray[100]};
   padding: 16px 28px;
   margin-bottom: 8px;
+  :focus {
+    outline: none;
+  }
+  ::placeholder {
+    color: #bdbdbd;
+  }
 `;
 
 export const TextArea_FooterBox = styled.div`
@@ -110,6 +117,24 @@ export const TextArea_FooterBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  align-items: ce;
   border: 0px;
+`;
+export const Error = styled.span`
+  color: red;
+  ${GS.Paragraph.Medium}
+  position: absolute;
+  width: 100%;
+  bottom: -24px;
+  left: 0;
+`;
+export const ErrorStar = styled.span`
+  color: red;
+  ${GS.Paragraph.Medium}
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  right: 50%;
+`;
+export const TextArea_MiddleMainBox_Input = styled.div`
+  position: relative;
 `;
