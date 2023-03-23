@@ -9,18 +9,6 @@ export const FETCH_LOGIN_USER = gql`
       email
       phone
       image
-      dogs {
-        id
-        name
-        age
-        weight
-        breed {
-          SMALL
-          MEDIUM
-          LARGE
-          SPECIAL
-        }
-      }
     }
   }
 `;
