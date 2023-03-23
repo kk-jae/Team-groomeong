@@ -1,13 +1,15 @@
 import { ShopDetail } from "../../../src/components/atomic/organisms/ShopDetail";
+import { UseQueryFetchShop } from "../../../src/components/commons/hooks/query/UseQueryFetchShop";
 
 export default function ShopDetailPage() {
+  const { data } = UseQueryFetchShop();
   return (
     <ShopDetail
-      shoppingLabel={"댕댕샵"}
-      shopRating={3}
-      time={"10:00~20:00"}
-      address={"서울 금천구 구로동"}
-      phone={"010-2232-2322"}
+      shoppingLabel={data?.fetchShop.name}
+      shopRating={data?.fetchShop.averageStar}
+      time={`${data?.fetchShop.openHour} ~ ${data?.fetchShop.closeHour}`}
+      address={data?.fetchShop.address}
+      phone={data?.fetchShop.phone}
       isLoggedIn={false}
     />
   );
