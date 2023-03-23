@@ -4,6 +4,7 @@ import { Global } from "@emotion/react";
 import { GlobalStyle } from "../src/commons/GlobalStyles";
 import { RecoilRoot } from "recoil";
 import ApolloSetting from "../src/components/commons/apollo";
+import { ShopDetail } from "../src/components/atomic/organisms/ShopDetail";
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (

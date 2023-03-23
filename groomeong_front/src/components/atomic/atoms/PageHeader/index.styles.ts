@@ -26,12 +26,12 @@ export const PageHeaderIcon = styled.div<IPageHeaderIcon>`
   background-size: contain;
   width: 48px;
   height: 48px;
+  margin-left: 32px;
 `;
 
 export const PageHeaderTitle = styled.h1`
   ${GS.Heading.XXXL}
   color: ${GS.contents.contentPrimary};
-  margin-left: 32px;
   margin-bottom: 8px;
 `;
 
