@@ -87,7 +87,7 @@ export const EmailAuthMiddleTimeButton = styled.button`
 `;
 
 export const EmailAuthBottom = styled.button`
-  margin: 74px 0px 32px 0px;
+  margin: 32px 0px 32px 0px;
   width: 92px;
   height: 42px;
   border-radius: 12px;

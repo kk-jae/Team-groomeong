@@ -6,6 +6,7 @@ import ContentInfo from "../../atoms/ContentInfo";
 import { InputMiddle } from "../../atoms/Input/Middle";
 import PageHeader from "../../atoms/PageHeader";
 import InfoTextArea from "../../atoms/TextArea/InfoTextArea";
+import Background from "../Background";
 import {
   DogRegisterForm,
   DogRegisterWrapper,
@@ -15,17 +16,14 @@ import {
 } from "./index.style";
 
 const DogRegister = () => {
-  const { FormProvider, method } = useDogRegister();
+  const { FormProvider, method, onClickRegisterDog } = useDogRegister();
+
   return (
     <DogRegisterWrapper>
       <PageHeader title="댕댕이 등록하기" />
       <DogRegisterContentWrapper>
         <FormProvider {...method}>
-          <DogRegisterForm
-            onSubmit={method.handleSubmit((data) => {
-              console.log(data);
-            })}
-          >
+          <DogRegisterForm onSubmit={method.handleSubmit(onClickRegisterDog)}>
             <InputMiddle
               label="댕댕이 이름"
               name="name"
@@ -35,11 +33,15 @@ const DogRegister = () => {
               label="댕댕이 나이"
               name="age"
               placeholder="나이를 입력해주세요."
+              maxLength={2}
+              lastText="살"
             />
             <InputMiddle
               label="몸무게"
               name="weight"
               placeholder="몸무게를 입력해주세요."
+              maxLength={2}
+              lastText="kg"
             />
             <Div>
               <ContentInfo label="종류" badge={<SizeBadge />} />
@@ -55,9 +57,6 @@ const DogRegister = () => {
                   label="댕댕이 저장하기"
                   size="large"
                   variation="primary"
-                  border="none"
-                  type="submit"
-                  onClick={(data: any) => console.log(data)}
                 />
               </DogRegisterFooterSpan>
             </DogRegisterWrapper>

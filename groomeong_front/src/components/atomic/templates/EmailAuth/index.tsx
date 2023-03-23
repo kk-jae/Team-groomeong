@@ -82,6 +82,7 @@ export const EmailAuthTemplates = () => {
                     label={timer}
                     name="token"
                     placeholder="인증번호를 입력해주세요"
+                    maxLength={6}
                   />
                   <S.EmailAuthMiddleTimeButton>
                     인증

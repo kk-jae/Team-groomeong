@@ -12,6 +12,8 @@ interface IProps {
   placeholder?: string;
   type?: string;
   disabled?: boolean;
+  maxLength?: number;
+  lastText?: string;
 }
 
 export const InputMiddle = (props: IProps) => {
@@ -40,7 +42,9 @@ export const InputMiddle = (props: IProps) => {
         {...register(props.name)}
         defaultValue={props.defaultValue}
         disabled={props.disabled}
+        maxLength={props.maxLength ?? undefined}
       />
+      <S.InputLastText>{props.lastText}</S.InputLastText>
       <S.Error>{errors[props.name]?.message}</S.Error>
     </S.InputWrapper>
   );

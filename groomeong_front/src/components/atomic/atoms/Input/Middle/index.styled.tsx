@@ -75,6 +75,14 @@ export const InputTag = styled.input<IFocusInput>`
   }
 `;
 
+export const InputLastText = styled.span`
+  right: 20px;
+  top: 69px;
+  color: #a7a4a4;
+  position: absolute;
+  ${GS.Label.Medium}
+`;
+
 export const Error = styled.span`
   color: red;
   ${GS.Paragraph.Medium}
