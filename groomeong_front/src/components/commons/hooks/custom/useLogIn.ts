@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { Modal } from "antd";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/Store";
@@ -9,6 +10,7 @@ interface IHomePageLogInData {
 }
 
 export const useLogInButton = () => {
+  const router = useRouter();
   const [login] = UseMutationLogin();
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
 
@@ -31,6 +33,7 @@ export const useLogInButton = () => {
       Modal.success({
         content: "로그인에 성공하였습니다.",
       });
+      router.push("/home");
     } catch (error) {
       if (error instanceof Error)
         Modal.error({

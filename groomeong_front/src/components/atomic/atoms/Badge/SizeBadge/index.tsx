@@ -4,19 +4,19 @@ import * as S from "./index.styled";
 
 export const SizeBadge = () => {
   const { setValue } = useFormContext();
-  const [big, setBig] = useState(false);
+  const [big, setBig] = useState(true);
   const [middle, setMiddle] = useState(false);
   const [small, setSmall] = useState(false);
   const [special, setSpecial] = useState(false);
 
   const onClickSize = (event: any) => {
-    if (event.target.id === "BIG") {
+    if (event.target.id === "LARGE") {
       setBig(true);
       setMiddle(false);
       setSmall(false);
       setSpecial(false);
     }
-    if (event.target.id === "MIDDLE") {
+    if (event.target.id === "MEDIUM") {
       setBig(false);
       setMiddle(true);
       setSmall(false);
@@ -34,15 +34,16 @@ export const SizeBadge = () => {
       setSmall(false);
       setSpecial(true);
     }
+
     setValue("breed", event.target.id);
   };
 
   return (
     <S.SizeBadgeWrapper>
-      <S.CheckBoxBig onClick={onClickSize} id="BIG" big={big}>
+      <S.CheckBoxBig onClick={onClickSize} id="LARGE" big={big}>
         대형
       </S.CheckBoxBig>
-      <S.CheckBoxMiddle onClick={onClickSize} id="MIDDLE" middle={middle}>
+      <S.CheckBoxMiddle onClick={onClickSize} id="MEDIUM" middle={middle}>
         중형
       </S.CheckBoxMiddle>
       <S.CheckBoxSmall onClick={onClickSize} id="SMALL" small={small}>

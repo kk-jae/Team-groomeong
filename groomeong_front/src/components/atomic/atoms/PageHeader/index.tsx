@@ -1,4 +1,3 @@
-import React from "react";
 import {
   PageHeaderContentsWrapper,
   PageHeaderDivider,
@@ -8,6 +7,7 @@ import {
 } from "./index.styles";
 
 interface IPageHeader {
+  rating?: React.ReactElement
   icon?: string;
   title: string;
 }
@@ -16,8 +16,13 @@ const PageHeader = (props: IPageHeader) => {
   return (
     <PageHeaderWrapper>
       <PageHeaderContentsWrapper>
-        <PageHeaderIcon icon={props.icon ?? ""} />
+        {
+        props.icon !== undefined? 
+        <PageHeaderIcon icon={props.icon} /> :
+        <></>
+        }
         <PageHeaderTitle>{props.title}</PageHeaderTitle>
+          {props.rating}
       </PageHeaderContentsWrapper>
       <PageHeaderDivider />
     </PageHeaderWrapper>

@@ -4,11 +4,13 @@ import { StarRate } from "../StarRate";
 import * as S from "./index.styled";
 
 interface IProps {
-  shopName: string;
-  shopHours: string;
-  shopAddress: string;
-  shopImg: string;
-  star: number;
+  name: string;
+  openHour: string;
+  closeHour: string;
+  address: string;
+  shopImg?: string;
+  star?: number;
+  id: string;
 }
 
 export const ListBox = (props: IProps) => {
@@ -16,20 +18,22 @@ export const ListBox = (props: IProps) => {
   return (
     <S.ListBoxWrapper tabIndex={0}>
       <S.ListBoxTop>
-        <S.ShopName>{props.shopName}</S.ShopName>
+        <S.ShopName>{props.name}</S.ShopName>
         <S.ShopImg
           src={
-            props.shopImg !== ""
+            props.shopImg !== undefined
               ? `https://storage.googleapis.com/${props.shopImg}`
               : "/image/icon-store.svg"
           }
         />
         <StarRate state={true} star={props.star} />
       </S.ListBoxTop>
-      <S.ShopHours>{props.shopHours}</S.ShopHours>
+      <S.ShopHours>
+        {props.openHour} ~ {props.closeHour}
+      </S.ShopHours>
       <S.ListBoxBottom>
-        <S.ShopAddress>{props.shopAddress}</S.ShopAddress>
-        <S.ShopMoved onClick={onClickMoveToPage("/shopDetail")}>
+        <S.ShopAddress>{props.address}</S.ShopAddress>
+        <S.ShopMoved onClick={onClickMoveToPage(`/map/${props.id}`)}>
           샵 보러가기
         </S.ShopMoved>
       </S.ListBoxBottom>

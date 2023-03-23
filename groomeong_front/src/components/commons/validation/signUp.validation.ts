@@ -10,7 +10,7 @@ export const Schema = yup.object({
     .string()
     .email("이메일 형태로 입력해주세요.")
     .required("이메일을 입력해 주세요."),
-  nickName: yup
+  name: yup
     .string()
     .required("닉네임을 입력해 주세요.")
     .max(16, "16자 이하로 작성해주세요.")
@@ -22,7 +22,7 @@ export const Schema = yup.object({
     .min(6, "6자 이상 입력해주세요.")
     .matches(
       regexPassword,
-      "영문, 숫자, 기호가 최소 1글자가 입력되어야 합니다."
+      "영문(대소문자), 숫자, 기호가 최소 1글자가 입력되어야 합니다."
     )
     .matches(regexSpacing, "띄어쓰기가 입력되었습니다."),
   checkPassword: yup
@@ -35,5 +35,5 @@ export const Schema = yup.object({
     .string()
     .required("핸드폰 번호를 입력해주세요.")
     .max(11, "11자이하로 입력해주세요.")
-    .matches(regexPhone, "- 없이 010 숫자로 사작하여 핸드폰을 입력해주세요."),
+    .matches(regexPhone, "- 없이 핸드폰번호를 입력해주세요."),
 });

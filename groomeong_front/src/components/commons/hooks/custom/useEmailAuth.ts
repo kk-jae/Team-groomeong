@@ -41,7 +41,7 @@ export const useEmailAuth = () => {
       Modal.success({
         content: "인증이 완료 되었습니다.",
       });
-      router.push("/home");
+      router.push("/initPassword");
       setClearTimer(true);
     } else {
       Modal.error({
