@@ -47,6 +47,7 @@ const DogDetail = () => {
             <InfoTextArea
               name="significant"
               title={"특이사항"}
+              placeholder="특이사항을 적어주세요."
               content={data?.specifics ?? ""}
               disabled
             />
