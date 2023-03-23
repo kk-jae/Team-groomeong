@@ -46,8 +46,8 @@ export const LogInTemplate = () => {
         <S.LogInBottom>
           <S.LogInBottomSocial>
             {/* <S.ButtonGoogle>구글 로그인하기</S.ButtonGoogle> */}
-            <S.LoginLogo src="/loginLogo/search.png" />
-            <S.LoginLogo src="/loginLogo/kakao-talk.png" />
+            <S.LoginLogo src="/image/icon-google.png" />
+            <S.LoginLogo src="/image/icon-kakao-talk.png" />
             {/* <S.ButtonKakao>카카오 로그인하기</S.ButtonKakao> */}
           </S.LogInBottomSocial>
           <S.LogInBottomSighUp>
