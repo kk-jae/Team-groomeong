@@ -11,13 +11,11 @@ interface IPropsR {
 }
 
 const openHour = "09:00";
-const closeHour = "20:00";
+const closeHour = "19:00";
 
 export const ReservationTemplate = (props: IPropsR) => {
   const [reservationDate, setReservationDate] = useState("");
-  const { data } = UseQueryFetchShop("3791367a-8b26-4868-8cbc-dffac4a279bf");
-
-  console.log(data?.fetchShop.name);
+  const [dog, setDog] = useState("");
 
   const shopOpenTime = [];
   const time = Number(closeHour.split(":")[0]) - Number(openHour.split(":")[0]);
@@ -48,7 +46,7 @@ export const ReservationTemplate = (props: IPropsR) => {
             <S.ReservationWrapperBottomItemTitle>
               댕댕이 선택
             </S.ReservationWrapperBottomItemTitle>
-            <DogSelect />
+            <DogSelect setDog={setDog} />
           </S.ReservationWrapperBottomItem>
           <S.ReservationWrapperBottomItem>
             <S.ReservationWrapperBottomItemTitle>
@@ -63,7 +61,7 @@ export const ReservationTemplate = (props: IPropsR) => {
             <S.ReservationWrapperBottomItemTimeWrapper>
               {shopOpenTime.map((el, index) => (
                 <div key={index}>
-                  <S.ReservationWrapperBottomItemTimeDetail tabIndex={0}>
+                  <S.ReservationWrapperBottomItemTimeDetail>
                     {el}
                   </S.ReservationWrapperBottomItemTimeDetail>
                 </div>

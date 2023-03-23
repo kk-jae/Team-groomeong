@@ -58,7 +58,6 @@ export const ReservationWrapperBottomItemTimeWrapper = styled.div`
   width: 885px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   flex-wrap: wrap;
 `;
 
@@ -73,14 +72,11 @@ export const ReservationWrapperBottomItemTimeDetail = styled.span`
   border-radius: 12px;
   ${GS.Paragraph.Large}
   margin-bottom: 30px;
+  margin-right: 20px;
   cursor: pointer;
 
   :hover {
-    background-color: ${GS.gray[100]};
-  }
-
-  :focus {
-    border: 1px solid ${GS.base.primary};
+    background-color: ${GS.base.primary};
   }
 `;
 
