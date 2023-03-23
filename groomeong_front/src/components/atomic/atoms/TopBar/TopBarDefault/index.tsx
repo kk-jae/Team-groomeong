@@ -40,8 +40,8 @@ export const TopBarDefault = (props: ITopBarDefaultProps) => {
                 border="none"
                 onClick={onClickLogOut}
               />
-              <S.TopBarProfile onClick={onClickMoveToPage("/home")}>
-                <img src={"image/icon_dog_profile.png"} alt="" />
+              <S.TopBarProfile onClick={onClickMoveToPage("/mypage")}>
+                <img src={"image/img-dog-detail.png"} alt="" />
               </S.TopBarProfile>
             </>
           ) : (

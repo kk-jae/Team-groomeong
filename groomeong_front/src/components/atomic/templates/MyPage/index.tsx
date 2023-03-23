@@ -6,10 +6,12 @@ import { DogsList } from "../../organisms/ListTable/DogsList";
 import { Buttons } from "../../atoms/Buttons";
 import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
 import { UseQueryFetchUserDogs } from "../../../commons/hooks/query/UseQueryFetchUserDogs";
+import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 
 export const MyPageTemplate = () => {
   const { data } = UseQueryFetchLoginUser();
   const { data: dogData } = UseQueryFetchUserDogs();
+  const { onClickMoveToPage } = useMoveToPage();
 
   return (
     <>
@@ -24,7 +26,7 @@ export const MyPageTemplate = () => {
               name={data?.fetchLoginUser.name ?? ""}
               email={data?.fetchLoginUser.email ?? ""}
               phone={data?.fetchLoginUser.phone ?? ""}
-              image={data?.fetchLoginUser.image ?? "/image/icon-dog.svg"}
+              image={data?.fetchLoginUser.image ?? "image/img-dog-detail.png"}
             ></MyPageBody>
             <DogsList
             //이후 도그 패치되면 수정해야 함
@@ -34,7 +36,11 @@ export const MyPageTemplate = () => {
             // dogType={dogData?.fetchUserDogs}
             ></DogsList>
             <p>
-              <Buttons size="large" label="수정하기"></Buttons>
+              <Buttons
+                size="large"
+                label="수정하기"
+                onClick={onClickMoveToPage("/mypage/edit")}
+              ></Buttons>
             </p>
           </S.MyPageBodyWrapper>
         </S.MyPageWrapper>

@@ -1,11 +1,19 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Email } from "@mui/icons-material";
+import { useRouter } from "next/router";
 import { FormProvider, useForm } from "react-hook-form";
+import {
+  IMutation,
+  IMutationUpdateUserArgs,
+  IUpdateUserInput,
+} from "../../../../../commons/types/generated/types";
+import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
+import { UseMutationUpdateUser } from "../../../../commons/hooks/mutation/UseMutationUpdateUser";
+import { UseQueryFetchLoginUser } from "../../../../commons/hooks/query/UseQueryFetchLoginUser";
 import { Schema } from "../../../../commons/validation/myPageEdit.validation";
 import { Buttons } from "../../../atoms/Buttons";
-import ContentInfo from "../../../atoms/ContentInfo";
 import { CommonsImages } from "../../../atoms/Images";
 import { InputMiddle } from "../../../atoms/Input/Middle";
-import { InputSmall } from "../../../atoms/Input/Small";
 import * as S from "./index.style";
 
 interface IMyPageBodyProps {
@@ -17,39 +25,73 @@ interface IMyPageBodyProps {
 }
 
 export const MyPageEditBodyTemplate = (props: IMyPageBodyProps) => {
-  const method = useForm({
+  const method = useForm<IMutationUpdateUserArgs>({
     mode: "onChange",
     resolver: yupResolver(Schema),
   });
+  const { data: userData } = UseQueryFetchLoginUser();
+  const { onClickMoveToPage } = useMoveToPage();
+  const [updateUser] = UseMutationUpdateUser();
+  const router = useRouter();
+
+  const onClickEditBtn = async (data: IUpdateUserInput): Promise<void> => {
+    try {
+      await updateUser({
+        variables: {
+          userId: String(data.email),
+          updateUserInput: {
+            // name: "권현재바보",
+            // phone: "01023121232",
+            // email: "rnjsguswo88@naver.com",
+            // password: "123",
+          },
+        },
+      });
+      router.push("/mypage");
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      }
+    }
+  };
+
   return (
     <>
       <FormProvider {...method}>
         <form onSubmit={method.handleSubmit((data) => console.log(data))}>
           <InputMiddle
             label="닉네임"
-            defaultValue={props.nameDefaultValue}
-            name={"nickName"}
+            defaultValue={userData?.fetchLoginUser?.name}
+            name={"name"}
           />
           <InputMiddle
             label="이메일"
-            defaultValue={props.emailDefaultValue}
+            value={userData?.fetchLoginUser?.email}
             name={"email"}
           />
           <InputMiddle
             label="연락처"
-            defaultValue={props.phoneDefaultValue}
+            defaultValue={userData?.fetchLoginUser?.phone}
             name={"phone"}
           />
           <S.LabelWrapper>
             <S.Label>비밀번호</S.Label>
-            <Buttons type="button" label="비밀번호 초기화 하기"></Buttons>
+            <Buttons
+              onClick={onClickMoveToPage("/emailAuth")}
+              type="button"
+              label="비밀번호 초기화 하기"
+            ></Buttons>
           </S.LabelWrapper>
           <S.LabelWrapper>
             <S.Label>사진</S.Label>
             <CommonsImages></CommonsImages>
           </S.LabelWrapper>
           <S.ButtonBox>
-            <Buttons size="large" label="수정 완료"></Buttons>
+            <Buttons
+              size="large"
+              label="수정 완료"
+              onClick={onClickEditBtn}
+            ></Buttons>
           </S.ButtonBox>
         </form>
       </FormProvider>
