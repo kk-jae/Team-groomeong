@@ -1,5 +1,4 @@
-type TypePromiseFunc = (data?: any) => Promise<void>;
-type TypeSubmitFunc = (data?: any) => void;
+type TypePromiseFunc = (data?: any, ...rest: any[]) => Promise<void>;
 
 export const withPromiseVoidFunc =
   (promiseFunc: TypePromiseFunc) => (data: any) => {

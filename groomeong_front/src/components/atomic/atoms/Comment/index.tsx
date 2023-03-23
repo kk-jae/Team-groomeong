@@ -1,3 +1,4 @@
+import { getDate } from "../../../commons/libraries/dateTransform";
 import { StarRate } from "../StarRate";
 import * as S from "./index.style";
 
@@ -27,7 +28,9 @@ export const Comment = (props: ICommentProps) => {
                 </S.TextArea_Profile_Icon>
               )}
               <span>{props.name}</span>
-              <S.TextArea_TopBox_Date>{props.date}</S.TextArea_TopBox_Date>
+              <S.TextArea_TopBox_Date>
+                {getDate(String(props.date))}
+              </S.TextArea_TopBox_Date>
             </S.TextArea_TopBox_Profile>
             <S.TextArea_TopBox_Rate>
               <StarRate state={props.state} star={props.rate}></StarRate>

@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import {
   IQuery,
   IQueryFetchReviewsByShopIdArgs,
@@ -18,10 +19,17 @@ export const FETCH_REVIEWS_BY_SHOP_ID = gql`
 `;
 
 export const UseQueryFetchReviewsByShopId = () => {
+  const router = useRouter();
   const { data } = useQuery<
     Pick<IQuery, "fetchReviewsByShopId">,
     IQueryFetchReviewsByShopIdArgs
-  >(FETCH_REVIEWS_BY_SHOP_ID);
+  >(
+    FETCH_REVIEWS_BY_SHOP_ID,
+
+    {
+      variables: { shopId: String(router.query.shopId) },
+    }
+  );
   return {
     data,
   };
