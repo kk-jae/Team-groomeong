@@ -26,9 +26,11 @@ export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
   const login = useRecoilValueLoadable(restoreAccessTokenLoadable);
 
   useEffect(() => {
-    void login.toPromise().then((newAccessToken) => {
-      setAccessToken(newAccessToken ?? "");
-    });
+    // void login.toPromise().then((newAccessToken) => {
+    //   setAccessToken(newAccessToken ?? "");
+    // });
+    const result = localStorage.getItem("accessToken");
+    setAccessToken(result ?? "");
   }, []);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
