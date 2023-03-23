@@ -1,32 +1,52 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
-import { useEmailAuth } from "../../../commons/hooks/custom/useEmailAuth";
+import {
+  IEmail,
+  useEmailAuth,
+} from "../../../commons/hooks/custom/useEmailAuth";
 import { InputMiddle } from "../../atoms/Input/Middle";
 import PageHeader from "../../atoms/PageHeader";
 import Background from "../../organisms/Background";
 import * as S from "./index.styled";
+import { schemaEmail } from "../../../commons/validation/emailAuth.validation";
 
 export const EmailAuthTemplates = () => {
   // const { onClickSendEmail } = useEmailAuth();
-  const [isOpenRandomCode, setIsOpenRandomCode] = useState(false);
   const [disabledState, setDisabledState] = useState(false);
-  const { sendEmail, onClickCheckToken } = useEmailAuth();
+  const { sendEmail, onClickCheckToken, isOpenRandomCode, clearTimer } =
+    useEmailAuth();
+  const [timer, setTimer] = useState("3:00");
+  const [timeInterval, setTimeInterval] = useState<
+    NodeJS.Timer | NodeJS.Timeout
+  >();
 
   const method = useForm({
     mode: "onChange",
+    resolver: yupResolver(schemaEmail),
   });
 
-  interface IEmailData {
-    email: string;
-  }
+  const onClickSendEmail = (data: IEmail) => {
+    sendEmail(data)();
 
-  const onClickSendEmail = (data: IEmailData) => {
-    // sendEmail(data)();
-    if (data.email !== "") {
-      setIsOpenRandomCode((prev) => !prev);
-      setDisabledState((prev) => !prev);
-    }
+    setDisabledState(true);
+    let min = 2;
+    let sec = 60;
+    const timeInterval = setInterval(() => {
+      sec = sec - 1;
+      if (sec === -1) {
+        min = min - 1;
+        sec = 59;
+      }
+      setTimer(`${min}:${String(sec).padStart(2, "0")}`);
+    }, 1000);
+
+    setTimeInterval(timeInterval);
   };
+
+  if (clearTimer) {
+    clearInterval(timeInterval as NodeJS.Timeout);
+  }
 
   return (
     <Background>
@@ -59,7 +79,7 @@ export const EmailAuthTemplates = () => {
               >
                 <FormProvider {...method}>
                   <InputMiddle
-                    label="03:00 타이머입니다. (아직 작동 안함)"
+                    label={timer}
                     name="token"
                     placeholder="인증번호를 입력해주세요"
                   />

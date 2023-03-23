@@ -6,6 +6,7 @@ import { Buttons } from "../../atoms/Buttons";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 import { useLogInButton } from "../../../commons/hooks/custom/useLogIn";
 import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
+import PageHeader from "../../atoms/PageHeader";
 
 export const LogInTemplate = () => {
   const method = useForm({
@@ -18,9 +19,10 @@ export const LogInTemplate = () => {
   return (
     <Background>
       <S.LogInWrapper>
-        <S.LogInTop>
+        <PageHeader title="로그인" />
+        {/* <S.LogInTop>
           <S.LogInTopText>로그인</S.LogInTopText>
-        </S.LogInTop>
+        </S.LogInTop> */}
         <FormProvider {...method}>
           <S.LogInMiddle
             onSubmit={method.handleSubmit(

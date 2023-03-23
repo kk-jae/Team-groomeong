@@ -3,12 +3,17 @@ import {
   InMemoryCache,
   ApolloProvider,
   ApolloLink,
+  fromPromise,
 } from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
 import { createUploadLink } from "apollo-upload-client";
-import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../commons/Store";
+import { useRecoilState, useRecoilValueLoadable } from "recoil";
+import {
+  accessTokenState,
+  restoreAccessTokenLoadable,
+} from "../../../commons/Store";
+import { GetAccessToken } from "../libraries/GetAccessToken";
 
 const GLOBAL_STATE = new InMemoryCache();
 
@@ -17,32 +22,43 @@ interface IApolloSettingProps {
 }
 
 export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
-  const [, setAccessToken] = useRecoilState(accessTokenState);
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const login = useRecoilValueLoadable(restoreAccessTokenLoadable);
 
   useEffect(() => {
-    // console.log("지금은 브라우저");
-    // 1. refreshToken배우기 이전방식
-    const result = localStorage.getItem("accessToken");
-    setAccessToken(result ?? ""); // 기존방법. 다만 이제는 쿠키로 바뀌었으니 쿠키안에있는 refreshToken가져와야함. 그러나 얘는 secure옵션과 httpOnly설정이 되어있어 document.~~으로 꺼내오지 못함
-
-    // 2. refreshToken 이후 방식 // (refreshToken없애기 => 로그아웃 api요청)
-    // 글로벌 스테이트랑 비슷한 방법. 글로벌에 저장하고 뽑는것.요청 받은결과를 필요한곳에서 뽑아사용
-    // void aaa.toPromise().then((newAccessToken) => {
-    //   setAccessToken(newAccessToken ?? "");
-    // });
-    // void getAccessToken().then((newAccessToken) => {
-    //   // 받아온 refreshToken을 다시 넣어줌으로써 새로고침시에도 사라지지않게함.
-    //   setAccessToken(newAccessToken ?? "");
-    // });
+    void login.toPromise().then((newAccessToken) => {
+      setAccessToken(newAccessToken ?? "");
+    });
   }, []);
+
+  const errorLink = onError(({ graphQLErrors, operation, forward }) => {
+    if (typeof graphQLErrors !== "undefined") {
+      for (const err of graphQLErrors) {
+        if (err.extensions.code === "UNAUTHENTICATED") {
+          return fromPromise(
+            GetAccessToken().then((newAccessToken) => {
+              setAccessToken(newAccessToken ?? "");
+              operation.setContext({
+                headers: {
+                  ...operation.getContext().headers,
+                  Authorization: `Bearer ${newAccessToken}`,
+                },
+              });
+            })
+          ).flatMap(() => forward(operation));
+        }
+      }
+    }
+  });
 
   const uploadLink = createUploadLink({
     uri: "http://34.64.53.80:3000/graphql",
+    headers: { Authorization: `Bearer ${accessToken}` },
     // credentials: "include",
   });
 
   const client = new ApolloClient({
-    link: ApolloLink.from([uploadLink]),
+    link: ApolloLink.from([errorLink, uploadLink]),
     cache: GLOBAL_STATE,
   });
 
