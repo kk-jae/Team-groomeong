@@ -6,14 +6,7 @@ import { Buttons } from "../../atoms/Buttons";
 
 import { MyPageEditBodyTemplate } from "./MyPageEditBody";
 
-interface IMyPageEditProps {
-  name: string;
-  email: string;
-  phone: string;
-  image?: string;
-}
-
-export const MyPageEditTemplate = (props: IMyPageEditProps) => {
+export const MyPageEditTemplate = () => {
   return (
     <>
       <Background>
@@ -23,12 +16,7 @@ export const MyPageEditTemplate = (props: IMyPageEditProps) => {
             title="마이페이지"
           ></PageHeader>
           <S.MyPageBodyWrapper>
-            <MyPageEditBodyTemplate
-              name={props.name}
-              email={props.email}
-              phone={props.phone}
-              image={props.image}
-            ></MyPageEditBodyTemplate>
+            <MyPageEditBodyTemplate></MyPageEditBodyTemplate>
           </S.MyPageBodyWrapper>
         </S.MyPageWrapper>
       </Background>
