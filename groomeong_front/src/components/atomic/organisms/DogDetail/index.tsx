@@ -1,4 +1,4 @@
-import React from "react";
+import useDetailPage from "../../../commons/hooks/custom/useDetailPage";
 import { TextBadge } from "../../atoms/Badge/TextBadge";
 import { Buttons } from "../../atoms/Buttons";
 import ContentInfo from "../../atoms/ContentInfo";
@@ -13,31 +13,47 @@ import {
 } from "./index.style";
 
 const DogDetail = () => {
+  const { method, FormProvider, data, breed } = useDetailPage();
   return (
     <DogDetailWrapper>
       <PageHeader title="댕댕이 정보" icon="/images/icon-dog.svg" />
       <DogDetailContentWrapper>
         <Div>
-          <ContentInfo content="댕댕이" label="이름" right="64px" />
-          <ContentInfo content="3" label="나이" right="64px" />
-          <ContentInfo content="8" label="몸무게" right="64px" />
+          <ContentInfo content={data?.name} label="이름" right="64px" />
+          <ContentInfo
+            content={data?.age.toString()}
+            label="나이"
+            right="64px"
+          />
+          <ContentInfo
+            content={data?.weight.toString()}
+            label="몸무게"
+            right="64px"
+          />
           <ContentInfo
             label="견종"
-            badge={<TextBadge state={true} text="소형" />}
+            component={
+              <TextBadge state={true} text={breed[data?.breed ?? "SMALL"]} />
+            }
           />
         </Div>
         <Div>
-          <DogDetailContentImg />
+          <DogDetailContentImg url={data?.image ?? undefined} />
         </Div>
       </DogDetailContentWrapper>
-      <Div>
-        <InfoTextArea
-          name="significant"
-          title={"특이사항"}
-          content={"이상없음"}
-          disabled
-        />
-      </Div>
+      <FormProvider {...method}>
+        <form>
+          <Div>
+            <InfoTextArea
+              name="significant"
+              title={"특이사항"}
+              placeholder="특이사항을 적어주세요."
+              content={data?.specifics ?? ""}
+              disabled
+            />
+          </Div>
+        </form>
+      </FormProvider>
       <DogDetailFooter>
         <Div>
           <Buttons

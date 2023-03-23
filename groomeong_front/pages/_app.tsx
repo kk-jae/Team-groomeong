@@ -5,6 +5,7 @@ import { GlobalStyle } from "../src/commons/GlobalStyles";
 import { RecoilRoot } from "recoil";
 import ApolloSetting from "../src/components/commons/apollo";
 import { ShopDetail } from "../src/components/atomic/organisms/ShopDetail";
+import DogDetailTemplate from "../src/components/atomic/templates/DogDetail";
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
