@@ -40,6 +40,7 @@ export type ICreateReviewInput = {
 
 export type ICreateShopInput = {
   address: Scalars['String'];
+  averageStar?: InputMaybe<Scalars['Float']>;
   closeHour: Scalars['String'];
   name: Scalars['String'];
   openHour: Scalars['String'];
@@ -60,6 +61,7 @@ export type IDog = {
   id: Scalars['String'];
   image?: Maybe<Scalars['String']>;
   name: Scalars['String'];
+  reservation: Array<IReservation>;
   specifics?: Maybe<Scalars['String']>;
   user: IUser;
   weight: Scalars['Float'];
@@ -77,15 +79,19 @@ export type IMutation = {
   createReview: IReview;
   /** Return : 새로 생성되어 DB에 저장된 신규 가게(Shop) 데이터 */
   createShop: IShop;
+  /** Return: 신규 생성된 가게이미지 데이터 */
+  createShopImage: IShopImage;
   /**  Return: 유저 회원가입  */
   createUser: IUser;
   /**  Return: id로 강아지 데이터 삭제 후 삭제 여부 반환  */
   deleteDog: Scalars['Boolean'];
+  /**  Return: 예약 삭제하기 */
+  deleteReservation: Scalars['Boolean'];
   /** Return: 가게 이미지 삭제 완료 시, true */
-  deleteShopImage: IShopImage;
+  deleteShopImage: Scalars['Boolean'];
   /**  Return: 유저 정보 삭제하기  */
   deleteUser: Scalars['Boolean'];
-  /** 회원가입 시 이메일 인증번호 전송 */
+  /**  이메일 인증번호 전송  */
   getTokenEmail: Scalars['String'];
   /**  Return: 유저 로그인  */
   login: Scalars['String'];
@@ -93,8 +99,6 @@ export type IMutation = {
   logout: Scalars['String'];
   /**  Return: accessToken 복원  */
   restoreAccessToken: Scalars['String'];
-  /** Return: 신규 생성된 가게이미지 데이터 */
-  saveShopImage: IShopImage;
   /**  Return: 업데이트한 강아지 데이터  */
   updateDog: IDog;
   /** Return : 입력된 데이터로 수정되어 DB에 저장된 가게(Shop) 데이터 */
@@ -136,6 +140,13 @@ export type IMutationCreateShopArgs = {
 };
 
 
+export type IMutationCreateShopImageArgs = {
+  imageUrl: Scalars['String'];
+  isThumbnail: Scalars['Boolean'];
+  shopId: Scalars['String'];
+};
+
+
 export type IMutationCreateUserArgs = {
   email: Scalars['String'];
   name: Scalars['String'];
@@ -146,6 +157,11 @@ export type IMutationCreateUserArgs = {
 
 export type IMutationDeleteDogArgs = {
   id: Scalars['String'];
+};
+
+
+export type IMutationDeleteReservationArgs = {
+  reservationId: Scalars['String'];
 };
 
 
@@ -167,13 +183,6 @@ export type IMutationGetTokenEmailArgs = {
 export type IMutationLoginArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
-};
-
-
-export type IMutationSaveShopImageArgs = {
-  imageUrl: Scalars['String'];
-  isThumbnail: Scalars['Boolean'];
-  shopId: Scalars['String'];
 };
 
 
@@ -213,25 +222,27 @@ export type IMutationUploadShopImagesArgs = {
 
 export type IQuery = {
   __typename?: 'Query';
-  /** Return : 가게의 별점 (평균값, 소수점 숫자) */
-  fetchAverageStar: Scalars['Float'];
   /**  Return: id로 조회된 강아지 데이터  */
   fetchDog: IDog;
+  /** Return : 입력한 shopName과 일치하는 가게 데이터 1개 */
+  fetchFirstShopByName: IShop;
   /**  Return : 로그인한 유저, 유저 댕댕이 프로필 */
   fetchLoginUser: IUser;
   /** Return : 예약 정보(가게, 회원, 강아지 정보 포함) */
   fetchReservation: IReservation;
+  /** Return : 회원으로 된 예약 정보(가게, 회원, 강아지 정보 포함) */
+  fetchReservationsByUserId: Array<IReservation>;
   /** Return: 리뷰ID 기준으로 1개 불러오기 */
   fetchReview: IReview;
   /** Return: 가게ID 기준으로 모든 리뷰 불러오기 */
-  fetchReviewsByShopId: IReview;
+  fetchReviewsByShopId: Array<IReview>;
   /** Return : 입력한 shopId와 일치하는 가게(Shop) 데이터 */
   fetchShop: IShop;
   /** Return: 가게이미지ID를 기준으로 1개의 가게이미지 가져오기 */
-  fetchShopImagesById: IShopImage;
+  fetchShopImageById: IShopImage;
   /** Return: 가게ID를 기준으로 모든 가게이미지 배열 데이터 */
-  fetchShopImagesByShopId: IShopImage;
-  /** Return : DB에 등록된 모든 가게(Shop) 데이터 */
+  fetchShopImagesByShopId: Array<IShopImage>;
+  /** Return : DB에 등록된 가게 중 검색값을 포함한 데이터. Null인 경우 모든 가게 */
   fetchShops: Array<IShop>;
   /**  Return:  유저 정보  */
   fetchUser: IUser;
@@ -243,13 +254,13 @@ export type IQuery = {
 };
 
 
-export type IQueryFetchAverageStarArgs = {
-  shopId: Scalars['String'];
+export type IQueryFetchDogArgs = {
+  id: Scalars['String'];
 };
 
 
-export type IQueryFetchDogArgs = {
-  id: Scalars['String'];
+export type IQueryFetchFirstShopByNameArgs = {
+  shopName: Scalars['String'];
 };
 
 
@@ -273,7 +284,7 @@ export type IQueryFetchShopArgs = {
 };
 
 
-export type IQueryFetchShopImagesByIdArgs = {
+export type IQueryFetchShopImageByIdArgs = {
   shopImageId: Scalars['String'];
 };
 
@@ -294,11 +305,12 @@ export type IQueryFetchUserArgs = {
 
 export type IReservation = {
   __typename?: 'Reservation';
-  createAt: Scalars['DateTime'];
   date: Scalars['DateTime'];
+  dog: IDog;
   id: Scalars['String'];
   shop: IShop;
   time: Scalars['String'];
+  user: IUser;
 };
 
 export type IReview = {
@@ -313,6 +325,7 @@ export type IReview = {
 export type IShop = {
   __typename?: 'Shop';
   address: Scalars['String'];
+  averageStar: Scalars['Float'];
   closeHour: Scalars['String'];
   id: Scalars['String'];
   image: Array<IShopImage>;
@@ -342,6 +355,7 @@ export type IUpdateDogInput = {
 
 export type IUpdateShopInput = {
   address?: InputMaybe<Scalars['String']>;
+  averageStar?: InputMaybe<Scalars['Float']>;
   closeHour?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   openHour?: InputMaybe<Scalars['String']>;
@@ -365,4 +379,5 @@ export type IUser = {
   name: Scalars['String'];
   password: Scalars['String'];
   phone: Scalars['String'];
+  reservation: Array<IReservation>;
 };
