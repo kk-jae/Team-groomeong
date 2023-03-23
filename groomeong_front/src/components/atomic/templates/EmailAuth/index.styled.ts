@@ -47,6 +47,7 @@ export const EmailAuthMiddleTextButtonWrapper = styled.form`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 `;
 export const EmailAuthMiddleText = styled.input`
   width: 500px;

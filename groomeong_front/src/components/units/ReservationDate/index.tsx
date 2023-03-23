@@ -15,8 +15,8 @@ export const ReservationDate = (props: IProps) => {
       <DatePicker
         onChange={onChange}
         style={{
-          width: "444px",
-          height: "81px",
+          width: "428px",
+          height: "43px",
           borderRadius: "12px",
           paddingLeft: "25px",
         }}
