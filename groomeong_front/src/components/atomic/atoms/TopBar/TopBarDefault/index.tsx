@@ -32,6 +32,7 @@ export const TopBarDefault = (props: ITopBarDefaultProps) => {
                 iconImg={<EventAvailableIcon />}
                 label="예약일정"
                 variation={"tertiary"}
+                onClick={onClickMoveToPage("/reservation")}
               ></Buttons>
               <Buttons
                 size="small"

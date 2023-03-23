@@ -1,4 +1,4 @@
-import { getDate } from "../../../commons/libraries/dateTransform";
+import { getDate } from "../../../commons/libraries/GetDate";
 import { StarRate } from "../StarRate";
 import * as S from "./index.style";
 

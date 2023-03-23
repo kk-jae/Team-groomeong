@@ -28,6 +28,7 @@ export const TopBarMap = (props: ITopBarMapProps) => {
                 variation="tertiary"
                 size="small"
                 border="none"
+                onClick={onClickMoveToPage("/reservation")}
               ></Buttons>
               <Buttons
                 size="small"

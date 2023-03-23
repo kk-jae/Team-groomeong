@@ -15,6 +15,7 @@ export const FETCH_LOGIN_USER = gql`
 
 export const UseQueryFetchLoginUser = () => {
   const { data } = useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_LOGIN_USER);
+
   return {
     data,
   };

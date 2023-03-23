@@ -26,8 +26,6 @@ export const ReservationHistoryList = (props: IReservationHistoryListProps) => {
               </tr>
             </thead>
             <ReservationHistoryTable></ReservationHistoryTable>
-            <ReservationHistoryTable></ReservationHistoryTable>
-            <ReservationHistoryTable></ReservationHistoryTable>
           </table>
         </S.Table>
       </S.ReservationListWrapper>
