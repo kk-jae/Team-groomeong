@@ -28,7 +28,6 @@ export const EmailAuthTemplates = () => {
 
   const onClickSendEmail = (data: IEmail) => {
     sendEmail(data)();
-
     setDisabledState(true);
     let min = 2;
     let sec = 60;
