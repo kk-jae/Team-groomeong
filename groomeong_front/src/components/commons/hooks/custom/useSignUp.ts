@@ -8,7 +8,7 @@ export const useSignUp = () => {
     data: IMutationCreateUserArgs
   ): Promise<void> => {
     try {
-      await createUser({
+      const { data: userData } = await createUser({
         variables: {
           name: data.name,
           email: data.email,
@@ -16,6 +16,7 @@ export const useSignUp = () => {
           phone: data.phone,
         },
       });
+      console.log(userData)
       // 회원가입 성공 Modal
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });

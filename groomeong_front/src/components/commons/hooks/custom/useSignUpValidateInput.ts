@@ -3,12 +3,12 @@ import { useFormContext } from "react-hook-form";
 import { UseMutationCheckValidToken } from "../mutation/UseMutationCheckValidToken";
 import { UseMutationGetTokenEmail } from "../mutation/UseMutationGetTokenEmail";
 interface IValidation {
-  authName: string
-  emailToken: string,
-  time: number,
-  emailAuth: boolean,
-  valid: boolean,
-  error: string,
+  authNumber: string;
+  emailToken: string;
+  time: number;
+  emailAuth: boolean;
+  valid: boolean;
+  error: string;
 }
 
 export const useSignUpValidateInput = (
@@ -78,7 +78,7 @@ export const useSignUpValidateInput = (
           token: validation.emailToken,
         },
       });
-      setValid(data?.checkValidToken ?? false);
+      setValid(true);
       setValidation((prev: IValidation) => ({
         ...prev,
         valid: true,

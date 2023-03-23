@@ -1,10 +1,5 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
-import { InputMiddle } from "../../atoms/Input/Middle";
-
-interface IValidInput {
-  error?: string;
-}
 
 export const SignUpWrapper = styled.div`
   display: flex;

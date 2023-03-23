@@ -10,7 +10,7 @@ export const Schema = yup.object({
     .string()
     .email("이메일 형태로 입력해주세요.")
     .required("이메일을 입력해 주세요."),
-  nickName: yup
+  name: yup
     .string()
     .required("닉네임을 입력해 주세요.")
     .max(16, "16자 이하로 작성해주세요.")

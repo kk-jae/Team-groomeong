@@ -16,7 +16,11 @@ const PageHeader = (props: IPageHeader) => {
   return (
     <PageHeaderWrapper>
       <PageHeaderContentsWrapper>
-        <PageHeaderIcon icon={props.icon ?? ""} />
+        {
+        props.icon !== undefined? 
+        <PageHeaderIcon icon={props.icon} /> :
+        <></>
+        }
         <PageHeaderTitle>{props.title}</PageHeaderTitle>
           {props.rating}
       </PageHeaderContentsWrapper>

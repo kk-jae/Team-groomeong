@@ -6,7 +6,7 @@ import {
   Error,
   ValidateDiv,
 } from "./index.styles";
-import type { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useRef } from "react";
 import { useEffect } from "react";
 import { Buttons } from "../../atomic/atoms/Buttons";
 import { useSignUpValidateInput } from "../../commons/hooks/custom/useSignUpValidateInput";
@@ -16,16 +16,16 @@ interface ISignUpvalidateInputProps {
   setValid: Dispatch<SetStateAction<boolean>>;
 }
 interface IValidation {
-  authName: string
-  emailToken: string,
-  time: number,
-  emailAuth: boolean,
-  valid: boolean,
-  error: string,
+  authNumber: string;
+  emailToken: string;
+  time: number;
+  emailAuth: boolean;
+  valid: boolean;
+  error: string;
 }
 
-
 const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
+  const validationInput = useRef<HTMLInputElement>(null)
   const {
     validation,
     setValidation,
@@ -36,7 +36,7 @@ const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
   } = useSignUpValidateInput(props.setValid);
 
   useEffect(() => {
-    if (validation.emailAuth) {
+    if (validation.emailAuth && validationInput.current !== null) {
       const id = setInterval(() => {
         if (validation.time > 0 && !validation.valid) {
           setValidation((prev: IValidation) => ({
@@ -44,6 +44,9 @@ const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
             time: prev.time - 1,
           }));
         } else {
+          if (validationInput.current !== null) {
+            validationInput.current.value = ""
+          }
           clearInterval(id);
           setValidation((prev: IValidation) => ({
             ...prev,
@@ -62,16 +65,18 @@ const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
       <InputMiddle
         label="이메일"
         name="email"
-        placeholder="인증번호를 입력해주세요."
+        placeholder="이메일을 입력해주세요."
         disabled={validation.emailAuth || validation.valid}
       />
       <ValidateWrapper>
         <ValidateInputWrapper>
           <ValidationInput
+            ref={validationInput}
             placeholder="인증번호를 입력해주세요."
             disabled={!validation.emailAuth as boolean}
             onChange={onChangeAuthNumber}
             error={validation.error}
+            value={validation.valid ? "인증완료" : undefined}
           />
           <Label>
             {validation.emailAuth ? getTimer(validation.time) : "인증번호"}
