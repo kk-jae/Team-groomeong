@@ -11,6 +11,7 @@ interface IDivProps {
 export const InfoTextAreaWrapper = styled.div`
   display: flex;
   width: 100%;
+  margin: 32px 0;
   position: relative;
   flex-direction: column;
   align-items: center;
