@@ -7,24 +7,24 @@ interface IListTableProps {
   dogName?: string;
   dogAge?: number;
   dogWeight?: number;
-  dogType?: "small" | "medium" | "large" | "special";
+  dogType?: "SMALL" | "MEDIUM" | "LARGE" | "SPECIAL";
 }
 
 interface IDogType {
-  small: string;
-  medium: string;
-  large: string;
-  special: string;
+  SMALL: string;
+  MEDIUM: string;
+  LARGE: string;
+  SPECIAL: string;
 }
 
 export const DogsList = (props: IListTableProps) => {
   const router = useRouter();
 
   const dogType: IDogType = {
-    small: "소형",
-    medium: "중형",
-    large: "대형",
-    special: "특수견",
+    SMALL: "소형",
+    MEDIUM: "중형",
+    LARGE: "대형",
+    SPECIAL: "특수견",
   };
 
   const onClickAddDog = () => {};
