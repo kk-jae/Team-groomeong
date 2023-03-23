@@ -1,11 +1,11 @@
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import { useSetAuthInterval } from "./useSetAuthInterval";
+import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { UseMutationCheckValidToken } from "../mutation/UseMutationCheckValidToken";
 import { UseMutationGetTokenEmail } from "../mutation/UseMutationGetTokenEmail";
 interface IValidation {
   authNumber: string;
   emailToken: string;
-  time: number;
   emailAuth: boolean;
   valid: boolean;
   error: string;
@@ -13,14 +13,16 @@ interface IValidation {
 
 export const useSignUpValidateInput = (
   setValid: Dispatch<SetStateAction<boolean>>
+  
 ) => {
+  const { clearIntervalId, setIntervalHooks, time } = useSetAuthInterval();
+  const validationInput = useRef<HTMLInputElement>(null);
   const [getTokenEmail] = UseMutationGetTokenEmail();
   const [checkValidToken] = UseMutationCheckValidToken();
   const { getValues } = useFormContext();
   const [validation, setValidation] = useState<IValidation>({
     authNumber: "",
     emailToken: "",
-    time: 180,
     emailAuth: false,
     valid: false,
     error: "",
@@ -42,6 +44,7 @@ export const useSignUpValidateInput = (
         emailAuth: true,
         emailToken: String(result.data?.getTokenEmail),
       }));
+      setIntervalHooks();
     } else if (email === "") {
       setValidation((prev: IValidation) => ({
         ...prev,
@@ -52,14 +55,6 @@ export const useSignUpValidateInput = (
         ...prev,
         error: "중복된 이메일 입니다.",
       }));
-    }
-  };
-
-  const getTimer = (t: number) => {
-    if (t >= 0) {
-      const min = Math.floor(t / 60);
-      const sec = String(Math.floor(t % 60)).padStart(2, "0");
-      return `${min}:${sec}`;
     }
   };
 
@@ -78,12 +73,14 @@ export const useSignUpValidateInput = (
           token: validation.emailToken,
         },
       });
+      console.log(data)
       setValid(true);
       setValidation((prev: IValidation) => ({
         ...prev,
         valid: true,
         error: "",
       }));
+      clearInterval(clearIntervalId as NodeJS.Timer);
     } else {
       setValidation((prev: IValidation) => ({
         ...prev,
@@ -96,9 +93,10 @@ export const useSignUpValidateInput = (
   return {
     onClickEmailAuth,
     onChangeAuthNumber,
-    getTimer,
     onClickAuthValidate,
     validation,
     setValidation,
+    validationInput,
+    time,
   };
 };

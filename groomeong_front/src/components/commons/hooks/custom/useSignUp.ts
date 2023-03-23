@@ -2,8 +2,9 @@ import { Modal } from "antd";
 import { IMutationCreateUserArgs } from "../../../../commons/types/generated/types";
 import { UseMutationCreateUser } from "../mutation/UseMutationCreateUser";
 
-export const useSignUp = () => {
+export const useSignUp = ()=> {
   const [createUser] = UseMutationCreateUser();
+
   const onClickSignUp = async (
     data: IMutationCreateUserArgs
   ): Promise<void> => {
@@ -16,7 +17,7 @@ export const useSignUp = () => {
           phone: data.phone,
         },
       });
-      console.log(userData)
+      console.log(userData);
       // 회원가입 성공 Modal
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });

@@ -6,60 +6,27 @@ import {
   Error,
   ValidateDiv,
 } from "./index.styles";
-import { Dispatch, SetStateAction, useRef } from "react";
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { Buttons } from "../../atomic/atoms/Buttons";
 import { useSignUpValidateInput } from "../../commons/hooks/custom/useSignUpValidateInput";
 import { InputMiddle } from "../../atomic/atoms/Input/Middle";
+import { getTimer } from "../../../commons/Utils/getTimer";
 
 interface ISignUpvalidateInputProps {
   setValid: Dispatch<SetStateAction<boolean>>;
 }
-interface IValidation {
-  authNumber: string;
-  emailToken: string;
-  time: number;
-  emailAuth: boolean;
-  valid: boolean;
-  error: string;
-}
 
 const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
-  const validationInput = useRef<HTMLInputElement>(null)
   const {
     validation,
-    setValidation,
-    getTimer,
     onChangeAuthNumber,
     onClickAuthValidate,
     onClickEmailAuth,
+    validationInput,
+    time,
   } = useSignUpValidateInput(props.setValid);
 
-  useEffect(() => {
-    if (validation.emailAuth && validationInput.current !== null) {
-      const id = setInterval(() => {
-        if (validation.time > 0 && !validation.valid) {
-          setValidation((prev: IValidation) => ({
-            ...prev,
-            time: prev.time - 1,
-          }));
-        } else {
-          if (validationInput.current !== null) {
-            validationInput.current.value = ""
-          }
-          clearInterval(id);
-          setValidation((prev: IValidation) => ({
-            ...prev,
-            time: 180,
-            emailAuth: false,
-            authNumber: "",
-          }));
-        }
-      }, 1000);
-      return () => clearInterval(id);
-    }
-  }, [setValidation, validation]);
-
+  console.log(validation);
   return (
     <>
       <InputMiddle
@@ -73,13 +40,17 @@ const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
           <ValidationInput
             ref={validationInput}
             placeholder="인증번호를 입력해주세요."
-            disabled={!validation.emailAuth as boolean}
+            disabled={
+              !validation.emailAuth ? true : validation.valid ? true : false
+            }
             onChange={onChangeAuthNumber}
             error={validation.error}
             value={validation.valid ? "인증완료" : undefined}
           />
           <Label>
-            {validation.emailAuth ? getTimer(validation.time) : "인증번호"}
+            {!validation.valid && validation.emailAuth
+              ? getTimer(time)
+              : "인증번호"}
           </Label>
           <div style={{ marginTop: "1rem" }}>
             <Error>{validation.error}</Error>
@@ -92,7 +63,13 @@ const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
               variation="primary"
               label="인증하기"
               size="small"
-              state={!validation.emailAuth ? "disabled" : undefined}
+              state={
+                !validation.emailAuth
+                  ? "disabled"
+                  : validation.valid
+                  ? "disabled"
+                  : undefined
+              }
               border="none"
               onClick={onClickAuthValidate}
             />

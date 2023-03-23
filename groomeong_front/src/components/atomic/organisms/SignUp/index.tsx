@@ -18,7 +18,6 @@ const SignUp = () => {
     resolver: yupResolver(Schema),
   });
   const { onClickSignUp } = useSignUp();
-  console.log(valid);
 
   return (
     <SignUpWrapper>
