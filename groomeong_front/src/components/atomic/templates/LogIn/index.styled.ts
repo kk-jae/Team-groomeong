@@ -44,11 +44,21 @@ export const LogInBottom = styled.div`
 `;
 
 export const LogInBottomSocial = styled.div`
-  width: 362px;
+  width: 150px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-bottom: 32px;
+`;
+
+export const LoginLogo = styled.img`
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+
+  :hover {
+    transform: scale(1.07);
+  }
 `;
 
 export const ButtonGoogle = styled.button`
@@ -88,6 +98,10 @@ export const LogInBottomSighUpBottom = styled.span`
   ${GS.Paragraph.Medium}
   text-decoration: underline;
   cursor: pointer;
+
+  :hover {
+    font-weight: 600;
+  }
 `;
 
 export const LogInBottomFindPassword = styled.div`
@@ -105,4 +119,8 @@ export const LogInBottomFindPasswordBottom = styled.span`
   ${GS.Paragraph.Medium}
   text-decoration: underline;
   cursor: pointer;
+
+  :hover {
+    font-weight: 600;
+  }
 `;

@@ -45,8 +45,10 @@ export const LogInTemplate = () => {
         </FormProvider>
         <S.LogInBottom>
           <S.LogInBottomSocial>
-            <S.ButtonGoogle>구글 로그인하기</S.ButtonGoogle>
-            <S.ButtonKakao>카카오 로그인하기</S.ButtonKakao>
+            {/* <S.ButtonGoogle>구글 로그인하기</S.ButtonGoogle> */}
+            <S.LoginLogo src="/loginLogo/search.png" />
+            <S.LoginLogo src="/loginLogo/kakao-talk.png" />
+            {/* <S.ButtonKakao>카카오 로그인하기</S.ButtonKakao> */}
           </S.LogInBottomSocial>
           <S.LogInBottomSighUp>
             <S.LogInBottomSighUpTop>
@@ -60,7 +62,9 @@ export const LogInTemplate = () => {
             <S.LogInBottomFindPasswordTop>
               비밀번호를 잊어버리셨나요?
             </S.LogInBottomFindPasswordTop>
-            <S.LogInBottomFindPasswordBottom>
+            <S.LogInBottomFindPasswordBottom
+              onClick={onClickMoveToPage("/emailAuth")}
+            >
               비밀번호 초기화하러 가기
             </S.LogInBottomFindPasswordBottom>
           </S.LogInBottomFindPassword>
