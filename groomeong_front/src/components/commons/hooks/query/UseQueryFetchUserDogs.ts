@@ -11,12 +11,7 @@ export const FETCH_USER_DOGS = gql`
       name
       age
       weight
-      breed {
-        SMALL
-        MEDIUM
-        LARGE
-        SPECIAL
-      }
+      breed
     }
   }
 `;

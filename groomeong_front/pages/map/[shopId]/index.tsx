@@ -1,9 +1,12 @@
+import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../src/commons/Store";
 import { ShopDetail } from "../../../src/components/atomic/organisms/ShopDetail";
-// import { UseQueryFetchShop } from "../../../src/components/commons/hooks/query/UseQueryFetchShop";
+import { UseQueryFetchShop } from "../../../src/components/commons/hooks/query/UseQueryFetchShop";
 
 export default function ShopDetailPage() {
+  const router = useRouter();
+  const { data } = UseQueryFetchShop(String(router.query.shopId));
   // const {data}= UseQueryFetchShop()
   // const [accessToken] = useRecoilState(accessTokenState);
 

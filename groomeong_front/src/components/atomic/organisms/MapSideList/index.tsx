@@ -3,53 +3,8 @@ import * as S from "./index.styled";
 import { ListBox } from "../../atoms/ListBox";
 import { UseQueryFetchShops } from "../../../commons/hooks/query/UseQueryFetchShops";
 
-const fetchShops = [
-  {
-    shopName: "광기네",
-    shopHours: "09:00 ~ 18:00",
-    shopAddress: "서울시 오류동",
-    shopImg: "",
-    star: 5,
-  },
-  {
-    shopName: "하은네",
-    shopHours: "09:00 ~ 18:00",
-    shopAddress: "경기도 모르는데요",
-    shopImg: "",
-    star: 2,
-  },
-  {
-    shopName: "하은네",
-    shopHours: "09:00 ~ 18:00",
-    shopAddress: "경기도 모르는데요",
-    shopImg: "",
-    star: 2,
-  },
-  {
-    shopName: "하은네",
-    shopHours: "09:00 ~ 18:00",
-    shopAddress: "경기도 모르는데요",
-    shopImg: "",
-    star: 2,
-  },
-  {
-    shopName: "하은네",
-    shopHours: "09:00 ~ 18:00",
-    shopAddress: "경기도 모르는데요",
-    shopImg: "",
-    star: 2,
-  },
-  {
-    shopName: "하은네",
-    shopHours: "09:00 ~ 18:00",
-    shopAddress: "경기도 모르는데요",
-    shopImg: "",
-    star: 2,
-  },
-];
-
 export const MapSideList = () => {
-  const onLoadMore = (): void => {};
+  // const onLoadMore = (): void => {};
   const { data } = UseQueryFetchShops();
 
   return (

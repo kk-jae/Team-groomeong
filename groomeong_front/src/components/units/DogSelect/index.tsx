@@ -1,16 +1,20 @@
 import { Select } from "antd";
+import { UseQueryFetchUserDogs } from "../../commons/hooks/query/UseQueryFetchUserDogs";
 
-const dogs = [
-  { value: "멍재훈" },
-  { value: "멍광기" },
-  { value: "멍하은" },
-  { value: "멍현재" },
-];
-
+interface IFetchUserDogs {
+  value: string;
+  id: string;
+}
 export const DogSelect = (props: any) => {
-  const onChange = (value: string) => {
-    // console.log(`${value}`);
-    props.setDog(value);
+  const { data: dataDog } = UseQueryFetchUserDogs();
+
+  const dogsArr = [
+    dataDog?.fetchUserDogs.map((el) => ({ value: el.name, id: el.id })),
+  ];
+
+  const onChange = (value: string, id: IFetchUserDogs) => {
+    props.setDogId(id.id);
+    // console.log(id.id);
   };
 
   return (
@@ -21,8 +25,7 @@ export const DogSelect = (props: any) => {
       placeholder="댕댕이를 선택해주세요"
       optionFilterProp="children"
       onChange={onChange}
-      // options={[{ value: dogs[0].name }, { value: "아놔" }]}
-      options={[...dogs]}
+      options={dogsArr[0]}
     />
   );
 };
