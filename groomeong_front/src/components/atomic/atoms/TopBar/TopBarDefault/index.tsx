@@ -2,6 +2,7 @@ import { Buttons } from "../../Buttons";
 import * as S from "./index.style";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
+import { useLogout } from "../../../../commons/hooks/custom/useLogout";
 
 interface ITopBarDefaultProps {
   loggedIn: boolean;
@@ -9,6 +10,7 @@ interface ITopBarDefaultProps {
 
 export const TopBarDefault = (props: ITopBarDefaultProps) => {
   const { onClickMoveToPage } = useMoveToPage();
+  const { onClickLogOut } = useLogout();
 
   return (
     <>
@@ -36,7 +38,7 @@ export const TopBarDefault = (props: ITopBarDefaultProps) => {
                 label="로그아웃"
                 variation="tertiary"
                 border="none"
-                onClick={onClickMoveToPage("/home")}
+                onClick={onClickLogOut}
               />
               <S.TopBarProfile onClick={onClickMoveToPage("/home")}>
                 <img src={"image/icon_dog_profile.png"} alt="" />

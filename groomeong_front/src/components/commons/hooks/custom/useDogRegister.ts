@@ -41,7 +41,6 @@ export const useDogRegister = () => {
       Modal.success({
         content: "댕댕이가 등록되었습니다",
       });
-      console.log(result);
     } catch (error) {
       if (error instanceof Error) {
         Modal.error({

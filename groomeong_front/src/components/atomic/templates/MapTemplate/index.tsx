@@ -14,8 +14,15 @@ declare const window: typeof globalThis & {
   // initMap: (latlng: google.maps.LatLngLiteral) => void;
 };
 export const MapTemplate = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
   const [accessToken] = useRecoilState(accessTokenState);
   const [myState, setMyState] = useState("");
+
+  useEffect(() => {
+    if (localStorage.accessToken) {
+      setLoggedIn(true);
+    }
+  }, []);
 
   useEffect(() => {
     // This example adds a search box to a map, using the Google Place Autocomplete
@@ -186,7 +193,7 @@ export const MapTemplate = () => {
 
       <S.MapBoxStyles>
         <S.Header>
-          {!accessToken ? (
+          {loggedIn ? (
             <TopBarMap loggedIn={true} />
           ) : (
             <TopBarMap loggedIn={false} />
