@@ -38,6 +38,7 @@ export const useDogRegister = () => {
           createDogInput,
         },
       });
+      console.log(result);
       Modal.success({
         content: "댕댕이가 등록되었습니다",
       });

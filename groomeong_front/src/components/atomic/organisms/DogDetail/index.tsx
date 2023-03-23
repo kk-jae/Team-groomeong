@@ -13,22 +13,32 @@ import {
 } from "./index.style";
 
 const DogDetail = () => {
-  const { method, FormProvider } = useDetailPage()
+  const { method, FormProvider, data, breed } = useDetailPage();
   return (
     <DogDetailWrapper>
       <PageHeader title="댕댕이 정보" icon="/images/icon-dog.svg" />
       <DogDetailContentWrapper>
         <Div>
-          <ContentInfo content="댕댕이" label="이름" right="64px" />
-          <ContentInfo content="3" label="나이" right="64px" />
-          <ContentInfo content="8" label="몸무게" right="64px" />
+          <ContentInfo content={data?.name} label="이름" right="64px" />
+          <ContentInfo
+            content={data?.age.toString()}
+            label="나이"
+            right="64px"
+          />
+          <ContentInfo
+            content={data?.weight.toString()}
+            label="몸무게"
+            right="64px"
+          />
           <ContentInfo
             label="견종"
-            component={<TextBadge state={true} text="소형" />}
+            component={
+              <TextBadge state={true} text={breed[data?.breed ?? "SMALL"]} />
+            }
           />
         </Div>
         <Div>
-          <DogDetailContentImg />
+          <DogDetailContentImg url={data?.image ?? undefined} />
         </Div>
       </DogDetailContentWrapper>
       <FormProvider {...method}>
@@ -37,7 +47,7 @@ const DogDetail = () => {
             <InfoTextArea
               name="significant"
               title={"특이사항"}
-              content={"이상없음"}
+              content={data?.specifics ?? ""}
               disabled
             />
           </Div>

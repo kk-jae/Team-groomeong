@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import { useDogRegister } from "../../../commons/hooks/custom/useDogRegister";
 import { SizeBadge } from "../../atoms/Badge/SizeBadge";
 import { Buttons } from "../../atoms/Buttons";
@@ -25,8 +26,12 @@ const DogRegister = () => {
       <PageHeader title="댕댕이 등록하기" />
       <DogRegisterContentWrapper>
         <FormProvider {...method}>
-          {/* <DogRegisterForm onSubmit={method.handleSubmit(onClickRegisterDog)}> */}
-          <DogRegisterForm onSubmit={method.handleSubmit((data) => console.log(data))}>
+          <DogRegisterForm
+            onSubmit={method.handleSubmit(
+              withPromiseVoidFunc(onClickRegisterDog)
+            )}
+          >
+            {/* <DogRegisterForm onSubmit={method.handleSubmit((data) => console.log(data))}> */}
             <InputMiddle
               label="댕댕이 이름"
               name="name"
@@ -54,10 +59,7 @@ const DogRegister = () => {
               name="significant"
               placeholder="특이사항을 입력해 주세요."
             />
-            <ContentInfo
-              label="사진"
-              component={<ImgInput name="picture"/>}
-              />
+            <ContentInfo label="사진" component={<ImgInput name="picture" />} />
             <DogRegisterWrapper>
               <DogRegisterFooterSpan>
                 <Buttons
