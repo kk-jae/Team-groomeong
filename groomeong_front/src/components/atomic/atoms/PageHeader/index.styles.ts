@@ -26,7 +26,8 @@ export const PageHeaderIcon = styled.div<IPageHeaderIcon>`
   background-size: contain;
   width: 48px;
   height: 48px;
-  margin-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 8px;
 `;
 
 export const PageHeaderTitle = styled.h1`

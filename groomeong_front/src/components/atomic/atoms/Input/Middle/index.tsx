@@ -14,10 +14,12 @@ interface IProps {
   disabled?: boolean;
   maxLength?: number;
   lastText?: string;
+  value?: string;
 }
 
 export const InputMiddle = (props: IProps) => {
   const [focus, setFocus] = useState(false);
+
   const {
     register,
     formState: { errors },
@@ -43,6 +45,7 @@ export const InputMiddle = (props: IProps) => {
         defaultValue={props.defaultValue}
         disabled={props.disabled}
         maxLength={props.maxLength ?? undefined}
+        value={props.value}
       />
       <S.InputLastText>{props.lastText}</S.InputLastText>
       <S.Error>{errors[props.name]?.message}</S.Error>

@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import * as S from "../../../theme/global";
+import * as GS from "../../../theme/global";
 
 export const GlobalStyle = css`
   @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
@@ -9,6 +10,9 @@ export const GlobalStyle = css`
     box-sizing: border-box;
   }
 
+  body {
+    background-color: ${GS.base.primary};
+  }
   /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)

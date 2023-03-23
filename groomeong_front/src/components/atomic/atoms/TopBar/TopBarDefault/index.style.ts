@@ -45,4 +45,10 @@ export const TopBarProfile = styled.button`
   border: 1px solid ${GS.border.borderTransparent};
   border-radius: 50px;
   background-color: ${GS.white};
+
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50px;
+  }
 `;

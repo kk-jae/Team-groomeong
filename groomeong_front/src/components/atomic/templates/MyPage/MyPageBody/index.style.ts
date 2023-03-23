@@ -14,7 +14,6 @@ export const ImageWrapper = styled.div`
     width: 84px;
     height: 84px;
     margin-left: 32px;
-    padding: 8px;
     border: 1px solid ${GS.border.borderTransparent};
   }
 `;

@@ -3,7 +3,8 @@ import Background from "../../organisms/Background";
 import * as S from "./index.style";
 import { DogsList } from "../../organisms/ListTable/DogsList";
 import { Buttons } from "../../atoms/Buttons";
-import { MyPageEditBodyTemplate } from "./MyPageEidtBody";
+
+import { MyPageEditBodyTemplate } from "./MyPageEditBody";
 
 interface IMyPageEditProps {
   name: string;
@@ -28,10 +29,6 @@ export const MyPageEditTemplate = (props: IMyPageEditProps) => {
               phone={props.phone}
               image={props.image}
             ></MyPageEditBodyTemplate>
-            <DogsList></DogsList>
-            <p>
-              <Buttons size="large" label="수정하기"></Buttons>
-            </p>
           </S.MyPageBodyWrapper>
         </S.MyPageWrapper>
       </Background>

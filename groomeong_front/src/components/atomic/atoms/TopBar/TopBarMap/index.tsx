@@ -36,8 +36,8 @@ export const TopBarMap = (props: ITopBarMapProps) => {
                 border="none"
                 onClick={onClickLogOut}
               ></Buttons>
-              <S.TopBarProfile>
-                <img src={"image/icon_dog_profile.png"} alt="" />
+              <S.TopBarProfile onClick={onClickMoveToPage("/mypage")}>
+                <img src={"image/img-dog-detail.png"} alt="" />
               </S.TopBarProfile>
             </>
           ) : (
