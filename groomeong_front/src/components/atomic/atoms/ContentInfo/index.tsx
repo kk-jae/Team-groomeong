@@ -12,7 +12,7 @@ interface IContentInfoProps {
   right?: string;
   bottom?: string;
   top?: string;
-  badge?: React.ReactElement;
+  component?: React.ReactElement;
 }
 
 const ContentInfo = (props: IContentInfoProps) => {
@@ -24,7 +24,7 @@ const ContentInfo = (props: IContentInfoProps) => {
       top={props.top}
     >
       <ContetnInfoLabel>{props.label}</ContetnInfoLabel>
-      <ContentInfoContent>{props.badge ?? props.content}</ContentInfoContent>
+      <ContentInfoContent>{props.component ?? props.content}</ContentInfoContent>
     </ContentInfoWrapper>
   );
 };
