@@ -8,7 +8,12 @@ export const ReservationWrapperBottomItemTimeWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export const ReservationWrapperBottomItemTimeDetail = styled.span`
+interface IReservationWrapperBottomItemTimeDetail {
+  reservationTime: string;
+  el: string;
+}
+
+export const ReservationWrapperBottomItemTimeDetail = styled.button<IReservationWrapperBottomItemTimeDetail>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -20,9 +25,11 @@ export const ReservationWrapperBottomItemTimeDetail = styled.span`
   ${GS.Paragraph.Large}
   margin-bottom: 30px;
   margin-right: 20px;
-  cursor: pointer;
+  background-color: ${(props) =>
+    props.reservationTime === props.el ? GS.base.primary : "white"};
+  cursor: ${(props) => (props.disabled ? "inherit" : "pointer")};
 
   :hover {
-    background-color: ${GS.base.primary};
+    background-color: ${(props) => (props.disabled ? "none" : GS.base.primary)};
   }
 `;

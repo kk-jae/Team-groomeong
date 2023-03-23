@@ -20,9 +20,6 @@ export const LogInTemplate = () => {
     <Background>
       <S.LogInWrapper>
         <PageHeader title="로그인" />
-        {/* <S.LogInTop>
-          <S.LogInTopText>로그인</S.LogInTopText>
-        </S.LogInTop> */}
         <FormProvider {...method}>
           <S.LogInMiddle
             onSubmit={method.handleSubmit(
