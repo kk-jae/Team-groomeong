@@ -1,7 +1,9 @@
+import { useRouter } from "next/router";
 import { Modal } from "antd";
 import { UseMutationCreateReservation } from "../mutation/UseMutationCreateReservation";
 
 export const useReservationDog = () => {
+  const router = useRouter();
   const [createReservation] = UseMutationCreateReservation();
 
   const onClickReservationDog =
@@ -28,6 +30,7 @@ export const useReservationDog = () => {
         Modal.success({
           content: "예약을 성공하였습니다.",
         });
+        router.push("/mypage");
       } catch (error) {
         if (error instanceof Error) {
           Modal.error({

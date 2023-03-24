@@ -16,15 +16,9 @@ export const ReservationTemplate = () => {
   const { data: fetchLoginUserData } = UseQueryFetchLoginUser();
   const { data: fetchUserDogData } = UseQueryFetchUserDogs();
   const { onClickReservationDog } = useReservationDog();
-  const [reservationDate, setReservationDate] = useState("");
-  const [dogId, setDogId] = useState("");
-  const [reservationTime, setReservationTime] = useState("");
-
-  // console.log("예약 날짜 : ", reservationDate); // date
-  // console.log("샵 아이디 : ", router.query.shopId); // shopId
-  // console.log("유저 아이디 : ", fetchLoginUserData?.fetchLoginUser.id); // userId
-  // console.log("강아지 아이디 :", dogId);
-  // console.log("예약 시간 : ", reservationTime);
+  const [reservationDate, setReservationDate] = useState(""); // 예약 날짜
+  const [dogId, setDogId] = useState(""); // 강아지 아이디
+  const [reservationTime, setReservationTime] = useState(""); // 예약 시간
 
   return (
     <Background>
@@ -52,7 +46,10 @@ export const ReservationTemplate = () => {
             <S.ReservationWrapperBottomItemTitle>
               날짜
             </S.ReservationWrapperBottomItemTitle>
-            <ReservationDate setReservationDate={setReservationDate} />
+            <ReservationDate
+              setReservationDate={setReservationDate}
+              setReservationTime={setReservationTime}
+            />
           </S.ReservationWrapperBottomItem>
           <S.ReservationWrapperBottomItem>
             <S.ReservationWrapperBottomItemTitle>
@@ -61,6 +58,8 @@ export const ReservationTemplate = () => {
             <ReservationTime
               data={data}
               setReservationTime={setReservationTime}
+              reservationDate={reservationDate}
+              reservationTime={reservationTime}
             />
           </S.ReservationWrapperBottomItem>
           <S.ReservationWrapperBottomSubmitWrapper>
