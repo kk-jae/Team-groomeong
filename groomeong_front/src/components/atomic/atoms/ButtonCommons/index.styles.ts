@@ -19,6 +19,7 @@ export interface IButtonProps {
   label: string;
   onClick?: voidFunc | voidClickFunc | promiseClickFunc;
   type?: "button" | "submit" | "reset";
+  id?: string;
 }
 
 export const ButtonCommons = styled.button<IButtonProps>`

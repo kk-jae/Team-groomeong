@@ -12,6 +12,7 @@ export const Buttons = (props: IButtonProps) => {
         type={props.type ?? "submit"}
         disabled={props.state === "disabled"}
         iconImg={props.iconImg}
+        id={props.id}
       >
         {props.iconImg}
         {props.label}

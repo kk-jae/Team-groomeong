@@ -10,9 +10,13 @@ import PageHeader from "../../atoms/PageHeader";
 import Background from "../../organisms/Background";
 import * as S from "./index.styled";
 import { schemaEmail } from "../../../commons/validation/emailAuth.validation";
+import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
+import { Modal } from "antd";
+import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 
 export const EmailAuthTemplates = () => {
-  // const { onClickSendEmail } = useEmailAuth();
+  const { onClickMoveToPage } = useMoveToPage();
+  const { data: fetchLoginUserData } = UseQueryFetchLoginUser();
   const [disabledState, setDisabledState] = useState(false);
   const { sendEmail, onClickCheckToken, isOpenRandomCode, clearTimer } =
     useEmailAuth();
@@ -27,20 +31,26 @@ export const EmailAuthTemplates = () => {
   });
 
   const onClickSendEmail = (data: IEmail) => {
-    sendEmail(data)();
-    setDisabledState(true);
-    let min = 2;
-    let sec = 60;
-    const timeInterval = setInterval(() => {
-      sec = sec - 1;
-      if (sec === -1) {
-        min = min - 1;
-        sec = 59;
-      }
-      setTimer(`${min}:${String(sec).padStart(2, "0")}`);
-    }, 1000);
+    if (data.email === fetchLoginUserData?.fetchLoginUser.email) {
+      sendEmail(data)();
+      setDisabledState(true);
+      let min = 2;
+      let sec = 60;
+      const timeInterval = setInterval(() => {
+        sec = sec - 1;
+        if (sec === -1) {
+          min = min - 1;
+          sec = 59;
+        }
+        setTimer(`${min}:${String(sec).padStart(2, "0")}`);
+      }, 1000);
 
-    setTimeInterval(timeInterval);
+      setTimeInterval(timeInterval);
+    } else {
+      Modal.error({
+        content: "로그인 이메일과 다릅니다.",
+      });
+    }
   };
 
   if (clearTimer) {
@@ -93,7 +103,9 @@ export const EmailAuthTemplates = () => {
             <div></div>
           )}
         </S.EmailAuthMiddle>
-        <S.EmailAuthBottom>취소</S.EmailAuthBottom>
+        <S.EmailAuthBottom onClick={onClickMoveToPage("/home")}>
+          취소
+        </S.EmailAuthBottom>
       </S.EmailAuthWrapper>
     </Background>
   );

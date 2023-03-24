@@ -3,11 +3,13 @@ import type { DatePickerProps } from "antd";
 
 interface IProps {
   setReservationDate: any;
+  setReservationTime: any;
 }
 
 export const ReservationDate = (props: IProps) => {
   const onChange: DatePickerProps["onChange"] = (data, dateString) => {
     props.setReservationDate(dateString);
+    props.setReservationTime("");
   };
 
   return (

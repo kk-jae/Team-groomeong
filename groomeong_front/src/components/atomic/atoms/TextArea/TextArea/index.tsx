@@ -1,5 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 import { FormProvider, useForm } from "react-hook-form";
-import { IMutationCreateReviewArgs } from "../../../../../commons/types/generated/types";
+import {
+  ICreateReviewInput,
+  IMutationCreateReviewArgs,
+} from "../../../../../commons/types/generated/types";
 import { Buttons } from "../../Buttons";
 import { StarRate } from "../../StarRate";
 import * as S from "./index.style";
@@ -18,7 +22,7 @@ interface ITextAreaProps {
   buttonView: boolean;
   placeholder?: string;
   commentRating?: number;
-  onClick: (data: IMutationCreateReviewArgs) => Promise<void>;
+  onClick: (data: ICreateReviewInput) => Promise<void>;
 }
 
 export const TextArea = (props: ITextAreaProps) => {

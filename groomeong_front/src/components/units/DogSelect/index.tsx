@@ -14,7 +14,6 @@ export const DogSelect = (props: any) => {
 
   const onChange = (value: string, id: IFetchUserDogs) => {
     props.setDogId(id.id);
-    // console.log(id.id);
   };
 
   return (
