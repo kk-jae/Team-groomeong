@@ -5,8 +5,9 @@ import * as S from "./index.styles";
 import { TopBarMap } from "../../atoms/TopBar/TopBarMap";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/Store";
-import { HashLoader } from "react-spinners";
+import { PuffLoader } from "react-spinners";
 import * as GS from "../../../../../theme/global";
+import { Block } from "@mui/icons-material";
 
 declare const window: typeof globalThis & {
   google: any;
@@ -201,7 +202,11 @@ export const MapTemplate = () => {
         </S.Header>
         <MapSideList />
         <S.MainMap id="map">
-          <HashLoader color={`${GS.base.primary}`} />
+          <PuffLoader
+            color="#0800ff"
+            // style={{ zIndex: "2", display: "block" }}
+            size={70}
+          />
         </S.MainMap>
       </S.MapBoxStyles>
     </>

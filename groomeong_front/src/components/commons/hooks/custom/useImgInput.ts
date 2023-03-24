@@ -26,11 +26,8 @@ const useImgInput = () => {
           file,
         },
       });
-
       setValue("image", data?.uploadDogImage);
     }
-
-    setValue("picture", file);
   };
 
   return {

@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
+import { ShopDetail } from "../../organisms/ShopDetail";
 import { ShopDetailModal } from "../../organisms/ShopDetail/index.style";
 import { StarRate } from "../StarRate";
 import * as S from "./index.styled";
@@ -14,7 +16,10 @@ interface IProps {
 }
 
 export const ListBox = (props: IProps) => {
-  const { onClickMoveToPage } = useMoveToPage();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen((prev) => !prev);
+  };
   return (
     <S.ListBoxWrapper tabIndex={0}>
       <S.ListBoxTop>
@@ -33,9 +38,10 @@ export const ListBox = (props: IProps) => {
       </S.ShopHours>
       <S.ListBoxBottom>
         <S.ShopAddress>{props.address}</S.ShopAddress>
-        <S.ShopMoved onClick={onClickMoveToPage(`/map/${props.id}`)}>
+        <S.ShopMoved id={props.id} onClick={showModal}>
           샵 보러가기
         </S.ShopMoved>
+        {isModalOpen && <ShopDetail showModal={showModal} id={props.id} />}
       </S.ListBoxBottom>
     </S.ListBoxWrapper>
   );

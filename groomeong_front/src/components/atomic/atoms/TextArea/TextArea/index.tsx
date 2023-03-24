@@ -12,6 +12,7 @@ import { withPromiseVoidFunc } from "../../../../../commons/Utils/withFunc";
 import { useState } from "react";
 import { UseQueryFetchShop } from "../../../../commons/hooks/query/UseQueryFetchShop";
 import { UseQueryFetchReview } from "../../../../commons/hooks/query/UseQueryFetchReview";
+import { UseQueryFetchLoginUser } from "../../../../commons/hooks/query/UseQueryFetchLoginUser";
 
 interface ITextAreaProps {
   contents?: string;
@@ -35,6 +36,8 @@ export const TextArea = (props: ITextAreaProps) => {
     errors,
   } = useCreateReview();
 
+  const { data } = UseQueryFetchLoginUser();
+
   return (
     <>
       <S.TextArea_Wrapper>
@@ -48,13 +51,16 @@ export const TextArea = (props: ITextAreaProps) => {
           <S.TextArea_TopBox>
             <>
               <S.TextArea_TopBox_Profile>
-                {props.iconView ? (
+                {data?.fetchLoginUser.image ? (
                   <S.TextArea_Profile_Icon iconView={props.iconView}>
-                    <img src={"image/example_dog.png"} alt="" />
+                    <img
+                      src={`https://storage.googleapis.com/${data?.fetchLoginUser.image}`}
+                      alt=""
+                    />
                   </S.TextArea_Profile_Icon>
                 ) : (
                   <S.TextArea_Profile_Icon iconView={props.iconView}>
-                    <img src={"image/icon_dog_profile.png"} alt="" />
+                    <img src={"/image/example_dog.png/"} alt="" />
                   </S.TextArea_Profile_Icon>
                 )}
                 <span>{props.name}</span>
