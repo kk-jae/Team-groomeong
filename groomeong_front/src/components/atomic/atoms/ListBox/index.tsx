@@ -7,31 +7,33 @@ import * as S from "./index.styled";
 
 interface IProps {
   name: string;
-  openHour: string;
-  closeHour: string;
-  address: string;
-  shopImg?: string;
+  openHour?: string;
+  closeHour?: string;
+  address?: string;
+  shopImg?: object | string;
   star?: number;
   id: string;
 }
 
 export const ListBox = (props: IProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const showModal = () => {
     setIsModalOpen((prev) => !prev);
   };
+
   return (
     <S.ListBoxWrapper tabIndex={0}>
       <S.ListBoxTop>
         <S.ShopName>{props.name}</S.ShopName>
         <S.ShopImg
           src={
-            props.shopImg !== undefined
+            !props.shopImg
               ? `https://storage.googleapis.com/${props.shopImg}`
               : "/image/icon-store.svg"
           }
         />
-        <StarRate state={true} star={props.star} />
+        <StarRate star={props.star} />
       </S.ListBoxTop>
       <S.ShopHours>
         {props.openHour} ~ {props.closeHour}

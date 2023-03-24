@@ -27,10 +27,8 @@ export const useReservationDog = () => {
             },
           },
         });
-        Modal.success({
-          content: "예약을 성공하였습니다.",
-        });
-        router.push("/mypage");
+        alert("예약 성공");
+        await router.push("/reservation");
       } catch (error) {
         if (error instanceof Error) {
           Modal.error({
