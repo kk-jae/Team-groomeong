@@ -38,12 +38,10 @@ export const MyPageEditBodyTemplate = (props: IMyPageBodyProps) => {
     try {
       await updateUser({
         variables: {
-          userId: String(data.email),
+          userId: String(userData?.fetchLoginUser.id),
           updateUserInput: {
-            // name: "권현재바보",
-            // phone: "01023121232",
-            // email: "rnjsguswo88@naver.com",
-            // password: "123",
+            name: data.name,
+            phone: data.phone,
           },
         },
       });

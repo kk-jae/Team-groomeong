@@ -221,6 +221,8 @@ export type IMutationUploadShopImagesArgs = {
 
 export type IQuery = {
   __typename?: 'Query';
+  /**  Return: 중복 계정 확인하기  */
+  duplicateEmail: Scalars['Boolean'];
   /**  Return: id로 조회된 강아지 데이터  */
   fetchDog: IDog;
   /**  Return : 로그인한 유저, 유저 댕댕이 프로필 */
@@ -251,6 +253,11 @@ export type IQuery = {
 };
 
 
+export type IQueryDuplicateEmailArgs = {
+  email: Scalars['String'];
+};
+
+
 export type IQueryFetchDogArgs = {
   id: Scalars['String'];
 };
@@ -267,6 +274,7 @@ export type IQueryFetchReviewArgs = {
 
 
 export type IQueryFetchReviewsByShopIdArgs = {
+  page?: InputMaybe<Scalars['Float']>;
   shopId: Scalars['String'];
 };
 
