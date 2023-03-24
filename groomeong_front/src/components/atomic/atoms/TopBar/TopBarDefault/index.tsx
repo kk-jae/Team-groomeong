@@ -1,14 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 import { Buttons } from "../../Buttons";
 import * as S from "./index.style";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
 import { useLogout } from "../../../../commons/hooks/custom/useLogout";
+import { UseQueryFetchLoginUser } from "../../../../commons/hooks/query/UseQueryFetchLoginUser";
 
 interface ITopBarDefaultProps {
   loggedIn: boolean;
 }
 
 export const TopBarDefault = (props: ITopBarDefaultProps) => {
+  const { data } = UseQueryFetchLoginUser();
   const { onClickMoveToPage } = useMoveToPage();
   const { onClickLogOut } = useLogout();
 
@@ -42,7 +45,12 @@ export const TopBarDefault = (props: ITopBarDefaultProps) => {
                 onClick={onClickLogOut}
               />
               <S.TopBarProfile onClick={onClickMoveToPage("/mypage")}>
-                <img src={"image/img-dog-detail.png"} alt="" />
+                <img
+                  src={
+                    data?.fetchLoginUser.image || "/image/img-dog-detail.png"
+                  }
+                  alt=""
+                />
               </S.TopBarProfile>
             </>
           ) : (

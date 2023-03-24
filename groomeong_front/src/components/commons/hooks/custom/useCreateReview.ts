@@ -3,14 +3,11 @@ import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import {
-  ICreateReviewInput,
-  IMutationCreateReviewArgs,
-} from "../../../../commons/types/generated/types";
+import { ICreateReviewInput } from "../../../../commons/types/generated/types";
 import { schemaReveiw } from "../../validation/createReveiw.validation";
 import { UseMutationCreateReview } from "../mutation/UseMutationCreateReview";
-import { UseQueryFetchLoginUser } from "../query/UseQueryFetchLoginUser";
 import { FETCH_REVIEWS_BY_SHOP_ID } from "../query/UseQueryFetchReviewsByShopId";
+import { UseQueryFetchShop } from "../query/UseQueryFetchShop";
 
 export const useCreateReview = () => {
   const {
@@ -30,7 +27,7 @@ export const useCreateReview = () => {
     setValue("star", star);
   };
   const [createReview] = UseMutationCreateReview();
-  const { data: loginUser } = UseQueryFetchLoginUser();
+  const { data: reservation } = UseQueryFetchShop();
   const router = useRouter();
   const onClickCreateReview = async (
     data: ICreateReviewInput
@@ -43,7 +40,7 @@ export const useCreateReview = () => {
             contents: String(data.contents),
             star,
             shopId: String(router.query.shopId),
-            userId: String(loginUser?.fetchLoginUser.email),
+            reservationId: String(reservation?.fetchShop.id),
           },
         },
         refetchQueries: [
