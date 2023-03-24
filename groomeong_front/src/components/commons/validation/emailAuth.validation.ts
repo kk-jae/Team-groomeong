@@ -6,6 +6,6 @@ const emailValidation =
 export const schemaEmail = yup.object({
   email: yup
     .string()
-    .matches(emailValidation, "올바른 이메일을 입력해주세요.")
+    .email("이메일 형태로 입력해주세요.")
     .required("이메일을 입력해주세요"),
 });
