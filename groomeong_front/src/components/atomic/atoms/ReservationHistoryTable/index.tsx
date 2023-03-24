@@ -1,8 +1,8 @@
 import { IReservation } from "../../../../commons/types/generated/types";
-import { UseQueryFetchReservationByUserId } from "../../../commons/hooks/query/UseQueryFetchReservationByUserId";
 import { getDate } from "../../../commons/libraries/GetDate";
 import { isSameDate } from "../../../commons/libraries/GetTimeStamp";
 import { v4 as uuidv4 } from "uuid";
+import { UseQueryFetchReservationByUser } from "../../../commons/hooks/query/UseQueryFetchReservationByUserId";
 
 interface IReservationHistoryTableProps {
   shopName?: string;
@@ -13,13 +13,13 @@ interface IReservationHistoryTableProps {
 export const ReservationHistoryTable = (
   props: IReservationHistoryTableProps
 ) => {
-  const { data } = UseQueryFetchReservationByUserId();
+  const { data } = UseQueryFetchReservationByUser();
   const d = new Date();
 
   return (
     <>
       {data ? (
-        data.fetchReservationsByUserId.map((el: IReservation) => (
+        data?.fetchReservationsByUser.map((el: IReservation) => (
           <>
             {!isSameDate ? (
               <></>

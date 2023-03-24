@@ -35,7 +35,6 @@ export const useDogRegister = () => {
     };
 
     if (!createDogInput.breed) createDogInput.breed = "LARGE";
-    console.log(createDogInput);
     try {
       const result = await createDog({
         variables: {
