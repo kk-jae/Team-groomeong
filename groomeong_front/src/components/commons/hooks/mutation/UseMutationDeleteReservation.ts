@@ -10,13 +10,11 @@ const DELETE_RESERVATION = gql`
   }
 `;
 
-export const UseMutationDeleteReservation = (
-  reservationId: IMutationDeleteReservationArgs
-) => {
+export const UseMutationDeleteReservation = () => {
   const [deleteReservation] = useMutation<
     Pick<IMutation, "deleteReservation">,
     IMutationDeleteReservationArgs
-  >(DELETE_RESERVATION, { variables: reservationId });
+  >(DELETE_RESERVATION);
 
   return [deleteReservation];
 };
