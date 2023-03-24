@@ -21,6 +21,15 @@ export const FETCH_SHOPS = gql`
         isThumbnail
       }
     }
+    reservation {
+      id
+    }
+    review {
+      id
+      contents
+      createAt
+      star
+    }
   }
 `;
 
@@ -28,7 +37,12 @@ export const UseQueryFetchShops = () => {
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchShops">,
     IQueryFetchShopsArgs
-  >(FETCH_SHOPS);
+  >(
+    FETCH_SHOPS
+    // ,{
+    //   variables:{search:}
+    // }
+  );
   return {
     data,
     refetch,

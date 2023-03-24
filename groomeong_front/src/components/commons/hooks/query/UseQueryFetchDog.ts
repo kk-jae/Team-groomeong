@@ -13,6 +13,7 @@ export const FETCH_DOG = gql`
       weight
       breed
       image
+      specifics
     }
   }
 `;

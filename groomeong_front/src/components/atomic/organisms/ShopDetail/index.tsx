@@ -33,7 +33,7 @@ export const ShopDetail = (props: IShopDetailProps) => {
           <S.ShopImage
             src={
               data?.fetchShop?.image[0]
-                ? `https://storage.googleapis.com/${data?.fetchShop?.image[0]}`
+                ? `https://storage.googleapis.com/${data?.fetchShop?.image[0].imageUrl}`
                 : "/image/img_shop_default.svg"
             }
           ></S.ShopImage>
