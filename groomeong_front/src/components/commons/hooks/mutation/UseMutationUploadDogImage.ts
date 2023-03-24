@@ -5,7 +5,7 @@ import {
 } from "../../../../commons/types/generated/types";
 
 const UPLOAD_DOG_IMAGE = gql`
-  mutation uploadDogImage($file: Upload!, $dogId: String!) {
+  mutation uploadDogImage($file: Upload!) {
     uploadDogImage(file: $file)
   }
 `;

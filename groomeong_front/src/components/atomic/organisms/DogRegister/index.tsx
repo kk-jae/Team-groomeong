@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import { useDogRegister } from "../../../commons/hooks/custom/useDogRegister";
 import { SizeBadge } from "../../atoms/Badge/SizeBadge";
 import { Buttons } from "../../atoms/Buttons";
 import ContentInfo from "../../atoms/ContentInfo";
 import ImgInput from "../../atoms/Input/ImgInput";
-import { ImgDiv } from "../../atoms/Input/ImgInput/index.styled";
 import { InputMiddle } from "../../atoms/Input/Middle";
 import PageHeader from "../../atoms/PageHeader";
 import InfoTextArea from "../../atoms/TextArea/InfoTextArea";
-import Background from "../Background";
 import {
   DogRegisterForm,
   DogRegisterWrapper,
@@ -30,8 +28,8 @@ const DogRegister = () => {
             onSubmit={method.handleSubmit(
               withPromiseVoidFunc(onClickRegisterDog)
             )}
+            // onSubmit={method.handleSubmit((data) => console.log(data))}
           >
-            {/* <DogRegisterForm onSubmit={method.handleSubmit((data) => console.log(data))}> */}
             <InputMiddle
               label="댕댕이 이름"
               name="name"
@@ -59,7 +57,7 @@ const DogRegister = () => {
               name="significant"
               placeholder="특이사항을 입력해 주세요."
             />
-            <ContentInfo label="사진" component={<ImgInput name="picture" />} />
+            <ContentInfo label="사진" component={<ImgInput name="image" />} />
             <DogRegisterWrapper>
               <DogRegisterFooterSpan>
                 <Buttons
