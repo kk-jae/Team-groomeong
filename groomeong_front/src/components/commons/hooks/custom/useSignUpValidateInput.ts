@@ -18,7 +18,7 @@ export const useSignUpValidateInput = (
   const validationInput = useRef<HTMLInputElement>(null);
   const [getTokenEmail] = UseMutationGetTokenEmail();
   const [checkValidToken] = UseMutationCheckValidToken();
-  const { getValues } = useFormContext();
+  const { getValues, watch } = useFormContext();
   const [validation, setValidation] = useState<IValidation>({
     authNumber: "",
     emailToken: "",
@@ -26,7 +26,7 @@ export const useSignUpValidateInput = (
     valid: false,
     error: "",
   });
-
+  watch("email");
   const email = getValues("email");
 
   // mutation 으로 검증 되면.. 밑의 if 조건문 작동
