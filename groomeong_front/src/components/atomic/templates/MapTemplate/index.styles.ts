@@ -10,6 +10,7 @@ export const MainMap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
 `;
 
 export const Header = styled.div`

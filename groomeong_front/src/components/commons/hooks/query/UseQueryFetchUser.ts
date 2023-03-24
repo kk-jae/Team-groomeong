@@ -12,6 +12,13 @@ export const FETCH_USER = gql`
       email
       phone
       image
+      dogs {
+        id
+        name
+        age
+        weight
+        breed
+      }
     }
   }
 `;

@@ -47,7 +47,9 @@ export const TopBarDefault = (props: ITopBarDefaultProps) => {
               <S.TopBarProfile onClick={onClickMoveToPage("/mypage")}>
                 <img
                   src={
-                    data?.fetchLoginUser.image || "/image/img-dog-detail.png"
+                    data?.fetchLoginUser.image
+                      ? `https://storage.googleapis.com/${data?.fetchLoginUser.image}`
+                      : "/image/img-dog-detail.png"
                   }
                   alt=""
                 />

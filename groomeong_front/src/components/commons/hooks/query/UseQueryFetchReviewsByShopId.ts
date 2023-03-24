@@ -8,8 +8,8 @@ import {
 // 각 샵에 해당하는 댓글...
 
 export const FETCH_REVIEWS_BY_SHOP_ID = gql`
-  query fetchReviewsByShopId($shopId: String!) {
-    fetchReviewsByShopId(shopId: $shopId) {
+  query fetchReviewsByShopId($page: Float = 1, $shopId: String!) {
+    fetchReviewsByShopId(page: $page, shopId: $shopId) {
       id
       contents
       createAt

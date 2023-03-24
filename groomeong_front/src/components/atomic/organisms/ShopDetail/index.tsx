@@ -1,64 +1,45 @@
 import { CommentsHeader } from "../../atoms/Comments/Header";
 import { TextArea } from "../../atoms/TextArea/TextArea";
-import React, { useState } from "react";
 import * as S from "./index.style";
 import { Comment } from "../../atoms/Comment";
 import * as GS from "../../../../../theme/global";
-import { Buttons } from "../../atoms/Buttons";
 import { UseQueryFetchShop } from "../../../commons/hooks/query/UseQueryFetchShop";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/Store";
 import { useCreateReview } from "../../../commons/hooks/custom/useCreateReview";
-import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import { UseQueryFetchReviewsByShopId } from "../../../commons/hooks/query/UseQueryFetchReviewsByShopId";
+import { MouseEvent } from "react";
 
 interface IShopDetailProps {
   isLoggedIn?: string;
-
-  //   icon?: string;
-  //   date?: string;
-  //   time?: string;
-  //   address?: string;
-  //   phone?: string;
-  //   shoppingLabel?: string;
-  //   shopRating?: number;
-
-  //   commentWriteContents?: string;
-  //   commentWriteDate?: string;
-  //   commentWriteName?: string;
-  //   commentWriteIconView?: boolean;
-  //   buttonView?: boolean;
-  //   commentWritePlaceholder?: string;
-  //   commentWriteRating?: number;
-
-  //   commentListRating?: number;
-  //   commentListContents?: string;
-  //   commentListDate?: string;
-  //   commentListName?: string;
-  //   commentListStarRate?: number;
-  //   commentListStarState?: boolean;
+  // isModalOpen: boolean;
+  showModal: (e: MouseEvent<HTMLElement>) => void;
+  id: string;
 }
 
 export const ShopDetail = (props: IShopDetailProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [accessToken] = useRecoilState(accessTokenState);
-  const { data } = UseQueryFetchShop();
+  const { data } = UseQueryFetchShop(props.id);
   const { data: review } = UseQueryFetchReviewsByShopId();
   const { onClickCreateReview } = useCreateReview();
-  const showModal = () => {
-    setIsModalOpen((prev) => !prev);
-  };
 
   return (
     <>
-      <Buttons onClick={showModal} label="샵 정보보기"></Buttons>
       <S.ShopDetailModal
-        open={isModalOpen}
-        onCancel={showModal}
+        open={true}
+        onCancel={props.showModal}
         maskStyle={{ background: GS.blue[900], opacity: 0.8 }}
       >
         <S.ShopDetailWrapper>
-          <S.ShopImage src="image/example-shop.jpeg"></S.ShopImage>
+          <S.ShopImage
+            src={
+              data?.fetchShop?.image[0]
+                ? data?.fetchShop?.image.map(
+                    (el) => `https://storage.googleapis.com/${el.imageUrl}`
+                  )
+                : "/image/img_shop_default.svg/"
+            }
+          ></S.ShopImage>
           <CommentsHeader
             star={data?.fetchShop.averageStar}
             date={"월, 화, 수, 목, 금, 토, 일"}

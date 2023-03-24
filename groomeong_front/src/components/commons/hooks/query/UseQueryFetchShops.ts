@@ -12,6 +12,9 @@ export const FETCH_SHOPS = gql`
       openHour
       closeHour
       address
+      lat
+      lng
+      averageStar
       image {
         id
         imageUrl

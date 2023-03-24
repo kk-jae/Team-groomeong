@@ -41,7 +41,11 @@ export const TopBarMap = (props: ITopBarMapProps) => {
               ></Buttons>
               <S.TopBarProfile onClick={onClickMoveToPage("/mypage")}>
                 <img
-                  src={"image/img-dog-detail.png" ?? data?.fetchLoginUser.image}
+                  src={
+                    data?.fetchLoginUser.image
+                      ? `https://storage.googleapis.com/${data?.fetchLoginUser.image}`
+                      : "/image/img-dog-detail.png"
+                  }
                   alt=""
                 />
               </S.TopBarProfile>
