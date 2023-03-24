@@ -5,12 +5,11 @@ import { MyPageBody } from "./MyPageBody";
 import { DogsList } from "../../organisms/ListTable/DogsList";
 import { Buttons } from "../../atoms/Buttons";
 import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
-import { UseQueryFetchUserDogs } from "../../../commons/hooks/query/UseQueryFetchUserDogs";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 
 export const MyPageTemplate = () => {
   const { data } = UseQueryFetchLoginUser();
-  const { data: dogData } = UseQueryFetchUserDogs();
+
   const { onClickMoveToPage } = useMoveToPage();
 
   return (
@@ -28,13 +27,7 @@ export const MyPageTemplate = () => {
               phone={data?.fetchLoginUser.phone ?? ""}
               image={data?.fetchLoginUser.image ?? "image/img-dog-detail.png"}
             ></MyPageBody>
-            <DogsList
-            //이후 도그 패치되면 수정해야 함
-            // dogName={dogData?.fetchUserDogs}
-            // dogAge={dogData?.fetchUserDogs}
-            // dogWeight={dogData?.fetchUserDogs}
-            // dogType={dogData?.fetchUserDogs}
-            ></DogsList>
+            <DogsList></DogsList>
             <p>
               <Buttons
                 size="large"

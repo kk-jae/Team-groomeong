@@ -54,7 +54,7 @@ export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
   });
 
   const uploadLink = createUploadLink({
-    uri: "http://www.groomeong.shop:3000/graphql",
+    uri: "http://34.64.53.80:3000/graphql",
     headers: { Authorization: `Bearer ${accessToken}` },
     // credentials: "include",
   });

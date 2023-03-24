@@ -2,13 +2,7 @@ import * as S from "./index.style";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Buttons } from "../../../atoms/Buttons";
 import { useRouter } from "next/router";
-
-interface IListTableProps {
-  dogName?: string;
-  dogAge?: number;
-  dogWeight?: number;
-  dogType?: "SMALL" | "MEDIUM" | "LARGE" | "SPECIAL";
-}
+import { UseQueryFetchUserDogs } from "../../../../commons/hooks/query/UseQueryFetchUserDogs";
 
 interface IDogType {
   SMALL: string;
@@ -17,9 +11,9 @@ interface IDogType {
   SPECIAL: string;
 }
 
-export const DogsList = (props: IListTableProps) => {
+export const DogsList = () => {
   const router = useRouter();
-
+  const { data: dogData } = UseQueryFetchUserDogs();
   const dogType: IDogType = {
     SMALL: "소형",
     MEDIUM: "중형",
@@ -52,14 +46,18 @@ export const DogsList = (props: IListTableProps) => {
                 <th>견종</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th>{props.dogName}</th>
-                <th>{props.dogAge}</th>
-                <th>{props.dogWeight}</th>
-                <th>{props.dogType ? dogType[props.dogType] : null}</th>
-              </tr>
-            </tbody>
+            {dogData?.fetchUserDogs.map((el) => (
+              <>
+                <tbody>
+                  <tr>
+                    <th>{el.name}</th>
+                    <th>{el.age}살</th>
+                    <th>{el.weight}kg</th>
+                    <th>{dogType[el.breed]}</th>
+                  </tr>
+                </tbody>
+              </>
+            ))}
           </table>
         </S.Table>
       </S.DogsListWrapper>

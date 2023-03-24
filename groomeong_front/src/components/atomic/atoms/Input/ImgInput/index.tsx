@@ -15,9 +15,11 @@ const ImgInput = (props: IImgInputProps) => {
     onClickImgInput,
     onChangeInput,
   } = useImgInput();
+
   const { ref, ...rest } = register(props.name, {
     onChange: onChangeInput,
   });
+
   return (
     <ImgInputWrapper>
       <Input
