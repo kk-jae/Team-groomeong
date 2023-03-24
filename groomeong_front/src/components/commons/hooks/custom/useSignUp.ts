@@ -1,10 +1,11 @@
 import { Modal } from "antd";
+import { useRouter } from "next/router";
 import { IMutationCreateUserArgs } from "../../../../commons/types/generated/types";
 import { UseMutationCreateUser } from "../mutation/UseMutationCreateUser";
 
-export const useSignUp = ()=> {
+export const useSignUp = () => {
   const [createUser] = UseMutationCreateUser();
-
+  const router = useRouter();
   const onClickSignUp = async (
     data: IMutationCreateUserArgs
   ): Promise<void> => {
@@ -19,6 +20,7 @@ export const useSignUp = ()=> {
       });
       console.log(userData);
       // 회원가입 성공 Modal
+      void router.push(`/login`);
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
