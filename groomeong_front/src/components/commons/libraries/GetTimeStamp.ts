@@ -5,6 +5,6 @@ export const isSameDate = (date: Date) => {
   return (
     now.getFullYear() >= d.getFullYear() &&
     now.getMonth() >= d.getMonth() &&
-    now.getDate() >= d.getDate()
+    now.getDate() > d.getDate()
   );
 };
