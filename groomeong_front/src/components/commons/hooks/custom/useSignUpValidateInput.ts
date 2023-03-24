@@ -13,7 +13,6 @@ interface IValidation {
 
 export const useSignUpValidateInput = (
   setValid: Dispatch<SetStateAction<boolean>>
-  
 ) => {
   const { clearIntervalId, setIntervalHooks, time } = useSetAuthInterval();
   const validationInput = useRef<HTMLInputElement>(null);
@@ -73,7 +72,7 @@ export const useSignUpValidateInput = (
           token: validation.emailToken,
         },
       });
-      console.log(data)
+      console.log(data);
       setValid(true);
       setValidation((prev: IValidation) => ({
         ...prev,
@@ -87,6 +86,8 @@ export const useSignUpValidateInput = (
         valid: false,
         error: "인증번호가 다릅니다.",
       }));
+      setValid(false);
+      clearInterval(clearIntervalId as NodeJS.Timer);
     }
   };
 
