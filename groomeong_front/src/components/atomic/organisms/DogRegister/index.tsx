@@ -28,7 +28,6 @@ const DogRegister = () => {
             onSubmit={method.handleSubmit(
               withPromiseVoidFunc(onClickRegisterDog)
             )}
-            // onSubmit={method.handleSubmit((data) => console.log(data))}
           >
             <InputMiddle
               label="댕댕이 이름"
@@ -54,7 +53,7 @@ const DogRegister = () => {
             </Div>
             <InfoTextArea
               title="특이사항"
-              name="significant"
+              name="specifics"
               placeholder="특이사항을 입력해 주세요."
             />
             <ContentInfo label="사진" component={<ImgInput name="image" />} />

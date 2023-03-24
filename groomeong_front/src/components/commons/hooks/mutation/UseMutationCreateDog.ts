@@ -8,6 +8,7 @@ const CREATE_DOG = gql`
   mutation createDog($createDogInput: CreateDogInput!) {
     createDog(createDogInput: $createDogInput) {
       id
+      name
     }
   }
 `;
