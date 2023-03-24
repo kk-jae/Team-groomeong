@@ -4,8 +4,7 @@ import { Global } from "@emotion/react";
 import { GlobalStyle } from "../src/commons/GlobalStyles";
 import { RecoilRoot } from "recoil";
 import ApolloSetting from "../src/components/commons/apollo";
-import { ShopDetail } from "../src/components/atomic/organisms/ShopDetail";
-import DogDetailTemplate from "../src/components/atomic/templates/DogDetail";
+import MapTest from "../src/components/atomic/templates/MapTest";
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -14,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         <>
           <Global styles={GlobalStyle}></Global>
           {/* <Layout> */}
+          {/* <MapTest /> */}
           <Component {...pageProps} />
           {/* </Layout> */}
         </>

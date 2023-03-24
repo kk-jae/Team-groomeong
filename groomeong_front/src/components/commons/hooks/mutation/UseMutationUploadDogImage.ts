@@ -6,7 +6,7 @@ import {
 
 const UPLOAD_DOG_IMAGE = gql`
   mutation uploadDogImage($file: Upload!, $dogId: String!) {
-    uploadDogImage(file: $file, dogId: $dogId)
+    uploadDogImage(file: $file)
   }
 `;
 
