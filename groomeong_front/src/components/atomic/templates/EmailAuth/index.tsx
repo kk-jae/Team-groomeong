@@ -44,7 +44,6 @@ export const EmailAuthTemplates = () => {
         }
         setTimer(`${min}:${String(sec).padStart(2, "0")}`);
       }, 1000);
-
       setTimeInterval(timeInterval);
     } else {
       Modal.error({
@@ -103,7 +102,7 @@ export const EmailAuthTemplates = () => {
             <div></div>
           )}
         </S.EmailAuthMiddle>
-        <S.EmailAuthBottom onClick={onClickMoveToPage("/home")}>
+        <S.EmailAuthBottom onClick={onClickMoveToPage("/mypage/edit")}>
           취소
         </S.EmailAuthBottom>
       </S.EmailAuthWrapper>
