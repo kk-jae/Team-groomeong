@@ -8,14 +8,13 @@ import { IReservation } from "../../../../commons/types/generated/types";
 import { isSameDate } from "../../../commons/libraries/GetTimeStamp";
 import { UseMutationDeleteReservation } from "../../../commons/hooks/mutation/UseMutationDeleteReservation";
 import { v4 as uuidv4 } from "uuid";
-import { IButtonProps } from "../ButtonCommons/index.styles";
-import { HtmlHTMLAttributes } from "react";
+import { MouseEvent } from "react";
 
 export const ReservationTable = () => {
   const { data } = UseQueryFetchReservationByUserId();
   const [deleteReservation] = UseMutationDeleteReservation();
 
-  const onClickDelete = async (event: string) => {
+  const onClickDelete = async (event: MouseEvent<HTMLButtonElement>) => {
     try {
       await deleteReservation({
         variables: { reservationId: event.currentTarget.id },
