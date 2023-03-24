@@ -7,6 +7,8 @@ import {
   IMutationUpdateUserArgs,
   IUpdateUserInput,
 } from "../../../../../commons/types/generated/types";
+import { withPromiseVoidFunc } from "../../../../../commons/Utils/withFunc";
+import { useEditMyPage } from "../../../../commons/hooks/custom/useEditMyPage";
 import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
 import { UseMutationUpdateUser } from "../../../../commons/hooks/mutation/UseMutationUpdateUser";
 import { UseQueryFetchLoginUser } from "../../../../commons/hooks/query/UseQueryFetchLoginUser";
@@ -21,7 +23,7 @@ interface IMyPageBodyProps {
   nameDefaultValue?: string;
   emailDefaultValue?: string;
   phoneDefaultValue?: string;
-  name: string;
+  name?: string;
 }
 
 export const MyPageEditBodyTemplate = (props: IMyPageBodyProps) => {
@@ -31,32 +33,14 @@ export const MyPageEditBodyTemplate = (props: IMyPageBodyProps) => {
   });
   const { data: userData } = UseQueryFetchLoginUser();
   const { onClickMoveToPage } = useMoveToPage();
-  const [updateUser] = UseMutationUpdateUser();
-  const router = useRouter();
-
-  const onClickEditBtn = async (data: IUpdateUserInput): Promise<void> => {
-    try {
-      await updateUser({
-        variables: {
-          userId: String(userData?.fetchLoginUser.id),
-          updateUserInput: {
-            name: data.name,
-            phone: data.phone,
-          },
-        },
-      });
-      router.push("/mypage");
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-      }
-    }
-  };
+  const { onClickEditBtn } = useEditMyPage();
 
   return (
     <>
       <FormProvider {...method}>
-        <form onSubmit={method.handleSubmit((data) => console.log(data))}>
+        <form
+          onSubmit={method.handleSubmit(withPromiseVoidFunc(onClickEditBtn))}
+        >
           <InputMiddle
             label="닉네임"
             defaultValue={userData?.fetchLoginUser?.name}

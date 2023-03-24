@@ -1,5 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
-import { IQuery } from "../../../../commons/types/generated/types";
+import {
+  IQuery,
+  IQueryFetchUserArgs,
+} from "../../../../commons/types/generated/types";
 
 export const FETCH_LOGIN_USER = gql`
   query {

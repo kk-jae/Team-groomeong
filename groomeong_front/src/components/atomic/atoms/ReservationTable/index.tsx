@@ -1,7 +1,3 @@
-import {
-  FETCH_RESERVATION_BY_USER_ID,
-  UseQueryFetchReservationByUserId,
-} from "../../../commons/hooks/query/UseQueryFetchReservationByUserId";
 import { getDate } from "../../../commons/libraries/GetDate";
 import { Buttons } from "../Buttons";
 import { IReservation } from "../../../../commons/types/generated/types";
@@ -9,16 +5,20 @@ import { isSameDate } from "../../../commons/libraries/GetTimeStamp";
 import { UseMutationDeleteReservation } from "../../../commons/hooks/mutation/UseMutationDeleteReservation";
 import { v4 as uuidv4 } from "uuid";
 import { MouseEvent } from "react";
+import {
+  FETCH_RESERVATION_BY_USER,
+  UseQueryFetchReservationByUser,
+} from "../../../commons/hooks/query/UseQueryFetchReservationByUserId";
 
 export const ReservationTable = () => {
-  const { data } = UseQueryFetchReservationByUserId();
+  const { data } = UseQueryFetchReservationByUser();
   const [deleteReservation] = UseMutationDeleteReservation();
 
   const onClickDelete = async (event: MouseEvent<HTMLButtonElement>) => {
     try {
       await deleteReservation({
         variables: { reservationId: event.currentTarget.id },
-        refetchQueries: [{ query: FETCH_RESERVATION_BY_USER_ID }],
+        refetchQueries: [{ query: FETCH_RESERVATION_BY_USER }],
       });
       alert("예약이 취소되었습니다");
     } catch (error) {
@@ -28,7 +28,7 @@ export const ReservationTable = () => {
 
   return (
     <>
-      {data?.fetchReservationsByUserId.map((el: IReservation) => (
+      {data?.fetchReservationsByUser.map((el: IReservation) => (
         <>
           {!isSameDate(el.date) ? (
             <tbody key={uuidv4()}>

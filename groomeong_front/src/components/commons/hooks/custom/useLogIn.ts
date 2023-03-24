@@ -3,6 +3,7 @@ import { Modal } from "antd";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/Store";
 import { UseMutationLogin } from "../mutation/UseMutationLogin";
+import { useState } from "react";
 
 interface IHomePageLogInData {
   email: string;
@@ -24,7 +25,7 @@ export const useLogInButton = () => {
           password: HomePageLogInData.password,
         },
       });
-      console.log(createLogIn);
+
       const accessToken = createLogIn.data?.login;
       if (accessToken !== undefined) {
         setAccessToken(accessToken);
