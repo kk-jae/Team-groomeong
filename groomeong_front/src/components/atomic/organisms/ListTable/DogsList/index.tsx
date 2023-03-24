@@ -27,7 +27,9 @@ export const DogsList = (props: IListTableProps) => {
     SPECIAL: "특수견",
   };
 
-  const onClickAddDog = () => {};
+  const onClickAddDog = () => {
+    router.push("/mypage/dogRegister");
+  };
 
   return (
     <>

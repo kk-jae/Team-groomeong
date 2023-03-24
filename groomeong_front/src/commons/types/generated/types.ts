@@ -33,9 +33,9 @@ export type ICreateReservationInput = {
 
 export type ICreateReviewInput = {
   contents: Scalars['String'];
+  reservationId: Scalars['String'];
   shopId: Scalars['String'];
   star: Scalars['Float'];
-  userId: Scalars['String'];
 };
 
 export type ICreateShopInput = {
@@ -75,7 +75,7 @@ export type IMutation = {
   createDog: IDog;
   /** Return: 생성된 신규 예약 정보 */
   createReservation: IReservation;
-  /** Return: 신규 생성된 리뷰 데이터 */
+  /** Return: 신규 생성된 리뷰 데이터(로그인 한 유저만 생성 가능. 로그인 시 발행된 accessToken을 Header에 입력해야함) */
   createReview: IReview;
   /** Return : 새로 생성되어 DB에 저장된 신규 가게(Shop) 데이터 */
   createShop: IShop;
@@ -205,7 +205,6 @@ export type IMutationUpdateUserArgs = {
 
 
 export type IMutationUploadDogImageArgs = {
-  dogId: Scalars['String'];
   file: Scalars['Upload'];
 };
 
@@ -224,8 +223,6 @@ export type IQuery = {
   __typename?: 'Query';
   /**  Return: id로 조회된 강아지 데이터  */
   fetchDog: IDog;
-  /** Return : 입력한 shopName과 일치하는 가게 데이터 1개 */
-  fetchFirstShopByName: IShop;
   /**  Return : 로그인한 유저, 유저 댕댕이 프로필 */
   fetchLoginUser: IUser;
   /** Return : 예약 정보(가게, 회원, 강아지 정보 포함) */
@@ -236,14 +233,14 @@ export type IQuery = {
   fetchReview: IReview;
   /** Return: 가게ID 기준으로 모든 리뷰 불러오기 */
   fetchReviewsByShopId: Array<IReview>;
-  /** Return : 입력한 shopId와 일치하는 가게(Shop) 데이터 */
-  fetchShop: IShop;
-  /** Return: 가게이미지ID를 기준으로 1개의 가게이미지 가져오기 */
-  fetchShopImageById: IShopImage;
+  /** Return : 입력한 shopId와 일치하는 가게(Shop) 데이터. 리뷰 작성 가능 여부를 함께 돌려준다. */
+  fetchShop: IReturnShopOutput;
   /** Return: 가게ID를 기준으로 모든 가게이미지 배열 데이터 */
   fetchShopImagesByShopId: Array<IShopImage>;
-  /** Return : DB에 등록된 가게 중 검색값을 포함한 데이터. Null인 경우 모든 가게 */
+  /** Return : DB에 등록된 가게 중 검색값을 포함한 데이터(검색값이 Null인 경우 모든 가게). 이미지는 썸네일만 불러오며, 등록된 이미지가 있더라도 썸네일로 지정한 이미지가 없는 경우 Null(빈 배열) */
   fetchShops: Array<IShop>;
+  /** Return: 가게ID를 기준으로 썸네일 가져오기 */
+  fetchThumbnailById: IShopImage;
   /**  Return:  유저 정보  */
   fetchUser: IUser;
   /**  Return: 유저가 등록한 모든 강아지 데이터  */
@@ -256,11 +253,6 @@ export type IQuery = {
 
 export type IQueryFetchDogArgs = {
   id: Scalars['String'];
-};
-
-
-export type IQueryFetchFirstShopByNameArgs = {
-  shopName: Scalars['String'];
 };
 
 
@@ -284,11 +276,6 @@ export type IQueryFetchShopArgs = {
 };
 
 
-export type IQueryFetchShopImageByIdArgs = {
-  shopImageId: Scalars['String'];
-};
-
-
 export type IQueryFetchShopImagesByShopIdArgs = {
   shopId: Scalars['String'];
 };
@@ -296,6 +283,11 @@ export type IQueryFetchShopImagesByShopIdArgs = {
 
 export type IQueryFetchShopsArgs = {
   search?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQueryFetchThumbnailByIdArgs = {
+  shopId: Scalars['String'];
 };
 
 
@@ -311,6 +303,23 @@ export type IReservation = {
   shop: IShop;
   time: Scalars['String'];
   user: IUser;
+};
+
+export type IReturnShopOutput = {
+  __typename?: 'ReturnShopOutput';
+  address: Scalars['String'];
+  averageStar: Scalars['Float'];
+  closeHour: Scalars['String'];
+  hasReviewAuth: Scalars['Boolean'];
+  id: Scalars['String'];
+  image: Array<IShopImage>;
+  lat: Scalars['String'];
+  lng: Scalars['String'];
+  name: Scalars['String'];
+  openHour: Scalars['String'];
+  phone: Scalars['String'];
+  reservation: Array<IReservation>;
+  review: Array<IReview>;
 };
 
 export type IReview = {
@@ -329,6 +338,8 @@ export type IShop = {
   closeHour: Scalars['String'];
   id: Scalars['String'];
   image: Array<IShopImage>;
+  lat: Scalars['String'];
+  lng: Scalars['String'];
   name: Scalars['String'];
   openHour: Scalars['String'];
   phone: Scalars['String'];
@@ -363,7 +374,6 @@ export type IUpdateShopInput = {
 };
 
 export type IUpdateUserInput = {
-  email?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   password?: InputMaybe<Scalars['String']>;
