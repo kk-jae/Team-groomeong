@@ -8,7 +8,6 @@ export const CommentsFooter = (props: IShopLabelProps) => {
   const { onClickMoveToPage } = useMoveToPage();
   const router = useRouter();
 
-  console.log(router.query.shopId);
   return (
     <>
       <S.CommentsFooterModalStyles>
@@ -32,9 +31,7 @@ export const CommentsFooter = (props: IShopLabelProps) => {
             variation="primary"
             border="none"
             size="medium"
-            onClick={onClickMoveToPage(
-              `/map/${router.query.shopId}/reservation`
-            )}
+            onClick={onClickMoveToPage(`/map/${props.id}/reservation`)}
           />
         </S.FooterModalButtonBox>
       </S.CommentsFooterModalStyles>

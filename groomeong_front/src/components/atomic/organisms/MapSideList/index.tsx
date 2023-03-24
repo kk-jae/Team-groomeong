@@ -14,8 +14,8 @@ export const MapSideList = () => {
       </S.SearchBarWrapper>
       {data?.fetchShops.length && data?.fetchShops.length >= 1 ? (
         <S.ShopListWrapper>
-          {data?.fetchShops.map((el, index) => (
-            <div key={index}>
+          {data?.fetchShops.map((el) => (
+            <div key={el.id}>
               <ListBox
                 name={el.name}
                 openHour={el.openHour}
@@ -23,6 +23,7 @@ export const MapSideList = () => {
                 address={el.address}
                 star={el.averageStar}
                 id={el.id}
+                shopImg={el.image}
               />
             </div>
           ))}

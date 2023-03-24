@@ -12,9 +12,8 @@ import { MouseEvent } from "react";
 
 interface IShopDetailProps {
   isLoggedIn?: string;
-  // isModalOpen: boolean;
-  showModal: (e: MouseEvent<HTMLElement>) => void;
-  id: string;
+  id?: string;
+  showModal?: (e: MouseEvent<HTMLElement>) => void;
 }
 
 export const ShopDetail = (props: IShopDetailProps) => {
@@ -34,10 +33,8 @@ export const ShopDetail = (props: IShopDetailProps) => {
           <S.ShopImage
             src={
               data?.fetchShop?.image[0]
-                ? data?.fetchShop?.image.map(
-                    (el) => `https://storage.googleapis.com/${el.imageUrl}`
-                  )
-                : "/image/img_shop_default.svg/"
+                ? `https://storage.googleapis.com/${data?.fetchShop?.image[0]}`
+                : "/image/img_shop_default.svg"
             }
           ></S.ShopImage>
           <CommentsHeader
@@ -47,6 +44,7 @@ export const ShopDetail = (props: IShopDetailProps) => {
             address={data?.fetchShop.address}
             phone={data?.fetchShop.phone}
             shoppingLabel={data?.fetchShop.name}
+            id={data?.fetchShop.id}
           ></CommentsHeader>
           {accessToken ? (
             <TextArea
@@ -64,13 +62,11 @@ export const ShopDetail = (props: IShopDetailProps) => {
           ) : (
             <></>
           )}
-
           {review?.fetchReviewsByShopId.map((el) => (
             <Comment
               key={el.id}
               contents={el.contents}
               date={el.createAt}
-              // name={}
               rate={el.star}
               state={true}
               iconView={true}
