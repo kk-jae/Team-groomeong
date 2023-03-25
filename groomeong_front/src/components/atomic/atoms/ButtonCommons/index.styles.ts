@@ -16,10 +16,11 @@ export interface IButtonProps {
   border?: "border" | "none";
   size?: "small" | "medium" | "large";
   iconImg?: DefaultComponentProps<OverridableTypeMap>;
-  label: string;
+  label?: string;
   onClick?: voidFunc | voidClickFunc | promiseClickFunc;
   type?: "button" | "submit" | "reset";
   id?: string;
+  className?: string;
 }
 
 export const ButtonCommons = styled.button<IButtonProps>`

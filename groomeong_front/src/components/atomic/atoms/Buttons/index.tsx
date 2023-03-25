@@ -5,14 +5,15 @@ export const Buttons = (props: IButtonProps) => {
     <>
       <S.ButtonStyles
         state={props.state}
-        size={props.size ?? "small"}
         variation={props.variation}
         border={props.border ?? "none"}
+        size={props.size ?? "small"}
+        iconImg={props.iconImg}
         onClick={props.onClick}
         type={props.type ?? "submit"}
         disabled={props.state === "disabled"}
-        iconImg={props.iconImg}
         id={props.id}
+        className={props.className}
       >
         {props.iconImg}
         {props.label}

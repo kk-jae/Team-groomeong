@@ -11,6 +11,7 @@ export interface IShopLabelProps {
   shoppingLabel?: string;
   star?: number;
   id?: string;
+  buttonState?: boolean;
 }
 
 export const CommentsHeader = (props: IShopLabelProps) => {
@@ -29,6 +30,7 @@ export const CommentsHeader = (props: IShopLabelProps) => {
             date={props.date}
             time={props.time}
             id={props.id}
+            buttonState={props.buttonState}
           />
         </S.CommentsBoxModalStyles>
       </S.CommentsHeaderModalStyles>

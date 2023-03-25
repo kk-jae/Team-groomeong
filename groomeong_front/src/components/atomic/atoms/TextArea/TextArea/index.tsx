@@ -1,17 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import { FormProvider, useForm } from "react-hook-form";
-import {
-  ICreateReviewInput,
-  IMutationCreateReviewArgs,
-} from "../../../../../commons/types/generated/types";
 import { Buttons } from "../../Buttons";
 import { StarRate } from "../../StarRate";
 import * as S from "./index.style";
 import { useCreateReview } from "../../../../commons/hooks/custom/useCreateReview";
 import { withPromiseVoidFunc } from "../../../../../commons/Utils/withFunc";
-import { useState } from "react";
-import { UseQueryFetchShop } from "../../../../commons/hooks/query/UseQueryFetchShop";
-import { UseQueryFetchReview } from "../../../../commons/hooks/query/UseQueryFetchReview";
 import { UseQueryFetchLoginUser } from "../../../../commons/hooks/query/UseQueryFetchLoginUser";
 
 interface ITextAreaProps {
@@ -23,14 +15,14 @@ interface ITextAreaProps {
   buttonView: boolean;
   placeholder?: string;
   commentRating?: number;
-  onClick: (data: ICreateReviewInput) => Promise<void>;
+  reservationId: string;
+  shopId: string;
 }
 
 export const TextArea = (props: ITextAreaProps) => {
   const {
     onClickCreateReview,
     onChangeRating,
-    star,
     handleSubmit,
     register,
     errors,
@@ -45,8 +37,11 @@ export const TextArea = (props: ITextAreaProps) => {
           style={{
             width: "100%",
           }}
-          onSubmit={handleSubmit(withPromiseVoidFunc(onClickCreateReview))}
-          // onSubmit={handleSubmit((data) => console.log(data))}
+          onSubmit={handleSubmit(
+            withPromiseVoidFunc(
+              onClickCreateReview(props.reservationId, props.shopId)
+            )
+          )}
         >
           <S.TextArea_TopBox>
             <>
@@ -60,20 +55,17 @@ export const TextArea = (props: ITextAreaProps) => {
                   </S.TextArea_Profile_Icon>
                 ) : (
                   <S.TextArea_Profile_Icon iconView={props.iconView}>
-                    <img src={"/image/example_dog.png/"} alt="" />
+                    <img src={"/image/icon-dog.svg/"} alt="" />
                   </S.TextArea_Profile_Icon>
                 )}
-                <span>{props.name}</span>
+                <span>{data?.fetchLoginUser.name}</span>
                 <S.TextArea_TopBox_Date dateView={props.dateView}>
                   {props.date}
                 </S.TextArea_TopBox_Date>
               </S.TextArea_TopBox_Profile>
 
               <S.TextArea_TopBox_Rate>
-                <StarRate
-                  onChangeRating={onChangeRating}
-                  star={star}
-                ></StarRate>
+                <StarRate onChangeRating={onChangeRating}></StarRate>
               </S.TextArea_TopBox_Rate>
             </>
           </S.TextArea_TopBox>

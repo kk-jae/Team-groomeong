@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
 import { Buttons } from "../../Buttons";
 import { IShopLabelProps } from "../Header";
@@ -6,7 +5,6 @@ import * as S from "../index.styles";
 
 export const CommentsFooter = (props: IShopLabelProps) => {
   const { onClickMoveToPage } = useMoveToPage();
-  const router = useRouter();
 
   return (
     <>
@@ -25,7 +23,7 @@ export const CommentsFooter = (props: IShopLabelProps) => {
             <label>{props.phone}</label>
           </S.FooterLabelNameStyles>
         </S.CommentsFooterModalLabelStyles>
-        <S.FooterModalButtonBox>
+        <S.FooterModalButtonBox buttonState={props.buttonState}>
           <Buttons
             label="예약하기"
             variation="primary"

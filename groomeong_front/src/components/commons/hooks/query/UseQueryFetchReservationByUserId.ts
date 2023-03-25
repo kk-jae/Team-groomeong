@@ -8,6 +8,7 @@ export const FETCH_RESERVATION_BY_USER = gql`
       date
       time
       shop {
+        id
         name
       }
       dog {
