@@ -23,6 +23,7 @@ export const ReservationHistoryList = (props: IReservationHistoryListProps) => {
                 <th>날짜</th>
                 <th>시간</th>
                 <th>나의 댕댕이</th>
+                <th>리뷰 작성</th>
               </tr>
             </thead>
             <ReservationHistoryTable></ReservationHistoryTable>

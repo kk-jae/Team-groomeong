@@ -1,7 +1,6 @@
 import { CommentsHeader } from "../../atoms/Comments/Header";
 import { TextArea } from "../../atoms/TextArea/TextArea";
 import * as S from "./index.style";
-import { Comment } from "../../atoms/Comment";
 import * as GS from "../../../../../theme/global";
 import { UseQueryFetchShop } from "../../../commons/hooks/query/UseQueryFetchShop";
 import { useRecoilState } from "recoil";
@@ -10,21 +9,21 @@ import { useCreateReview } from "../../../commons/hooks/custom/useCreateReview";
 import { UseQueryFetchReviewsByShopId } from "../../../commons/hooks/query/UseQueryFetchReviewsByShopId";
 import { MouseEvent } from "react";
 
-interface IShopDetailProps {
+interface IReviewProps {
   isLoggedIn?: string;
-  id?: string;
+  shopId: string;
+  reservationId: string;
   showModal?: (e: MouseEvent<HTMLElement>) => void;
 }
 
-export const ShopDetail = (props: IShopDetailProps) => {
+export const ReviewModal = (props: IReviewProps) => {
   const [accessToken] = useRecoilState(accessTokenState);
-  const { data } = UseQueryFetchShop(props.id);
+  const { data } = UseQueryFetchShop(props.shopId);
   const { data: review } = UseQueryFetchReviewsByShopId();
-  const { onClickCreateReview } = useCreateReview();
 
   return (
     <>
-      <S.ShopDetailModal
+      <S.ReviewModalStyle
         open={true}
         onCancel={props.showModal}
         maskStyle={{ background: GS.blue[900], opacity: 0.8 }}
@@ -33,7 +32,7 @@ export const ShopDetail = (props: IShopDetailProps) => {
           <S.ShopImage
             src={
               data?.fetchShop?.image[0]
-                ? `https://storage.googleapis.com/${data?.fetchShop?.image[0].imageUrl}`
+                ? `https://storage.googleapis.com/${data?.fetchShop?.image[0]}`
                 : "/image/img_shop_default.svg"
             }
           ></S.ShopImage>
@@ -45,7 +44,7 @@ export const ShopDetail = (props: IShopDetailProps) => {
             phone={data?.fetchShop.phone}
             shoppingLabel={data?.fetchShop.name}
             id={data?.fetchShop.id}
-            buttonState={true}
+            buttonState={false}
           ></CommentsHeader>
           {accessToken ? (
             <TextArea
@@ -53,28 +52,19 @@ export const ShopDetail = (props: IShopDetailProps) => {
               // contents={}
               // date={}
               // name={}
-              // iconView={}
+              iconView={false}
               buttonView={true}
               placeholder={
                 "개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
               }
-              onClick={onClickCreateReview}
+              reservationId={props?.reservationId}
+              shopId={props.shopId}
             />
           ) : (
             <></>
           )}
-          {review?.fetchReviewsByShopId.map((el) => (
-            <Comment
-              key={el.id}
-              contents={el.contents}
-              date={el.createAt}
-              rate={el.star}
-              state={true}
-              iconView={true}
-            ></Comment>
-          ))}
         </S.ShopDetailWrapper>
-      </S.ShopDetailModal>
+      </S.ReviewModalStyle>
     </>
   );
 };

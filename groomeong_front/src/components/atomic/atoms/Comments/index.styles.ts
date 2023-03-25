@@ -3,6 +3,10 @@ import { Modal } from "antd";
 import * as GS from "../../../../../theme/global";
 import StoreSharpIcon from "@mui/icons-material/StoreSharp";
 
+interface IButtonStateProps {
+  buttonState?: boolean;
+}
+
 export const CommentsBoxModalStyles = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,6 +61,7 @@ export const FooterLabelNameStyles = styled.span`
   }
 `;
 export const FooterModalButtonBox = styled.div`
-  display: flex;
+  display: ${(props: IButtonStateProps) =>
+    props.buttonState ? "flex" : "none"};
   align-items: flex-end;
 `;

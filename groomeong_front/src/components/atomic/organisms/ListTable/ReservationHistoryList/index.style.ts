@@ -34,14 +34,14 @@ export const Table = styled.div`
 
         th {
           height: 44px;
-          width: 21%;
+          width: 20%;
           padding: 10px 0px;
           border-right: 1px solid black;
         }
 
-        th:nth-child(4) {
+        th:nth-child(5) {
           height: 44px;
-          width: 25%;
+          width: 20%;
           padding: 10px 0px;
           border-right: 0px;
         }
@@ -54,15 +54,15 @@ export const Table = styled.div`
 
       th {
         height: 44px;
-        width: 25%;
+        width: 20%;
         padding: 5px 0px;
         border-right: 1px solid black;
         border-bottom: 1px solid black;
       }
 
-      th:nth-child(4) {
+      th:nth-child(5) {
         height: 44px;
-        width: 25%;
+        width: 20%;
         padding: 10px 0px;
         border-right: 0px;
 
