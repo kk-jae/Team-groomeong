@@ -20,15 +20,15 @@ export const FETCH_SHOPS = gql`
         imageUrl
         isThumbnail
       }
-    }
-    reservation {
-      id
-    }
-    review {
-      id
-      contents
-      createAt
-      star
+      reservation {
+        id
+      }
+      review {
+        id
+        contents
+        createAt
+        star
+      }
     }
   }
 `;
