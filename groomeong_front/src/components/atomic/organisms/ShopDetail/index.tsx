@@ -3,9 +3,6 @@ import * as S from "./index.style";
 import { Comment } from "../../atoms/Comment";
 import * as GS from "../../../../../theme/global";
 import { UseQueryFetchShop } from "../../../commons/hooks/query/UseQueryFetchShop";
-import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../../commons/Store";
-import { useCreateReview } from "../../../commons/hooks/custom/useCreateReview";
 import { UseQueryFetchReviewsByShopId } from "../../../commons/hooks/query/UseQueryFetchReviewsByShopId";
 import { MouseEvent } from "react";
 
