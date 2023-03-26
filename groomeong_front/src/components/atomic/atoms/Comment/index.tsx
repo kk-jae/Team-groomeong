@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
 import { getDate } from "../../../commons/libraries/GetDate";
 import { StarRate } from "../StarRate";
 import * as S from "./index.style";
@@ -12,19 +14,24 @@ export interface ICommentProps {
 }
 
 export const Comment = (props: ICommentProps) => {
+  const { data } = UseQueryFetchLoginUser();
+
   return (
     <>
       <S.TextArea_Wrapper>
         <S.TextArea_TopBox>
           <>
             <S.TextArea_TopBox_Profile>
-              {props.iconView ? (
+              {data?.fetchLoginUser.image ? (
                 <S.TextArea_Profile_Icon>
-                  <img src={"image/example_dog.png"} alt="" />
+                  <img
+                    src={`https://storage.googleapis.com/${data?.fetchLoginUser.image}`}
+                    alt=""
+                  />
                 </S.TextArea_Profile_Icon>
               ) : (
                 <S.TextArea_Profile_Icon>
-                  <img src={"image/icon_dog_profile.png"} alt="" />
+                  <img src={"image/example_dog.png"} alt="" />
                 </S.TextArea_Profile_Icon>
               )}
               <span>{props.name}</span>
