@@ -64,8 +64,8 @@ export const TextArea_Profile_Icon = styled.button`
   img {
     width: ${(props: ITextAreaProps) => (props.iconView ? "48px" : "24px")};
     height: ${(props: ITextAreaProps) => (props.iconView ? "48px" : "24px")};
-    border: 1px solid ${GS.border.borderTransparent};
-    border-radius: 50px;
+    /* border: 1px solid ${GS.border.borderTransparent}; */
+    /* border-radius: 50px; */
     object-fit: contain;
   }
 `;

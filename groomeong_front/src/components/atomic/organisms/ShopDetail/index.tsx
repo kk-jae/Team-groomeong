@@ -19,7 +19,7 @@ interface IShopDetailProps {
 export const ShopDetail = (props: IShopDetailProps) => {
   const [accessToken] = useRecoilState(accessTokenState);
   const { data } = UseQueryFetchShop(props.id);
-  const { data: review } = UseQueryFetchReviewsByShopId();
+  const { data: review } = UseQueryFetchReviewsByShopId(String(props.id));
   const { onClickCreateReview } = useCreateReview();
 
   return (
