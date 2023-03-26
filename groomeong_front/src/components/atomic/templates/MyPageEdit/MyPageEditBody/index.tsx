@@ -1,16 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Email } from "@mui/icons-material";
-import { useRouter } from "next/router";
 import { FormProvider, useForm } from "react-hook-form";
-import {
-  IMutation,
-  IMutationUpdateUserArgs,
-  IUpdateUserInput,
-} from "../../../../../commons/types/generated/types";
+import { IMutationUpdateUserArgs } from "../../../../../commons/types/generated/types";
 import { withPromiseVoidFunc } from "../../../../../commons/Utils/withFunc";
 import { useEditMyPage } from "../../../../commons/hooks/custom/useEditMyPage";
 import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
-import { UseMutationUpdateUser } from "../../../../commons/hooks/mutation/UseMutationUpdateUser";
 import { UseQueryFetchLoginUser } from "../../../../commons/hooks/query/UseQueryFetchLoginUser";
 import { Schema } from "../../../../commons/validation/myPageEdit.validation";
 import { Buttons } from "../../../atoms/Buttons";
@@ -18,15 +11,7 @@ import { CommonsImages } from "../../../atoms/Images";
 import { InputMiddle } from "../../../atoms/Input/Middle";
 import * as S from "./index.style";
 
-interface IMyPageBodyProps {
-  image?: string;
-  nameDefaultValue?: string;
-  emailDefaultValue?: string;
-  phoneDefaultValue?: string;
-  name?: string;
-}
-
-export const MyPageEditBodyTemplate = (props: IMyPageBodyProps) => {
+export const MyPageEditBodyTemplate = () => {
   const method = useForm<IMutationUpdateUserArgs>({
     mode: "onChange",
     resolver: yupResolver(Schema),

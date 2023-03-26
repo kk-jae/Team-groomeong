@@ -6,7 +6,7 @@ import { UseMutationDeleteReservation } from "../../../commons/hooks/mutation/Us
 import { v4 as uuidv4 } from "uuid";
 import { MouseEvent } from "react";
 import {
-  FETCH_RESERVATION_BY_USER,
+  FETCH_RESERVATIONS_BY_USER,
   UseQueryFetchReservationByUser,
 } from "../../../commons/hooks/query/UseQueryFetchReservationByUserId";
 
@@ -18,7 +18,7 @@ export const ReservationTable = () => {
     try {
       await deleteReservation({
         variables: { reservationId: event.currentTarget.id },
-        refetchQueries: [{ query: FETCH_RESERVATION_BY_USER }],
+        refetchQueries: [{ query: FETCH_RESERVATIONS_BY_USER }],
       });
       alert("예약이 취소되었습니다");
     } catch (error) {

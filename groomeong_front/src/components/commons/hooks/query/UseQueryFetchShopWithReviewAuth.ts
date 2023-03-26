@@ -1,5 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
-import { IQuery } from "../../../../commons/types/generated/types";
+import {
+  IQuery,
+  IQueryFetchShopWithReviewAuthArgs,
+} from "../../../../commons/types/generated/types";
 
 export const FETCH_SHOP_WITH_REVIEW_AUTH = gql`
   query fetchShopWithReviewAuth($shopId: String!) {
@@ -14,14 +17,11 @@ export const FETCH_SHOP_WITH_REVIEW_AUTH = gql`
   }
 `;
 
-export const UseQueryFetchShopWithReviewAuth = () => {
-  const { data } = useQuery<Pick<IQuery, "fetchShopWithReviewAuth">>(
-    FETCH_SHOP_WITH_REVIEW_AUTH
-
-    //         ,{
-    // variables:{shopId:}
-    //         }
-  );
+export const UseQueryFetchShopWithReviewAuth = (shopId: string) => {
+  const { data } = useQuery<
+    Pick<IQuery, "fetchShopWithReviewAuth">,
+    IQueryFetchShopWithReviewAuthArgs
+  >(FETCH_SHOP_WITH_REVIEW_AUTH, { variables: { shopId } });
   return {
     data,
   };
