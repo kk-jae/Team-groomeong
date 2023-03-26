@@ -12,22 +12,15 @@ export const FETCH_LOGIN_USER = gql`
       email
       phone
       image
-      dogs {
-        id
-        name
-        age
-        weight
-        breed
-      }
-      reservation {
-        id
-      }
     }
   }
 `;
 
 export const UseQueryFetchLoginUser = () => {
-  const { data } = useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_LOGIN_USER);
+  const { data } = useQuery<
+    Pick<IQuery, "fetchLoginUser">,
+    IQueryFetchUserArgs
+  >(FETCH_LOGIN_USER);
 
   return {
     data,

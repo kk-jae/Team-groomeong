@@ -31,7 +31,6 @@ export const useCreateReview = () => {
   const onClickCreateReview =
     (reservationId: string, shopId: string) =>
     async (data: ICreateReviewInput): Promise<void> => {
-      console.log(shopId + "/////////////" + reservationId);
       try {
         await createReview({
           variables: {

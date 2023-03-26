@@ -4,19 +4,7 @@ import { ReservationHistoryList } from "../../organisms/ListTable/ReservationHis
 import { ReservationList } from "../../organisms/ListTable/ReservationList";
 import * as S from "./index.style";
 
-interface IReservationListProps {
-  shopName?: string;
-  date?: string;
-  time?: string;
-  myDog?: string;
-
-  historyShopName?: string;
-  historyDate?: string;
-  historyTime?: string;
-  historyMyDog?: string;
-}
-
-export const ReservationListTemplate = (props: IReservationListProps) => {
+export const ReservationListTemplate = () => {
   return (
     <>
       <Background>

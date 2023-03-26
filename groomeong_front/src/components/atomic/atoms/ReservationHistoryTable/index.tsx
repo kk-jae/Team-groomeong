@@ -5,10 +5,13 @@ import { UseQueryFetchReservationByUser } from "../../../commons/hooks/query/Use
 import { Buttons } from "../Buttons";
 import { MouseEvent, useState } from "react";
 import { ReviewModal } from "../../organisms/ReviewModal";
+import { UseQueryFetchShopWithReviewAuth } from "../../../commons/hooks/query/UseQueryFetchShopWithReviewAuth";
+import { v4 as uuidv4 } from "uuid";
 
 export const ReservationHistoryTable = () => {
-  const { data } = UseQueryFetchReservationByUser();
   const [shopId, setShopId] = useState("");
+  const { data } = UseQueryFetchReservationByUser();
+  const { data: reviewData } = UseQueryFetchShopWithReviewAuth(shopId);
   const [reservationId, setReservationId] = useState("");
   const [onReview, setOnReview] = useState(false);
 
@@ -22,8 +25,6 @@ export const ReservationHistoryTable = () => {
     void setOnReview(false);
   };
 
-  // console.log(reviewData?.fetchReviewsByShopId.id); 이거랑 유저 리뷰 아이디랑 비교?
-
   return (
     <>
       {data ? (
@@ -32,14 +33,13 @@ export const ReservationHistoryTable = () => {
             {!isSameDate ? (
               <></>
             ) : (
-              <tbody key={el.id}>
+              <tbody key={uuidv4()}>
                 <tr>
                   <th>{el.shop.name}</th>
                   <th>{getDate(el.date)}</th>
                   <th>{el.time}</th>
                   <th>{el.dog.name}</th>
                   <th>
-                    {" "}
                     <div>
                       <Buttons
                         variation="primary"
@@ -51,6 +51,7 @@ export const ReservationHistoryTable = () => {
                         id={el.id}
                         className={el.shop.id}
                       ></Buttons>
+
                       {onReview ? (
                         <ReviewModal
                           reservationId={reservationId}

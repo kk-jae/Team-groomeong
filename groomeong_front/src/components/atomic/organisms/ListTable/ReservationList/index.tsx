@@ -1,16 +1,7 @@
 import * as S from "./index.style";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { Buttons } from "../../../atoms/Buttons";
 import { ReservationTable } from "../../../atoms/ReservationTable";
 
-interface IReservationListProps {
-  shopName?: string;
-  date?: string;
-  time?: string;
-  myDog?: string;
-}
-
-export const ReservationList = (props: IReservationListProps) => {
+export const ReservationList = () => {
   return (
     <>
       <S.ReservationListWrapper>

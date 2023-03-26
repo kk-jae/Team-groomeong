@@ -4,7 +4,6 @@ import { ListBox } from "../../atoms/ListBox";
 import { UseQueryFetchShops } from "../../../commons/hooks/query/UseQueryFetchShops";
 
 export const MapSideList = () => {
-  // const onLoadMore = (): void => {};
   const { data } = UseQueryFetchShops();
 
   return (

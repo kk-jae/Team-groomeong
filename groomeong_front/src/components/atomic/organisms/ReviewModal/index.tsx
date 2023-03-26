@@ -5,9 +5,9 @@ import * as GS from "../../../../../theme/global";
 import { UseQueryFetchShop } from "../../../commons/hooks/query/UseQueryFetchShop";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/Store";
-import { useCreateReview } from "../../../commons/hooks/custom/useCreateReview";
-import { UseQueryFetchReviewsByShopId } from "../../../commons/hooks/query/UseQueryFetchReviewsByShopId";
 import { MouseEvent } from "react";
+import { UseQueryFetchShopWithReviewAuth } from "../../../commons/hooks/query/UseQueryFetchShopWithReviewAuth";
+import { UseQueryFetchReviewsByShopIdReservation } from "../../../commons/hooks/query/UseQueryFetchReviewsByShopId-Reservation";
 
 interface IReviewProps {
   isLoggedIn?: string;
@@ -19,7 +19,10 @@ interface IReviewProps {
 export const ReviewModal = (props: IReviewProps) => {
   const [accessToken] = useRecoilState(accessTokenState);
   const { data } = UseQueryFetchShop(props.shopId);
-  const { data: review } = UseQueryFetchReviewsByShopId();
+  const { data: review } = UseQueryFetchReviewsByShopIdReservation(
+    props.shopId
+  );
+  const { data: shopReview } = UseQueryFetchShopWithReviewAuth(props.shopId);
 
   return (
     <>
@@ -46,12 +49,9 @@ export const ReviewModal = (props: IReviewProps) => {
             id={data?.fetchShop.id}
             buttonState={false}
           ></CommentsHeader>
+          {review?.fetchReviewsByShopId?.map((el) => console.log(el.id))}
           {accessToken ? (
             <TextArea
-              // commentRating={}
-              // contents={}
-              // date={}
-              // name={}
               iconView={false}
               buttonView={true}
               placeholder={
