@@ -1,5 +1,4 @@
 import { CommentsHeader } from "../../atoms/Comments/Header";
-import { TextArea } from "../../atoms/TextArea/TextArea";
 import * as S from "./index.style";
 import { Comment } from "../../atoms/Comment";
 import * as GS from "../../../../../theme/global";
@@ -17,10 +16,8 @@ interface IShopDetailProps {
 }
 
 export const ShopDetail = (props: IShopDetailProps) => {
-  const [accessToken] = useRecoilState(accessTokenState);
   const { data } = UseQueryFetchShop(props.id);
   const { data: review } = UseQueryFetchReviewsByShopId(String(props.id));
-  const { onClickCreateReview } = useCreateReview();
 
   return (
     <>
@@ -47,22 +44,6 @@ export const ShopDetail = (props: IShopDetailProps) => {
             id={data?.fetchShop.id}
             buttonState={true}
           ></CommentsHeader>
-          {accessToken ? (
-            <TextArea
-              // commentRating={}
-              // contents={}
-              // date={}
-              // name={}
-              // iconView={}
-              buttonView={true}
-              placeholder={
-                "개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."
-              }
-              onClick={onClickCreateReview}
-            />
-          ) : (
-            <></>
-          )}
           {review?.fetchReviewsByShopId.map((el) => (
             <Comment
               key={el.id}
