@@ -2,11 +2,7 @@ import * as S from "./index.style";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Buttons } from "../../../atoms/Buttons";
 import { useRouter } from "next/router";
-import {
-  FETCH_USER_DOGS,
-  UseQueryFetchUserDogs,
-} from "../../../../commons/hooks/query/UseQueryFetchUserDogs";
-import { UseMutationDeleteDog } from "../../../../commons/hooks/mutation/UseMutationDeleteDog";
+import { UseQueryFetchUserDogs } from "../../../../commons/hooks/query/UseQueryFetchUserDogs";
 import { MouseEvent } from "react";
 
 interface IDogType {
@@ -19,7 +15,7 @@ interface IDogType {
 export const DogsList = () => {
   const router = useRouter();
   const { data: dogData } = UseQueryFetchUserDogs();
-  const [deleteDog] = UseMutationDeleteDog();
+
   const dogType: IDogType = {
     SMALL: "소형",
     MEDIUM: "중형",
@@ -31,15 +27,8 @@ export const DogsList = () => {
     router.push("/mypage/dogRegister");
   };
 
-  const onClickDelete = async (event: MouseEvent<HTMLButtonElement>) => {
-    try {
-      await deleteDog({
-        variables: { id: event.currentTarget.id },
-        refetchQueries: [{ query: FETCH_USER_DOGS }],
-      });
-    } catch (error) {
-      if (error instanceof Error) alert(error.message);
-    }
+  const onClickDogDetail = (event: MouseEvent<HTMLButtonElement>) => {
+    router.push(`/mypage/dog/${event.currentTarget.id}`);
   };
 
   return (
@@ -61,7 +50,7 @@ export const DogsList = () => {
                 <th>나이</th>
                 <th>몸무게</th>
                 <th>견종</th>
-                <th>삭제하기</th>
+                <th>댕댕이 정보</th>
               </tr>
             </thead>
             {dogData?.fetchUserDogs.map((el) => (
@@ -73,8 +62,8 @@ export const DogsList = () => {
                     <th>{el.weight}kg</th>
                     <th>{dogType[el.breed]}</th>
                     <th>
-                      <button id={el.id} onClick={onClickDelete}>
-                        댕댕이 삭제
+                      <button id={el.id} onClick={onClickDogDetail}>
+                        상세보기
                       </button>
                     </th>
                   </tr>
