@@ -8,7 +8,7 @@ import { useLogInButton } from "../../../commons/hooks/custom/useLogIn";
 import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import PageHeader from "../../atoms/PageHeader";
 
-export const LogInTemplate = () => {
+export const LogInTemplate = (): JSX.Element => {
   const method = useForm({
     mode: "onChange",
   });

@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../../theme/global";
 
-interface IDivProps {
-  left?: string;
-  right?: string;
-  top?: string;
-  bottom?: string;
-}
+// interface IDivProps {
+//   left?: string;
+//   right?: string;
+//   top?: string;
+//   bottom?: string;
+// }
 
 export const InfoTextAreaWrapper = styled.div`
   display: flex;

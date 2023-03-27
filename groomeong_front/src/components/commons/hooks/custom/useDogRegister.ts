@@ -23,8 +23,7 @@ export const useDogRegister = () => {
     image?: string;
   }
 
-  const onClickRegisterDog = async (data: ICreateDogInput) => {
-    console.log(data.image);
+  const onClickRegisterDog = async (data: ICreateDogInput): Promise<void> => {
     const createDogInput: ICreateDogInput = {
       name: data.name,
       age: Number(data.age),
@@ -34,17 +33,18 @@ export const useDogRegister = () => {
       image: data.image,
     };
 
-    if (!createDogInput.breed) createDogInput.breed = "LARGE";
+    if (!(createDogInput.breed === "")) createDogInput.breed = "LARGE";
     try {
-      const result = await createDog({
+      await createDog({
         variables: {
           createDogInput,
         },
       });
+
       Modal.success({
         content: "댕댕이가 등록되었습니다",
       });
-      router.push("/mypage");
+      void router.push("/mypage");
     } catch (error) {
       if (error instanceof Error) {
         Modal.error({

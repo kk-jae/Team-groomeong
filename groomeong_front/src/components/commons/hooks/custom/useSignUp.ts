@@ -3,7 +3,11 @@ import { useRouter } from "next/router";
 import { IMutationCreateUserArgs } from "../../../../commons/types/generated/types";
 import { UseMutationCreateUser } from "../mutation/UseMutationCreateUser";
 
-export const useSignUp = () => {
+interface IuseSignUp {
+  onClickSignUp: (data: IMutationCreateUserArgs) => Promise<void>;
+}
+
+export const useSignUp = (): IuseSignUp => {
   const [createUser] = UseMutationCreateUser();
   const router = useRouter();
   const onClickSignUp = async (
@@ -18,7 +22,6 @@ export const useSignUp = () => {
           phone: data.phone,
         },
       });
-      console.log(userData);
       // 회원가입 성공 Modal
       void router.push(`/login`);
     } catch (error) {

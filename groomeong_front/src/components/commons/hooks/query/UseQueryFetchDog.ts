@@ -4,6 +4,10 @@ import {
   IQueryFetchDogArgs,
 } from "../../../../commons/types/generated/types";
 
+interface IUseQueryFetchDog {
+  data?: Pick<IQuery, "fetchDog">;
+}
+
 export const FETCH_DOG = gql`
   query fetchDog($id: String!) {
     fetchDog(id: $id) {
@@ -18,7 +22,7 @@ export const FETCH_DOG = gql`
   }
 `;
 
-export const UseQueryFetchDog = (id: string) => {
+export const UseQueryFetchDog = (id: string): IUseQueryFetchDog => {
   const { data } = useQuery<Pick<IQuery, "fetchDog">, IQueryFetchDogArgs>(
     FETCH_DOG,
     {

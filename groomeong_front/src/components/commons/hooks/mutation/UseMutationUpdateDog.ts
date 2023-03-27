@@ -12,7 +12,7 @@ const UPDATE_DOG = gql`
   }
 `;
 
-export const UseMutationUpdateDog = () => {
+export const UseMutationUpdateDog = (): [typeof updateDog] => {
   const [updateDog] = useMutation<
     Pick<IMutation, "updateDog">,
     IMutationUpdateDogArgs

@@ -4,7 +4,7 @@ import { ReservationHistoryList } from "../../organisms/ListTable/ReservationHis
 import { ReservationList } from "../../organisms/ListTable/ReservationList";
 import * as S from "./index.style";
 
-export const ReservationListTemplate = () => {
+export const ReservationListTemplate = (): JSX.Element => {
   return (
     <>
       <Background>

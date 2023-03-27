@@ -1,8 +1,7 @@
-import { margin } from "@mui/system";
 import { SearchBar } from "../../atoms/SearchBar";
 import Background from "../../organisms/Background";
 
-export const HomeTemplate = () => {
+export const HomeTemplate = (): JSX.Element => {
   return (
     <>
       <Background>

@@ -2,7 +2,7 @@ import React from "react";
 import Background from "../../organisms/Background";
 import SignUp from "../../organisms/SignUp";
 
-const SignUpTemplate = () => {
+const SignUpTemplate = (): JSX.Element => {
   return (
     <Background>
       <SignUp />

@@ -4,6 +4,10 @@ import {
   IQueryFetchThumbnailByShopArgs,
 } from "../../../../commons/types/generated/types";
 
+interface IUseQueryFetchThumbnailById {
+  data?: Pick<IQuery, "fetchThumbnailByShop">;
+}
+
 export const FETCH_THUMBNAIL_BY_SHOP = gql`
   query fetchThumbnailByShop($shopId: String!) {
     fetchThumbnailByShop(shopId: $shopId) {
@@ -14,7 +18,7 @@ export const FETCH_THUMBNAIL_BY_SHOP = gql`
   }
 `;
 
-export const UseQueryFetchThumbnailById = () => {
+export const UseQueryFetchThumbnailById = (): IUseQueryFetchThumbnailById => {
   const { data } = useQuery<
     Pick<IQuery, "fetchThumbnailByShop">,
     IQueryFetchThumbnailByShopArgs

@@ -1,5 +1,4 @@
 import React from "react";
-import { Buttons } from "../../Buttons";
 import { useFormContext } from "react-hook-form";
 import {
   InfoTextAreaWrapper,
@@ -18,7 +17,7 @@ interface IInfoTextAreaProps {
   disabled?: boolean;
 }
 
-const InfoTextArea = (props: IInfoTextAreaProps) => {
+const InfoTextArea = (props: IInfoTextAreaProps): JSX.Element => {
   const {
     register,
     formState: { errors },

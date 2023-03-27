@@ -5,14 +5,14 @@ interface IFetchUserDogs {
   value: string;
   id: string;
 }
-export const DogSelect = (props: any) => {
+export const DogSelect = (props: any): JSX.Element => {
   const { data: dataDog } = UseQueryFetchUserDogs();
 
   const dogsArr = [
     dataDog?.fetchUserDogs.map((el) => ({ value: el.name, id: el.id })),
   ];
 
-  const onChange = (value: string, id: IFetchUserDogs) => {
+  const onChange = (value: string, id: IFetchUserDogs): void => {
     props.setDogId(id.id);
   };
 

@@ -6,7 +6,7 @@ import {
   Error,
   ValidateDiv,
 } from "./index.styles";
-import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Buttons } from "../../atomic/atoms/Buttons";
 import { useSignUpValidateInput } from "../../commons/hooks/custom/useSignUpValidateInput";
 import { InputMiddle } from "../../atomic/atoms/Input/Middle";
@@ -16,7 +16,7 @@ interface ISignUpvalidateInputProps {
   setValid: Dispatch<SetStateAction<boolean>>;
 }
 
-const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
+const SignUpValidateInput = (props: ISignUpvalidateInputProps): JSX.Element => {
   const {
     validation,
     onChangeAuthNumber,
@@ -26,7 +26,6 @@ const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
     time,
   } = useSignUpValidateInput(props.setValid);
 
-  console.log(validation);
   return (
     <>
       <InputMiddle
@@ -41,7 +40,8 @@ const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
             ref={validationInput}
             placeholder="인증번호를 입력해주세요."
             disabled={
-              !validation.emailAuth ? true : validation.valid ? true : false
+              // !validation.emailAuth ? true : validation.valid ? true : false
+              !validation.emailAuth ? true : !!validation.valid
             }
             onChange={onChangeAuthNumber}
             error={validation.error}

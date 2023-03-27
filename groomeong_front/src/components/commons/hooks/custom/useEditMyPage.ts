@@ -1,20 +1,23 @@
 import { useRouter } from "next/router";
-import { IQueryFetchUserArgs } from "../../../../commons/types/generated/types";
 import { UseMutationUpdateUser } from "../mutation/UseMutationUpdateUser";
 import { UseQueryFetchLoginUser } from "../query/UseQueryFetchLoginUser";
 
 interface IFetchData {
-  name: string;
-  phone: string;
+  name?: string;
+  phone?: string;
+  image?: string;
 }
 
-export const useEditMyPage = () => {
+interface IuseEditMyPage {
+  onClickEditBtn: (data: IFetchData) => Promise<void>;
+}
+
+export const useEditMyPage = (): IuseEditMyPage => {
   const [updateUser] = UseMutationUpdateUser();
   const { data: userData } = UseQueryFetchLoginUser();
   const router = useRouter();
 
   const onClickEditBtn = async (data: IFetchData): Promise<void> => {
-    console.log(userData?.fetchLoginUser.id);
     try {
       await updateUser({
         variables: {
@@ -22,10 +25,11 @@ export const useEditMyPage = () => {
           updateUserInput: {
             name: data.name,
             phone: data.phone,
+            image: data.image,
           },
         },
       });
-      router.push("/mypage");
+      void router.push("/mypage");
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
