@@ -8,7 +8,7 @@ interface IMyPageBodyProps {
   image?: string;
 }
 
-export const MyPageBody = (props: IMyPageBodyProps) => {
+export const MyPageBody = (props: IMyPageBodyProps): JSX.Element => {
   return (
     <>
       <ContentInfo label={"닉네임"} content={props.name}></ContentInfo>

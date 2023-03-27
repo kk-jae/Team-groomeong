@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import * as S from "./index.style";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { Buttons } from "../../Buttons";
@@ -10,7 +9,7 @@ interface ITopBarMapProps {
   loggedIn: boolean;
 }
 
-export const TopBarMap = (props: ITopBarMapProps) => {
+export const TopBarMap = (props: ITopBarMapProps): JSX.Element => {
   const { data } = UseQueryFetchLoginUser();
   const { onClickLogOut } = useLogout();
   const { onClickMoveToPage } = useMoveToPage();
@@ -42,7 +41,7 @@ export const TopBarMap = (props: ITopBarMapProps) => {
               <S.TopBarProfile onClick={onClickMoveToPage("/mypage")}>
                 <img
                   src={
-                    data?.fetchLoginUser.image
+                    data?.fetchLoginUser.image != null
                       ? `https://storage.googleapis.com/${data?.fetchLoginUser.image}`
                       : "/image/img-dog-detail.png"
                   }

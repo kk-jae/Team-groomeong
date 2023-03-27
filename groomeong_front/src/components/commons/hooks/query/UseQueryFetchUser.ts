@@ -4,6 +4,10 @@ import {
   IQueryFetchUserArgs,
 } from "../../../../commons/types/generated/types";
 
+interface IUseQueryFetchUser {
+  data?: Pick<IQuery, "fetchUser">;
+}
+
 export const FETCH_USER = gql`
   query fetchUser($userId: String!) {
     fetchUser(userId: $userId) {
@@ -23,7 +27,7 @@ export const FETCH_USER = gql`
   }
 `;
 
-export const UseQueryFetchUser = (userId: string) => {
+export const UseQueryFetchUser = (userId: string): IUseQueryFetchUser => {
   const { data } = useQuery<Pick<IQuery, "fetchUser">, IQueryFetchUserArgs>(
     FETCH_USER,
     {

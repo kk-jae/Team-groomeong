@@ -8,24 +8,24 @@ import PageHeader from "../../atoms/PageHeader";
 import InfoTextArea from "../../atoms/TextArea/InfoTextArea";
 import * as S from "./index.style";
 
-const DogDetail = () => {
+const DogDetail = (): JSX.Element => {
   const { method, FormProvider, data, breed } = useDetailPage();
   const [deleteDog] = UseMutationDeleteDog();
   const router = useRouter();
 
-  const onClickDelete = async () => {
+  const onClickDelete = async (): Promise<void> => {
     try {
       await deleteDog({
         variables: { id: String(router.query.dogId) },
       });
-      router.push("/mypage/");
+      void router.push("/mypage/");
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
   };
 
-  const onClickMoveBack = async () => {
-    router.push("/mypage/");
+  const onClickMoveBack = async (): Promise<void> => {
+    void router.push("/mypage/");
   };
 
   return (

@@ -16,7 +16,7 @@ import {
   DogRegisterFooterSpan,
 } from "./index.style";
 
-const DogRegister = () => {
+const DogRegister = (): JSX.Element => {
   const { FormProvider, method, onClickRegisterDog } = useDogRegister();
 
   return (

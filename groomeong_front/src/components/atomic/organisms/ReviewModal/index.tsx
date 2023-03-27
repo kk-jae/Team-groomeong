@@ -16,7 +16,7 @@ interface IReviewProps {
   showModal?: (e: MouseEvent<HTMLElement>) => void;
 }
 
-export const ReviewModal = (props: IReviewProps) => {
+export const ReviewModal = (props: IReviewProps): JSX.Element => {
   const [accessToken] = useRecoilState(accessTokenState);
   const { data } = UseQueryFetchShop(props.shopId);
   const { data: review } = UseQueryFetchReviewsByShopIdReservation(
@@ -42,14 +42,16 @@ export const ReviewModal = (props: IReviewProps) => {
           <CommentsHeader
             star={data?.fetchShop.averageStar}
             date={"월, 화, 수, 목, 금, 토, 일"}
-            time={`${data?.fetchShop.openHour} ~ ${data?.fetchShop.closeHour}`}
+            time={`${String(data?.fetchShop.openHour)} ~ ${String(
+              data?.fetchShop.closeHour
+            )}`}
             address={data?.fetchShop.address}
             phone={data?.fetchShop.phone}
             shoppingLabel={data?.fetchShop.name}
             id={data?.fetchShop.id}
             buttonState={false}
           ></CommentsHeader>
-          {accessToken ? (
+          {accessToken !== "" ? (
             <TextArea
               iconView={false}
               buttonView={true}

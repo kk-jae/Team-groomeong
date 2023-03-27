@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Buttons } from "../../Buttons";
 import { StarRate } from "../../StarRate";
 import * as S from "./index.style";
@@ -19,7 +18,7 @@ interface ITextAreaProps {
   shopId: string;
 }
 
-export const TextArea = (props: ITextAreaProps) => {
+export const TextArea = (props: ITextAreaProps): JSX.Element => {
   const {
     onClickCreateReview,
     onChangeRating,
@@ -46,7 +45,7 @@ export const TextArea = (props: ITextAreaProps) => {
           <S.TextArea_TopBox>
             <>
               <S.TextArea_TopBox_Profile>
-                {data?.fetchLoginUser.image ? (
+                {data?.fetchLoginUser.image != null ? (
                   <S.TextArea_Profile_Icon iconView={props.iconView}>
                     <img
                       src={`https://storage.googleapis.com/${data?.fetchLoginUser.image}`}

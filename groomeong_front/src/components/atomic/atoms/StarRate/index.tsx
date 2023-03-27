@@ -8,7 +8,7 @@ interface IStarRateProps {
   data?: Pick<IQuery, "fetchReview">;
 }
 
-export const StarRate = (props: IStarRateProps) => {
+export const StarRate = (props: IStarRateProps): JSX.Element => {
   return (
     <>
       <S.Star

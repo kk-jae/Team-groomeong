@@ -17,7 +17,7 @@ interface IProps {
   value?: string;
 }
 
-export const InputMiddle = (props: IProps) => {
+export const InputMiddle = (props: IProps): JSX.Element => {
   const [focus, setFocus] = useState(false);
 
   const {
@@ -25,10 +25,10 @@ export const InputMiddle = (props: IProps) => {
     formState: { errors },
   } = useFormContext();
 
-  const onFocusTest = () => {
+  const onFocusTest = (): void => {
     setFocus(true);
   };
-  const onBlurTest = () => {
+  const onBlurTest = (): void => {
     setFocus(false);
   };
 

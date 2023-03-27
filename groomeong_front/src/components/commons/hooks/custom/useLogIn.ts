@@ -13,7 +13,7 @@ interface IHomePageLogInData {
 export const useLogInButton = () => {
   const router = useRouter();
   const [login] = UseMutationLogin();
-  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const [, setAccessToken] = useRecoilState(accessTokenState);
 
   const onClickHomePageLogIn = async (
     HomePageLogInData: IHomePageLogInData
@@ -32,6 +32,7 @@ export const useLogInButton = () => {
         localStorage.setItem("accessToken", accessToken);
       }
       router.push("/home");
+      void router.push("/home");
     } catch (error) {
       if (error instanceof Error)
         Modal.error({

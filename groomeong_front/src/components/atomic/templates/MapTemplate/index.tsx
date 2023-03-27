@@ -6,21 +6,19 @@ import { TopBarMap } from "../../atoms/TopBar/TopBarMap";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/Store";
 import { PuffLoader } from "react-spinners";
-import * as GS from "../../../../../theme/global";
-import { Block } from "@mui/icons-material";
 
 declare const window: typeof globalThis & {
   google: any;
   initAutocomplete: () => void;
   // initMap: (latlng: google.maps.LatLngLiteral) => void;
 };
-export const MapTemplate = () => {
+export const MapTemplate = (): JSX.Element => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [accessToken] = useRecoilState(accessTokenState);
   const [myState, setMyState] = useState("");
 
   useEffect(() => {
-    if (localStorage.accessToken) {
+    if (localStorage.accessToken !== "") {
       setLoggedIn(true);
     }
   }, []);
@@ -34,8 +32,8 @@ export const MapTemplate = () => {
     // parameter when you first load the API. For example:
     // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-    function initAutocomplete() {
-      if (navigator.geolocation) {
+    function initAutocomplete(): any {
+      if (navigator.geolocation !== null) {
         navigator.geolocation.getCurrentPosition((position) => {
           const currentLatLng = new window.google.maps.LatLng(
             position.coords.latitude,
@@ -60,7 +58,7 @@ export const MapTemplate = () => {
           // 마커를 생성합니다.
 
           const marker = new window.google.maps.Marker({
-            map: map,
+            map,
           });
           marker.setPosition(currentLatLng);
           // 마커를 클릭했을 때 정보창을 보여줍니다.

@@ -10,7 +10,9 @@ const UPLOAD_PROFILE_IMAGE = gql`
   }
 `;
 
-export const UseMutationUploadProfileImage = () => {
+export const UseMutationUploadProfileImage = (): [
+  typeof uploadProfileImage
+] => {
   const [uploadProfileImage] = useMutation<
     Pick<IMutation, "uploadProfileImage">,
     IMutationUploadProfileImageArgs

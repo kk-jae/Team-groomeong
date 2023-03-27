@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { StarRate } from "../../StarRate";
 import { CommentsFooter } from "../Footer";
 import * as S from "../index.styles";
@@ -14,7 +13,7 @@ export interface IShopLabelProps {
   buttonState?: boolean;
 }
 
-export const CommentsHeader = (props: IShopLabelProps) => {
+export const CommentsHeader = (props: IShopLabelProps): JSX.Element => {
   return (
     <>
       <S.CommentsHeaderModalStyles>

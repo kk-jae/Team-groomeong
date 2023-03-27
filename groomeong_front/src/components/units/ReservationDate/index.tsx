@@ -6,7 +6,7 @@ interface IProps {
   setReservationTime: any;
 }
 
-export const ReservationDate = (props: IProps) => {
+export const ReservationDate = (props: IProps): JSX.Element => {
   const onChange: DatePickerProps["onChange"] = (data, dateString) => {
     props.setReservationDate(dateString);
     props.setReservationTime("");

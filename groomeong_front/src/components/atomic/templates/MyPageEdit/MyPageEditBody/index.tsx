@@ -12,7 +12,7 @@ import ImgInput from "../../../atoms/Input/ImgInput";
 import { InputMiddle } from "../../../atoms/Input/Middle";
 import * as S from "./index.style";
 
-export const MyPageEditBodyTemplate = () => {
+export const MyPageEditBodyTemplate = (): JSX.Element => {
   const method = useForm<IMutationUpdateUserArgs>({
     mode: "onChange",
     resolver: yupResolver(Schema),

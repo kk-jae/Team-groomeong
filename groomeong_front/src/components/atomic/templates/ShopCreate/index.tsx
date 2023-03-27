@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { FormProvider, useForm } from "react-hook-form";
-import { UseMutationCreateShop } from "../../../commons/hooks/mutation/UseMutationCreateShop";
 const MainDiv = styled.div`
   width: 1000px;
   height: 1000px;
@@ -15,14 +14,14 @@ const Input = styled.input`
   margin-bottom: 25px;
 `;
 
-export default function ShopCreateTemplate() {
-  const [] = UseMutationCreateShop();
+export default function ShopCreateTemplate(): JSX.Element {
+  // const [] = UseMutationCreateShop();
 
   const method = useForm({
     mode: "onChange",
   });
 
-  const onclickRegister = (data: any) => {
+  const onclickRegister = (data: any): void => {
     console.log(data);
   };
 

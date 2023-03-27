@@ -12,7 +12,7 @@ interface IShopDetailProps {
   showModal?: (e: MouseEvent<HTMLElement>) => void;
 }
 
-export const ShopDetail = (props: IShopDetailProps) => {
+export const ShopDetail = (props: IShopDetailProps): JSX.Element => {
   const { data } = UseQueryFetchShop(props.id);
   const { data: review } = UseQueryFetchReviewsByShopId(String(props.id));
 
@@ -26,7 +26,7 @@ export const ShopDetail = (props: IShopDetailProps) => {
         <S.ShopDetailWrapper>
           <S.ShopImage
             src={
-              data?.fetchShop?.image[0]
+              data?.fetchShop?.image[0] != null
                 ? `https://storage.googleapis.com/${data?.fetchShop?.image[0].imageUrl}`
                 : "/image/img_shop_default.svg"
             }
@@ -34,7 +34,9 @@ export const ShopDetail = (props: IShopDetailProps) => {
           <CommentsHeader
             star={data?.fetchShop.averageStar}
             date={"월, 화, 수, 목, 금, 토, 일"}
-            time={`${data?.fetchShop.openHour} ~ ${data?.fetchShop.closeHour}`}
+            time={`${String(data?.fetchShop.openHour)} ~ ${String(
+              data?.fetchShop.closeHour
+            )}`}
             address={data?.fetchShop.address}
             phone={data?.fetchShop.phone}
             shoppingLabel={data?.fetchShop.name}
