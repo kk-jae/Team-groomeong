@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Modal } from "antd";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ICreateReviewInput } from "../../../../commons/types/generated/types";
@@ -8,6 +9,7 @@ import { UseMutationCreateReview } from "../mutation/UseMutationCreateReview";
 import { UseQueryFetchShop } from "../query/UseQueryFetchShop";
 
 export const useCreateReview = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -42,8 +44,7 @@ export const useCreateReview = () => {
             },
           },
         });
-
-        Modal.success({ content: "댓작성완료" });
+        Modal.success({ content: "댓글 작성 완료" });
       } catch (error) {
         if (error instanceof Error) Modal.error({ content: error.message });
       }

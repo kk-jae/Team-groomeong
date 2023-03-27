@@ -31,9 +31,6 @@ export const useLogInButton = () => {
         setAccessToken(accessToken);
         localStorage.setItem("accessToken", accessToken);
       }
-      Modal.success({
-        content: "로그인에 성공하였습니다.",
-      });
       router.push("/home");
     } catch (error) {
       if (error instanceof Error)

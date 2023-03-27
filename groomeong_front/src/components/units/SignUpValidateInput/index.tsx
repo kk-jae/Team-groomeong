@@ -26,7 +26,6 @@ const SignUpValidateInput = (props: ISignUpvalidateInputProps) => {
     time,
   } = useSignUpValidateInput(props.setValid);
 
-  console.log(validation);
   return (
     <>
       <InputMiddle

@@ -72,7 +72,6 @@ export const useSignUpValidateInput = (
           token: validation.emailToken,
         },
       });
-      console.log(data);
       setValid(true);
       setValidation((prev: IValidation) => ({
         ...prev,

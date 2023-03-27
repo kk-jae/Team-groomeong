@@ -7,7 +7,8 @@ import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
 import { UseQueryFetchLoginUser } from "../../../../commons/hooks/query/UseQueryFetchLoginUser";
 import { Schema } from "../../../../commons/validation/myPageEdit.validation";
 import { Buttons } from "../../../atoms/Buttons";
-import { CommonsImages } from "../../../atoms/Images";
+import ContentInfo from "../../../atoms/ContentInfo";
+import ImgInput from "../../../atoms/Input/ImgInput";
 import { InputMiddle } from "../../../atoms/Input/Middle";
 import * as S from "./index.style";
 
@@ -38,7 +39,7 @@ export const MyPageEditBodyTemplate = () => {
           />
           <InputMiddle
             label="연락처"
-            defaultValue={userData?.fetchLoginUser?.phone}
+            defaultValue={userData?.fetchLoginUser?.phone.replaceAll("-", "")}
             name={"phone"}
           />
           <S.LabelWrapper>
@@ -50,8 +51,7 @@ export const MyPageEditBodyTemplate = () => {
             ></Buttons>
           </S.LabelWrapper>
           <S.LabelWrapper>
-            <S.Label>사진</S.Label>
-            <CommonsImages></CommonsImages>
+            <ContentInfo label="사진" component={<ImgInput name="image" />} />
           </S.LabelWrapper>
           <S.ButtonBox>
             <Buttons

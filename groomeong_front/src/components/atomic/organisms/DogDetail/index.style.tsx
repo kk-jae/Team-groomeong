@@ -55,7 +55,7 @@ export const DogDetailContentImg = styled.div<DogDetailContentImgProps>`
   background-image: url(${({ url }) => url});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 `;
 
 export const DogDetailFooter = styled.div`
