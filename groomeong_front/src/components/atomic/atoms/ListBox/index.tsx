@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 import { ShopDetail } from "../../organisms/ShopDetail";
+import { ShopDetailModal } from "../../organisms/ShopDetail/index.style";
 import { StarRate } from "../StarRate";
 import * as S from "./index.styled";
 
@@ -13,10 +15,10 @@ interface IProps {
   id: string;
 }
 
-export const ListBox = (props: IProps): JSX.Element => {
+export const ListBox = (props: IProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const showModal = (): void => {
+  const showModal = () => {
     setIsModalOpen((prev) => !prev);
   };
 
@@ -26,8 +28,8 @@ export const ListBox = (props: IProps): JSX.Element => {
         <S.ShopName>{props.name}</S.ShopName>
         <S.ShopImg
           src={
-            !(props.shopImg === "")
-              ? `https://storage.googleapis.com/${String(props.shopImg)}`
+            !props.shopImg
+              ? `https://storage.googleapis.com/${props.shopImg}`
               : "/image/icon-store.svg"
           }
         />

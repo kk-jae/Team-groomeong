@@ -1,8 +1,10 @@
-import React from "react";
-import Map from "../../atoms/Map";
+import React from 'react'
+import Map from '../../atoms/Map'
 
-const MapTest = (): JSX.Element => {
-  return <Map />;
-};
+const MapTest = () => {
+  return (
+    <Map />
+  )
+}
 
-export default MapTest;
+export default MapTest

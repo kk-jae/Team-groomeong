@@ -3,7 +3,7 @@ import { Buttons } from "../../Buttons";
 import { IShopLabelProps } from "../Header";
 import * as S from "../index.styles";
 
-export const CommentsFooter = (props: IShopLabelProps): JSX.Element => {
+export const CommentsFooter = (props: IShopLabelProps) => {
   const { onClickMoveToPage } = useMoveToPage();
 
   return (
@@ -29,7 +29,7 @@ export const CommentsFooter = (props: IShopLabelProps): JSX.Element => {
             variation="primary"
             border="none"
             size="medium"
-            onClick={onClickMoveToPage(`/map/${String(props.id)}/reservation`)}
+            onClick={onClickMoveToPage(`/map/${props.id}/reservation`)}
           />
         </S.FooterModalButtonBox>
       </S.CommentsFooterModalStyles>

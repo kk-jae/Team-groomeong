@@ -1,10 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import { IQuery } from "../../../../commons/types/generated/types";
 
-interface IUseQueryFetchUserWithDeleted {
-  data?: Pick<IQuery, "fetchUserWithDeleted">;
-}
-
 export const FETCH_USER_WITH_DELETED = gql`
   query {
     fetchUserWithDeleted {
@@ -15,12 +11,11 @@ export const FETCH_USER_WITH_DELETED = gql`
     }
   }
 `;
-export const UseQueryFetchUserWithDeleted =
-  (): IUseQueryFetchUserWithDeleted => {
-    const { data } = useQuery<Pick<IQuery, "fetchUserWithDeleted">>(
-      FETCH_USER_WITH_DELETED
-    );
-    return {
-      data,
-    };
+export const UseQueryFetchUserWithDeleted = () => {
+  const { data } = useQuery<Pick<IQuery, "fetchUserWithDeleted">>(
+    FETCH_USER_WITH_DELETED
+  );
+  return {
+    data,
   };
+};

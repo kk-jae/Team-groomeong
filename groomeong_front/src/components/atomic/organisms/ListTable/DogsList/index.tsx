@@ -12,7 +12,7 @@ interface IDogType {
   SPECIAL: string;
 }
 
-export const DogsList = (): JSX.Element => {
+export const DogsList = () => {
   const router = useRouter();
   const { data: dogData } = UseQueryFetchUserDogs();
 
@@ -23,12 +23,12 @@ export const DogsList = (): JSX.Element => {
     SPECIAL: "특수견",
   };
 
-  const onClickAddDog = (): void => {
-    void router.push("/mypage/dogRegister");
+  const onClickAddDog = () => {
+    router.push("/mypage/dogRegister");
   };
 
-  const onClickDogDetail = (event: MouseEvent<HTMLButtonElement>): void => {
-    void router.push(`/mypage/dog/${event.currentTarget.id}`);
+  const onClickDogDetail = (event: MouseEvent<HTMLButtonElement>) => {
+    router.push(`/mypage/dog/${event.currentTarget.id}`);
   };
 
   return (

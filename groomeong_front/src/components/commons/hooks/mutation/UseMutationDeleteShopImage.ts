@@ -11,7 +11,7 @@ const DELETE_SHOP_IMAGE = gql`
     }
   }
 `;
-export const UseMutationDeleteShopImage = (): [typeof deleteShopImage] => {
+export const UseMutationDeleteShopImage = () => {
   const [deleteShopImage] = useMutation<
     Pick<IMutation, "deleteShopImage">,
     IMutationDeleteShopImageArgs

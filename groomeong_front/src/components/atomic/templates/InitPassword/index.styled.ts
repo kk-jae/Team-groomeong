@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import * as GS from "../../../../../theme/global";
 
 export const InitPasswordWrapper = styled.div`
   width: 1124px;

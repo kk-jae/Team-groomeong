@@ -10,7 +10,7 @@ const DELETE_DOG = gql`
   }
 `;
 
-export const UseMutationDeleteDog = (): [typeof deleteDog] => {
+export const UseMutationDeleteDog = () => {
   const [deleteDog] = useMutation<
     Pick<IMutation, "deleteDog">,
     IMutationDeleteDogArgs

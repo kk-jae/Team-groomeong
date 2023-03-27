@@ -4,10 +4,6 @@ import {
   IQueryFetchUserArgs,
 } from "../../../../commons/types/generated/types";
 
-interface IUseQueryFetchUserDogs {
-  data?: Pick<IQuery, "fetchUserDogs">;
-}
-
 export const FETCH_USER_DOGS = gql`
   query {
     fetchUserDogs {
@@ -20,7 +16,7 @@ export const FETCH_USER_DOGS = gql`
   }
 `;
 
-export const UseQueryFetchUserDogs = (): IUseQueryFetchUserDogs => {
+export const UseQueryFetchUserDogs = () => {
   const { data } = useQuery<Pick<IQuery, "fetchUserDogs">, IQueryFetchUserArgs>(
     FETCH_USER_DOGS
   );

@@ -15,17 +15,17 @@ interface IProps {
   maxLength?: number;
 }
 
-export const InputSmall = (props: IProps): JSX.Element => {
+export const InputSmall = (props: IProps) => {
   const [focus, setFocus] = useState(false);
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  const onFocusTest = (): void => {
+  const onFocusTest = () => {
     setFocus(true);
   };
-  const onBlurTest = (): void => {
+  const onBlurTest = () => {
     setFocus(false);
   };
 

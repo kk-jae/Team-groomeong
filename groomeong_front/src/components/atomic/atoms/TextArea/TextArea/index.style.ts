@@ -62,10 +62,8 @@ export const TextArea_Profile_Icon = styled.button`
   margin-right: 20px;
 
   img {
-    width: ${(props: ITextAreaProps) =>
-      props.iconView === true ? "48px" : "24px"};
-    height: ${(props: ITextAreaProps) =>
-      props.iconView === true ? "48px" : "24px"};
+    width: ${(props: ITextAreaProps) => (props.iconView ? "48px" : "24px")};
+    height: ${(props: ITextAreaProps) => (props.iconView ? "48px" : "24px")};
     /* border: 1px solid ${GS.border.borderTransparent}; */
     /* border-radius: 50px; */
     object-fit: contain;
@@ -83,8 +81,7 @@ export const TextArea_TopBox_Rate = styled.div`
 
 export const TextArea_TopBox_Date = styled.div`
   width: 82px;
-  display: ${(props: ITextAreaProps) =>
-    props.dateView === true ? "flex" : "none"};
+  display: ${(props: ITextAreaProps) => (props.dateView ? "flex" : "none")};
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;

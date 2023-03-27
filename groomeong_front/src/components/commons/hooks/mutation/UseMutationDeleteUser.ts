@@ -10,7 +10,7 @@ const DELETE_USER = gql`
   }
 `;
 
-export const UseMutationDeleteUser = (): [typeof deleteUser] => {
+export const UseMutationDeleteUser = () => {
   const [deleteUser] = useMutation<
     Pick<IMutation, "deleteUser">,
     IMutationDeleteUserArgs

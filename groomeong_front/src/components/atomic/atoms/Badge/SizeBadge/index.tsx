@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import * as S from "./index.styled";
 
-export const SizeBadge = (): JSX.Element => {
+export const SizeBadge = () => {
   const { setValue } = useFormContext();
   const [big, setBig] = useState(true);
   const [middle, setMiddle] = useState(false);
   const [small, setSmall] = useState(false);
   const [special, setSpecial] = useState(false);
 
-  const onClickSize = (event: any): void => {
+  const onClickSize = (event: any) => {
     if (event.target.id === "LARGE") {
       setBig(true);
       setMiddle(false);

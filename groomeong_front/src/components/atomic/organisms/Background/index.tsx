@@ -8,11 +8,11 @@ interface IBackgroundProps {
   viewport?: boolean;
 }
 
-const Background = (props: IBackgroundProps): JSX.Element => {
+const Background = (props: IBackgroundProps) => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    if (localStorage.accessToken !== null) {
+    if (localStorage.accessToken) {
       setLoggedIn(true);
     }
   }, []);

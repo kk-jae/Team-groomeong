@@ -2,7 +2,7 @@ import React from "react";
 import Background from "../../organisms/Background";
 import DogDetail from "../../organisms/DogDetail";
 
-const DogDetailTemplate = (): JSX.Element => {
+const DogDetailTemplate = () => {
   return (
     <Background>
       <DogDetail />

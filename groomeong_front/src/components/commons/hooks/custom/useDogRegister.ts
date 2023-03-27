@@ -1,34 +1,11 @@
 import { UseMutationCreateDog } from "./../mutation/UseMutationCreateDog";
-import {
-  useForm,
-  FormProvider,
-  FieldValues,
-  FormProviderProps,
-  UseFormReturn,
-} from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Schema } from "../../../commons/validation/dogRegister.validation";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 
-interface ICreateDogInput {
-  name: string;
-  age: number;
-  weight: number;
-  breed: any;
-  specifics?: string;
-  image?: string;
-}
-
-interface IUseDogRegister {
-  FormProvider: <TFieldValues extends FieldValues, TContext = any>(
-    props: FormProviderProps<TFieldValues, TContext>
-  ) => JSX.Element;
-  method: UseFormReturn<FieldValues, any>;
-  onClickRegisterDog: (data: ICreateDogInput) => Promise<void>;
-}
-
-export const useDogRegister = (): IUseDogRegister => {
+export const useDogRegister = () => {
   const [createDog] = UseMutationCreateDog();
   const router = useRouter();
 
@@ -37,7 +14,16 @@ export const useDogRegister = (): IUseDogRegister => {
     resolver: yupResolver(Schema),
   });
 
-  const onClickRegisterDog = async (data: ICreateDogInput): Promise<void> => {
+  interface ICreateDogInput {
+    name: string;
+    age: number;
+    weight: number;
+    breed: any;
+    specifics?: string;
+    image?: string;
+  }
+
+  const onClickRegisterDog = async (data: ICreateDogInput) => {
     console.log(data.image);
     const createDogInput: ICreateDogInput = {
       name: data.name,
@@ -48,9 +34,9 @@ export const useDogRegister = (): IUseDogRegister => {
       image: data.image,
     };
 
-    if (!(createDogInput.breed === "")) createDogInput.breed = "LARGE";
+    if (!createDogInput.breed) createDogInput.breed = "LARGE";
     try {
-      await createDog({
+      const result = await createDog({
         variables: {
           createDogInput,
         },
@@ -58,7 +44,7 @@ export const useDogRegister = (): IUseDogRegister => {
       Modal.success({
         content: "댕댕이가 등록되었습니다",
       });
-      void router.push("/mypage");
+      router.push("/mypage");
     } catch (error) {
       if (error instanceof Error) {
         Modal.error({

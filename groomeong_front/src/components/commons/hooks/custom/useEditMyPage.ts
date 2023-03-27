@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { IQueryFetchUserArgs } from "../../../../commons/types/generated/types";
 import { UseMutationUpdateUser } from "../mutation/UseMutationUpdateUser";
 import { UseQueryFetchLoginUser } from "../query/UseQueryFetchLoginUser";
 
@@ -7,11 +8,7 @@ interface IFetchData {
   phone: string;
 }
 
-interface IuseEditMyPage {
-  onClickEditBtn: (data: IFetchData) => Promise<void>;
-}
-
-export const useEditMyPage = (): IuseEditMyPage => {
+export const useEditMyPage = () => {
   const [updateUser] = UseMutationUpdateUser();
   const { data: userData } = UseQueryFetchLoginUser();
   const router = useRouter();
@@ -28,7 +25,7 @@ export const useEditMyPage = (): IuseEditMyPage => {
           },
         },
       });
-      void router.push("/mypage");
+      router.push("/mypage");
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
