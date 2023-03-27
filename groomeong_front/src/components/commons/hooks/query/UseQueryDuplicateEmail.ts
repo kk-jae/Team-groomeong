@@ -4,17 +4,13 @@ import {
   IQueryDuplicateEmailArgs,
 } from "../../../../commons/types/generated/types";
 
-interface IUseQueryDuplicateEmail {
-  data?: Pick<IQuery, "duplicateEmail">;
-}
-
 export const DUPLICATE_EMAIL = gql`
   query duplicateEmail($email: String!) {
     duplicateEmail(email: $email)
   }
 `;
 
-export const UseQueryDuplicateEmail = (): IUseQueryDuplicateEmail => {
+export const UseQueryDuplicateEmail = () => {
   const { data } = useQuery<
     Pick<IQuery, "duplicateEmail">,
     IQueryDuplicateEmailArgs

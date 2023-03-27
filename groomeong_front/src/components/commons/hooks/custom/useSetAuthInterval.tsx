@@ -1,17 +1,10 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 
-interface IuseSetAuthInterval {
-  setTime: Dispatch<SetStateAction<number>>;
-  time: number;
-  setIntervalHooks: (sec?: number) => void;
-  clearIntervalId?: NodeJS.Timer;
-}
-
-export const useSetAuthInterval = (t?: number): IuseSetAuthInterval => {
+export const useSetAuthInterval = (t?: number) => {
   const [time, setTime] = useState<number>(t ?? 180);
   const [clearIntervalId, setClearIntervalId] = useState<NodeJS.Timer>();
 
-  const setIntervalHooks = (sec?: number): void => {
+  const setIntervalHooks = (sec?: number) => {
     if (sec !== undefined) setTime(sec);
 
     const id = setInterval(() => {

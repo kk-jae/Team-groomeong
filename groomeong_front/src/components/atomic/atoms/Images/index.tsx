@@ -5,7 +5,7 @@ export interface ICommonsImagesProps {
   variation?: "primary" | "secondary";
 }
 
-export const CommonsImages = (props: ICommonsImagesProps): JSX.Element => {
+export const CommonsImages = (props: ICommonsImagesProps) => {
   return (
     <S.AddImagesBoxStyles state={props.state} variation={props.variation}>
       <S.AddImagesStyles />

@@ -12,7 +12,7 @@ const UPDATE_USER = gql`
   }
 `;
 
-export const UseMutationUpdateUser = (): [typeof updateUser] => {
+export const UseMutationUpdateUser = () => {
   const [updateUser] = useMutation<
     Pick<IMutation, "updateUser">,
     IMutationUpdateUserArgs

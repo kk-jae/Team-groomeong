@@ -1,34 +1,21 @@
-import { FieldValues, useFormContext, UseFormRegister } from "react-hook-form";
-import { ChangeEvent, MutableRefObject, useRef, useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { ChangeEvent, useRef, useState } from "react";
 import { UseMutationUploadDogImage } from "../mutation/UseMutationUploadDogImage";
 
-const [uploadDogImage] = UseMutationUploadDogImage();
-interface IuseImgInput {
-  uploadDogImage: typeof uploadDogImage;
-  register: UseFormRegister<FieldValues>;
-  ImgInputRef: MutableRefObject<HTMLInputElement | null>;
-  ImgBoxRef: MutableRefObject<HTMLDivElement | null>;
-  img: string;
-  onClickImgInput: () => void;
-  onChangeInput: (e: ChangeEvent<HTMLInputElement>) => Promise<void>;
-}
-
-const useImgInput = (): IuseImgInput => {
+const useImgInput = () => {
   const [img, setImg] = useState<string>("");
-
+  const [uploadDogImage] = UseMutationUploadDogImage();
   const ImgInputRef = useRef<HTMLInputElement | null>(null);
   const ImgBoxRef = useRef<HTMLDivElement | null>(null);
   const { register, setValue } = useFormContext();
 
-  const onClickImgInput = (): void => {
+  const onClickImgInput = () => {
     if (ImgInputRef.current !== null) ImgInputRef.current.click();
   };
 
-  const onChangeInput = async (
-    e: ChangeEvent<HTMLInputElement>
-  ): Promise<void> => {
+  const onChangeInput = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file !== undefined) {
+    if (file) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = (readerEvent) => {

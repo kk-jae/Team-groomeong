@@ -12,7 +12,7 @@ const CREATE_RESERVATION = gql`
   }
 `;
 
-export const UseMutationCreateReservation = (): [typeof createReservation] => {
+export const UseMutationCreateReservation = () => {
   const [createReservation] = useMutation<
     Pick<IMutation, "createReservation">,
     IMutationCreateReservationArgs

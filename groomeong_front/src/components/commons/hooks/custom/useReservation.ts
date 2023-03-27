@@ -2,17 +2,7 @@ import { useRouter } from "next/router";
 import { Modal } from "antd";
 import { UseMutationCreateReservation } from "../mutation/UseMutationCreateReservation";
 
-interface IuseReservationDog {
-  onClickReservationDog: (
-    date: string,
-    shopId: string,
-    userId: string,
-    dogId: string,
-    time: string
-  ) => () => Promise<void>;
-}
-
-export const useReservationDog = (): IuseReservationDog => {
+export const useReservationDog = () => {
   const router = useRouter();
   const [createReservation] = UseMutationCreateReservation();
 
@@ -26,7 +16,7 @@ export const useReservationDog = (): IuseReservationDog => {
     ) =>
     async () => {
       try {
-        await createReservation({
+        const result = await createReservation({
           variables: {
             createReservationInput: {
               date,

@@ -1,5 +1,5 @@
 import { EmailAuthTemplates } from "../../src/components/atomic/templates/EmailAuth";
 
-export default function EmailAuthPage(): JSX.Element {
+export default function EmailAuthPage() {
   return <EmailAuthTemplates />;
 }

@@ -10,7 +10,7 @@ const DELETE_RESERVATION = gql`
   }
 `;
 
-export const UseMutationDeleteReservation = (): [typeof deleteReservation] => {
+export const UseMutationDeleteReservation = () => {
   const [deleteReservation] = useMutation<
     Pick<IMutation, "deleteReservation">,
     IMutationDeleteReservationArgs

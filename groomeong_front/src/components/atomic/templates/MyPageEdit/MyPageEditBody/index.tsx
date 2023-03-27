@@ -11,7 +11,7 @@ import { CommonsImages } from "../../../atoms/Images";
 import { InputMiddle } from "../../../atoms/Input/Middle";
 import * as S from "./index.style";
 
-export const MyPageEditBodyTemplate = (): JSX.Element => {
+export const MyPageEditBodyTemplate = () => {
   const method = useForm<IMutationUpdateUserArgs>({
     mode: "onChange",
     resolver: yupResolver(Schema),

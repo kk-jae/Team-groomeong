@@ -1,15 +1,8 @@
-import { ApolloQueryResult, gql, useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import {
   IQuery,
   IQueryFetchShopsArgs,
 } from "../../../../commons/types/generated/types";
-
-interface IUseQueryFetchShops {
-  data?: Pick<IQuery, "fetchShops">;
-  refetch?: (
-    variables?: Partial<IQueryFetchShopsArgs> | undefined
-  ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchShops">>>;
-}
 
 export const FETCH_SHOPS = gql`
   query fetchShops($search: String) {
@@ -40,7 +33,7 @@ export const FETCH_SHOPS = gql`
   }
 `;
 
-export const UseQueryFetchShops = (): IUseQueryFetchShops => {
+export const UseQueryFetchShops = () => {
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchShops">,
     IQueryFetchShopsArgs

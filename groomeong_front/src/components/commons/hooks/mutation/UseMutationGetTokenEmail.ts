@@ -10,7 +10,7 @@ const GET_TOKEN_EMAIL = gql`
   }
 `;
 
-export const UseMutationGetTokenEmail = (): [typeof getTokenEmail] => {
+export const UseMutationGetTokenEmail = () => {
   const [getTokenEmail] = useMutation<
     Pick<IMutation, "getTokenEmail">,
     IMutationGetTokenEmailArgs

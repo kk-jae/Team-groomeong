@@ -6,10 +6,6 @@ import {
 
 // 각 샵에 해당하는 댓글...
 
-interface IUseQueryFetchReviewsByShopId {
-  data?: Pick<IQuery, "fetchReviewsByShopId">;
-}
-
 export const FETCH_REVIEWS_BY_SHOP_ID = gql`
   query fetchReviewsByShopId($page: Float, $shopId: String!) {
     fetchReviewsByShopId(page: $page, shopId: $shopId) {
@@ -21,9 +17,7 @@ export const FETCH_REVIEWS_BY_SHOP_ID = gql`
   }
 `;
 
-export const UseQueryFetchReviewsByShopId = (
-  shopId: string
-): IUseQueryFetchReviewsByShopId => {
+export const UseQueryFetchReviewsByShopId = (shopId: string) => {
   const { data } = useQuery<
     Pick<IQuery, "fetchReviewsByShopId">,
     IQueryFetchReviewsByShopIdArgs

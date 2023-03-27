@@ -19,7 +19,7 @@ const CREATE_SHOP_IMAGE = gql`
   }
 `;
 
-export const UseMutationCreateShopImage = (): [typeof createShopImage] => {
+export const UseMutationCreateShopImage = () => {
   const [createShopImage] =
     useMutation<Pick<IMutation, "createShopImage">>(CREATE_SHOP_IMAGE);
   return [createShopImage];

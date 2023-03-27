@@ -12,7 +12,7 @@ const CREATE_SHOP = gql`
   }
 `;
 
-export const UseMutationCreateShop = (): [typeof createShop] => {
+export const UseMutationCreateShop = () => {
   const [createShop] = useMutation<
     Pick<IMutation, "createShop">,
     IMutationCreateShopArgs

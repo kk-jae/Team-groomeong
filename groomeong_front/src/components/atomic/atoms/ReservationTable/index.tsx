@@ -10,13 +10,11 @@ import {
   UseQueryFetchReservationByUser,
 } from "../../../commons/hooks/query/UseQueryFetchReservationByUserId";
 
-export const ReservationTable = (): JSX.Element => {
+export const ReservationTable = () => {
   const { data } = UseQueryFetchReservationByUser();
   const [deleteReservation] = UseMutationDeleteReservation();
 
-  const onClickDelete = async (
-    event: MouseEvent<HTMLButtonElement>
-  ): Promise<void> => {
+  const onClickDelete = async (event: MouseEvent<HTMLButtonElement>) => {
     try {
       await deleteReservation({
         variables: { reservationId: event.currentTarget.id },

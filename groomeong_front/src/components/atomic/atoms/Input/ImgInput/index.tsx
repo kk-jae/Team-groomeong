@@ -6,7 +6,7 @@ interface IImgInputProps {
   name: string;
 }
 
-const ImgInput = (props: IImgInputProps): JSX.Element => {
+const ImgInput = (props: IImgInputProps) => {
   const {
     ImgInputRef,
     ImgBoxRef,

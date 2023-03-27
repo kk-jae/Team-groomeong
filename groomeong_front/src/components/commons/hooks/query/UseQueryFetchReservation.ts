@@ -4,10 +4,6 @@ import {
   IQueryFetchReservationArgs,
 } from "../../../../commons/types/generated/types";
 
-interface IUseQueryFetchReservation {
-  data?: Pick<IQuery, "fetchReservation">;
-}
-
 export const FETCH_RESERVATION = gql`
   query fetchReservation($reservationId: String!) {
     fetchReservation(reservationId: $reservationId) {
@@ -26,7 +22,7 @@ export const FETCH_RESERVATION = gql`
   }
 `;
 
-export const UseQueryFetchReservation = (): IUseQueryFetchReservation => {
+export const UseQueryFetchReservation = () => {
   const { data } = useQuery<
     Pick<IQuery, "fetchReservation">,
     IQueryFetchReservationArgs

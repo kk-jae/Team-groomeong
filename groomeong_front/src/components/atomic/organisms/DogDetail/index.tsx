@@ -8,24 +8,24 @@ import PageHeader from "../../atoms/PageHeader";
 import InfoTextArea from "../../atoms/TextArea/InfoTextArea";
 import * as S from "./index.style";
 
-const DogDetail = (): JSX.Element => {
+const DogDetail = () => {
   const { method, FormProvider, data, breed } = useDetailPage();
   const [deleteDog] = UseMutationDeleteDog();
   const router = useRouter();
 
-  const onClickDelete = async (): Promise<void> => {
+  const onClickDelete = async () => {
     try {
       await deleteDog({
         variables: { id: String(router.query.dogId) },
       });
-      void router.push("/mypage/");
+      router.push("/mypage/");
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
   };
 
-  const onClickMoveBack = async (): Promise<void> => {
-    void router.push("/mypage/");
+  const onClickMoveBack = async () => {
+    router.push("/mypage/");
   };
 
   return (
@@ -55,7 +55,7 @@ const DogDetail = (): JSX.Element => {
           <div>사진</div>
           <S.DogDetailContentImg
             url={
-              `https://storage.googleapis.com/${String(data?.image)}` ??
+              `https://storage.googleapis.com/${data?.image}` ??
               "/image/example_dog.png"
             }
           />

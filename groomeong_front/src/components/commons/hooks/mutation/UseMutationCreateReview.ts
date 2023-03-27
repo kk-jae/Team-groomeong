@@ -12,7 +12,7 @@ const CREATE_REVIEW = gql`
   }
 `;
 
-export const UseMutationCreateReview = (): [typeof createReview] => {
+export const UseMutationCreateReview = () => {
   const [createReview] = useMutation<
     Pick<IMutation, "createReview">,
     IMutationCreateReviewArgs

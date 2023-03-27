@@ -1,12 +1,5 @@
 import { useSetAuthInterval } from "./useSetAuthInterval";
-import {
-  ChangeEvent,
-  Dispatch,
-  RefObject,
-  SetStateAction,
-  useRef,
-  useState,
-} from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { UseMutationCheckValidToken } from "../mutation/UseMutationCheckValidToken";
 import { UseMutationGetTokenEmail } from "../mutation/UseMutationGetTokenEmail";
@@ -18,18 +11,9 @@ interface IValidation {
   error: string;
 }
 
-interface IuseSignUpValidateInput {
-  onClickEmailAuth: () => Promise<void>;
-  onChangeAuthNumber: (e: ChangeEvent<HTMLInputElement>) => void;
-  onClickAuthValidate: () => Promise<void>;
-  validation: IValidation;
-  setValidation: Dispatch<SetStateAction<IValidation>>;
-  validationInput: RefObject<HTMLInputElement>;
-  time: number;
-}
 export const useSignUpValidateInput = (
   setValid: Dispatch<SetStateAction<boolean>>
-): IuseSignUpValidateInput => {
+) => {
   const { clearIntervalId, setIntervalHooks, time } = useSetAuthInterval();
   const validationInput = useRef<HTMLInputElement>(null);
   const [getTokenEmail] = UseMutationGetTokenEmail();
@@ -46,7 +30,7 @@ export const useSignUpValidateInput = (
   const email = getValues("email");
 
   // mutation 으로 검증 되면.. 밑의 if 조건문 작동
-  const onClickEmailAuth = async (): Promise<void> => {
+  const onClickEmailAuth = async () => {
     if (email.includes("@")) {
       const result = await getTokenEmail({
         variables: {
@@ -73,14 +57,14 @@ export const useSignUpValidateInput = (
     }
   };
 
-  const onChangeAuthNumber = (e: ChangeEvent<HTMLInputElement>): void => {
+  const onChangeAuthNumber = (e: ChangeEvent<HTMLInputElement>) => {
     setValidation((prev: IValidation) => ({
       ...prev,
       authNumber: e.target.value,
     }));
   };
 
-  const onClickAuthValidate = async (): Promise<void> => {
+  const onClickAuthValidate = async () => {
     if (validation.authNumber === validation.emailToken) {
       const { data } = await checkValidToken({
         variables: {

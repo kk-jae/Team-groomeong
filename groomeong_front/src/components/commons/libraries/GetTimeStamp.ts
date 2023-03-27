@@ -1,4 +1,4 @@
-export const isSameDate = (date: Date): boolean => {
+export const isSameDate = (date: Date) => {
   const now = new Date();
   const d = new Date(date);
 
