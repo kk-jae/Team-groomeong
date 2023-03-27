@@ -15,7 +15,7 @@ interface IContentInfoProps {
   component?: React.ReactElement;
 }
 
-const ContentInfo = (props: IContentInfoProps) => {
+const ContentInfo = (props: IContentInfoProps): JSX.Element => {
   return (
     <ContentInfoWrapper
       left={props.left}
@@ -24,7 +24,9 @@ const ContentInfo = (props: IContentInfoProps) => {
       top={props.top}
     >
       <ContetnInfoLabel>{props.label}</ContetnInfoLabel>
-      <ContentInfoContent>{props.component ?? props.content}</ContentInfoContent>
+      <ContentInfoContent>
+        {props.component ?? props.content}
+      </ContentInfoContent>
     </ContentInfoWrapper>
   );
 };

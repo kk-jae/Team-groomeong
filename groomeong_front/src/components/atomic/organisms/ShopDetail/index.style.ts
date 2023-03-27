@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
-import { PropaneSharp } from "@mui/icons-material";
+// import { PropaneSharp } from "@mui/icons-material";
 import { Modal } from "antd";
 
-interface IProps {
-  image: any;
-}
+// interface IProps {
+//   image: any;
+// }
 
 export const ShopDetailModal = styled(Modal)`
   .ant-modal-content {

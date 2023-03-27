@@ -7,7 +7,7 @@ import { Buttons } from "../../atoms/Buttons";
 import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 
-export const MyPageTemplate = () => {
+export const MyPageTemplate = (): JSX.Element => {
   const { data } = UseQueryFetchLoginUser();
 
   const { onClickMoveToPage } = useMoveToPage();

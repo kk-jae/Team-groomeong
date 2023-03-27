@@ -1,7 +1,7 @@
 import * as S from "./index.style";
 import { ReservationTable } from "../../../atoms/ReservationTable";
 
-export const ReservationList = () => {
+export const ReservationList = (): JSX.Element => {
   return (
     <>
       <S.ReservationListWrapper>

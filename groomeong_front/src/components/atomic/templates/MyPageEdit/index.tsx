@@ -1,12 +1,10 @@
 import PageHeader from "../../atoms/PageHeader";
 import Background from "../../organisms/Background";
 import * as S from "./index.style";
-import { DogsList } from "../../organisms/ListTable/DogsList";
-import { Buttons } from "../../atoms/Buttons";
 
 import { MyPageEditBodyTemplate } from "./MyPageEditBody";
 
-export const MyPageEditTemplate = () => {
+export const MyPageEditTemplate = (): JSX.Element => {
   return (
     <>
       <Background>

@@ -16,7 +16,7 @@ interface IReviewProps {
   showModal?: (e: MouseEvent<HTMLElement>) => void;
 }
 
-export const ReviewModal = (props: IReviewProps) => {
+export const ReviewModal = (props: IReviewProps): JSX.Element => {
   const [accessToken] = useRecoilState(accessTokenState);
   const { data } = UseQueryFetchShop(props.shopId);
   const { data: review } = UseQueryFetchReviewsByShopIdReservation(
@@ -34,23 +34,26 @@ export const ReviewModal = (props: IReviewProps) => {
         <S.ShopDetailWrapper>
           <S.ShopImage
             src={
-              data?.fetchShop?.image[0]
-                ? `https://storage.googleapis.com/${data?.fetchShop?.image[0]}`
+              data?.fetchShop?.image[0] != null
+                ? `https://storage.googleapis.com/${data?.fetchShop?.image[0].imageUrl}`
                 : "/image/img_shop_default.svg"
             }
           ></S.ShopImage>
           <CommentsHeader
             star={data?.fetchShop.averageStar}
             date={"월, 화, 수, 목, 금, 토, 일"}
-            time={`${data?.fetchShop.openHour} ~ ${data?.fetchShop.closeHour}`}
+            time={`${String(data?.fetchShop.openHour)} ~ ${String(
+              data?.fetchShop.closeHour
+            )}`}
             address={data?.fetchShop.address}
             phone={data?.fetchShop.phone}
             shoppingLabel={data?.fetchShop.name}
             id={data?.fetchShop.id}
             buttonState={false}
           ></CommentsHeader>
+          {/*  eslint-disable-next-line @typescript-eslint/no-confusing-void-expression */}
           {review?.fetchReviewsByShopId?.map((el) => console.log(el.id))}
-          {accessToken ? (
+          {accessToken !== "" ? (
             <TextArea
               iconView={false}
               buttonView={true}

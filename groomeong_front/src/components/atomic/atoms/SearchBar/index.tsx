@@ -5,7 +5,7 @@ interface ISearchBarProps {
   placeholder: string;
 }
 
-export const SearchBar = (props: ISearchBarProps) => {
+export const SearchBar = (props: ISearchBarProps): JSX.Element => {
   return (
     <>
       <SearchBox sizes={props.sizes}>

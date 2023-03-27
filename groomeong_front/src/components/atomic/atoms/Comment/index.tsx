@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
 import { getDate } from "../../../commons/libraries/GetDate";
 import { StarRate } from "../StarRate";
@@ -13,7 +12,7 @@ export interface ICommentProps {
   state?: boolean;
 }
 
-export const Comment = (props: ICommentProps) => {
+export const Comment = (props: ICommentProps): JSX.Element => {
   const { data } = UseQueryFetchLoginUser();
 
   return (
@@ -22,7 +21,7 @@ export const Comment = (props: ICommentProps) => {
         <S.TextArea_TopBox>
           <>
             <S.TextArea_TopBox_Profile>
-              {data?.fetchLoginUser.image ? (
+              {data?.fetchLoginUser.image != null ? ( // 여기 문제 있는지 볼것
                 <S.TextArea_Profile_Icon>
                   <img
                     src={`https://storage.googleapis.com/${data?.fetchLoginUser.image}`}
