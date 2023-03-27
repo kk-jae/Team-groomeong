@@ -27,7 +27,7 @@ const useImgInput = () => {
         },
       });
 
-      setValue("image", data?.uploadDogImage);
+      setValue("image", data?.uploadDogImage[0]);
     }
   };
 

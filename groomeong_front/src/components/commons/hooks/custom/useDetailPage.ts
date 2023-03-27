@@ -10,14 +10,12 @@ import useGetRoute from "./useGetRoute";
 const useDetailPage = () => {
   const method = useForm();
   const { query } = useGetRoute();
-  console.log(query);
   const { data } = UseQueryFetchDog(query.dogId as string);
-  console.log(data);
   enum breed {
-    SMALL = '소형',
-    MEDIUM = '중형',
-    LARGE ='대형',
-    SPECIAL = '특수견',
+    SMALL = "소형",
+    MEDIUM = "중형",
+    LARGE = "대형",
+    SPECIAL = "특수견",
   }
   return {
     method,

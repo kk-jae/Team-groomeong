@@ -55,13 +55,13 @@ const DogDetail = () => {
           <div>사진</div>
           <S.DogDetailContentImg
             url={
-              `https://storage.googleapis.com/${data?.image}` ??
-              "/image/example_dog.png"
+              data?.image
+                ? `https://storage.googleapis.com/${data?.image}`
+                : "/image/img-dog-detail.png"
             }
           />
         </S.DogDetailImgLabel>
       </S.DogDetailContentWrapper>
-
       <FormProvider {...method}>
         <form>
           <S.Div left={"124px"} right={"124px"}>

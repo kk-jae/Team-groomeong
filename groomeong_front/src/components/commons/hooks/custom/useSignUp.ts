@@ -18,7 +18,6 @@ export const useSignUp = () => {
           phone: data.phone,
         },
       });
-      console.log(userData);
       // 회원가입 성공 Modal
       void router.push(`/login`);
     } catch (error) {

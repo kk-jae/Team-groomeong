@@ -30,7 +30,7 @@ export const ReservationHistoryTable = () => {
       {data ? (
         data?.fetchReservationsByUser.map((el: IReservation) => (
           <>
-            {!isSameDate ? (
+            {!isSameDate(el.date) ? (
               <></>
             ) : (
               <tbody key={uuidv4()}>

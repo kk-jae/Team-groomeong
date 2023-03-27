@@ -34,8 +34,8 @@ export const ReviewModal = (props: IReviewProps) => {
         <S.ShopDetailWrapper>
           <S.ShopImage
             src={
-              data?.fetchShop?.image[0]
-                ? `https://storage.googleapis.com/${data?.fetchShop?.image[0]}`
+              data?.fetchShop?.image
+                ? `https://storage.googleapis.com/${data?.fetchShop?.image}`
                 : "/image/img_shop_default.svg"
             }
           ></S.ShopImage>
@@ -49,7 +49,6 @@ export const ReviewModal = (props: IReviewProps) => {
             id={data?.fetchShop.id}
             buttonState={false}
           ></CommentsHeader>
-          {review?.fetchReviewsByShopId?.map((el) => console.log(el.id))}
           {accessToken ? (
             <TextArea
               iconView={false}

@@ -103,7 +103,7 @@ export const EmailAuthTemplates = () => {
             <div></div>
           )}
         </S.EmailAuthMiddle>
-        <S.EmailAuthBottom onClick={onClickMoveToPage("/home")}>
+        <S.EmailAuthBottom onClick={onClickMoveToPage("/mypage/edit")}>
           취소
         </S.EmailAuthBottom>
       </S.EmailAuthWrapper>

@@ -24,7 +24,6 @@ export const useDogRegister = () => {
   }
 
   const onClickRegisterDog = async (data: ICreateDogInput) => {
-    console.log(data.image);
     const createDogInput: ICreateDogInput = {
       name: data.name,
       age: Number(data.age),
@@ -41,6 +40,7 @@ export const useDogRegister = () => {
           createDogInput,
         },
       });
+
       Modal.success({
         content: "댕댕이가 등록되었습니다",
       });

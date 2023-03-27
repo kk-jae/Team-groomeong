@@ -11,7 +11,6 @@ export const MyPageTemplate = () => {
   const { data } = UseQueryFetchLoginUser();
 
   const { onClickMoveToPage } = useMoveToPage();
-
   return (
     <>
       <Background>
