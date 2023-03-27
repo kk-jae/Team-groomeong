@@ -17,6 +17,7 @@
     "@apollo/client": "^3.7.10",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@fullpage/react-fullpage": "^0.1.37",
     "@hookform/resolvers": "^2.9.11",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
