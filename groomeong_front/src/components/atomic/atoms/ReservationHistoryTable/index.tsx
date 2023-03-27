@@ -8,7 +8,7 @@ import { ReviewModal } from "../../organisms/ReviewModal";
 import { UseQueryFetchShopWithReviewAuth } from "../../../commons/hooks/query/UseQueryFetchShopWithReviewAuth";
 import { v4 as uuidv4 } from "uuid";
 
-export const ReservationHistoryTable = () => {
+export const ReservationHistoryTable = (): JSX.Element => {
   const [shopId, setShopId] = useState("");
   const { data } = UseQueryFetchReservationByUser();
   const { data: reviewData } = UseQueryFetchShopWithReviewAuth(shopId);
@@ -16,18 +16,18 @@ export const ReservationHistoryTable = () => {
   const [onReview, setOnReview] = useState(false);
 
   const onClickReview = (event: MouseEvent<HTMLButtonElement>): void => {
-    void setOnReview(true);
-    void setShopId(event.currentTarget.className.split(" ")[0]);
-    void setReservationId(event.currentTarget.id);
+    setOnReview(true);
+    setShopId(event.currentTarget.className.split(" ")[0]);
+    setReservationId(event.currentTarget.id);
   };
 
   const onClickCancel = (): void => {
-    void setOnReview(false);
+    setOnReview(false);
   };
 
   return (
     <>
-      {data ? (
+      {data !== null ? (
         data?.fetchReservationsByUser.map((el: IReservation) => (
           <>
             {!isSameDate ? (

@@ -5,7 +5,9 @@ import {
 } from "../../../../commons/types/generated/types";
 
 // 각 샵에 해당하는 댓글...
-
+interface IUseQueryFetchReviewsByShopIdReservation {
+  data?: Pick<IQuery, "fetchReviewsByShopId">;
+}
 export const FETCH_REVIEWS_BY_SHOP_ID = gql`
   query fetchReviewsByShopId($page: Float = 1, $shopId: String!) {
     fetchReviewsByShopId(page: $page, shopId: $shopId) {
@@ -17,7 +19,9 @@ export const FETCH_REVIEWS_BY_SHOP_ID = gql`
   }
 `;
 
-export const UseQueryFetchReviewsByShopIdReservation = (shopId: string) => {
+export const UseQueryFetchReviewsByShopIdReservation = (
+  shopId: string
+): IUseQueryFetchReviewsByShopIdReservation => {
   const { data } = useQuery<
     Pick<IQuery, "fetchReviewsByShopId">,
     IQueryFetchReviewsByShopIdArgs

@@ -8,7 +8,14 @@ export interface IEmail {
   token?: string;
 }
 
-export const useEmailAuth = () => {
+interface IuseEmailAuth {
+  sendEmail: (data: IEmail) => () => Promise<void>;
+  onClickCheckToken: (data: IEmail) => void;
+  isOpenRandomCode: boolean;
+  clearTimer: boolean;
+}
+
+export const useEmailAuth = (): IuseEmailAuth => {
   const router = useRouter();
   const [getTokenEmail] = UseMutationGetTokenEmail();
   const [randomToken, setRandomToken] = useState("");
@@ -25,7 +32,7 @@ export const useEmailAuth = () => {
       Modal.success({
         content: "인증메일을 발송하였습니다.",
       });
-      setRandomToken(`${result.data?.getTokenEmail}`);
+      setRandomToken(`${String(result.data?.getTokenEmail)}`);
       setIsOpenRandomCode(true);
     } catch (error) {
       if (error instanceof Error) {
@@ -36,12 +43,12 @@ export const useEmailAuth = () => {
     }
   };
 
-  const onClickCheckToken = (data: IEmail) => {
+  const onClickCheckToken = (data: IEmail): void => {
     if (data.token === randomToken) {
       Modal.success({
         content: "인증이 완료 되었습니다.",
       });
-      router.push("/initPassword");
+      void router.push("/initPassword");
       setClearTimer(true);
     } else {
       Modal.error({

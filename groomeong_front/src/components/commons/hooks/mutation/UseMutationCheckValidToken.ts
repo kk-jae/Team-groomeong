@@ -10,7 +10,7 @@ const CHECK_VALID_TOKEN = gql`
   }
 `;
 
-export const UseMutationCheckValidToken = () => {
+export const UseMutationCheckValidToken = (): [typeof checkValidToken] => {
   const [checkValidToken] = useMutation<
     Pick<IMutation, "checkValidToken">,
     IMutationCheckValidTokenArgs

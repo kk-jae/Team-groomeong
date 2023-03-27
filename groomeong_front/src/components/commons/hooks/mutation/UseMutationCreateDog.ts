@@ -13,7 +13,7 @@ const CREATE_DOG = gql`
   }
 `;
 
-export const UseMutationCreateDog = () => {
+export const UseMutationCreateDog = (): [typeof createDog] => {
   const [createDog] = useMutation<
     Pick<IMutation, "createDog">,
     IMutationCreateDogArgs

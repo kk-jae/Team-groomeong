@@ -17,7 +17,7 @@ const CREATE_USER = gql`
   }
 `;
 
-export const UseMutationCreateUser = () => {
+export const UseMutationCreateUser = (): [typeof createUser] => {
   const [createUser] = useMutation<
     Pick<IMutation, "createUser">,
     IMutationCreateUserArgs

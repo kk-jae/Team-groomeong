@@ -11,6 +11,7 @@ export const ReservationWrapperBottomItemTimeWrapper = styled.div`
 interface IReservationWrapperBottomItemTimeDetail {
   reservationTime: string;
   el: string;
+  disabled: boolean;
 }
 
 export const ReservationWrapperBottomItemTimeDetail = styled.button<IReservationWrapperBottomItemTimeDetail>`

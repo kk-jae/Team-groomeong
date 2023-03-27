@@ -10,7 +10,7 @@ const UPLOAD_SHOP_IMAGES = gql`
   }
 `;
 
-export const UseMutationUploadShopImages = () => {
+export const UseMutationUploadShopImages = (): [typeof uploadShopImages] => {
   const [uploadShopImages] = useMutation<
     Pick<IMutation, "uploadShopImages">,
     IMutationUploadShopImagesArgs

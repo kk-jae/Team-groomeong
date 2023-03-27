@@ -10,7 +10,7 @@ const LOGIN = gql`
   }
 `;
 
-export const UseMutationLogin = () => {
+export const UseMutationLogin = (): [typeof login] => {
   const [login] = useMutation<Pick<IMutation, "login">, IMutationLoginArgs>(
     LOGIN
   );

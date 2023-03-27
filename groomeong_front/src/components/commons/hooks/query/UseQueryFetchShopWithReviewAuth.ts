@@ -4,6 +4,10 @@ import {
   IQueryFetchShopWithReviewAuthArgs,
 } from "../../../../commons/types/generated/types";
 
+interface IUseQueryFetchShopWithReviewAuth {
+  data?: Pick<IQuery, "fetchShopWithReviewAuth">;
+}
+
 export const FETCH_SHOP_WITH_REVIEW_AUTH = gql`
   query fetchShopWithReviewAuth($shopId: String!) {
     fetchShopWithReviewAuth(shopId: $shopId) {
@@ -17,7 +21,9 @@ export const FETCH_SHOP_WITH_REVIEW_AUTH = gql`
   }
 `;
 
-export const UseQueryFetchShopWithReviewAuth = (shopId: string) => {
+export const UseQueryFetchShopWithReviewAuth = (
+  shopId: string
+): IUseQueryFetchShopWithReviewAuth => {
   const { data } = useQuery<
     Pick<IQuery, "fetchShopWithReviewAuth">,
     IQueryFetchShopWithReviewAuthArgs

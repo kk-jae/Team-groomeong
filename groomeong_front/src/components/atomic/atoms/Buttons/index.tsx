@@ -1,6 +1,6 @@
 import { IButtonProps } from "../ButtonCommons/index.styles";
 import * as S from "./index.styles";
-export const Buttons = (props: IButtonProps) => {
+export const Buttons = (props: IButtonProps): JSX.Element => {
   return (
     <>
       <S.ButtonStyles

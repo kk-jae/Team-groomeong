@@ -23,16 +23,16 @@ export const Modal: React.FC<IModalProps> = (
     setIsModalOpen(true);
   });
 
-  const showModal = (): void => {
-    void setIsModalOpen(true);
-  };
+  // const showModal = (): void => {
+  //   void setIsModalOpen(true);
+  // };
 
   const handleOk = (): void => {
-    void setIsModalOpen(false);
+    setIsModalOpen(false);
   };
 
   const handleCancel = (): void => {
-    void setIsModalOpen(false);
+    setIsModalOpen(false);
   };
 
   return (

@@ -14,7 +14,7 @@ import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFet
 import { Modal } from "antd";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 
-export const EmailAuthTemplates = () => {
+export const EmailAuthTemplates = (): JSX.Element => {
   const { onClickMoveToPage } = useMoveToPage();
   const { data: fetchLoginUserData } = UseQueryFetchLoginUser();
   const [disabledState, setDisabledState] = useState(false);
@@ -30,9 +30,9 @@ export const EmailAuthTemplates = () => {
     resolver: yupResolver(schemaEmail),
   });
 
-  const onClickSendEmail = (data: IEmail) => {
+  const onClickSendEmail = (data: IEmail): void => {
     if (data.email === fetchLoginUserData?.fetchLoginUser.email) {
-      sendEmail(data)();
+      void sendEmail(data)();
       setDisabledState(true);
       let min = 2;
       let sec = 60;

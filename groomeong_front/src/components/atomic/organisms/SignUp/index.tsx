@@ -11,7 +11,7 @@ import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import { useSignUp } from "../../../commons/hooks/custom/useSignUp";
 import { SignUpForm, SignUpWrapper } from "./index.styles";
 
-const SignUp = () => {
+const SignUp = (): JSX.Element => {
   const [valid, setValid] = useState(false);
   const method = useForm<IMutationCreateUserArgs>({
     mode: "onChange",

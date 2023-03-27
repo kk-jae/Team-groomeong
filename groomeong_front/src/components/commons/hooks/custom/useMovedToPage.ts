@@ -1,10 +1,14 @@
 import { useRouter } from "next/router";
 
-export const useMoveToPage = () => {
+interface IuseMoveToPage {
+  onClickMoveToPage: (url: string) => () => void;
+}
+
+export const useMoveToPage = (): IuseMoveToPage => {
   const router = useRouter();
 
   const onClickMoveToPage = (url: string) => () => {
-    router.push(url);
+    void router.push(url);
   };
 
   return {
