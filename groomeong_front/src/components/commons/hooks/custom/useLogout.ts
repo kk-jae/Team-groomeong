@@ -13,17 +13,9 @@ export const useLogout = () => {
   const router = useRouter();
 
   const onClickLogOut = (): void => {
-    try {
-      void logOut();
-      if (localStorage.accessToken === undefined) {
-        void router.push("/home");
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        Modal.error({
-          content: error.message,
-        });
-      }
+    logOut();
+    if (localStorage.accessToken === undefined) {
+      void router.push("/home");
     }
   };
 
