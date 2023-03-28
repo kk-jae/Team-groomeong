@@ -1,59 +1,62 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-const MainDiv = styled.div`
+import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
+import { UseMutationCreateShop } from "../../../commons/hooks/mutation/UseMutationCreateShop";
+import { InputMiddle } from "../../atoms/Input/Middle";
+import Image from "./Image";
+export const MainDiv = styled.div`
   width: 1000px;
-  height: 1000px;
   background-color: white;
   padding: 100px;
 `;
 
-const Input = styled.input`
-  width: 300px;
-  height: 30px;
-  background-color: white;
-  margin-bottom: 25px;
-`;
-
 export default function ShopCreateTemplate(): JSX.Element {
-  // const [] = UseMutationCreateShop();
-
-  const method = useForm({
+  const [createShop] = UseMutationCreateShop();
+  const [id, setId] = useState("");
+  const createMethod = useForm({
     mode: "onChange",
   });
+  const onSubmitCreateShop = async (data: any) => {
+    try {
+      const { data: fetchData } = await createShop({
+        variables: {
+          createShopInput: {
+            ...data,
+          },
+        },
+      });
 
-  const onclickRegister = (data: any): void => {
-    console.log(data);
+      console.log(fetchData?.createShop.id);
+      if (fetchData != null) {
+        setId(fetchData?.createShop.id);
+      }
+    } catch (error) {
+      if (error instanceof Error) alert(error);
+    }
   };
 
   return (
     <>
-      <FormProvider {...method}>
-        <form onSubmit={method.handleSubmit(onclickRegister)}>
-          <MainDiv>
-            가게 이름
-            <div>
-              <Input name={"name"} />
-            </div>
-            전화번호{" "}
-            <div>
-              <Input name={"phone"} />
-            </div>
-            오픈 시간
-            <div>
-              <Input name={"openTime"} />
-            </div>
-            클로즈 시간
-            <div>
-              <Input name={"closeTime"} />
-            </div>
-            주소
-            <div>
-              <Input name={"address"} />
-            </div>
-            <button onClick={onclickRegister}>가게 등록</button>
-          </MainDiv>
-        </form>
-      </FormProvider>
+      <div>
+        <FormProvider {...createMethod}>
+          <form
+            onSubmit={createMethod.handleSubmit(
+              withPromiseVoidFunc(onSubmitCreateShop)
+            )}
+          >
+            <MainDiv>
+              <InputMiddle label="가게이름" name="name" />
+              <InputMiddle label="주소" name="address" />
+              <InputMiddle label="전화번호" name="phone" />
+              <InputMiddle label="오픈시간" name="openHour" />
+              <InputMiddle label="클로즈시간" name="closeHour" />
+              <button>가게 등록</button>
+            </MainDiv>
+          </form>
+        </FormProvider>
+        <Image id={id} />
+      </div>
     </>
   );
 }

@@ -8,6 +8,8 @@ const CREATE_SHOP = gql`
   mutation createShop($createShopInput: CreateShopInput!) {
     createShop(createShopInput: $createShopInput) {
       id
+      lat
+      lng
     }
   }
 `;
