@@ -5,6 +5,10 @@ import * as GS from "../../../theme/global";
 export const GlobalStyle = css`
   @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     margin: 0px;
     box-sizing: border-box;

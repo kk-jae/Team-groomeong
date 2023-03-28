@@ -18,7 +18,7 @@ export const TopBarDefault = (props: ITopBarDefaultProps) => {
   return (
     <>
       <S.TopBarBox>
-        <S.TopBarLogo onClick={onClickMoveToPage("/home")}>
+        <S.TopBarLogo onClick={onClickMoveToPage("/home")} id="s2">
           <img src="/image/img_logo_raw_black.png" alt="" />
         </S.TopBarLogo>
         <S.TopBarButtons loggedIn={props.loggedIn}>

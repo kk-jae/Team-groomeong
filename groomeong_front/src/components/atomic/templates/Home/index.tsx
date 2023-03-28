@@ -1,4 +1,5 @@
 import { margin } from "@mui/system";
+import { useEffect } from "react";
 import { SearchBar } from "../../atoms/SearchBar";
 import Background from "../../organisms/Background";
 
