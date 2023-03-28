@@ -66,18 +66,10 @@ const DogDetail = (): JSX.Element => {
           />
         </S.DogDetailImgLabel>
       </S.DogDetailContentWrapper>
-      <FormProvider {...method}>
-        <form>
-          <S.Div left={"124px"} right={"124px"}>
-            <InfoTextArea
-              name="significant"
-              title={"특이사항"}
-              content={data?.specifics ?? ""}
-              disabled
-            />
-          </S.Div>
-        </form>
-      </FormProvider>
+      <S.DogDetailSpecifics>
+        <S.SpecificsTitle>특이사항</S.SpecificsTitle>
+        <S.SpecificsBox>{data?.specifics ?? ""}</S.SpecificsBox>
+      </S.DogDetailSpecifics>
       <S.DogDetailFooter>
         <S.Div>
           <Buttons
