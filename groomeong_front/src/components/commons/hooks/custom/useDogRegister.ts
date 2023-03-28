@@ -1,3 +1,4 @@
+import { UseMutationUploadDogImage } from './../mutation/UseMutationUploadDogImage';
 import { UseMutationCreateDog } from "./../mutation/UseMutationCreateDog";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,6 +9,8 @@ import { useRouter } from "next/router";
 export const useDogRegister = () => {
   const [createDog] = UseMutationCreateDog();
   const router = useRouter();
+
+  const [ uploadDogImage ] = UseMutationUploadDogImage()
 
   const method = useForm({
     mode: "onChange",
@@ -58,5 +61,6 @@ export const useDogRegister = () => {
     FormProvider,
     method,
     onClickRegisterDog,
+    uploadDogImage,
   };
 };

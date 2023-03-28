@@ -1,3 +1,5 @@
+import { accessTokenState } from './../../../../commons/Store/index';
+import { useRecoilValue } from 'recoil';
 import { useRouter } from "next/router";
 import { UseMutationLogout } from "./../mutation/UseMutationLogout";
 
@@ -9,10 +11,9 @@ export const useLogout = () => {
   const [logOut] = UseMutationLogout();
   const router = useRouter();
 
-  const onClickLogOut = async (): Promise<void> => {
-    await logOut();
-    if (localStorage.accessToken !== "") {
-      localStorage.removeItem("accessToken");
+  const onClickLogOut = ():void => {
+    void logOut();
+    if (accessToken === "") {
       void router.push("/home");
     }
   };

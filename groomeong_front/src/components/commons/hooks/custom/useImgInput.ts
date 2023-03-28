@@ -23,7 +23,7 @@ const useImgInput = () => {
     if (ImgInputRef.current !== null) ImgInputRef.current.click();
   };
 
-  const onChangeInput = async (
+  const onChangeInput = (uploadFunc: any, shopid?: string) => async (
     e: ChangeEvent<HTMLInputElement>
   ): Promise<void> => {
     const file = e.target.files?.[0];
@@ -33,13 +33,26 @@ const useImgInput = () => {
       reader.onload = (readerEvent) => {
         setImg(readerEvent.target?.result as string);
       };
-      const { data } = await uploadDogImage({
-        variables: {
-          file,
-        },
-      });
 
-      setValue("image", data?.uploadDogImage[0]);
+      if (shopid !== undefined) {
+        const { data } = await uploadFunc({
+          variables: {
+            file,
+            shopid,
+          },
+        });
+        
+        setValue("image", data?.uploadDogImage[0]);
+      } else {
+        const { data } = await uploadFunc({
+          variables: {
+            file,
+          },
+        });
+
+        setValue("image", data?.uploadDogImage[0]);
+      }
+
     }
   };
 
