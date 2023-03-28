@@ -7,7 +7,7 @@ import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import { MainDiv } from ".";
 import { UseMutationCreateShopImage } from "../../../commons/hooks/mutation/UseMutationCreateShopImage";
 
-const Image = ({ id }) => {
+const Image = ({ id }: { id: string }) => {
   const [uploadShopImages] = UseMutationUploadShopImages();
   const [createShopImage] = UseMutationCreateShopImage();
   const uploadMethod = useForm({
