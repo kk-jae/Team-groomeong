@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
 import { UseMutationLogout } from "./../mutation/UseMutationLogout";
 
-interface IuseLogout {
-  onClickLogOut: () => Promise<void>;
-}
+// interface IuseLogout {
+//   onClickLogOut: () => Promise<void>;
+// }
 
-export const useLogout = (): IuseLogout => {
+export const useLogout = () => {
   const [logOut] = UseMutationLogout();
   const router = useRouter();
 

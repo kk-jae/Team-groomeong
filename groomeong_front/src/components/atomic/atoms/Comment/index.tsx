@@ -1,4 +1,5 @@
 import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
+import { UseQueryFetchReviewsByShopId } from "../../../commons/hooks/query/UseQueryFetchReviewsByShopId";
 import { getDate } from "../../../commons/libraries/GetDate";
 import { StarRate } from "../StarRate";
 import * as S from "./index.style";
@@ -10,6 +11,7 @@ export interface ICommentProps {
   rate?: number;
   iconView: boolean;
   state?: boolean;
+  shopId?: string;
 }
 
 export const Comment = (props: ICommentProps): JSX.Element => {
@@ -21,7 +23,7 @@ export const Comment = (props: ICommentProps): JSX.Element => {
         <S.TextArea_TopBox>
           <>
             <S.TextArea_TopBox_Profile>
-              {data?.fetchLoginUser.image != null ? ( // 여기 문제 있는지 볼것
+              {data?.fetchLoginUser.image != null ? ( // 여기 문제 있는지 볼것// 패치 로그인 유저를 하면 안되고 패치 리뷰 유저가 필요함.
                 <S.TextArea_Profile_Icon>
                   <img
                     src={`https://storage.googleapis.com/${data?.fetchLoginUser.image}`}

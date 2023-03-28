@@ -1,21 +1,20 @@
-import { FieldValues, useFormContext, UseFormRegister } from "react-hook-form";
-import { ChangeEvent, MutableRefObject, useRef, useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { ChangeEvent, useRef, useState } from "react";
 import { UseMutationUploadDogImage } from "../mutation/UseMutationUploadDogImage";
 
-const [uploadDogImage] = UseMutationUploadDogImage();
-interface IuseImgInput {
-  uploadDogImage: typeof uploadDogImage;
-  register: UseFormRegister<FieldValues>;
-  ImgInputRef: MutableRefObject<HTMLInputElement | null>;
-  ImgBoxRef: MutableRefObject<HTMLDivElement | null>;
-  img: string;
-  onClickImgInput: () => void;
-  onChangeInput: (e: ChangeEvent<HTMLInputElement>) => Promise<void>;
-}
+// interface IuseImgInput {
+//   uploadDogImage: typeof uploadDogImage;
+//   register: UseFormRegister<FieldValues>;
+//   ImgInputRef: MutableRefObject<HTMLInputElement | null>;
+//   ImgBoxRef: MutableRefObject<HTMLDivElement | null>;
+//   img: string;
+//   onClickImgInput: () => void;
+//   onChangeInput: (e: ChangeEvent<HTMLInputElement>) => Promise<void>;
+// }
 
-const useImgInput = (): IuseImgInput => {
+const useImgInput = () => {
   const [img, setImg] = useState<string>("");
-
+  const [uploadDogImage] = UseMutationUploadDogImage();
   const ImgInputRef = useRef<HTMLInputElement | null>(null);
   const ImgBoxRef = useRef<HTMLDivElement | null>(null);
   const { register, setValue } = useFormContext();

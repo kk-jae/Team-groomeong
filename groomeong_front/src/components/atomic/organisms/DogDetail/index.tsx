@@ -46,9 +46,7 @@ const DogDetail = (): JSX.Element => {
           />
           <ContentInfo
             label="견종"
-            component={
-              <TextBadge state={true} text={breed[data?.breed ?? "SMALL"]} />
-            }
+            component={<TextBadge state={true} text={data?.breed ?? "SMALL"} />}
           />
         </S.Div>
         <S.DogDetailImgLabel>
@@ -68,7 +66,6 @@ const DogDetail = (): JSX.Element => {
             <InfoTextArea
               name="significant"
               title={"특이사항"}
-              placeholder="특이사항을 적어주세요."
               content={data?.specifics ?? ""}
               disabled
             />

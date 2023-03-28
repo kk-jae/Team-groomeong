@@ -26,7 +26,7 @@ export const ListBox = (props: IProps): JSX.Element => {
         <S.ShopName>{props.name}</S.ShopName>
         <S.ShopImg
           src={
-            !(props.shopImg === "")
+            !props.shopImg
               ? `https://storage.googleapis.com/${String(props.shopImg)}`
               : "/image/icon-store.svg"
           }

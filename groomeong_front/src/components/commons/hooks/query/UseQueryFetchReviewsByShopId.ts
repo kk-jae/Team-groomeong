@@ -4,8 +4,6 @@ import {
   IQueryFetchReviewsByShopIdArgs,
 } from "../../../../commons/types/generated/types";
 
-// 각 샵에 해당하는 댓글...
-
 interface IUseQueryFetchReviewsByShopId {
   data?: Pick<IQuery, "fetchReviewsByShopId">;
 }
