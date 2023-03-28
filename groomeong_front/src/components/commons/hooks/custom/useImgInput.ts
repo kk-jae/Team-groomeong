@@ -1,5 +1,5 @@
-import { ChangeEvent, useRef, useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { ChangeEvent, useRef, useState } from "react";
 
 const useImgInput = () => {
   const [img, setImg] = useState<string>("");
@@ -10,7 +10,6 @@ const useImgInput = () => {
   const onClickImgInput = (): void => {
     if (ImgInputRef.current !== null) ImgInputRef.current.click();
   };
-  // ????
 
   const onChangeInput =
     (uploadFunc: any, shopId?: string) =>
