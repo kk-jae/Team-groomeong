@@ -6,6 +6,7 @@ import { TopBarMap } from "../../atoms/TopBar/TopBarMap";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/Store";
 import { PuffLoader } from "react-spinners";
+import useLoggined from "../../../commons/hooks/custom/useLoggined";
 
 declare const window: typeof globalThis & {
   google: any;
@@ -13,15 +14,9 @@ declare const window: typeof globalThis & {
   // initMap: (latlng: google.maps.LatLngLiteral) => void;
 };
 export const MapTemplate = (): JSX.Element => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const loggedIn = useLoggined();
   const [accessToken] = useRecoilState(accessTokenState);
   const [myState, setMyState] = useState("");
-
-  useEffect(() => {
-    if (localStorage.accessToken !== "") {
-      setLoggedIn(true);
-    }
-  }, []);
 
   useEffect(() => {
     // This example adds a search box to a map, using the Google Place Autocomplete
