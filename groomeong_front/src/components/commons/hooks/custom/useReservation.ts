@@ -1,3 +1,4 @@
+import { FETCH_RESERVATIONS_BY_USER } from "./../query/UseQueryFetchReservationByUserId";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 import { UseMutationCreateReservation } from "../mutation/UseMutationCreateReservation";
@@ -36,8 +37,15 @@ export const useReservationDog = (): IuseReservationDog => {
               dogId,
             },
           },
+          refetchQueries: [
+            {
+              query: FETCH_RESERVATIONS_BY_USER,
+            },
+          ],
         });
-        alert("예약 성공");
+        Modal.success({
+          content: "예약이 정상적으로 접수되었습니다.",
+        });
         await router.push("/reservation");
       } catch (error) {
         if (error instanceof Error) {

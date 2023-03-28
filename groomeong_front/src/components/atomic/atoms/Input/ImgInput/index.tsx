@@ -28,8 +28,6 @@ const ImgInput = (props: IImgInputProps): JSX.Element => {
     ),
   });
 
-  console.log(img === "");
-
   return (
     <ImgInputWrapper>
       <Input
