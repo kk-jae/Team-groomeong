@@ -17,7 +17,7 @@ import {
 } from "./index.style";
 
 const DogRegister = (): JSX.Element => {
-  const { FormProvider, method, onClickRegisterDog } = useDogRegister();
+  const { FormProvider, method, onClickRegisterDog, uploadDogImage } = useDogRegister();
 
   return (
     <DogRegisterWrapper>
@@ -56,7 +56,7 @@ const DogRegister = (): JSX.Element => {
               name="specifics"
               placeholder="특이사항을 입력해 주세요."
             />
-            <ContentInfo label="사진" component={<ImgInput name="image" />} />
+            <ContentInfo label="사진" component={<ImgInput name="image" mutationFunc={uploadDogImage}/>} />
             <DogRegisterWrapper>
               <DogRegisterFooterSpan>
                 <Buttons

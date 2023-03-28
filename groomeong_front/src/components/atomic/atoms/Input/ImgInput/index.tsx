@@ -1,9 +1,12 @@
 import React from "react";
+import { withPromiseVoidFunc } from "../../../../../commons/Utils/withFunc";
 import useImgInput from "../../../../commons/hooks/custom/useImgInput";
 import { ImgDiv, ImgInputWrapper, Input } from "./index.styled";
 
 interface IImgInputProps {
   name: string;
+  mutationFunc: any;
+  shopId?: string;
 }
 
 const ImgInput = (props: IImgInputProps): JSX.Element => {
@@ -17,7 +20,9 @@ const ImgInput = (props: IImgInputProps): JSX.Element => {
   } = useImgInput();
 
   const { ref, ...rest } = register(props.name, {
-    onChange: onChangeInput,
+    onChange: withPromiseVoidFunc(
+      onChangeInput(props.mutationFunc, props.shopId)
+    ),
   });
 
   return (

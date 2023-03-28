@@ -4,6 +4,7 @@ import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
 import { useLogout } from "../../../../commons/hooks/custom/useLogout";
 import { UseQueryFetchLoginUser } from "../../../../commons/hooks/query/UseQueryFetchLoginUser";
+import useLoggined from "../../../../commons/hooks/custom/useLoggined";
 
 interface ITopBarDefaultProps {
   loggedIn: boolean;
@@ -11,6 +12,7 @@ interface ITopBarDefaultProps {
 
 export const TopBarDefault = (props: ITopBarDefaultProps): JSX.Element => {
   const { data } = UseQueryFetchLoginUser();
+  const loggedIn = useLoggined()
   const { onClickMoveToPage } = useMoveToPage();
   const { onClickLogOut } = useLogout();
 
@@ -20,8 +22,8 @@ export const TopBarDefault = (props: ITopBarDefaultProps): JSX.Element => {
         <S.TopBarLogo onClick={onClickMoveToPage("/home")}>
           <img src="/image/img_logo_raw_black.png" alt="" />
         </S.TopBarLogo>
-        <S.TopBarButtons loggedIn={props.loggedIn}>
-          {props.loggedIn ? (
+        <S.TopBarButtons loggedIn={loggedIn}>
+          {loggedIn ? (
             <>
               <Buttons
                 size="small"
