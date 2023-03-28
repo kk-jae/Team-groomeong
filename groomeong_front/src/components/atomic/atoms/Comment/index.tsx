@@ -1,4 +1,4 @@
-import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
+import { UseQueryFetchReservationByShop } from "../../../commons/hooks/query/UseQueryFetchReservationsByShop";
 import { getDate } from "../../../commons/libraries/GetDate";
 import { StarRate } from "../StarRate";
 import * as S from "./index.style";
@@ -13,7 +13,7 @@ export interface ICommentProps {
 }
 
 export const Comment = (props: ICommentProps): JSX.Element => {
-  const { data } = UseQueryFetchLoginUser();
+  const { data } = UseQueryFetchReservationByShop();
 
   return (
     <>
@@ -21,19 +21,23 @@ export const Comment = (props: ICommentProps): JSX.Element => {
         <S.TextArea_TopBox>
           <>
             <S.TextArea_TopBox_Profile>
-              {data?.fetchLoginUser.image != null ? ( // 여기 문제 있는지 볼것
-                <S.TextArea_Profile_Icon>
-                  <img
-                    src={`https://storage.googleapis.com/${data?.fetchLoginUser.image}`}
-                    alt=""
-                  />
-                </S.TextArea_Profile_Icon>
-              ) : (
-                <S.TextArea_Profile_Icon>
-                  <img src={"image/example_dog.png"} alt="" />
-                </S.TextArea_Profile_Icon>
+              {data?.fetchReservationsByShop.map((el) =>
+                el.user.image != null ? ( //
+                  <S.TextArea_Profile_Icon key={el.id}>
+                    <img
+                      src={`https://storage.googleapis.com/${el.user.image}`}
+                      alt=""
+                    />
+                  </S.TextArea_Profile_Icon>
+                ) : (
+                  <S.TextArea_Profile_Icon key={el.id}>
+                    <img src={"image/example_dog.png"} alt="" />
+                  </S.TextArea_Profile_Icon>
+                )
               )}
-              <span>{props.name}</span>
+              {data?.fetchReservationsByShop.map((el) => (
+                <span key={el.id}>{el.user.name}</span>
+              ))}
               <S.TextArea_TopBox_Date>
                 {getDate(String(props.date))}
               </S.TextArea_TopBox_Date>
