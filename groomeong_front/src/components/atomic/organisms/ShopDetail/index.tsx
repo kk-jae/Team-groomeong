@@ -51,6 +51,7 @@ export const ShopDetail = (props: IShopDetailProps): JSX.Element => {
               rate={el.star}
               state={true}
               iconView={true}
+              shopId={el.shop.id}
             ></Comment>
           ))}
         </S.ShopDetailWrapper>

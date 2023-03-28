@@ -3,12 +3,11 @@ import { useRecoilValue } from 'recoil';
 import { useRouter } from "next/router";
 import { UseMutationLogout } from "./../mutation/UseMutationLogout";
 
-interface IuseLogout {
-  onClickLogOut: () => void;
-}
+// interface IuseLogout {
+//   onClickLogOut: () => Promise<void>;
+// }
 
-export const useLogout = (): IuseLogout => {
-  const accessToken = useRecoilValue(accessTokenState);
+export const useLogout = () => {
   const [logOut] = UseMutationLogout();
   const router = useRouter();
 
