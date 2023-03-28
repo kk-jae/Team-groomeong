@@ -29,6 +29,7 @@ const useImgInput = () => {
               shopId,
             },
           });
+
           setValue("images", data?.uploadShopImages[0]);
         } else {
           const { data } = await uploadFunc({
