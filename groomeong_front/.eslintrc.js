@@ -15,5 +15,6 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/consistent-type-imports": "off",
     "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-misused-promises": "off",
   },
 };

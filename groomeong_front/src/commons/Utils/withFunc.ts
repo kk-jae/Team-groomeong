@@ -1,6 +1,6 @@
-type TypePromiseFunc = (data?: any, ...rest: any[]) => Promise<void>;
+type TypePromiseFunc = (data?: any) => Promise<void>;
 
 export const withPromiseVoidFunc =
-  (promiseFunc: TypePromiseFunc) => (data: any) => {
+  (promiseFunc: TypePromiseFunc) => (data: any): void => {
     void promiseFunc(data);
   };
