@@ -3,6 +3,7 @@ import { Modal } from "antd";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/Store";
 import { UseMutationLogin } from "../mutation/UseMutationLogin";
+import { useState } from "react";
 
 interface IHomePageLogInData {
   email: string;
@@ -12,7 +13,7 @@ interface IHomePageLogInData {
 export const useLogInButton = () => {
   const router = useRouter();
   const [login] = UseMutationLogin();
-  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const [, setAccessToken] = useRecoilState(accessTokenState);
 
   const onClickHomePageLogIn = async (
     HomePageLogInData: IHomePageLogInData
@@ -24,16 +25,14 @@ export const useLogInButton = () => {
           password: HomePageLogInData.password,
         },
       });
-      console.log(createLogIn);
+
       const accessToken = createLogIn.data?.login;
       if (accessToken !== undefined) {
         setAccessToken(accessToken);
         localStorage.setItem("accessToken", accessToken);
       }
-      Modal.success({
-        content: "로그인에 성공하였습니다.",
-      });
       router.push("/home");
+      void router.push("/home");
     } catch (error) {
       if (error instanceof Error)
         Modal.error({

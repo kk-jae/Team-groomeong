@@ -1,8 +1,8 @@
 import * as yup from "yup";
 
-const regexPassword =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]/;
-const regexSpacing = /^[^\s]+$/;
+// const regexPassword =
+//   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]/;
+// const regexSpacing = /^[^\s]+$/;
 const regexPhone = /^010([0-9]{3,4})([0-9]{4})/;
 
 export const Schema = yup.object({

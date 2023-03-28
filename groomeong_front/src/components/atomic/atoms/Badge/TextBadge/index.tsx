@@ -7,7 +7,7 @@ interface IProps {
   state: boolean;
   text: string;
 }
-export const TextBadge = (props: IProps) => {
+export const TextBadge = (props: IProps): JSX.Element => {
   return (
     <S.TextBadgeWrapper>
       <S.TextBadgeButton state={props.state}>{props.text}</S.TextBadgeButton>

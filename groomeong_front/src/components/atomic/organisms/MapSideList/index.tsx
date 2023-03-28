@@ -3,8 +3,7 @@ import * as S from "./index.styled";
 import { ListBox } from "../../atoms/ListBox";
 import { UseQueryFetchShops } from "../../../commons/hooks/query/UseQueryFetchShops";
 
-export const MapSideList = () => {
-  // const onLoadMore = (): void => {};
+export const MapSideList = (): JSX.Element => {
   const { data } = UseQueryFetchShops();
 
   return (
@@ -12,10 +11,10 @@ export const MapSideList = () => {
       <S.SearchBarWrapper>
         <SearchBar sizes="small" placeholder="placeholder" />
       </S.SearchBarWrapper>
-      {data?.fetchShops.length && data?.fetchShops.length >= 1 ? (
+      {data?.fetchShops.length !== undefined && data?.fetchShops.length >= 1 ? (
         <S.ShopListWrapper>
-          {data?.fetchShops.map((el, index) => (
-            <div key={index}>
+          {data?.fetchShops.map((el) => (
+            <div key={el.id}>
               <ListBox
                 name={el.name}
                 openHour={el.openHour}
@@ -23,6 +22,7 @@ export const MapSideList = () => {
                 address={el.address}
                 star={el.averageStar}
                 id={el.id}
+                shopImg={el.image}
               />
             </div>
           ))}

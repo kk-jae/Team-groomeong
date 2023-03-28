@@ -1,5 +1,4 @@
 import { gql, useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
 import {
   IQuery,
   IQueryFetchReviewsByShopIdArgs,
@@ -7,8 +6,12 @@ import {
 
 // 각 샵에 해당하는 댓글...
 
+interface IUseQueryFetchReviewsByShopId {
+  data?: Pick<IQuery, "fetchReviewsByShopId">;
+}
+
 export const FETCH_REVIEWS_BY_SHOP_ID = gql`
-  query fetchReviewsByShopId($page: Float = 1, $shopId: String!) {
+  query fetchReviewsByShopId($page: Float, $shopId: String!) {
     fetchReviewsByShopId(page: $page, shopId: $shopId) {
       id
       contents
@@ -18,8 +21,9 @@ export const FETCH_REVIEWS_BY_SHOP_ID = gql`
   }
 `;
 
-export const UseQueryFetchReviewsByShopId = () => {
-  const router = useRouter();
+export const UseQueryFetchReviewsByShopId = (
+  shopId: string
+): IUseQueryFetchReviewsByShopId => {
   const { data } = useQuery<
     Pick<IQuery, "fetchReviewsByShopId">,
     IQueryFetchReviewsByShopIdArgs
@@ -27,7 +31,7 @@ export const UseQueryFetchReviewsByShopId = () => {
     FETCH_REVIEWS_BY_SHOP_ID,
 
     {
-      variables: { shopId: String(router.query.shopId) },
+      variables: { shopId },
     }
   );
   return {

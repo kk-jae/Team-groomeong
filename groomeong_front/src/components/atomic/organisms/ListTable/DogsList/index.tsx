@@ -3,6 +3,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Buttons } from "../../../atoms/Buttons";
 import { useRouter } from "next/router";
 import { UseQueryFetchUserDogs } from "../../../../commons/hooks/query/UseQueryFetchUserDogs";
+import { MouseEvent } from "react";
 
 interface IDogType {
   SMALL: string;
@@ -11,9 +12,10 @@ interface IDogType {
   SPECIAL: string;
 }
 
-export const DogsList = () => {
+export const DogsList = (): JSX.Element => {
   const router = useRouter();
   const { data: dogData } = UseQueryFetchUserDogs();
+
   const dogType: IDogType = {
     SMALL: "소형",
     MEDIUM: "중형",
@@ -21,8 +23,12 @@ export const DogsList = () => {
     SPECIAL: "특수견",
   };
 
-  const onClickAddDog = () => {
-    router.push("/mypage/dogRegister");
+  const onClickAddDog = (): void => {
+    void router.push("/mypage/dogRegister");
+  };
+
+  const onClickDogDetail = (event: MouseEvent<HTMLButtonElement>): void => {
+    void router.push(`/mypage/dog/${event.currentTarget.id}`);
   };
 
   return (
@@ -44,6 +50,7 @@ export const DogsList = () => {
                 <th>나이</th>
                 <th>몸무게</th>
                 <th>견종</th>
+                <th>댕댕이 정보</th>
               </tr>
             </thead>
             {dogData?.fetchUserDogs.map((el) => (
@@ -54,6 +61,11 @@ export const DogsList = () => {
                     <th>{el.age}살</th>
                     <th>{el.weight}kg</th>
                     <th>{dogType[el.breed]}</th>
+                    <th>
+                      <button id={el.id} onClick={onClickDogDetail}>
+                        상세보기
+                      </button>
+                    </th>
                   </tr>
                 </tbody>
               </>

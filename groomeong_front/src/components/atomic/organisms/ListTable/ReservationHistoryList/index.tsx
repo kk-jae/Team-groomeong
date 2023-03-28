@@ -1,14 +1,7 @@
 import { ReservationHistoryTable } from "../../../atoms/ReservationHistoryTable";
 import * as S from "./index.style";
 
-interface IReservationHistoryListProps {
-  shopName?: string;
-  date?: string;
-  time?: string;
-  myDog?: string;
-}
-
-export const ReservationHistoryList = (props: IReservationHistoryListProps) => {
+export const ReservationHistoryList = (): JSX.Element => {
   return (
     <>
       <S.ReservationListWrapper>
@@ -23,6 +16,7 @@ export const ReservationHistoryList = (props: IReservationHistoryListProps) => {
                 <th>날짜</th>
                 <th>시간</th>
                 <th>나의 댕댕이</th>
+                <th>리뷰 작성</th>
               </tr>
             </thead>
             <ReservationHistoryTable></ReservationHistoryTable>

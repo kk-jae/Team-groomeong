@@ -1,37 +1,37 @@
 import { useState } from "react";
-import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 import { ShopDetail } from "../../organisms/ShopDetail";
-import { ShopDetailModal } from "../../organisms/ShopDetail/index.style";
 import { StarRate } from "../StarRate";
 import * as S from "./index.styled";
 
 interface IProps {
   name: string;
-  openHour: string;
-  closeHour: string;
-  address: string;
-  shopImg?: string;
+  openHour?: string;
+  closeHour?: string;
+  address?: string;
+  shopImg?: object | string;
   star?: number;
   id: string;
 }
 
-export const ListBox = (props: IProps) => {
+export const ListBox = (props: IProps): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
+
+  const showModal = (): void => {
     setIsModalOpen((prev) => !prev);
   };
+
   return (
     <S.ListBoxWrapper tabIndex={0}>
       <S.ListBoxTop>
         <S.ShopName>{props.name}</S.ShopName>
         <S.ShopImg
           src={
-            props.shopImg !== undefined
-              ? `https://storage.googleapis.com/${props.shopImg}`
+            !(props.shopImg === "")
+              ? `https://storage.googleapis.com/${String(props.shopImg)}`
               : "/image/icon-store.svg"
           }
         />
-        <StarRate state={true} star={props.star} />
+        <StarRate star={props.star} />
       </S.ListBoxTop>
       <S.ShopHours>
         {props.openHour} ~ {props.closeHour}

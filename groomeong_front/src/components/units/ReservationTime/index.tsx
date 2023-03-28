@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction, useState } from "react";
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 import { IQuery } from "../../../commons/types/generated/types";
 import * as S from "./index.styled";
 
@@ -16,7 +17,7 @@ interface IFetchShop {
   time: string;
 }
 
-export const ReservationTime = (props: IPropsFetchShop) => {
+export const ReservationTime = (props: IPropsFetchShop): JSX.Element => {
   const shopOpenTime = [];
   const time =
     Number(props.data?.fetchShop.closeHour.split(":")[0]) -
@@ -44,8 +45,9 @@ export const ReservationTime = (props: IPropsFetchShop) => {
   let reservedDate = false;
   const reservedDateTime: string[] = [];
 
-  if (props.reservationDate) {
+  if (props.reservationDate !== "") {
     if (reservationDateArr?.includes(props.reservationDate)) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       reservedDate = true;
       for (let i = 0; i < reservationDateArr.length; i++) {
         if (
@@ -58,7 +60,7 @@ export const ReservationTime = (props: IPropsFetchShop) => {
     }
   }
 
-  const onClickTime = (event) => {
+  const onClickTime = (event: MouseEvent<HTMLDivElement>): void => {
     props.setReservationTime(event.currentTarget.id);
   };
 

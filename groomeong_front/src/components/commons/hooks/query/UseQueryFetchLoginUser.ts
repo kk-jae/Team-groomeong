@@ -1,5 +1,12 @@
 import { gql, useQuery } from "@apollo/client";
-import { IQuery } from "../../../../commons/types/generated/types";
+import {
+  IQuery,
+  IQueryFetchUserArgs,
+} from "../../../../commons/types/generated/types";
+
+interface IUseQueryFetchLoginUser {
+  data?: Pick<IQuery, "fetchLoginUser">;
+}
 
 export const FETCH_LOGIN_USER = gql`
   query {
@@ -13,8 +20,11 @@ export const FETCH_LOGIN_USER = gql`
   }
 `;
 
-export const UseQueryFetchLoginUser = () => {
-  const { data } = useQuery<Pick<IQuery, "fetchLoginUser">>(FETCH_LOGIN_USER);
+export const UseQueryFetchLoginUser = (): IUseQueryFetchLoginUser => {
+  const { data } = useQuery<
+    Pick<IQuery, "fetchLoginUser">,
+    IQueryFetchUserArgs
+  >(FETCH_LOGIN_USER);
 
   return {
     data,

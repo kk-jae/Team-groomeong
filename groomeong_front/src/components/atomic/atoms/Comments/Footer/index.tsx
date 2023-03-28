@@ -1,14 +1,11 @@
-import { useRouter } from "next/router";
 import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
 import { Buttons } from "../../Buttons";
 import { IShopLabelProps } from "../Header";
 import * as S from "../index.styles";
 
-export const CommentsFooter = (props: IShopLabelProps) => {
+export const CommentsFooter = (props: IShopLabelProps): JSX.Element => {
   const { onClickMoveToPage } = useMoveToPage();
-  const router = useRouter();
 
-  console.log(router.query.shopId);
   return (
     <>
       <S.CommentsFooterModalStyles>
@@ -26,15 +23,13 @@ export const CommentsFooter = (props: IShopLabelProps) => {
             <label>{props.phone}</label>
           </S.FooterLabelNameStyles>
         </S.CommentsFooterModalLabelStyles>
-        <S.FooterModalButtonBox>
+        <S.FooterModalButtonBox buttonState={props.buttonState}>
           <Buttons
             label="예약하기"
             variation="primary"
             border="none"
             size="medium"
-            onClick={onClickMoveToPage(
-              `/map/${router.query.shopId}/reservation`
-            )}
+            onClick={onClickMoveToPage(`/map/${String(props.id)}/reservation`)}
           />
         </S.FooterModalButtonBox>
       </S.CommentsFooterModalStyles>

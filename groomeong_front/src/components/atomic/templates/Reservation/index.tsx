@@ -10,11 +10,11 @@ import { ReservationTime } from "../../../units/ReservationTime";
 import Background from "../../organisms/Background";
 import * as S from "./index.styled";
 
-export const ReservationTemplate = () => {
+export const ReservationTemplate = (): JSX.Element => {
   const router = useRouter();
   const { data } = UseQueryFetchShop(String(router.query.shopId));
   const { data: fetchLoginUserData } = UseQueryFetchLoginUser();
-  const { data: fetchUserDogData } = UseQueryFetchUserDogs();
+  // const { data: fetchUserDogData } = UseQueryFetchUserDogs();
   const { onClickReservationDog } = useReservationDog();
   const [reservationDate, setReservationDate] = useState(""); // 예약 날짜
   const [dogId, setDogId] = useState(""); // 강아지 아이디

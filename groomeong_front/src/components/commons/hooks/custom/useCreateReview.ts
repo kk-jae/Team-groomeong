@@ -4,12 +4,13 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ICreateReviewInput } from "../../../../commons/types/generated/types";
-import { schemaReveiw } from "../../validation/createReveiw.validation";
+import { schemaReview } from "../../validation/createReview.validation";
 import { UseMutationCreateReview } from "../mutation/UseMutationCreateReview";
-import { FETCH_REVIEWS_BY_SHOP_ID } from "../query/UseQueryFetchReviewsByShopId";
 import { UseQueryFetchShop } from "../query/UseQueryFetchShop";
 
 export const useCreateReview = () => {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -18,47 +19,37 @@ export const useCreateReview = () => {
     formState: { errors },
   } = useForm<ICreateReviewInput>({
     mode: "onChange",
-    resolver: yupResolver(schemaReveiw),
+    resolver: yupResolver(schemaReview),
   });
-  const [star, setStar] = useState(1);
+  const [star, setStar] = useState(0);
 
   const onChangeRating = (star: number): void => {
     setStar(star);
     setValue("star", star);
   };
+
   const [createReview] = UseMutationCreateReview();
   const { data: reservation } = UseQueryFetchShop();
-  const router = useRouter();
-  const onClickCreateReview = async (
-    data: ICreateReviewInput
-  ): Promise<void> => {
-    console.log(data);
-    try {
-      await createReview({
-        variables: {
-          createReviewInput: {
-            contents: String(data.contents),
-            star,
-            shopId: String(router.query.shopId),
-            reservationId: String(reservation?.fetchShop.id),
+
+  const onClickCreateReview =
+    (reservationId: string, shopId: string) =>
+    async (data: ICreateReviewInput): Promise<void> => {
+      try {
+        await createReview({
+          variables: {
+            createReviewInput: {
+              contents: String(data.contents),
+              star,
+              shopId,
+              reservationId,
+            },
           },
-        },
-        refetchQueries: [
-          {
-            query: FETCH_REVIEWS_BY_SHOP_ID,
-            variables: { shopId: String(router.query.shopId) },
-          },
-        ],
-      });
-      setStar(1);
-      reset();
-      Modal.success({ content: "댓작성완료" });
-    } catch (error) {
-      if (error instanceof Error) Modal.error({ content: error.message });
-      setStar(1);
-      reset();
-    }
-  };
+        });
+        Modal.success({ content: "댓글 작성 완료" });
+      } catch (error) {
+        if (error instanceof Error) Modal.error({ content: error.message });
+      }
+    };
   return {
     onClickCreateReview,
     onChangeRating,

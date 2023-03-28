@@ -12,7 +12,7 @@ const UPDATE_SHOP = gql`
   }
 `;
 
-export const UseMutationUpdateShop = () => {
+export const UseMutationUpdateShop = (): [typeof updateShop] => {
   const [updateShop] = useMutation<
     Pick<IMutation, "updateShop">,
     IMutationUpdateShopArgs

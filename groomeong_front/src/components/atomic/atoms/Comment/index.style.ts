@@ -63,9 +63,9 @@ export const TextArea_Profile_Icon = styled.div`
   margin-right: 20px;
 
   img {
-    width: ${(props: ICommentProps) => (props.iconView ? "48px" : "24px")};
-    height: ${(props: ICommentProps) => (props.iconView ? "48px" : "24px")};
-    border: 1px solid ${GS.border.borderTransparent};
+    width: 40px;
+    height: 40px;
+    /* border: 1px solid ${GS.border.borderTransparent}; */
     border-radius: 50px;
     object-fit: contain;
   }
