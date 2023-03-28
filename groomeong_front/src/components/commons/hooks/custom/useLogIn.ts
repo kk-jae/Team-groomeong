@@ -25,13 +25,11 @@ export const useLogInButton = () => {
           password: HomePageLogInData.password,
         },
       });
-
       const accessToken = createLogIn.data?.login;
       if (accessToken !== undefined) {
         setAccessToken(accessToken);
         localStorage.setItem("accessToken", accessToken);
       }
-      router.push("/home");
       void router.push("/home");
     } catch (error) {
       if (error instanceof Error)

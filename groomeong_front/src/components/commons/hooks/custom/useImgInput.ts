@@ -1,19 +1,9 @@
 import { FieldValues, useFormContext, UseFormRegister } from "react-hook-form";
 import { ChangeEvent, MutableRefObject, useRef, useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { UseMutationUploadDogImage } from "../mutation/UseMutationUploadDogImage";
 
-interface IuseImgInput {
-  register: UseFormRegister<FieldValues>;
-  ImgInputRef: MutableRefObject<HTMLInputElement | null>;
-  ImgBoxRef: MutableRefObject<HTMLDivElement | null>;
-  img: string;
-  onClickImgInput: () => void;
-  onChangeInput: (
-    uploadFunc: any,
-    shopId?: string
-  ) => (e: ChangeEvent<HTMLInputElement>) => Promise<void>;
-}
-
-const useImgInput = (): IuseImgInput => {
+const useImgInput = () => {
   const [img, setImg] = useState<string>("");
   const ImgInputRef = useRef<HTMLInputElement | null>(null);
   const ImgBoxRef = useRef<HTMLDivElement | null>(null);

@@ -31,6 +31,7 @@ const SignUp = (): JSX.Element => {
             label="닉네임"
             name="name"
             placeholder="닉네임을 입력해주세요."
+            maxLength={3}
           />
           <InputMiddle
             label="비밀번호"
@@ -49,6 +50,7 @@ const SignUp = (): JSX.Element => {
             name="phone"
             placeholder="연락처를 입력해주세요."
             type="text"
+            maxLength={11}
           />
           <Buttons
             label="회원가입하기"
