@@ -23,6 +23,8 @@ export const DogsList = (): JSX.Element => {
     SPECIAL: "특수견",
   };
 
+  console.log(dogData?.fetchUserDogs);
+
   const onClickAddDog = (): void => {
     void router.push("/mypage/dogRegister");
   };
@@ -53,7 +55,7 @@ export const DogsList = (): JSX.Element => {
                 <th>댕댕이 정보</th>
               </tr>
             </thead>
-            {dogData?.fetchUserDogs.map((el) => (
+            {dogData?.fetchUserDogs.map((el, index) => (
               <>
                 <tbody>
                   <tr>

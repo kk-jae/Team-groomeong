@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import useDetailPage from "../../../commons/hooks/custom/useDetailPage";
 import { UseMutationDeleteDog } from "../../../commons/hooks/mutation/UseMutationDeleteDog";
+import { FETCH_USER_DOGS } from "../../../commons/hooks/query/UseQueryFetchUserDogs";
 import { TextBadge } from "../../atoms/Badge/TextBadge";
 import { Buttons } from "../../atoms/Buttons";
 import ContentInfo from "../../atoms/ContentInfo";
@@ -17,6 +18,11 @@ const DogDetail = (): JSX.Element => {
     try {
       await deleteDog({
         variables: { id: String(router.query.dogId) },
+        refetchQueries: [
+          {
+            query: FETCH_USER_DOGS,
+          },
+        ],
       });
       void router.push("/mypage/");
     } catch (error) {
@@ -60,18 +66,10 @@ const DogDetail = (): JSX.Element => {
           />
         </S.DogDetailImgLabel>
       </S.DogDetailContentWrapper>
-      <FormProvider {...method}>
-        <form>
-          <S.Div left={"124px"} right={"124px"}>
-            <InfoTextArea
-              name="significant"
-              title={"특이사항"}
-              content={data?.specifics ?? ""}
-              disabled
-            />
-          </S.Div>
-        </form>
-      </FormProvider>
+      <S.DogDetailSpecifics>
+        <S.SpecificsTitle>특이사항</S.SpecificsTitle>
+        <S.SpecificsBox>{data?.specifics ?? ""}</S.SpecificsBox>
+      </S.DogDetailSpecifics>
       <S.DogDetailFooter>
         <S.Div>
           <Buttons

@@ -20,9 +20,7 @@ const ImgInput = (props: IImgInputProps): JSX.Element => {
   } = useImgInput();
 
   const { ref, ...rest } = register(props.name, {
-    onChange: withPromiseVoidFunc(
-      onChangeInput(props.mutationFunc, props.shopId)
-    ),
+    onChange: withPromiseVoidFunc(onChangeInput(props.mutationFunc, props.shopId)),
   });
 
   return (

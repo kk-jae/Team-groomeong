@@ -22,24 +22,22 @@ const useImgInput = () => {
           setImg(readerEvent.target?.result as string);
         };
 
-        if (shopId !== "") {
-          console.log("되었나?");
+        if (shopId !== "" && shopId !== undefined) {
           const { data } = await uploadFunc({
             variables: {
               files: [file],
               shopId,
             },
           });
-          console.log(data);
-          console.log(data?.uploadShopImages[0]);
+
           setValue("images", data?.uploadShopImages[0]);
         } else {
           const { data } = await uploadFunc({
             variables: {
-              files: file,
+              file,
             },
           });
-          setValue("images", data?.uploadDogImage[0]);
+          setValue("image", data);
         }
       }
     };
