@@ -1,6 +1,5 @@
 import { FieldValues, useFormContext, UseFormRegister } from "react-hook-form";
 import { ChangeEvent, MutableRefObject, useRef, useState } from "react";
-import { useFormContext } from "react-hook-form";
 import { UseMutationUploadDogImage } from "../mutation/UseMutationUploadDogImage";
 
 const useImgInput = () => {
@@ -33,7 +32,7 @@ const useImgInput = () => {
             },
           });
           console.log(data);
-          console.log(data?.uploadShopImages[0])
+          console.log(data?.uploadShopImages[0]);
           setValue("images", data?.uploadShopImages[0]);
         } else {
           const { data } = await uploadFunc({
