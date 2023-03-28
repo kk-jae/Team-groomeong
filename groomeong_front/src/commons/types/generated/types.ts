@@ -14,6 +14,22 @@ export type Scalars = {
   Upload: any;
 };
 
+export type IAutocompleteShopsOutput = {
+  __typename?: 'AutocompleteShopsOutput';
+  address: Scalars['String'];
+  averagestar: Scalars['Int'];
+  closehour: Scalars['String'];
+  id: Scalars['String'];
+  imageurl: Scalars['String'];
+  isthumbnail: Scalars['Int'];
+  lat: Scalars['String'];
+  lng: Scalars['String'];
+  name: Scalars['String'];
+  openhour: Scalars['String'];
+  phone: Scalars['String'];
+  shopid: Scalars['String'];
+};
+
 export type ICreateDogInput = {
   age: Scalars['Int'];
   breed: IDog_Type;
@@ -103,6 +119,8 @@ export type IMutation = {
   updateDog: IDog;
   /** Return : 수정 후 가게 데이터 */
   updateShop: IShop;
+  /** Return: 업데이트된 가게이미지 데이터 */
+  updateShopImage: IShopImage;
   /**  Return: 회원정보 업데이트  */
   updateUser: IUser;
   /**  Return: 강아지 이미지 주소 배열  */
@@ -198,6 +216,11 @@ export type IMutationUpdateShopArgs = {
 };
 
 
+export type IMutationUpdateShopImageArgs = {
+  updateShopImageInput: IUpdateShopImageInput;
+};
+
+
 export type IMutationUpdateUserArgs = {
   updateUserInput: IUpdateUserInput;
   userId: Scalars['String'];
@@ -221,6 +244,8 @@ export type IMutationUploadShopImagesArgs = {
 
 export type IQuery = {
   __typename?: 'Query';
+  /** Return : 검색값(주소: 구, 동 검색 가능)을 포함한 데이터 배열(리뷰 점수 높은 순 정렬). 주소를 포함하는 데이터가 없는 경우 null. */
+  autocompleteShops?: Maybe<Array<IAutocompleteShopsOutput>>;
   /**  Return: 중복 계정 확인하기  */
   duplicateEmail: Scalars['Boolean'];
   /**  Return: id로 조회된 강아지 데이터  */
@@ -238,11 +263,11 @@ export type IQuery = {
   /** Return: 가게ID 기준으로 모든 리뷰 불러오기 */
   fetchReviewsByShopId: Array<IReview>;
   /** Return : 입력한 shopId와 일치하는 가게 데이터. 리뷰 작성 권한 확인 안 해줌  */
-  fetchShop: IReturnShopOutput;
+  fetchShop: IShop;
   /** Return: 입력한 가게의 모든 가게이미지 */
   fetchShopImagesByShop: Array<IShopImage>;
   /** Return : 가게 데이터 및 리뷰 작성 권한 여부. (리뷰 작성 가능하면 true, 불가하면 error) */
-  fetchShopWithReviewAuth: IReturnShopOutput;
+  fetchShopWithReviewAuth: IShopWithAuthOutput;
   /** Return : DB에 등록된 가게 중 검색값을 포함한 데이터(검색값이 Null인 경우 모든 가게). 이미지는 썸네일만 불러오며, 등록된 이미지가 있더라도 썸네일로 지정한 이미지가 없는 경우 Null(빈 배열) */
   fetchShops: Array<IShop>;
   /** Return: 입력한 가게의 썸네일 가게이미지(1개) */
@@ -254,6 +279,11 @@ export type IQuery = {
   fetchUserWithDeleted: Array<IUser>;
   /**  Return: 전체 유저 정보  */
   fetchUsers: Array<IUser>;
+};
+
+
+export type IQueryAutocompleteShopsArgs = {
+  search?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -299,7 +329,8 @@ export type IQueryFetchShopWithReviewAuthArgs = {
 
 
 export type IQueryFetchShopsArgs = {
-  search?: InputMaybe<Scalars['String']>;
+  count: Scalars['Float'];
+  page: Scalars['Float'];
 };
 
 
@@ -317,26 +348,10 @@ export type IReservation = {
   date: Scalars['DateTime'];
   dog: IDog;
   id: Scalars['String'];
+  review?: Maybe<IReview>;
   shop: IShop;
   time: Scalars['String'];
   user: IUser;
-};
-
-export type IReturnShopOutput = {
-  __typename?: 'ReturnShopOutput';
-  address: Scalars['String'];
-  averageStar: Scalars['Float'];
-  closeHour: Scalars['String'];
-  hasReviewAuth: Scalars['Boolean'];
-  id: Scalars['String'];
-  image: Array<IShopImage>;
-  lat: Scalars['String'];
-  lng: Scalars['String'];
-  name: Scalars['String'];
-  openHour: Scalars['String'];
-  phone: Scalars['String'];
-  reservation: Array<IReservation>;
-  review: Array<IReview>;
 };
 
 export type IReview = {
@@ -353,6 +368,7 @@ export type IShop = {
   address: Scalars['String'];
   averageStar: Scalars['Float'];
   closeHour: Scalars['String'];
+  code: Scalars['Int'];
   id: Scalars['String'];
   image: Array<IShopImage>;
   lat: Scalars['String'];
@@ -372,6 +388,24 @@ export type IShopImage = {
   shop: IShop;
 };
 
+export type IShopWithAuthOutput = {
+  __typename?: 'ShopWithAuthOutput';
+  address: Scalars['String'];
+  averageStar: Scalars['Float'];
+  closeHour: Scalars['String'];
+  code: Scalars['Int'];
+  hasReviewAuth: Scalars['Boolean'];
+  id: Scalars['String'];
+  image: Array<IShopImage>;
+  lat: Scalars['String'];
+  lng: Scalars['String'];
+  name: Scalars['String'];
+  openHour: Scalars['String'];
+  phone: Scalars['String'];
+  reservation: Array<IReservation>;
+  review: Array<IReview>;
+};
+
 export type IUpdateDogInput = {
   age?: InputMaybe<Scalars['Int']>;
   breed?: InputMaybe<IDog_Type>;
@@ -379,6 +413,13 @@ export type IUpdateDogInput = {
   name?: InputMaybe<Scalars['String']>;
   specifics?: InputMaybe<Scalars['String']>;
   weight?: InputMaybe<Scalars['Float']>;
+};
+
+export type IUpdateShopImageInput = {
+  id: Scalars['String'];
+  imageUrl: Scalars['String'];
+  isThumbnail: Scalars['Boolean'];
+  shopId?: InputMaybe<Scalars['String']>;
 };
 
 export type IUpdateShopInput = {
@@ -404,7 +445,6 @@ export type IUser = {
   id: Scalars['String'];
   image?: Maybe<Scalars['String']>;
   name: Scalars['String'];
-  password: Scalars['String'];
   phone: Scalars['String'];
   reservation: Array<IReservation>;
 };

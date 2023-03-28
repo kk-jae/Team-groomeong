@@ -67,4 +67,8 @@ export const ShopMoved = styled.div`
 export const ShopAddress = styled.div`
   ${GS.Paragraph.Medium};
   color: ${GS.contents.contentSecondary};
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
