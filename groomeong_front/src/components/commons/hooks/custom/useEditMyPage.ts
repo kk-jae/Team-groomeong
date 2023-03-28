@@ -8,11 +8,11 @@ interface IFetchData {
   image?: string;
 }
 
-interface IuseEditMyPage {
-  onClickEditBtn: (data: IFetchData) => Promise<void>;
-}
+// interface IuseEditMyPage {
+//   onClickEditBtn: (data: IFetchData) => Promise<void>;
+// }
 
-export const useEditMyPage = (): IuseEditMyPage => {
+export const useEditMyPage = () => {
   const [updateUser] = UseMutationUpdateUser();
   const { data: userData } = UseQueryFetchLoginUser();
   const router = useRouter();

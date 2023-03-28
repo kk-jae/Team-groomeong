@@ -1,18 +1,19 @@
-import { accessTokenState } from './../../../../commons/Store/index';
-import { useRecoilValue } from 'recoil';
+import { accessTokenState } from "./../../../../commons/Store/index";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useRouter } from "next/router";
 import { UseMutationLogout } from "./../mutation/UseMutationLogout";
+import { Modal } from "antd";
 
 interface IuseLogout {
-  onClickLogOut: () => void;
+  onClickLogOut: () => Promise<void>;
 }
 
-export const useLogout = (): IuseLogout => {
-  const accessToken = useRecoilValue(accessTokenState);
+export const useLogout = () => {
   const [logOut] = UseMutationLogout();
   const router = useRouter();
+  const [accessToken] = useRecoilState(accessTokenState);
 
-  const onClickLogOut = ():void => {
+  const onClickLogOut = (): void => {
     void logOut();
     if (accessToken === "") {
       void router.push("/home");

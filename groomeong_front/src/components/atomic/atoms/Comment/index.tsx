@@ -10,6 +10,7 @@ export interface ICommentProps {
   rate?: number;
   iconView: boolean;
   state?: boolean;
+  shopId?: string;
 }
 
 export const Comment = (props: ICommentProps): JSX.Element => {
@@ -22,7 +23,7 @@ export const Comment = (props: ICommentProps): JSX.Element => {
           <>
             <S.TextArea_TopBox_Profile>
               {data?.fetchReservationsByShop.map((el) =>
-                el.user.image != null ? ( //
+                el.user.image != null ? ( // 여기 문제 있는지 볼것// 패치 로그인 유저를 하면 안되고 패치 리뷰 유저가 필요함.
                   <S.TextArea_Profile_Icon key={el.id}>
                     <img
                       src={`https://storage.googleapis.com/${el.user.image}`}

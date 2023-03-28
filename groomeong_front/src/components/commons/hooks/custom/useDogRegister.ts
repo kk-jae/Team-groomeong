@@ -1,16 +1,17 @@
-import { UseMutationUploadDogImage } from './../mutation/UseMutationUploadDogImage';
+import { UseMutationUploadDogImage } from "./../mutation/UseMutationUploadDogImage";
 import { UseMutationCreateDog } from "./../mutation/UseMutationCreateDog";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Schema } from "../../../commons/validation/dogRegister.validation";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
+import { FETCH_USER_DOGS } from "../query/UseQueryFetchUserDogs";
 
 export const useDogRegister = () => {
   const [createDog] = UseMutationCreateDog();
   const router = useRouter();
 
-  const [ uploadDogImage ] = UseMutationUploadDogImage()
+  const [uploadDogImage] = UseMutationUploadDogImage();
 
   const method = useForm({
     mode: "onChange",
@@ -42,8 +43,12 @@ export const useDogRegister = () => {
         variables: {
           createDogInput,
         },
+        refetchQueries: [
+          {
+            query: FETCH_USER_DOGS,
+          },
+        ],
       });
-
       Modal.success({
         content: "댕댕이가 등록되었습니다",
       });

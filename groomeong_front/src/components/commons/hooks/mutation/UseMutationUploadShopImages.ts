@@ -5,12 +5,12 @@ import {
 } from "../../../../commons/types/generated/types";
 
 const UPLOAD_SHOP_IMAGES = gql`
-  mutation uploadShopImages($file: [Upload!]!, $shopId: String!) {
-    uploadShopImages(file: $file, shopId: $shopId)
+  mutation uploadShopImages($files: [Upload!]!, $shopId: String!) {
+    uploadShopImages(files: $files, shopId: $shopId)
   }
 `;
 
-export const UseMutationUploadShopImages = (): [typeof uploadShopImages] => {
+export const UseMutationUploadShopImages = () => {
   const [uploadShopImages] = useMutation<
     Pick<IMutation, "uploadShopImages">,
     IMutationUploadShopImagesArgs
