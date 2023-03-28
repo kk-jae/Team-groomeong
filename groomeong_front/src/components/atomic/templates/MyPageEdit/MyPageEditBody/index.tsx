@@ -34,6 +34,7 @@ export const MyPageEditBodyTemplate = (): JSX.Element => {
             defaultValue={userData?.fetchLoginUser?.name}
             placeholder={userData?.fetchLoginUser?.name}
             name={"name"}
+            maxLength={3}
           />
           <InputMiddle
             label="이메일"
@@ -45,6 +46,7 @@ export const MyPageEditBodyTemplate = (): JSX.Element => {
             defaultValue={userData?.fetchLoginUser?.phone.replaceAll("-", "")}
             name={"phone"}
             placeholder={userData?.fetchLoginUser?.phone.replaceAll("-", "")}
+            maxLength={11}
           />
           <S.LabelWrapper>
             <S.Label>비밀번호</S.Label>

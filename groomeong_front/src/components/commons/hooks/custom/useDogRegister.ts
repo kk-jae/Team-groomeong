@@ -24,11 +24,10 @@ export const useDogRegister = () => {
     weight: number;
     breed: any;
     specifics?: string;
-    image?: string;
+    image?: any;
   }
 
   const onClickRegisterDog = async (data: ICreateDogInput): Promise<void> => {
-    console.log(data);
     const createDogInput: ICreateDogInput = {
       name: data.name,
       age: Number(data.age),
