@@ -1,5 +1,6 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { useFormContext } from "react-hook-form";
+import { UseQueryFetchLoginUser } from "../query/UseQueryFetchLoginUser";
 
 const useImgInput = () => {
   const [img, setImg] = useState<string>("");
@@ -21,7 +22,6 @@ const useImgInput = () => {
         reader.onload = (readerEvent) => {
           setImg(readerEvent.target?.result as string);
         };
-
         if (shopId !== "" && shopId !== undefined) {
           const { data } = await uploadFunc({
             variables: {
@@ -47,6 +47,7 @@ const useImgInput = () => {
     ImgInputRef,
     ImgBoxRef,
     img,
+    setImg,
     onClickImgInput,
     onChangeInput,
   };

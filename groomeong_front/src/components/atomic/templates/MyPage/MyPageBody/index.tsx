@@ -16,7 +16,14 @@ export const MyPageBody = (props: IMyPageBodyProps): JSX.Element => {
       <ContentInfo label={"연락처"} content={props.phone}></ContentInfo>
       <S.ImageWrapper>
         <ContentInfo label={"사진"} content={""}></ContentInfo>
-        <img src={`https://storage.googleapis.com/${props.image}`} alt="" />
+        <img
+          src={
+            props.image !== ""
+              ? `https://storage.googleapis.com/${props.image}`
+              : "/image/img-dog-detail.png"
+          }
+          alt=""
+        />
       </S.ImageWrapper>
     </>
   );
