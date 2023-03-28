@@ -35,7 +35,7 @@ export const useDogRegister = () => {
       weight: Number(data.weight),
       breed: data.breed,
       specifics: data.specifics ?? "",
-      image: data?.uploadDogImage[0] as string ?? null,
+      image: (data?.image?.uploadDogImage[0] as string) ?? null,
     };
 
     if (createDogInput.breed === undefined) createDogInput.breed = "LARGE";

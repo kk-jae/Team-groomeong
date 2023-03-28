@@ -1,11 +1,15 @@
+import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { UseMutationUpdateUser } from "../mutation/UseMutationUpdateUser";
-import { UseQueryFetchLoginUser } from "../query/UseQueryFetchLoginUser";
+import {
+  FETCH_LOGIN_USER,
+  UseQueryFetchLoginUser,
+} from "../query/UseQueryFetchLoginUser";
 
 interface IFetchData {
   name?: string;
   phone?: string;
-  image?: string;
+  image?: any;
 }
 
 // interface IuseEditMyPage {
@@ -18,21 +22,40 @@ export const useEditMyPage = () => {
   const router = useRouter();
 
   const onClickEditBtn = async (data: IFetchData): Promise<void> => {
+    const updateUserInput = {
+      name: data.name,
+      phone: data.phone,
+      image: data.image,
+    };
+    if (!updateUserInput.name)
+      updateUserInput.name = userData?.fetchLoginUser.name;
+    if (!updateUserInput.phone)
+      updateUserInput.phone = userData?.fetchLoginUser.phone;
+
+    if (updateUserInput.image?.length === 0) {
+      updateUserInput.image = String(userData?.fetchLoginUser.image);
+    } else {
+      updateUserInput.image = data.image?.uploadProfileImage[0];
+    }
+
     try {
       await updateUser({
         variables: {
           userId: String(userData?.fetchLoginUser.id),
-          updateUserInput: {
-            name: data.name,
-            phone: data.phone,
-            image: data.image,
-          },
+          updateUserInput,
         },
+        refetchQueries: [
+          {
+            query: FETCH_LOGIN_USER,
+          },
+        ],
       });
-      void router.push("/mypage");
+      router.push("/mypage");
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message);
+        Modal.error({
+          content: error.message,
+        });
       }
     }
   };

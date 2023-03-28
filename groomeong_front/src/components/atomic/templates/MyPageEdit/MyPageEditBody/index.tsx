@@ -4,6 +4,7 @@ import { IMutationUpdateUserArgs } from "../../../../../commons/types/generated/
 import { withPromiseVoidFunc } from "../../../../../commons/Utils/withFunc";
 import { useEditMyPage } from "../../../../commons/hooks/custom/useEditMyPage";
 import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
+import { UseMutationUploadProfileImage } from "../../../../commons/hooks/mutation/UseMutationUploadProfileImage";
 import { UseQueryFetchLoginUser } from "../../../../commons/hooks/query/UseQueryFetchLoginUser";
 import { Schema } from "../../../../commons/validation/myPageEdit.validation";
 import { Buttons } from "../../../atoms/Buttons";
@@ -15,11 +16,12 @@ import * as S from "./index.style";
 export const MyPageEditBodyTemplate = (): JSX.Element => {
   const method = useForm<IMutationUpdateUserArgs>({
     mode: "onChange",
-    resolver: yupResolver(Schema),
+    // resolver: yupResolver(Schema),
   });
   const { data: userData } = UseQueryFetchLoginUser();
   const { onClickMoveToPage } = useMoveToPage();
   const { onClickEditBtn } = useEditMyPage();
+  const [uploadProfileImage] = UseMutationUploadProfileImage();
 
   return (
     <>
@@ -30,6 +32,7 @@ export const MyPageEditBodyTemplate = (): JSX.Element => {
           <InputMiddle
             label="닉네임"
             defaultValue={userData?.fetchLoginUser?.name}
+            placeholder={userData?.fetchLoginUser?.name}
             name={"name"}
           />
           <InputMiddle
@@ -41,6 +44,7 @@ export const MyPageEditBodyTemplate = (): JSX.Element => {
             label="연락처"
             defaultValue={userData?.fetchLoginUser?.phone.replaceAll("-", "")}
             name={"phone"}
+            placeholder={userData?.fetchLoginUser?.phone.replaceAll("-", "")}
           />
           <S.LabelWrapper>
             <S.Label>비밀번호</S.Label>
@@ -51,14 +55,19 @@ export const MyPageEditBodyTemplate = (): JSX.Element => {
             ></Buttons>
           </S.LabelWrapper>
           <S.LabelWrapper>
-            <ContentInfo label="사진" component={<ImgInput name="image" />} />
+            <ContentInfo
+              label="사진"
+              component={
+                <ImgInput
+                  name="image"
+                  mutationFunc={uploadProfileImage}
+                  state={true}
+                />
+              }
+            />
           </S.LabelWrapper>
           <S.ButtonBox>
-            <Buttons
-              size="large"
-              label="수정 완료"
-              onClick={onClickEditBtn}
-            ></Buttons>
+            <Buttons size="large" label="수정 완료"></Buttons>
           </S.ButtonBox>
         </form>
       </FormProvider>

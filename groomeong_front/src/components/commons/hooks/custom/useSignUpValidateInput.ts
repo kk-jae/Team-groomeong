@@ -53,7 +53,6 @@ export const useSignUpValidateInput = (
           email,
         },
       });
-      console.log(result.data);
       setValidation((prev: IValidation) => ({
         ...prev,
         emailAuth: true,

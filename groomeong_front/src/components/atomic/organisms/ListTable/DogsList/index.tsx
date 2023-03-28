@@ -12,18 +12,16 @@ interface IDogType {
   SPECIAL: string;
 }
 
+export const dogType: IDogType = {
+  SMALL: "소형",
+  MEDIUM: "중형",
+  LARGE: "대형",
+  SPECIAL: "특수견",
+};
+
 export const DogsList = (): JSX.Element => {
   const router = useRouter();
   const { data: dogData } = UseQueryFetchUserDogs();
-
-  const dogType: IDogType = {
-    SMALL: "소형",
-    MEDIUM: "중형",
-    LARGE: "대형",
-    SPECIAL: "특수견",
-  };
-
-  console.log(dogData?.fetchUserDogs);
 
   const onClickAddDog = (): void => {
     void router.push("/mypage/dogRegister");

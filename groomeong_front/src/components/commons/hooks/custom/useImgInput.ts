@@ -21,7 +21,6 @@ const useImgInput = () => {
         reader.onload = (readerEvent) => {
           setImg(readerEvent.target?.result as string);
         };
-
         if (shopId !== "" && shopId !== undefined) {
           const { data } = await uploadFunc({
             variables: {
@@ -47,6 +46,7 @@ const useImgInput = () => {
     ImgInputRef,
     ImgBoxRef,
     img,
+    setImg,
     onClickImgInput,
     onChangeInput,
   };
