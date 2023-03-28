@@ -8,7 +8,7 @@ interface IProps {
   openHour?: string;
   closeHour?: string;
   address?: string;
-  shopImg?: object | string;
+  shopImg?: Array;
   star?: number;
   id: string;
 }
@@ -20,13 +20,14 @@ export const ListBox = (props: IProps): JSX.Element => {
     setIsModalOpen((prev) => !prev);
   };
 
+  console.log(props.shopImg);
   return (
     <S.ListBoxWrapper tabIndex={0}>
       <S.ListBoxTop>
         <S.ShopName>{props.name}</S.ShopName>
         <S.ShopImg
           src={
-            !props.shopImg
+            props.shopImg.length !== 0
               ? `https://storage.googleapis.com/${String(props.shopImg)}`
               : "/image/icon-store.svg"
           }

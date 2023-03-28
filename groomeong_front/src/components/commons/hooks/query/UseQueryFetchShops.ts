@@ -13,7 +13,7 @@ interface IUseQueryFetchShops {
 
 export const FETCH_SHOPS = gql`
   query fetchShops($page: Float!, $count: Float!) {
-    fetchShops(search: page: $page, count: $count) {
+    fetchShops(page: $page, count: $count) {
       id
       name
       openHour
@@ -49,8 +49,8 @@ export const UseQueryFetchShops = (
     IQueryFetchShopsArgs
   >(FETCH_SHOPS, {
     variables: {
-      page,
       count,
+      page,
     },
   });
   return {

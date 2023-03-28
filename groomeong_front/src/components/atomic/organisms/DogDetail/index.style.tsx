@@ -64,3 +64,27 @@ export const DogDetailFooter = styled.div`
   display: flex;
   margin: 32px;
 `;
+
+export const DogDetailSpecifics = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  ${GS.Paragraph.Medium}
+  color: ${GS.gray[400]};
+`;
+
+export const SpecificsTitle = styled.div`
+  text-align: center;
+  width: 80%;
+  padding-bottom: 20px;
+  border-bottom: 1px solid ${GS.border.borderOpaque};
+`;
+export const SpecificsBox = styled.div`
+  width: 80%;
+  height: 150px;
+  background-color: #f2f2f2;
+  margin-top: 8px;
+  padding: 32px;
+  color: #5c5c5c;
+  margin-bottom: 20px;
+`;
