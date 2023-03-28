@@ -15,6 +15,12 @@ export const FETCH_RESERVATIONS_BY_SHOP = gql`
         id
         name
       }
+      user {
+        id
+        name
+        email
+        image
+      }
     }
   }
 `;

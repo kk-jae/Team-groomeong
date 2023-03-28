@@ -4,7 +4,7 @@ import { ListBox } from "../../atoms/ListBox";
 import { UseQueryFetchShops } from "../../../commons/hooks/query/UseQueryFetchShops";
 
 export const MapSideList = (): JSX.Element => {
-  const { data } = UseQueryFetchShops();
+  const { data } = UseQueryFetchShops(1, 1000);
 
   return (
     <S.MapSideListWrapper>
@@ -22,7 +22,7 @@ export const MapSideList = (): JSX.Element => {
                 address={el.address}
                 star={el.averageStar}
                 id={el.id}
-                shopImg={el.image}
+                shopImg={el.image.map((el) => el.imageUrl)}
               />
             </div>
           ))}
