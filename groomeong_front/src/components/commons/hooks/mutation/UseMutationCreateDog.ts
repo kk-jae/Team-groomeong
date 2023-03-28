@@ -9,6 +9,7 @@ const CREATE_DOG = gql`
     createDog(createDogInput: $createDogInput) {
       id
       name
+      # breed
     }
   }
 `;

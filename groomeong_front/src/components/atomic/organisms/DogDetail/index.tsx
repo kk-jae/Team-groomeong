@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import useDetailPage from "../../../commons/hooks/custom/useDetailPage";
 import { UseMutationDeleteDog } from "../../../commons/hooks/mutation/UseMutationDeleteDog";
+import { FETCH_USER_DOGS } from "../../../commons/hooks/query/UseQueryFetchUserDogs";
 import { TextBadge } from "../../atoms/Badge/TextBadge";
 import { Buttons } from "../../atoms/Buttons";
 import ContentInfo from "../../atoms/ContentInfo";
@@ -17,6 +18,11 @@ const DogDetail = (): JSX.Element => {
     try {
       await deleteDog({
         variables: { id: String(router.query.dogId) },
+        refetchQueries: [
+          {
+            query: FETCH_USER_DOGS,
+          },
+        ],
       });
       void router.push("/mypage/");
     } catch (error) {
