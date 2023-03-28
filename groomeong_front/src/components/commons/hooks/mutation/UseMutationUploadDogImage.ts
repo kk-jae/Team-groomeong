@@ -10,6 +10,7 @@ const UPLOAD_DOG_IMAGE = gql`
   }
 `;
 
+
 export const UseMutationUploadDogImage = () => {
   const [uploadDogImage] = useMutation<
     Pick<IMutation, "uploadDogImage">,

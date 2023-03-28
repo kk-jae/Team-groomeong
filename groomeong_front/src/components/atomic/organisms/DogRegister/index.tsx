@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import { useDogRegister } from "../../../commons/hooks/custom/useDogRegister";
 import { SizeBadge } from "../../atoms/Badge/SizeBadge";
@@ -17,7 +17,8 @@ import {
 } from "./index.style";
 
 const DogRegister = (): JSX.Element => {
-  const { FormProvider, method, onClickRegisterDog, uploadDogImage } = useDogRegister();
+  const { FormProvider, method, onClickRegisterDog, uploadDogImage } =
+    useDogRegister();
 
   return (
     <DogRegisterWrapper>
@@ -56,7 +57,12 @@ const DogRegister = (): JSX.Element => {
               name="specifics"
               placeholder="특이사항을 입력해 주세요."
             />
-            <ContentInfo label="사진" component={<ImgInput name="image" mutationFunc={uploadDogImage}/>} />
+            <ContentInfo
+              label="사진"
+              component={
+                <ImgInput name="image" mutationFunc={uploadDogImage} />
+              }
+            />
             <DogRegisterWrapper>
               <DogRegisterFooterSpan>
                 <Buttons
