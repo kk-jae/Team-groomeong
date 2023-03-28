@@ -1,5 +1,5 @@
 import { accessTokenState } from "./../../../../commons/Store/index";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useRouter } from "next/router";
 import { UseMutationLogout } from "./../mutation/UseMutationLogout";
 import { Modal } from "antd";
@@ -11,19 +11,12 @@ interface IuseLogout {
 export const useLogout = () => {
   const [logOut] = UseMutationLogout();
   const router = useRouter();
+  const [accessToken] = useRecoilState(accessTokenState);
 
   const onClickLogOut = (): void => {
-    try {
-      void logOut();
-      if (localStorage.accessToken === undefined) {
-        void router.push("/home");
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        Modal.error({
-          content: error.message,
-        });
-      }
+    void logOut();
+    if (accessToken === "") {
+      void router.push("/home");
     }
   };
 
