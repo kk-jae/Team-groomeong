@@ -40,6 +40,8 @@ export const ImgDiv = styled(Div)<IImgDiv>`
   padding: 16px;
   transition: all 0.2s ease;
   cursor: pointer;
+  z-index:1;
+
   &:hover {
     background-color: ${GS.blue[600]};
   }

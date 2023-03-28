@@ -12,7 +12,6 @@ export const MyPageTemplate = (): JSX.Element => {
 
   const { onClickMoveToPage } = useMoveToPage();
 
-  console.log(data);
   return (
     <>
       <Background>

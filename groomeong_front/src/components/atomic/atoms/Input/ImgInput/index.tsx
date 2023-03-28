@@ -16,7 +16,6 @@ const ImgInput = (props: IImgInputProps): JSX.Element => {
     ImgInputRef,
     ImgBoxRef,
     img,
-    setImg,
     register,
     onClickImgInput,
     onChangeInput,
@@ -28,6 +27,8 @@ const ImgInput = (props: IImgInputProps): JSX.Element => {
       onChangeInput(props.mutationFunc, props.shopId)
     ),
   });
+
+  console.log(img === "");
 
   return (
     <ImgInputWrapper>
@@ -42,9 +43,9 @@ const ImgInput = (props: IImgInputProps): JSX.Element => {
       {props.state ? (
         <ImgDiv
           url={
-            img
-              ? img
-              : `https://storage.googleapis.com/${data?.fetchLoginUser.image}`
+            img === "" && data?.fetchLoginUser.image
+              ? `https://storage.googleapis.com/${data?.fetchLoginUser.image}`
+              : img
           }
           ref={ImgBoxRef}
           onClick={onClickImgInput}

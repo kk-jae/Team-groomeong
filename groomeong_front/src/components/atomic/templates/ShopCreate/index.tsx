@@ -27,7 +27,6 @@ export default function ShopCreateTemplate(): JSX.Element {
         },
       });
 
-      console.log(fetchData?.createShop.id);
       if (fetchData != null) {
         setId(fetchData?.createShop.id);
       }

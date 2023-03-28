@@ -1,6 +1,5 @@
 import { ChangeEvent, useRef, useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { UseQueryFetchLoginUser } from "../query/UseQueryFetchLoginUser";
 
 const useImgInput = () => {
   const [img, setImg] = useState<string>("");
