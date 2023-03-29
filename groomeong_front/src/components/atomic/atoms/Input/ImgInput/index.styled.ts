@@ -30,8 +30,8 @@ export const Input = styled.input`
 
 // prettier-ignore
 export const ImgDiv = styled(Div)<IImgDiv>`
-  background-image: url(${({ url }) => url == "" ? "/image/icon-image-plus.svg" : url});
-  background-size: ${({ url }) => (url == "" ? "54px" : "contain")};
+  background-image: url(${({ url }) => url === "" ? "/image/icon-image-plus.svg" : url});
+  background-size: ${({ url }) => (url === "" ? "54px" : "contain")};
   background-repeat: no-repeat;
   background-position: center;
   background-color: ${GS.base.primary};

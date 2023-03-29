@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
 
-interface IPageHeaderContentsWrapper {}
-
 interface IPageHeaderIcon {
   icon: string;
 }
@@ -12,7 +10,7 @@ export const PageHeaderWrapper = styled.div`
   padding: 32px 64px;
 `;
 
-export const PageHeaderContentsWrapper = styled.div<IPageHeaderContentsWrapper>`
+export const PageHeaderContentsWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
