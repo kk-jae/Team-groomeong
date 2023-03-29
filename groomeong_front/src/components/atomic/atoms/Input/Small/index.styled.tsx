@@ -19,7 +19,7 @@ export const Label = styled.label<IFocusLabel>`
   ${GS.Label.Medium}
   color: ${(props) =>
     props.focus ? GS.state.positive : GS.contents.contentSecondary};
-  color: ${(props) => props.error !== "" && GS.state.negative};
+  color: ${(props) => props.error !== null && GS.state.negative};
 `;
 
 export const InputTag = styled.input<IFocusInput>`
@@ -30,39 +30,39 @@ export const InputTag = styled.input<IFocusInput>`
   outline: none;
   ${GS.Label.Medium}
   background-color: ${(props) =>
-    props.error !== ""
+    props.error !== undefined
       ? GS.state.negativeTransparent
       : props.disabled === true
       ? GS.state.disabled
       : GS.base.secondary};
   border-bottom: 2px solid
     ${(props) =>
-      (props.error !== "" && GS.state.negative !== "") ||
+      (props.error !== undefined && GS.state.negative !== undefined) ||
       GS.border.borderPrimary};
 
   &::placeholder {
     color: ${GS.contents.contentTertiary};
-    color: ${(props) => props.error !== "" && GS.state.negative};
+    color: ${(props) => props.error !== undefined && GS.state.negative};
     ${GS.Paragraph.Medium}
   }
 
   &:focus {
     outline: none;
     background-color: ${(props) =>
-      props.error !== ""
-        ? GS.state.negativeTransparent !== ""
+      props.error !== undefined
+        ? GS.state.negativeTransparent !== undefined
           ? props.disabled
           : GS.state.disabled
         : GS.base.secondary};
     border-bottom: 2px solid ${GS.state.positive};
     border-bottom: 2px solid
-      ${(props) => props.error !== "" && GS.state.negative};
+      ${(props) => props.error !== undefined && GS.state.negative};
     color: ${GS.state.positive};
-    color: ${(props) => props.error !== "" && GS.state.negative};
+    color: ${(props) => props.error !== undefined && GS.state.negative};
 
     &::placeholder {
       color: ${GS.state.positive};
-      color: ${(props) => props.error !== "" && GS.state.negative};
+      color: ${(props) => props.error !== undefined && GS.state.negative};
     }
   }
   &:disabled {
