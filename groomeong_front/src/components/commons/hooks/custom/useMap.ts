@@ -1,12 +1,11 @@
-import { mapState, mapState2 } from "./../../../../commons/Store/index";
+import { mapState } from "./../../../../commons/Store/index";
 import { UseQueryFetchShops } from "./../query/UseQueryFetchShops";
 import { useJsApiLoader } from "@react-google-maps/api";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { useRecoilState } from "recoil";
 import getLatLng from "../../../../commons/Utils/getLatLng";
 
 export const useMap = () => {
-  const [map2, setMap2] = useRecoilState(mapState2);
   const [mapInfo, setMapInfo] = useRecoilState(mapState);
   const { data } = UseQueryFetchShops(1, 1000);
   const { isLoaded } = useJsApiLoader({

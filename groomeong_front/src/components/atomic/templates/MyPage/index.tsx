@@ -11,6 +11,7 @@ export const MyPageTemplate = (): JSX.Element => {
   const { data } = UseQueryFetchLoginUser();
 
   const { onClickMoveToPage } = useMoveToPage();
+
   return (
     <>
       <Background>
@@ -24,13 +25,13 @@ export const MyPageTemplate = (): JSX.Element => {
               name={data?.fetchLoginUser.name ?? ""}
               email={data?.fetchLoginUser.email ?? ""}
               phone={data?.fetchLoginUser.phone ?? ""}
-              image={data?.fetchLoginUser.image ?? "image/img-dog-detail.png"}
+              image={data?.fetchLoginUser.image ?? ""}
             ></MyPageBody>
             <DogsList></DogsList>
             <p>
               <Buttons
                 size="large"
-                label="수정하기"
+                label="나의 정보 수정하기"
                 onClick={onClickMoveToPage("/mypage/edit")}
               ></Buttons>
             </p>

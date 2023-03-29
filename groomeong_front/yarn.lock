@@ -1515,6 +1515,11 @@
   resolved "https://registry.yarnpkg.com/@react-google-maps/marker-clusterer/-/marker-clusterer-2.16.1.tgz#882878a7b49ce9ae44c7b02ff6fbc4c2aeb77c95"
   integrity sha512-jOuyqzWLeXvQcoAu6TCVWHAuko+sDt0JjawNHBGqUNLywMtTCvYP0L0PiqJZOUCUeRYGdUy0AKxQ+30vAkvwag==
 
+"@react-oauth/google@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@react-oauth/google/-/google-0.9.0.tgz#af65ee0c6238a0988056d9e820029f99255f8381"
+  integrity sha512-iq9I6A4uwZezU/BixqLM6UET6an559ufC4Nh0lEIeIaKC3TJRvcPNWCjjHny56yAhgdT6ivUicLIvEoiSMjnmg==
+
 "@repeaterjs/repeater@3.0.4", "@repeaterjs/repeater@^3.0.4":
   version "3.0.4"
   resolved "https://registry.npmjs.org/@repeaterjs/repeater/-/repeater-3.0.4.tgz"
@@ -4773,7 +4778,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -5199,6 +5204,14 @@ react-dom@17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     scheduler "^0.20.2"
+
+react-google-login@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/react-google-login/-/react-google-login-5.2.2.tgz#a20b46440c6c1610175ef75baf427118ff0e9859"
+  integrity sha512-JUngfvaSMcOuV0lFff7+SzJ2qviuNMQdqlsDJkUM145xkGPVIfqWXq9Ui+2Dr6jdJWH5KYdynz9+4CzKjI5u6g==
+  dependencies:
+    "@types/react" "*"
+    prop-types "^15.6.0"
 
 react-hook-form@^7.43.5:
   version "7.43.5"

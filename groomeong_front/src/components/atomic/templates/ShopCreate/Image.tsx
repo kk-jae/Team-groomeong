@@ -14,7 +14,6 @@ const Image = ({ id }: { id: string }) => {
     mode: "onChange",
   });
   const onSubmitCreateShopImg = async (data: any) => {
-    console.log(data);
     try {
       const { data: uploadImg } = await createShopImage({
         variables: {
@@ -23,7 +22,6 @@ const Image = ({ id }: { id: string }) => {
           shopId: id,
         },
       });
-      console.log(uploadImg);
     } catch (error) {
       if (error instanceof Error) alert(error);
     }

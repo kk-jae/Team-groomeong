@@ -60,7 +60,11 @@ const DogRegister = (): JSX.Element => {
             <ContentInfo
               label="사진"
               component={
-                <ImgInput name="image" mutationFunc={uploadDogImage} />
+                <ImgInput
+                  name="image"
+                  mutationFunc={uploadDogImage}
+                  state={false}
+                />
               }
             />
             <DogRegisterWrapper>

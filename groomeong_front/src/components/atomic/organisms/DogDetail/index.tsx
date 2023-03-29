@@ -7,6 +7,7 @@ import { Buttons } from "../../atoms/Buttons";
 import ContentInfo from "../../atoms/ContentInfo";
 import PageHeader from "../../atoms/PageHeader";
 import InfoTextArea from "../../atoms/TextArea/InfoTextArea";
+import { dogType } from "../ListTable/DogsList";
 import * as S from "./index.style";
 
 const DogDetail = (): JSX.Element => {
@@ -34,6 +35,12 @@ const DogDetail = (): JSX.Element => {
     void router.push("/mypage/");
   };
 
+  let DogBreed = "";
+  if (data?.breed === "LARGE") DogBreed = "대형";
+  if (data?.breed === "SMALL") DogBreed = "소형";
+  if (data?.breed === "MEDIUM") DogBreed = "중형";
+  if (data?.breed === "SPECIAL") DogBreed = "특수견";
+
   return (
     <S.DogDetailWrapper>
       <PageHeader title="댕댕이 정보" icon="/image/icon-dog.svg" />
@@ -52,7 +59,7 @@ const DogDetail = (): JSX.Element => {
           />
           <ContentInfo
             label="견종"
-            component={<TextBadge state={true} text={data?.breed ?? "SMALL"} />}
+            component={<TextBadge state={true} text={DogBreed} />}
           />
         </S.Div>
         <S.DogDetailImgLabel>

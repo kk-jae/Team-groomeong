@@ -24,18 +24,17 @@ export const useDogRegister = () => {
     weight: number;
     breed: any;
     specifics?: string;
-    image?: string;
+    image?: any;
   }
 
   const onClickRegisterDog = async (data: ICreateDogInput): Promise<void> => {
-    console.log(data);
     const createDogInput: ICreateDogInput = {
       name: data.name,
       age: Number(data.age),
       weight: Number(data.weight),
       breed: data.breed,
       specifics: data.specifics ?? "",
-      image: data?.uploadDogImage[0] as string ?? null,
+      image: (data?.image?.uploadDogImage[0] as string) ?? null,
     };
 
     if (createDogInput.breed === undefined) createDogInput.breed = "LARGE";

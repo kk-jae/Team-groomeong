@@ -29,12 +29,6 @@ export const ReservationTime = (props: IPropsFetchShop): JSX.Element => {
     );
   }
 
-  // console.log(
-  //   props.data?.fetchShop.reservation.map(
-  //     (el) => `예약날짜 : ${el.date.slice(0, 10)} 예약시간 : ${el.time}`
-  //   )
-  // );
-
   const reservationDateArr = props.data?.fetchShop.reservation.map(
     (el: IFetchShop) => el.date.slice(0, 10)
   );
