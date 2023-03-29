@@ -17,7 +17,9 @@ interface IShopDetailProps {
 export const ShopDetail = (props: IShopDetailProps): JSX.Element => {
   const router = useRouter();
   const { data } = UseQueryFetchShop(String(router.query.shopId));
-  const { data: review } = UseQueryFetchReviewsByShopId(String(props.id));
+  const { data: review } = UseQueryFetchReviewsByShopId(
+    String(router.query.shopId)
+  );
   const { onClickMoveToPage } = useMoveToPage();
 
   return (
