@@ -30,7 +30,7 @@ export const InputTag = styled.input<IFocusInput>`
   outline: none;
   ${GS.Label.Medium}
   background-color: ${(props) =>
-    props.error !== undefined
+    props.error !== ""
       ? GS.state.negativeTransparent
       : props.disabled === true
       ? GS.state.disabled
@@ -42,7 +42,7 @@ export const InputTag = styled.input<IFocusInput>`
 
   &::placeholder {
     color: ${GS.contents.contentTertiary};
-    color: ${(props) => props.error !== undefined && GS.state.negative};
+    color: ${(props) => props.error !== "" && GS.state.negative};
     ${GS.Paragraph.Medium}
   }
 

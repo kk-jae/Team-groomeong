@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Modal } from "antd";
 import { useState } from "react";
@@ -8,6 +9,7 @@ import { UseMutationCreateReview } from "../mutation/UseMutationCreateReview";
 import { FETCH_RESERVATIONS_BY_USER } from "../query/UseQueryFetchReservationByUserId";
 
 export const useCreateReview = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -45,7 +47,10 @@ export const useCreateReview = () => {
             },
           ],
         });
-        Modal.success({ content: "댓글 작성 완료" });
+        router.back();
+        Modal.success({
+          content: "후기가 등록되었습니다. 이용해주셔서 감사합니다",
+        });
       } catch (error) {
         if (error instanceof Error) Modal.error({ content: error.message });
       }
