@@ -19,15 +19,9 @@ export const useMap = () => {
     }));
     const pos = getLatLng(mapInfo.shop?.lat, mapInfo.shop?.lng);
     if (pos !== null) mapInfo.map?.panTo(pos);
-    else mapInfo.map?.panTo(center)
+    else mapInfo.map?.panTo(center);
   };
 
-  const onDragStart = () => {
-    setMapInfo((prev) => ({
-      ...prev,
-      shop: undefined,
-    }));
-  };
 
   const mapContainerStyle = {
     width: "100vw",
@@ -55,7 +49,6 @@ export const useMap = () => {
   return {
     fetchShops: data?.fetchShops,
     onClickMap,
-    onDragStart,
     isLoaded,
     onLoad,
     center,

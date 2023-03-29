@@ -14,7 +14,7 @@ interface DogDetailContentImgProps {
 
 export const Div = styled.div<IDivProps>`
   display: "flex";
-  flex-direction: ${({ crossAxis }) => (crossAxis ? "column" : "row")};
+  flex-direction: ${({ crossAxis }) => (crossAxis === true ? "column" : "row")};
   padding-left: ${({ left }) => left ?? null};
   padding-right: ${({ right }) => right ?? null};
   padding-top: ${({ top }) => top ?? null};

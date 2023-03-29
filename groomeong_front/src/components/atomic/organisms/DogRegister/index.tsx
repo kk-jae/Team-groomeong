@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import { useDogRegister } from "../../../commons/hooks/custom/useDogRegister";
 import { SizeBadge } from "../../atoms/Badge/SizeBadge";

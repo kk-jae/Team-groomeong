@@ -1,10 +1,9 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { MapSideList } from "../../organisms/MapSideList";
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import * as S from "./index.styles";
 import { TopBarMap } from "../../atoms/TopBar/TopBarMap";
-import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../../commons/Store";
 import { PuffLoader } from "react-spinners";
 import useLoggined from "../../../commons/hooks/custom/useLoggined";
 
@@ -15,7 +14,6 @@ declare const window: typeof globalThis & {
 };
 export const MapTemplate = (): JSX.Element => {
   const loggedIn = useLoggined();
-  const [accessToken] = useRecoilState(accessTokenState);
   const [myState, setMyState] = useState("");
 
   useEffect(() => {
@@ -79,7 +77,7 @@ export const MapTemplate = (): JSX.Element => {
                 { location: event.latLng },
                 function (results: any, status: any) {
                   if (status === "OK") {
-                    if (results?.[0]) {
+                    if (results?.[0] !== null) {
                       infoWindow.setContent(`
               <p>위도: ${event.latLng.lat()}</p>
               <p>경도: ${event.latLng.lng()}</p>
@@ -90,7 +88,7 @@ export const MapTemplate = (): JSX.Element => {
                     }
                   } else {
                     window.alert(
-                      "지오코딩 API가 실패했습니다. 상태 코드: " + status
+                      `지오코딩 API가 실패했습니다. 상태 코드:   ${status}`
                     );
                   }
                 }

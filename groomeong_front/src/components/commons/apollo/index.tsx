@@ -8,11 +8,8 @@ import {
 import { onError } from "@apollo/client/link/error";
 import { createUploadLink } from "apollo-upload-client";
 import { useEffect } from "react";
-import { useRecoilState, useRecoilValueLoadable } from "recoil";
-import {
-  accessTokenState,
-  restoreAccessTokenLoadable,
-} from "../../../commons/Store";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../../commons/Store";
 import { GetAccessToken } from "../libraries/GetAccessToken";
 
 const GLOBAL_STATE = new InMemoryCache();
@@ -23,7 +20,7 @@ interface IApolloSettingProps {
 
 export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
-  const login = useRecoilValueLoadable(restoreAccessTokenLoadable);
+  // const login = useRecoilValueLoadable(restoreAccessTokenLoadable);
 
   useEffect(() => {
     const result = localStorage.getItem("accessToken");

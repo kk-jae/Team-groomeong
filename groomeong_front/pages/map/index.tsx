@@ -1,5 +1,5 @@
-import Map from "../../src/components/atomic/atoms/Map";
+import MapTest from "../../src/components/atomic/templates/MapTest";
 
 export default function MapPage(): JSX.Element {
-  return <Map />;
+  return <MapTest />;
 }
