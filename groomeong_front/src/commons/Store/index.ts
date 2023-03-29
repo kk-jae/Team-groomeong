@@ -1,10 +1,12 @@
+import { IShop } from "./../types/generated/types";
 import { atom, selector } from "recoil";
 import { GetAccessToken } from "../../components/commons/libraries/GetAccessToken";
 
-interface IMapState {
-  map?: google.maps.Map;
+export interface IMapState {
+  map: google.maps.Map | null;
   marker?: google.maps.Marker;
-  shopId?: string;
+  shop?: IShop;
+  code?: number;
 }
 
 export const accessTokenState = atom({
@@ -20,11 +22,17 @@ export const restoreAccessTokenLoadable = selector({
   },
 });
 
+export const mapState2 = atom({
+  key: "mapState2",
+  default: null,
+});
+
 export const mapState = atom<IMapState>({
   key: "mapState",
+  dangerouslyAllowMutability: true,
   default: {
-    map: undefined,
+    map: null,
     marker: undefined,
-    shopId: undefined,
+    shop: undefined,
   },
 });
