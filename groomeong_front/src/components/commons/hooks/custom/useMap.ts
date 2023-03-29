@@ -39,7 +39,6 @@ export const useMap = () => {
   };
 
   const onLoad = useCallback((mapInstance: google.maps.Map) => {
-    console.log(mapInstance);
     setMapInfo((prev) => ({
       ...prev,
       map: mapInstance,

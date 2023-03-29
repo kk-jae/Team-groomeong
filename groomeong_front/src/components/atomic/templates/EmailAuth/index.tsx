@@ -1,4 +1,3 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import {
@@ -9,7 +8,6 @@ import { InputMiddle } from "../../atoms/Input/Middle";
 import PageHeader from "../../atoms/PageHeader";
 import Background from "../../organisms/Background";
 import * as S from "./index.styled";
-import { schemaEmail } from "../../../commons/validation/emailAuth.validation";
 import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
 import { Modal } from "antd";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
@@ -27,10 +25,10 @@ export const EmailAuthTemplates = (): JSX.Element => {
 
   const method = useForm({
     mode: "onChange",
-    resolver: yupResolver(schemaEmail),
   });
 
   const onClickSendEmail = (data: IEmail): void => {
+    data.email = fetchLoginUserData?.fetchLoginUser.email;
     if (data.email === fetchLoginUserData?.fetchLoginUser.email) {
       void sendEmail(data)();
       setDisabledState(true);
@@ -71,7 +69,8 @@ export const EmailAuthTemplates = (): JSX.Element => {
                 name="email"
                 placeholder="이메일을 입력해주세요"
                 type="email"
-                disabled={disabledState}
+                disabled={true}
+                value={fetchLoginUserData?.fetchLoginUser.email}
               />
               <S.EmailAuthMiddleButton
                 disabledState={disabledState}

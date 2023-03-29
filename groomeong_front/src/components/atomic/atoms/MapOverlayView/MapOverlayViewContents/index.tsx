@@ -19,8 +19,6 @@ export const MapOverlayVeiwContents = () => {
     onClickMoveToPage,
   } = useMapOverlayView();
 
-  console.log(shop);
-
   return (
     <>
       <TitleWrapper
@@ -56,14 +54,17 @@ export const MapOverlayVeiwContents = () => {
         </Div>
         <Div top="8px">
           <Div>
-            <ContentsButton
-              whileHover={{
-                backgroundColor: GS.blue[600],
-              }}
-              onClick={onClickMoveToPage(`/map/${shop?.id as string}/detail`)}
-            >
-              상세보기
-            </ContentsButton>
+            <>
+              <ContentsButton
+                whileHover={{
+                  backgroundColor: GS.blue[600],
+                }}
+                onClick={onClickMoveToPage(`/map/${shop?.id as string}/detail`)}
+              >
+                상세보기
+                {/* {isModalOpen ? console.log("true") : console.log("false")} */}
+              </ContentsButton>
+            </>
           </Div>
           <Div left="8px">
             <ContentsButton

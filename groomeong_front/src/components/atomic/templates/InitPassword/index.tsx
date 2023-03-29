@@ -1,4 +1,6 @@
 import { FormProvider, useForm } from "react-hook-form";
+import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
+import { useInitPassword } from "../../../commons/hooks/custom/useInitPassword";
 import { Buttons } from "../../atoms/Buttons";
 import { InputMiddle } from "../../atoms/Input/Middle";
 import PageHeader from "../../atoms/PageHeader";
@@ -6,6 +8,8 @@ import Background from "../../organisms/Background";
 import * as S from "./index.styled";
 
 export const InitPasswordTemplate = (): JSX.Element => {
+  const { onClickInitPassword } = useInitPassword();
+
   const method = useForm({
     mode: "onChange",
   });
@@ -14,8 +18,12 @@ export const InitPasswordTemplate = (): JSX.Element => {
     <Background>
       <S.InitPasswordWrapper>
         <PageHeader title="비밀번호 초기화하기" />
-        <S.InitPasswordForm>
-          <FormProvider {...method}>
+        <FormProvider {...method}>
+          <S.InitPasswordForm
+            onSubmit={method.handleSubmit(
+              withPromiseVoidFunc(onClickInitPassword)
+            )}
+          >
             <InputMiddle
               label="비밀번호"
               name="password"
@@ -29,8 +37,8 @@ export const InitPasswordTemplate = (): JSX.Element => {
             <S.BtnWrapper>
               <Buttons label="비밀번호 초기화"></Buttons>
             </S.BtnWrapper>
-          </FormProvider>
-        </S.InitPasswordForm>
+          </S.InitPasswordForm>
+        </FormProvider>
       </S.InitPasswordWrapper>
     </Background>
   );

@@ -7,7 +7,8 @@ import { Buttons } from "../Buttons";
 import { MouseEvent, useState } from "react";
 import { ReviewModal } from "../../organisms/ReviewModal";
 import { UseQueryFetchShopWithReviewAuth } from "../../../commons/hooks/query/UseQueryFetchShopWithReviewAuth";
-import { v4 as uuidv4 } from "uuid";
+import { Th } from "./index.styled";
+import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 
 export const ReservationHistoryTable = (): JSX.Element => {
   const [shopId, setShopId] = useState("");
@@ -15,6 +16,7 @@ export const ReservationHistoryTable = (): JSX.Element => {
   const { data: reviewData } = UseQueryFetchShopWithReviewAuth(shopId);
   const [reservationId, setReservationId] = useState("");
   const [onReview, setOnReview] = useState(false);
+  const { onClickMoveToPage } = useMoveToPage();
 
   const onClickReview = (event: MouseEvent<HTMLButtonElement>): void => {
     setOnReview(true);
@@ -29,29 +31,39 @@ export const ReservationHistoryTable = (): JSX.Element => {
   return (
     <>
       {data !== null ? (
-        data?.fetchReservationsByUser.map((el: IReservation) => (
+        data?.fetchReservationsByUser.map((el: IReservation, index) => (
           <>
             {!isSameDate(el.date) ? (
               <></>
             ) : (
-              <tbody key={uuidv4()}>
+              <tbody key={el.id}>
                 <tr>
-                  <th>{el.shop.name}</th>
+                  <Th
+                    onClick={onClickMoveToPage(
+                      `/map/${data?.fetchReservationsByUser[index].shop.id}/detail`
+                    )}
+                  >
+                    {el.shop.name}
+                  </Th>
                   <th>{getDate(el.date)}</th>
                   <th>{el.time}</th>
                   <th>{el.dog.name}</th>
                   <th>
                     <div>
-                      <Buttons
-                        variation="primary"
-                        label="리뷰 쓰기"
-                        border="none"
-                        size="small"
-                        type="button"
-                        onClick={onClickReview}
-                        id={el.id}
-                        className={el.shop.id}
-                      ></Buttons>
+                      {el.review != null ? (
+                        <div>리뷰 작성 완료</div>
+                      ) : (
+                        <Buttons
+                          variation="primary"
+                          label="리뷰 쓰기"
+                          border="none"
+                          size="small"
+                          type="button"
+                          onClick={onClickReview}
+                          id={el.id}
+                          className={el.shop.id}
+                        ></Buttons>
+                      )}
 
                       {onReview ? (
                         <ReviewModal
