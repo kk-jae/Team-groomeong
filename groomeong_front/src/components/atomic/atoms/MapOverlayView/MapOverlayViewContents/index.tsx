@@ -10,14 +10,17 @@ import {
   Span,
   TitleWrapper,
 } from "../index.style";
-import { IShop } from "../../../../../commons/types/generated/types";
 import { StarRate } from "../../StarRate";
+import useMapOverlayView from "../../../../commons/hooks/custom/useMapOverlayView";
 
-interface IMapOverlayViewContentsProps {
-  shop?: IShop;
-}
+export const MapOverlayVeiwContents = () => {
+  const {
+    mapInfo: { shop },
+    onClickMoveToPage,
+  } = useMapOverlayView();
 
-export const MapOverlayVeiwContents = (props: IMapOverlayViewContentsProps) => {
+  console.log(shop);
+
   return (
     <>
       <TitleWrapper
@@ -26,16 +29,16 @@ export const MapOverlayVeiwContents = (props: IMapOverlayViewContentsProps) => {
         animate={"visible"}
       >
         <Div style={{ width: "100%" }} justyfyContents="space-between">
-          <H3>{props.shop?.name}</H3>
+          <H3>{shop?.name}</H3>
           <Div left="16px">
             <Span right={"8px"}>영업시간: </Span>
-            <HighlightSpan>{props.shop?.openHour} - </HighlightSpan>
-            <HighlightSpan>{props.shop?.closeHour}</HighlightSpan>
+            <HighlightSpan>{shop?.openHour} - </HighlightSpan>
+            <HighlightSpan>{shop?.closeHour}</HighlightSpan>
           </Div>
         </Div>
         <Div justyfyContents="flex-start" alignItems="center">
-          <Span right="16px">리뷰 ({props.shop?.review.length})건</Span>
-          <StarRate star={props.shop?.averageStar} state={true} />
+          <Span right="16px">리뷰 ({shop?.review.length})건</Span>
+          <StarRate star={shop?.averageStar} state={true} />
         </Div>
       </TitleWrapper>
       <Divider
@@ -49,7 +52,7 @@ export const MapOverlayVeiwContents = (props: IMapOverlayViewContentsProps) => {
         animate={"visible"}
       >
         <Div>
-          <Span>{props.shop?.address}</Span>
+          <Span>{shop?.address}</Span>
         </Div>
         <Div top="8px">
           <Div>
@@ -57,6 +60,7 @@ export const MapOverlayVeiwContents = (props: IMapOverlayViewContentsProps) => {
               whileHover={{
                 backgroundColor: GS.blue[600],
               }}
+              onClick={onClickMoveToPage(`/map/${shop?.id as string}/detail`)}
             >
               상세보기
             </ContentsButton>
@@ -66,6 +70,9 @@ export const MapOverlayVeiwContents = (props: IMapOverlayViewContentsProps) => {
               whileHover={{
                 backgroundColor: GS.blue[600],
               }}
+              onClick={onClickMoveToPage(
+                `/map/${shop?.id as string}/reservation`
+              )}
             >
               예약하기
             </ContentsButton>

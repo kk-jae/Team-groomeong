@@ -22,11 +22,6 @@ export const restoreAccessTokenLoadable = selector({
   },
 });
 
-export const mapState2 = atom({
-  key: "mapState2",
-  default: null,
-});
-
 export const mapState = atom<IMapState>({
   key: "mapState",
   dangerouslyAllowMutability: true,
