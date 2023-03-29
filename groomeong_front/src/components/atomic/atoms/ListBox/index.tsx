@@ -8,7 +8,7 @@ interface IProps {
   openHour?: string;
   closeHour?: string;
   address?: string;
-  shopImg?: Array;
+  shopImg?: any[];
   star?: number;
   id: string;
 }
@@ -27,7 +27,7 @@ export const ListBox = (props: IProps): JSX.Element => {
         <S.ShopName>{props.name}</S.ShopName>
         <S.ShopImg
           src={
-            props.shopImg.length !== 0
+            props.shopImg !== undefined && props.shopImg.length !== 0
               ? `https://storage.googleapis.com/${String(props.shopImg)}`
               : "/image/icon-store.svg"
           }
