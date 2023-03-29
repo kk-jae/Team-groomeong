@@ -46,14 +46,14 @@ export const TextArea = (props: ITextAreaProps): JSX.Element => {
             <>
               <S.TextArea_TopBox_Profile>
                 {data?.fetchLoginUser.image != null ? (
-                  <S.TextArea_Profile_Icon iconView={props.iconView}>
+                  <S.TextArea_Profile_Icon>
                     <img
                       src={`https://storage.googleapis.com/${data?.fetchLoginUser.image}`}
                       alt=""
                     />
                   </S.TextArea_Profile_Icon>
                 ) : (
-                  <S.TextArea_Profile_Icon iconView={props.iconView}>
+                  <S.TextArea_Profile_Icon>
                     <img src={"/image/icon-dog.svg/"} alt="" />
                   </S.TextArea_Profile_Icon>
                 )}

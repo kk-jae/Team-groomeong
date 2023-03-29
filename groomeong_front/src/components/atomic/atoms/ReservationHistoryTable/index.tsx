@@ -7,7 +7,6 @@ import { Buttons } from "../Buttons";
 import { MouseEvent, useState } from "react";
 import { ReviewModal } from "../../organisms/ReviewModal";
 import { UseQueryFetchShopWithReviewAuth } from "../../../commons/hooks/query/UseQueryFetchShopWithReviewAuth";
-import { v4 as uuidv4 } from "uuid";
 
 export const ReservationHistoryTable = (): JSX.Element => {
   const [shopId, setShopId] = useState("");
@@ -34,7 +33,7 @@ export const ReservationHistoryTable = (): JSX.Element => {
             {!isSameDate(el.date) ? (
               <></>
             ) : (
-              <tbody key={uuidv4()}>
+              <tbody key={el.id}>
                 <tr>
                   <th>{el.shop.name}</th>
                   <th>{getDate(el.date)}</th>
@@ -42,16 +41,20 @@ export const ReservationHistoryTable = (): JSX.Element => {
                   <th>{el.dog.name}</th>
                   <th>
                     <div>
-                      <Buttons
-                        variation="primary"
-                        label="리뷰 쓰기"
-                        border="none"
-                        size="small"
-                        type="button"
-                        onClick={onClickReview}
-                        id={el.id}
-                        className={el.shop.id}
-                      ></Buttons>
+                      {el.review ? (
+                        <div>리뷰 작성 완료</div>
+                      ) : (
+                        <Buttons
+                          variation="primary"
+                          label="리뷰 쓰기"
+                          border="none"
+                          size="small"
+                          type="button"
+                          onClick={onClickReview}
+                          id={el.id}
+                          className={el.shop.id}
+                        ></Buttons>
+                      )}
 
                       {onReview ? (
                         <ReviewModal

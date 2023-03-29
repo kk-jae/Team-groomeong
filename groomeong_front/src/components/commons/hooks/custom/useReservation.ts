@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 import { UseMutationCreateReservation } from "../mutation/UseMutationCreateReservation";
+import { FETCH_RESERVATIONS_BY_USER } from "../query/UseQueryFetchReservationByUserId";
 
 interface IuseReservationDog {
   onClickReservationDog: (
@@ -36,6 +37,11 @@ export const useReservationDog = (): IuseReservationDog => {
               dogId,
             },
           },
+          refetchQueries: [
+            {
+              query: FETCH_RESERVATIONS_BY_USER,
+            },
+          ],
         });
         alert("예약 성공");
         await router.push("/reservation");
