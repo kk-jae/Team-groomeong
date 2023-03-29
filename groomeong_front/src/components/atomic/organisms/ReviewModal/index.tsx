@@ -34,8 +34,8 @@ export const ReviewModal = (props: IReviewProps): JSX.Element => {
         <S.ShopDetailWrapper>
           <S.ShopImage
             src={
-              data?.fetchShop?.image
-                ? `https://storage.googleapis.com/${data?.fetchShop?.image}`
+              data?.fetchShop?.image[0].imageUrl
+                ? `https://storage.googleapis.com/${data?.fetchShop?.image[0].imageUrl}`
                 : "/image/img_shop_default.svg"
             }
           ></S.ShopImage>
