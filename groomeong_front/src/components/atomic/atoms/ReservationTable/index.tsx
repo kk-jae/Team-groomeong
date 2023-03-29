@@ -14,8 +14,6 @@ export const ReservationTable = (): JSX.Element => {
   const { data } = UseQueryFetchReservationByUser();
   const [deleteReservation] = UseMutationDeleteReservation();
 
-  console.log(data);
-
   const onClickDelete = async (
     event: MouseEvent<HTMLButtonElement>
   ): Promise<void> => {
