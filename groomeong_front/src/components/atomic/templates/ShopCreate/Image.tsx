@@ -15,7 +15,7 @@ const Image = ({ id }: { id: string }) => {
   });
   const onSubmitCreateShopImg = async (data: any) => {
     try {
-      const { data: uploadImg } = await createShopImage({
+      await createShopImage({
         variables: {
           imageUrl: data.images,
           isThumbnail: true,

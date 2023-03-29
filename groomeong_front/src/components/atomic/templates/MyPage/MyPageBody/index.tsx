@@ -19,7 +19,7 @@ export const MyPageBody = (props: IMyPageBodyProps): JSX.Element => {
         <img
           src={
             props.image !== ""
-              ? `https://storage.googleapis.com/${props.image}`
+              ? `https://storage.googleapis.com/${String(props.image)}`
               : "/image/img-dog-detail.png"
           }
           alt=""

@@ -19,7 +19,7 @@ export const Label = styled.label<IFocusLabel>`
   ${GS.Label.Medium}
   color: ${(props) =>
     props.focus ? GS.state.positive : GS.contents.contentSecondary};
-  color: ${(props) => props.error && GS.state.negative};
+  color: ${(props) => props.error !== "" && GS.state.negative};
 `;
 
 export const InputTag = styled.input<IFocusInput>`
@@ -30,36 +30,39 @@ export const InputTag = styled.input<IFocusInput>`
   outline: none;
   ${GS.Label.Medium}
   background-color: ${(props) =>
-    props.error
+    props.error !== ""
       ? GS.state.negativeTransparent
-      : props.disabled
+      : props.disabled === true
       ? GS.state.disabled
       : GS.base.secondary};
   border-bottom: 2px solid
-    ${(props) => (props.error && GS.state.negative) || GS.border.borderPrimary};
+    ${(props) =>
+      (props.error !== "" && GS.state.negative !== "") ||
+      GS.border.borderPrimary};
 
   &::placeholder {
     color: ${GS.contents.contentTertiary};
-    color: ${(props) => props.error && GS.state.negative};
+    color: ${(props) => props.error !== "" && GS.state.negative};
     ${GS.Paragraph.Medium}
   }
 
   &:focus {
     outline: none;
     background-color: ${(props) =>
-      props.error
-        ? GS.state.negativeTransparent
+      props.error !== ""
+        ? GS.state.negativeTransparent !== ""
           ? props.disabled
           : GS.state.disabled
         : GS.base.secondary};
     border-bottom: 2px solid ${GS.state.positive};
-    border-bottom: 2px solid ${(props) => props.error && GS.state.negative};
+    border-bottom: 2px solid
+      ${(props) => props.error !== "" && GS.state.negative};
     color: ${GS.state.positive};
-    color: ${(props) => props.error && GS.state.negative};
+    color: ${(props) => props.error !== "" && GS.state.negative};
 
     &::placeholder {
       color: ${GS.state.positive};
-      color: ${(props) => props.error && GS.state.negative};
+      color: ${(props) => props.error !== "" && GS.state.negative};
     }
   }
   &:disabled {

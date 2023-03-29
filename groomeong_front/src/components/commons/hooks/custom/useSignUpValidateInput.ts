@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { useSetAuthInterval } from "./useSetAuthInterval";
 import {
   ChangeEvent,
@@ -81,7 +82,7 @@ export const useSignUpValidateInput = (
 
   const onClickAuthValidate = async (): Promise<void> => {
     if (validation.authNumber === validation.emailToken) {
-      const { data } = await checkValidToken({
+      await checkValidToken({
         variables: {
           email,
           token: validation.emailToken,

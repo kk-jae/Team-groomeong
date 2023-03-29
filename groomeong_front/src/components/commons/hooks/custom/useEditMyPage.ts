@@ -27,9 +27,9 @@ export const useEditMyPage = () => {
       phone: data.phone,
       image: data.image,
     };
-    if (!updateUserInput.name)
+    if (updateUserInput.name !== "")
       updateUserInput.name = userData?.fetchLoginUser.name;
-    if (!updateUserInput.phone)
+    if (updateUserInput.phone !== "")
       updateUserInput.phone = userData?.fetchLoginUser.phone;
 
     if (updateUserInput.image?.length === 0) {
@@ -50,7 +50,7 @@ export const useEditMyPage = () => {
           },
         ],
       });
-      router.push("/mypage");
+      void router.push("/mypage");
     } catch (error) {
       if (error instanceof Error) {
         Modal.error({

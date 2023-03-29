@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { IReservation } from "../../../../commons/types/generated/types";
 import { getDate } from "../../../commons/libraries/GetDate";
 import { isSameDate } from "../../../commons/libraries/GetTimeStamp";
