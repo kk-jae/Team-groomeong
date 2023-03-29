@@ -61,6 +61,6 @@ export const FooterLabelNameStyles = styled.span`
 `;
 export const FooterModalButtonBox = styled.div`
   display: ${(props: IButtonStateProps) =>
-    props.buttonState === true ? "flex" : "none"};
+    props.buttonState === null ? "flex" : "none"};
   align-items: flex-end;
 `;

@@ -14,7 +14,7 @@ export const useSignUp = (): IuseSignUp => {
     data: IMutationCreateUserArgs
   ): Promise<void> => {
     try {
-      await createUser({
+      void createUser({
         variables: {
           name: data.name,
           email: data.email,

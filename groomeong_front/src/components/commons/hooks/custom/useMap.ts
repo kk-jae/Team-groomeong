@@ -22,12 +22,6 @@ export const useMap = () => {
     else mapInfo.map?.panTo(center);
   };
 
-  const onDragStart = () => {
-    setMapInfo((prev) => ({
-      ...prev,
-      shop: undefined,
-    }));
-  };
 
   const mapContainerStyle = {
     width: "100vw",
@@ -54,7 +48,6 @@ export const useMap = () => {
   return {
     fetchShops: data?.fetchShops,
     onClickMap,
-    onDragStart,
     isLoaded,
     onLoad,
     center,
