@@ -28,7 +28,7 @@ export const useMaker = (shop: IShop) => {
     if (shop.id === mapInfo?.shop?.id) {
       const pos = getLatLng(shop?.lat, shop?.lng);
       mapInfo?.map?.setZoom(15);
-      mapInfo?.map?.panTo(pos);
+      mapInfo?.map?.panTo(pos as google.maps.LatLngLiteral);
     }
   }, [onClickMaker]);
 

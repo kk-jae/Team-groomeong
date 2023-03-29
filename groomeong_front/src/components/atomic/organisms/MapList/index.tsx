@@ -1,7 +1,6 @@
 import useMapList from "../../../commons/hooks/custom/useMapList";
 import * as GS from "../../../../../theme/global";
 import * as LS from "./index.style";
-import * as S from "../../../commons/style";
 import * as V from "./index.variants";
 import { MapListBox } from "../../atoms/MapListBox";
 

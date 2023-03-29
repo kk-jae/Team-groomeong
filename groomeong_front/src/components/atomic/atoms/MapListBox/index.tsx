@@ -10,13 +10,22 @@ interface IMapListBoxProps {
 }
 
 export const MapListBox = ({ shop }: IMapListBoxProps) => {
-  const { onClickListBox } = useMapListBox(shop);
+  const { onClickListBox, mapInfo } = useMapListBox(shop);
   return (
     <MapListBoxWrapper
       id={shop.id}
       onClick={onClickListBox}
+      animate={
+        shop.id === mapInfo?.shop?.id
+          ? {
+              backgroundColor: `rgba(32, 148, 255, .1)`,
+            }
+          : {
+              backgroundColor: "#fff",
+            }
+      }
       whileHover={{
-        outline: `1px solid rgba(32, 148, 255, .5)`,
+        backgroundColor: `rgba(32, 148, 255, .1)`,
       }}
     >
       <MapListBoxTitleWrapper>
@@ -32,7 +41,12 @@ export const MapListBox = ({ shop }: IMapListBoxProps) => {
           <S.Span>영업시간: </S.Span>
         </S.Div>
         <S.Div>
-          <S.Span>
+          <S.Span
+            style={{
+              color: GS.base.primary,
+              fontWeight: 600,
+            }}
+          >
             {shop?.openHour} - {shop?.closeHour}
           </S.Span>
         </S.Div>

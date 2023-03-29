@@ -18,6 +18,7 @@ const MapMarker = (props: IMarkerProps) => {
     <Marker
       ref={markerRef}
       position={props.position}
+      title={props.shop.name}
       icon={{
         url: "/image/icon-marker.svg",
         scaledSize: new google.maps.Size(64, 64),
@@ -26,7 +27,6 @@ const MapMarker = (props: IMarkerProps) => {
       onClick={onClickMaker}
       animation={isClicked ? 1 : undefined}
     >
-      {console.log(isClicked)}
       <MapOverlayView isClicked={isClicked} position={props.position} />
     </Marker>
   );

@@ -6,15 +6,19 @@ import getLatLng from "../../../../commons/Utils/getLatLng";
 export const useMapListBox = (shop: IShop) => {
   const [pos, setPos] = useState<google.maps.LatLngLiteral | null>(null);
   const [mapInfo, setMapInfo] = useRecoilState(mapState);
+
   useEffect(() => {
     if (pos !== null) {
       mapInfo.map?.panTo(pos);
     }
-    const markerPos = mapInfo.marker?.current?.marker?.getPosition();
-    console.log("effect", pos);
-    console.log(mapInfo.marker);
-    console.log(markerPos?.lat());
   }, [pos]);
+
+  useEffect(() => {
+    const currentElement = document.getElementById(mapInfo?.shop?.id as string);
+    if (currentElement !== null) {
+      currentElement?.scrollIntoView({ behavior: "smooth" });
+    }
+  });
 
   const onClickListBox = () => {
     setMapInfo((prev) => ({
