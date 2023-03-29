@@ -21,6 +21,7 @@ export const FETCH_SHOPS = gql`
       address
       lat
       lng
+      code
       averageStar
       image {
         id
