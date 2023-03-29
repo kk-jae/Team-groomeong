@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useReservationDog } from "../../../commons/hooks/custom/useReservation";
 import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
 import { UseQueryFetchShop } from "../../../commons/hooks/query/UseQueryFetchShop";
-import { UseQueryFetchUserDogs } from "../../../commons/hooks/query/UseQueryFetchUserDogs";
 import { DogSelect } from "../../../units/DogSelect";
 import { ReservationDate } from "../../../units/ReservationDate";
 import { ReservationTime } from "../../../units/ReservationTime";
@@ -14,7 +13,6 @@ export const ReservationTemplate = (): JSX.Element => {
   const router = useRouter();
   const { data } = UseQueryFetchShop(String(router.query.shopId));
   const { data: fetchLoginUserData } = UseQueryFetchLoginUser();
-  // const { data: fetchUserDogData } = UseQueryFetchUserDogs();
   const { onClickReservationDog } = useReservationDog();
   const [reservationDate, setReservationDate] = useState(""); // 예약 날짜
   const [dogId, setDogId] = useState(""); // 강아지 아이디

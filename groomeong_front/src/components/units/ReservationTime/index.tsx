@@ -2,6 +2,7 @@
 import { Dispatch, MouseEvent, SetStateAction } from "react";
 import { IQuery } from "../../../commons/types/generated/types";
 import * as S from "./index.styled";
+import { getDate } from "../../../components/commons/libraries/GetDate";
 
 interface IPropsFetchShop {
   data: Pick<IQuery, "fetchShop"> | undefined;
@@ -63,7 +64,10 @@ export const ReservationTime = (props: IPropsFetchShop): JSX.Element => {
       {shopOpenTime.map((el, index) => (
         <div key={index} id={el} onClick={onClickTime}>
           <S.ReservationWrapperBottomItemTimeDetail
-            disabled={reservedDateTime.includes(String(el))}
+            disabled={
+              reservedDateTime.includes(String(el)) ||
+              props.reservationDate <= getDate(String(new Date()))
+            }
             reservationTime={props.reservationTime}
             el={String(el)}
           >

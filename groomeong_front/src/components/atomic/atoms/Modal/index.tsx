@@ -8,11 +8,11 @@ interface IModalProps {
   onModal?: boolean;
 }
 
-export const Modal: React.FC<IModalProps> = (
+export const Modal: React.FC<IModalProps> = ({
   title,
   contents,
-  state
-): JSX.Element => {
+  state,
+}): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // const [title, setTitle] = useState(true);
   // const [contents, setContents] = useState(true);
