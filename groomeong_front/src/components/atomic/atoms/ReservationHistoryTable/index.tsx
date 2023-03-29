@@ -41,7 +41,7 @@ export const ReservationHistoryTable = (): JSX.Element => {
                   <th>{el.dog.name}</th>
                   <th>
                     <div>
-                      {el.review ? (
+                      {el.review != null ? (
                         <div>리뷰 작성 완료</div>
                       ) : (
                         <Buttons
