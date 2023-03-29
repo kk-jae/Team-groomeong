@@ -6,7 +6,7 @@ import { Buttons } from "../../atoms/Buttons";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 import { useLogInButton } from "../../../commons/hooks/custom/useLogIn";
 import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
-import { UseGoogleLogin } from "../../../commons/hooks/custom/useGoogleLogin";
+// import { UseGoogleLogin } from "../../../commons/hooks/custom/useGoogleLogin";
 import PageHeader from "../../atoms/PageHeader";
 
 export const LogInTemplate = (): JSX.Element => {
@@ -43,7 +43,7 @@ export const LogInTemplate = (): JSX.Element => {
         </FormProvider>
         <S.LogInBottom>
           <S.LogInBottomSocial>
-            <UseGoogleLogin></UseGoogleLogin>
+            {/* <UseGoogleLogin></UseGoogleLogin> */}
             {/* <S.LoginLogo src="/image/icon-google.png" /> */}
             {/* <S.LoginLogo src="/image/icon-kakao-talk.png" /> */}
           </S.LogInBottomSocial>
