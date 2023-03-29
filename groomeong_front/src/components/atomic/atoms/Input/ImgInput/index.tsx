@@ -43,8 +43,10 @@ const ImgInput = (props: IImgInputProps): JSX.Element => {
       {props.state ? (
         <ImgDiv
           url={
-            img === "" && data?.fetchLoginUser.image
-              ? `https://storage.googleapis.com/${data?.fetchLoginUser.image}`
+            img === "" && data?.fetchLoginUser.image !== null
+              ? `https://storage.googleapis.com/${
+                  data?.fetchLoginUser.image as string
+                }`
               : img
           }
           ref={ImgBoxRef}

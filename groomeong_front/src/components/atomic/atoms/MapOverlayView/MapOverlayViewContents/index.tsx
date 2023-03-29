@@ -19,8 +19,6 @@ export const MapOverlayVeiwContents = () => {
     onClickMoveToPage,
   } = useMapOverlayView();
 
-  console.log(shop);
-
   return (
     <>
       <TitleWrapper

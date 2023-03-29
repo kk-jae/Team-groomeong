@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Modal } from "antd";
 import * as GS from "../../../../../theme/global";
 import StoreSharpIcon from "@mui/icons-material/StoreSharp";
 
@@ -62,6 +61,6 @@ export const FooterLabelNameStyles = styled.span`
 `;
 export const FooterModalButtonBox = styled.div`
   display: ${(props: IButtonStateProps) =>
-    props.buttonState ? "flex" : "none"};
+    props.buttonState === null ? "flex" : "none"};
   align-items: flex-end;
 `;
