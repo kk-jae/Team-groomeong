@@ -26,6 +26,9 @@ export const FETCH_RESERVATIONS_BY_USER = gql`
         phone
         image
       }
+      review {
+        id
+      }
     }
   }
 `;

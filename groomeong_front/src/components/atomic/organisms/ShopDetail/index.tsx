@@ -5,6 +5,7 @@ import * as GS from "../../../../../theme/global";
 import { UseQueryFetchShop } from "../../../commons/hooks/query/UseQueryFetchShop";
 import { UseQueryFetchReviewsByShopId } from "../../../commons/hooks/query/UseQueryFetchReviewsByShopId";
 import { MouseEvent } from "react";
+import { useRouter } from "next/router";
 
 interface IShopDetailProps {
   isLoggedIn?: string;
@@ -13,14 +14,19 @@ interface IShopDetailProps {
 }
 
 export const ShopDetail = (props: IShopDetailProps): JSX.Element => {
-  const { data } = UseQueryFetchShop(props.id);
-  const { data: review } = UseQueryFetchReviewsByShopId(String(props.id));
+  const router = useRouter();
+  const { data } = UseQueryFetchShop(String(router.query.shopId));
+  const { data: review } = UseQueryFetchReviewsByShopId(
+    String(router.query.shopId)
+  );
 
   return (
     <>
       <S.ShopDetailModal
         open={true}
-        onCancel={props.showModal}
+        onCancel={() => {
+          router.back();
+        }}
         maskStyle={{ background: GS.blue[900], opacity: 0.8 }}
       >
         <S.ShopDetailWrapper>

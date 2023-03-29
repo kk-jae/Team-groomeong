@@ -9,12 +9,15 @@ import {
   FETCH_RESERVATIONS_BY_USER,
   UseQueryFetchReservationByUser,
 } from "../../../commons/hooks/query/UseQueryFetchReservationByUserId";
+import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
+import { Th } from "./index.styled";
 
 export const ReservationTable = (): JSX.Element => {
   const { data } = UseQueryFetchReservationByUser();
   const [deleteReservation] = UseMutationDeleteReservation();
+  const { onClickMoveToPage } = useMoveToPage();
 
-  console.log(data);
+  console.log(data?.fetchReservationsByUser[0].shop.id);
 
   const onClickDelete = async (
     event: MouseEvent<HTMLButtonElement>
@@ -32,12 +35,18 @@ export const ReservationTable = (): JSX.Element => {
 
   return (
     <>
-      {data?.fetchReservationsByUser.map((el: IReservation) => (
+      {data?.fetchReservationsByUser.map((el: IReservation, index) => (
         <>
           {!isSameDate(el.date) ? (
             <tbody key={uuidv4()}>
               <tr>
-                <th>{el.shop.name}</th>
+                <Th
+                  onClick={onClickMoveToPage(
+                    `/map/${data?.fetchReservationsByUser[index].shop.id}/detail`
+                  )}
+                >
+                  {el.shop.name}
+                </Th>
                 <th>{getDate(el.date)}</th>
                 <th>{el.time}</th>
                 <th>{el.dog.name}</th>
