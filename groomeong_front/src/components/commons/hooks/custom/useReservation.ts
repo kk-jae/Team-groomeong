@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 import { UseMutationCreateReservation } from "../mutation/UseMutationCreateReservation";
@@ -16,6 +17,7 @@ interface IuseReservationDog {
 export const useReservationDog = (): IuseReservationDog => {
   const router = useRouter();
   const [createReservation] = UseMutationCreateReservation();
+  const [reservationDate, setReservationDate] = useState("");
 
   const onClickReservationDog =
     (
@@ -43,7 +45,9 @@ export const useReservationDog = (): IuseReservationDog => {
             },
           ],
         });
-        alert("예약 성공");
+        Modal.success({
+          content: `${date}, ${time} 예약이 접수되었습니다.`,
+        });
         await router.push("/reservation");
       } catch (error) {
         if (error instanceof Error) {

@@ -22,7 +22,9 @@ export const useSignUp = (): IuseSignUp => {
           phone: data.phone,
         },
       });
-      // 회원가입 성공 Modal
+      Modal.success({
+        content: `${data.name}님 반갑습니다!`,
+      });
       void router.push(`/login`);
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
