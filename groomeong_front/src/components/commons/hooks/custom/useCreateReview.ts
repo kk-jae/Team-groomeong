@@ -6,7 +6,6 @@ import { ICreateReviewInput } from "../../../../commons/types/generated/types";
 import { schemaReview } from "../../validation/createReview.validation";
 import { UseMutationCreateReview } from "../mutation/UseMutationCreateReview";
 import { FETCH_RESERVATIONS_BY_USER } from "../query/UseQueryFetchReservationByUserId";
-import { UseQueryFetchShop } from "../query/UseQueryFetchShop";
 
 export const useCreateReview = () => {
   const {
