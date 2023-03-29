@@ -19,7 +19,7 @@ export const useMap = () => {
     }));
     const pos = getLatLng(mapInfo.shop?.lat, mapInfo.shop?.lng);
     if (pos !== null) mapInfo.map?.panTo(pos);
-    else mapInfo.map?.panTo(center)
+    else mapInfo.map?.panTo(center);
   };
 
   const onDragStart = () => {
@@ -45,7 +45,6 @@ export const useMap = () => {
   };
 
   const onLoad = useCallback((mapInstance: google.maps.Map) => {
-    console.log(mapInstance);
     setMapInfo((prev) => ({
       ...prev,
       map: mapInstance,
