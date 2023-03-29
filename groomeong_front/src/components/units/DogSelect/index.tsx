@@ -1,10 +1,10 @@
 import { Select } from "antd";
 import { UseQueryFetchUserDogs } from "../../commons/hooks/query/UseQueryFetchUserDogs";
 
-interface IFetchUserDogs {
-  value: string;
-  id: string;
-}
+// interface IFetchUserDogs {
+//   value: string;
+//   id: string;
+// }
 export const DogSelect = (props: any): JSX.Element => {
   const { data: dataDog } = UseQueryFetchUserDogs();
 
@@ -12,7 +12,7 @@ export const DogSelect = (props: any): JSX.Element => {
     dataDog?.fetchUserDogs.map((el) => ({ value: el.name, id: el.id })),
   ];
 
-  const onChange = (value: string, id: IFetchUserDogs): void => {
+  const onChange = (value: string, id: any): void => {
     props.setDogId(id.id);
   };
 

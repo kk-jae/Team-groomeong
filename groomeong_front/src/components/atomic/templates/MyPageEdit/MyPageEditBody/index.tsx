@@ -1,4 +1,3 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { IMutationUpdateUserArgs } from "../../../../../commons/types/generated/types";
 import { withPromiseVoidFunc } from "../../../../../commons/Utils/withFunc";
@@ -6,7 +5,6 @@ import { useEditMyPage } from "../../../../commons/hooks/custom/useEditMyPage";
 import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
 import { UseMutationUploadProfileImage } from "../../../../commons/hooks/mutation/UseMutationUploadProfileImage";
 import { UseQueryFetchLoginUser } from "../../../../commons/hooks/query/UseQueryFetchLoginUser";
-import { Schema } from "../../../../commons/validation/myPageEdit.validation";
 import { Buttons } from "../../../atoms/Buttons";
 import ContentInfo from "../../../atoms/ContentInfo";
 import ImgInput from "../../../atoms/Input/ImgInput";

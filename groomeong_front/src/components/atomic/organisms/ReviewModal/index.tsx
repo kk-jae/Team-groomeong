@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { CommentsHeader } from "../../atoms/Comments/Header";
 import { TextArea } from "../../atoms/TextArea/TextArea";
 import * as S from "./index.style";
@@ -8,6 +9,7 @@ import { accessTokenState } from "../../../../commons/Store";
 import { MouseEvent } from "react";
 import { UseQueryFetchShopWithReviewAuth } from "../../../commons/hooks/query/UseQueryFetchShopWithReviewAuth";
 import { UseQueryFetchReviewsByShopIdReservation } from "../../../commons/hooks/query/UseQueryFetchReviewsByShopId-Reservation";
+import { IShopImage } from "../../../../commons/types/generated/types";
 
 interface IReviewProps {
   isLoggedIn?: string;

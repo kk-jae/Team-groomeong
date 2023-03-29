@@ -8,7 +8,7 @@ interface IImgInputProps {
   name: string;
   mutationFunc: any;
   shopId?: string;
-  state: boolean;
+  state?: boolean;
 }
 
 const ImgInput = (props: IImgInputProps): JSX.Element => {
@@ -40,10 +40,10 @@ const ImgInput = (props: IImgInputProps): JSX.Element => {
           ImgInputRef.current = e;
         }}
       />
-      {props.state ? (
+      {props.state === true ? (
         <ImgDiv
           url={
-            img === "" && data?.fetchLoginUser.image
+            img === "" && data?.fetchLoginUser.image != null
               ? `https://storage.googleapis.com/${data?.fetchLoginUser.image}`
               : img
           }

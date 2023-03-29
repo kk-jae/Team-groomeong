@@ -1,6 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Modal } from "antd";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ICreateReviewInput } from "../../../../commons/types/generated/types";
@@ -10,13 +9,10 @@ import { FETCH_RESERVATIONS_BY_USER } from "../query/UseQueryFetchReservationByU
 import { UseQueryFetchShop } from "../query/UseQueryFetchShop";
 
 export const useCreateReview = () => {
-  const router = useRouter();
-
   const {
     register,
     handleSubmit,
     setValue,
-    reset,
     formState: { errors },
   } = useForm<ICreateReviewInput>({
     mode: "onChange",
@@ -30,7 +26,6 @@ export const useCreateReview = () => {
   };
 
   const [createReview] = UseMutationCreateReview();
-  const { data: reservation } = UseQueryFetchShop();
 
   const onClickCreateReview =
     (reservationId: string, shopId: string) =>

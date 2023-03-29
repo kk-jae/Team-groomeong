@@ -6,12 +6,10 @@ import { TextBadge } from "../../atoms/Badge/TextBadge";
 import { Buttons } from "../../atoms/Buttons";
 import ContentInfo from "../../atoms/ContentInfo";
 import PageHeader from "../../atoms/PageHeader";
-import InfoTextArea from "../../atoms/TextArea/InfoTextArea";
-import { dogType } from "../ListTable/DogsList";
 import * as S from "./index.style";
 
 const DogDetail = (): JSX.Element => {
-  const { method, FormProvider, data, breed } = useDetailPage();
+  const { data } = useDetailPage();
   const [deleteDog] = UseMutationDeleteDog();
   const router = useRouter();
 
@@ -66,8 +64,8 @@ const DogDetail = (): JSX.Element => {
           <div>사진</div>
           <S.DogDetailContentImg
             url={
-              data?.image
-                ? `https://storage.googleapis.com/${data?.image}`
+              data?.image !== ""
+                ? `https://storage.googleapis.com/${String(data?.image)}`
                 : "/image/img-dog-detail.png"
             }
           />
