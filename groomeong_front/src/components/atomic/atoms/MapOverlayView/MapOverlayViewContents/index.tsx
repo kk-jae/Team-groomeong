@@ -12,8 +12,16 @@ import {
 } from "../index.style";
 import { StarRate } from "../../StarRate";
 import useMapOverlayView from "../../../../commons/hooks/custom/useMapOverlayView";
+import { useState } from "react";
 
 export const MapOverlayVeiwContents = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = (): void => {
+    setIsModalOpen((prev) => !prev);
+  };
+  console.log(isModalOpen);
+
   const {
     mapInfo: { shop },
     onClickMoveToPage,
@@ -54,14 +62,17 @@ export const MapOverlayVeiwContents = () => {
         </Div>
         <Div top="8px">
           <Div>
-            <ContentsButton
-              whileHover={{
-                backgroundColor: GS.blue[600],
-              }}
-              onClick={onClickMoveToPage(`/map/${shop?.id as string}/detail`)}
-            >
-              상세보기
-            </ContentsButton>
+            <>
+              <ContentsButton
+                whileHover={{
+                  backgroundColor: GS.blue[600],
+                }}
+                onClick={onClickMoveToPage(`/map/${shop?.id as string}/detail`)}
+              >
+                상세보기
+                {/* {isModalOpen ? console.log("true") : console.log("false")} */}
+              </ContentsButton>
+            </>
           </Div>
           <Div left="8px">
             <ContentsButton
