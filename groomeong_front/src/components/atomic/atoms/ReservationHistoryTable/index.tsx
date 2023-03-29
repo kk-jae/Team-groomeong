@@ -7,6 +7,8 @@ import { Buttons } from "../Buttons";
 import { MouseEvent, useState } from "react";
 import { ReviewModal } from "../../organisms/ReviewModal";
 import { UseQueryFetchShopWithReviewAuth } from "../../../commons/hooks/query/UseQueryFetchShopWithReviewAuth";
+import { Th } from "./index.styled";
+import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 
 export const ReservationHistoryTable = (): JSX.Element => {
   const [shopId, setShopId] = useState("");
@@ -14,6 +16,7 @@ export const ReservationHistoryTable = (): JSX.Element => {
   const { data: reviewData } = UseQueryFetchShopWithReviewAuth(shopId);
   const [reservationId, setReservationId] = useState("");
   const [onReview, setOnReview] = useState(false);
+  const { onClickMoveToPage } = useMoveToPage();
 
   const onClickReview = (event: MouseEvent<HTMLButtonElement>): void => {
     setOnReview(true);
@@ -28,14 +31,20 @@ export const ReservationHistoryTable = (): JSX.Element => {
   return (
     <>
       {data !== null ? (
-        data?.fetchReservationsByUser.map((el: IReservation) => (
+        data?.fetchReservationsByUser.map((el: IReservation, index) => (
           <>
             {!isSameDate(el.date) ? (
               <></>
             ) : (
               <tbody key={el.id}>
                 <tr>
-                  <th>{el.shop.name}</th>
+                  <Th
+                    onClick={onClickMoveToPage(
+                      `/map/${data?.fetchReservationsByUser[index].shop.id}/detail`
+                    )}
+                  >
+                    {el.shop.name}
+                  </Th>
                   <th>{getDate(el.date)}</th>
                   <th>{el.time}</th>
                   <th>{el.dog.name}</th>
