@@ -20,7 +20,8 @@ export const ListBox = (props: IProps): JSX.Element => {
     setIsModalOpen((prev) => !prev);
   };
 
-  console.log(props.shopImg);
+  console.log(isModalOpen);
+
   return (
     <S.ListBoxWrapper tabIndex={0}>
       <S.ListBoxTop>
