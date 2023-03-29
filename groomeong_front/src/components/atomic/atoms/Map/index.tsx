@@ -4,10 +4,9 @@ import { useMap } from "../../../commons/hooks/custom/useMap";
 import MapMarker from "../MapMarker";
 import { Div } from "./index.styled";
 
-const Map = (): JSX.Element => {
+export const Map = (): JSX.Element => {
   const {
     onClickMap,
-    onDragStart,
     fetchShops,
     isLoaded,
     onLoad,
@@ -20,7 +19,7 @@ const Map = (): JSX.Element => {
     <Div>
       <GoogleMap
         onClick={onClickMap}
-        onZoomChanged={onDragStart}
+        // onZoomChanged={onDragStart}
         mapContainerStyle={mapContainerStyle}
         options={options}
         center={center}
@@ -47,5 +46,3 @@ const Map = (): JSX.Element => {
     <></>
   );
 };
-
-export default Map;

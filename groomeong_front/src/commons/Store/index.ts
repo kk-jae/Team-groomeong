@@ -1,10 +1,12 @@
 import { IShop } from "./../types/generated/types";
 import { atom, selector } from "recoil";
 import { GetAccessToken } from "../../components/commons/libraries/GetAccessToken";
+import { RefObject } from "react";
+import { Marker } from "@react-google-maps/api";
 
 export interface IMapState {
   map: google.maps.Map | null;
-  marker?: google.maps.Marker;
+  marker: RefObject<Marker> | null;
   shop?: IShop;
   code?: number;
 }
@@ -27,7 +29,7 @@ export const mapState = atom<IMapState>({
   dangerouslyAllowMutability: true,
   default: {
     map: null,
-    marker: undefined,
+    marker: null,
     shop: undefined,
   },
 });
