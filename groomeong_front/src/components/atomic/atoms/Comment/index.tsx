@@ -1,4 +1,4 @@
-import { UseQueryFetchReservationByShop } from "../../../commons/hooks/query/UseQueryFetchReservationsByShop";
+import { UseQueryFetchForShopDetailPage } from "../../../commons/hooks/query/UseQueryFetchForShopDetailPage";
 import { getDate } from "../../../commons/libraries/GetDate";
 import { StarRate } from "../StarRate";
 import * as S from "./index.style";
@@ -14,7 +14,10 @@ export interface ICommentProps {
 }
 
 export const Comment = (props: ICommentProps): JSX.Element => {
-  const { data } = UseQueryFetchReservationByShop();
+  const { data } = UseQueryFetchForShopDetailPage(String(props.shopId));
+
+  console.log(props.shopId);
+  console.log(data);
 
   return (
     <>
@@ -22,22 +25,22 @@ export const Comment = (props: ICommentProps): JSX.Element => {
         <S.TextArea_TopBox>
           <>
             <S.TextArea_TopBox_Profile>
-              {data?.fetchReservationsByShop.map((el) =>
-                el.user.image != null ? ( // 여기 문제 있는지 볼것// 패치 로그인 유저를 하면 안되고 패치 리뷰 유저가 필요함.
-                  <S.TextArea_Profile_Icon key={el.id}>
+              {data?.fetchForShopDetailPage.map((el) =>
+                el.profile.image != null ? ( // 여기 문제 있는지 볼것// 패치 로그인 유저를 하면 안되고 패치 리뷰 유저가 필요함.
+                  <S.TextArea_Profile_Icon key={el.review.id}>
                     <img
-                      src={`https://storage.googleapis.com/${el.user.image}`}
+                      src={`https://storage.googleapis.com/${el.profile.image}`}
                       alt=""
                     />
                   </S.TextArea_Profile_Icon>
                 ) : (
-                  <S.TextArea_Profile_Icon key={el.id}>
+                  <S.TextArea_Profile_Icon key={el.review.id}>
                     <img src={"image/example_dog.png"} alt="" />
                   </S.TextArea_Profile_Icon>
                 )
               )}
-              {data?.fetchReservationsByShop.map((el) => (
-                <span key={el.id}>{el.user.name}</span>
+              {data?.fetchForShopDetailPage.map((el) => (
+                <span key={el.review.id}>{el.profile.name} 님</span>
               ))}
               <S.TextArea_TopBox_Date>
                 {getDate(String(props.date))}
