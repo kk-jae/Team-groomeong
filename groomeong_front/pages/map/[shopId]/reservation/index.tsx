@@ -3,6 +3,5 @@ import { useAuth } from "../../../../src/components/commons/hooks/useAuth/UseAut
 
 export default function ReservationPage(): JSX.Element {
   useAuth();
-
   return <ReservationTemplate />;
 }
