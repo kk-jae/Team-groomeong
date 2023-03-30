@@ -41,3 +41,9 @@ export const ShopImage = styled.img`
   padding-bottom: 24px;
   object-fit: cover;
 `;
+
+export const ShopReservationBtn = styled.div`
+  position: absolute;
+  top: 42%;
+  right: 6%;
+`;
