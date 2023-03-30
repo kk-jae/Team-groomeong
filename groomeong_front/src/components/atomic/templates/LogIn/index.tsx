@@ -6,16 +6,25 @@ import { Buttons } from "../../atoms/Buttons";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 import { useLogInButton } from "../../../commons/hooks/custom/useLogIn";
 import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
-// import { UseGoogleLogin } from "../../../commons/hooks/custom/useGoogleLogin";
 import PageHeader from "../../atoms/PageHeader";
+import { useRouter } from "next/router";
 
 export const LogInTemplate = (): JSX.Element => {
+  const router = useRouter();
   const method = useForm({
     mode: "onChange",
   });
 
   const { onClickMoveToPage } = useMoveToPage();
   const { onClickHomePageLogIn } = useLogInButton();
+
+  const onClickGoogleLogin = async () => {
+    await router.push("https://groomeong.store/login/google");
+  };
+
+  const onClickKakaoLogin = async () => {
+    await router.push("https://groomeong.store/login/kakao");
+  };
 
   return (
     <Background>
@@ -43,9 +52,14 @@ export const LogInTemplate = (): JSX.Element => {
         </FormProvider>
         <S.LogInBottom>
           <S.LogInBottomSocial>
-            {/* <UseGoogleLogin></UseGoogleLogin> */}
-            {/* <S.LoginLogo src="/image/icon-google.png" /> */}
-            {/* <S.LoginLogo src="/image/icon-kakao-talk.png" /> */}
+            <S.LoginLogo
+              onClick={onClickGoogleLogin}
+              src="/image/icon-google.png"
+            />
+            <S.LoginLogo
+              onClick={onClickKakaoLogin}
+              src="/image/icon-kakao-talk.png"
+            />
           </S.LogInBottomSocial>
           <S.LogInBottomSighUp>
             <S.LogInBottomSighUpTop>
