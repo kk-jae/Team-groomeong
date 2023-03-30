@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 import { UseMutationCreateReservation } from "../mutation/UseMutationCreateReservation";
@@ -17,7 +16,6 @@ interface IuseReservationDog {
 export const useReservationDog = (): IuseReservationDog => {
   const router = useRouter();
   const [createReservation] = UseMutationCreateReservation();
-  const [reservationDate, setReservationDate] = useState("");
 
   const onClickReservationDog =
     (
