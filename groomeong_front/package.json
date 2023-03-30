@@ -54,6 +54,7 @@
     "@graphql-codegen/cli": "^3.2.2",
     "@graphql-codegen/typescript": "^3.0.2",
     "@types/apollo-upload-client": "^17.0.2",
+    "@types/google-maps": "^3.2.3",
     "@types/google.maps": "^3.52.4",
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
