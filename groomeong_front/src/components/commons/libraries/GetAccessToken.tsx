@@ -12,12 +12,9 @@ export const GetAccessToken = async (): Promise<string | undefined> => {
   // const router = useRouter();
 
   try {
-    const graphQLClient = new GraphQLClient(
-      "https://www.groomeong.shop/graphql",
-      {
-        // credentials: "include",
-      }
-    );
+    const graphQLClient = new GraphQLClient("https://groomeong.shop/graphql", {
+      // credentials: "include",
+    });
     const result = await graphQLClient.request<
       Pick<IMutation, "restoreAccessToken">
     >(RESTORE_ACCESS_TOKEN);

@@ -1,7 +1,7 @@
 # 이후 백엔드 주소 만들어지면 추가
 
 # 예시
-schema: "https://www.groomeong.shop/graphql"
+schema: "https://groomeong.shop/graphql"
 generates:
   ./src/commons/types/generated/types.ts:
     plugins:

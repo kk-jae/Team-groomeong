@@ -77,7 +77,7 @@ export type IDog = {
   id: Scalars['String'];
   image?: Maybe<Scalars['String']>;
   name: Scalars['String'];
-  reservation: Array<IReservation>;
+  reservation?: Maybe<Array<IReservation>>;
   specifics?: Maybe<Scalars['String']>;
   user: IUser;
   weight: Scalars['Float'];
@@ -103,6 +103,8 @@ export type IMutation = {
   deleteDog: Scalars['Boolean'];
   /**  Return: 예약 삭제하기 */
   deleteReservation: Scalars['Boolean'];
+  /** Return : 가게 정보 삭제 완료 시 true */
+  deleteShop: Scalars['Boolean'];
   /** Return: 가게 이미지 삭제 완료 시, true */
   deleteShopImage: Scalars['Boolean'];
   /**  Return: 유저 정보 삭제하기  */
@@ -183,6 +185,11 @@ export type IMutationDeleteReservationArgs = {
 };
 
 
+export type IMutationDeleteShopArgs = {
+  shopId: Scalars['String'];
+};
+
+
 export type IMutationDeleteShopImageArgs = {
   shopImageId: Scalars['String'];
 };
@@ -250,6 +257,8 @@ export type IQuery = {
   duplicateEmail: Scalars['Boolean'];
   /**  Return: id로 조회된 강아지 데이터  */
   fetchDog: IDog;
+  /** Return : { profile: 회원정보 , review: 그 회원이 작성한 리뷰 } 형식의 객체들이 모인 배열 */
+  fetchForShopDetailPage: Array<IReturnUserWithReviewOutput>;
   /**  Return : 로그인한 유저, 유저 댕댕이 프로필 */
   fetchLoginUser: IUser;
   /** Return : 예약 정보 */
@@ -297,8 +306,18 @@ export type IQueryFetchDogArgs = {
 };
 
 
+export type IQueryFetchForShopDetailPageArgs = {
+  shopId: Scalars['String'];
+};
+
+
 export type IQueryFetchReservationArgs = {
   reservationId: Scalars['String'];
+};
+
+
+export type IQueryFetchReservationsByShopArgs = {
+  shopId: Scalars['String'];
 };
 
 
@@ -357,8 +376,9 @@ export type IReservation = {
 export type IReview = {
   __typename?: 'Review';
   contents: Scalars['String'];
-  createAt: Scalars['DateTime'];
+  createdAt: Scalars['DateTime'];
   id: Scalars['String'];
+  reservation: IReservation;
   shop: IShop;
   star: Scalars['Float'];
 };
@@ -369,15 +389,16 @@ export type IShop = {
   averageStar: Scalars['Float'];
   closeHour: Scalars['String'];
   code: Scalars['Int'];
+  deletedAt: Scalars['DateTime'];
   id: Scalars['String'];
-  image: Array<IShopImage>;
+  image?: Maybe<Array<IShopImage>>;
   lat: Scalars['String'];
   lng: Scalars['String'];
   name: Scalars['String'];
   openHour: Scalars['String'];
   phone: Scalars['String'];
-  reservation: Array<IReservation>;
-  review: Array<IReview>;
+  reservation?: Maybe<Array<IReservation>>;
+  review?: Maybe<Array<IReview>>;
 };
 
 export type IShopImage = {
@@ -394,16 +415,17 @@ export type IShopWithAuthOutput = {
   averageStar: Scalars['Float'];
   closeHour: Scalars['String'];
   code: Scalars['Int'];
+  deletedAt: Scalars['DateTime'];
   hasReviewAuth: Scalars['Boolean'];
   id: Scalars['String'];
-  image: Array<IShopImage>;
+  image?: Maybe<Array<IShopImage>>;
   lat: Scalars['String'];
   lng: Scalars['String'];
   name: Scalars['String'];
   openHour: Scalars['String'];
   phone: Scalars['String'];
-  reservation: Array<IReservation>;
-  review: Array<IReview>;
+  reservation?: Maybe<Array<IReservation>>;
+  review?: Maybe<Array<IReview>>;
 };
 
 export type IUpdateDogInput = {
@@ -440,11 +462,17 @@ export type IUpdateUserInput = {
 
 export type IUser = {
   __typename?: 'User';
-  dogs: Array<IDog>;
+  dogs?: Maybe<Array<IDog>>;
   email: Scalars['String'];
   id: Scalars['String'];
   image?: Maybe<Scalars['String']>;
   name: Scalars['String'];
   phone: Scalars['String'];
-  reservation: Array<IReservation>;
+  reservation?: Maybe<Array<IReservation>>;
+};
+
+export type IReturnUserWithReviewOutput = {
+  __typename?: 'returnUserWithReviewOutput';
+  profile: IUser;
+  review: IReview;
 };
