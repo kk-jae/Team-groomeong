@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
 
 interface IProps {
-  disabledState: boolean;
+  disabledState: boolean | undefined;
 }
 
 export const EmailAuthWrapper = styled.div`
@@ -64,8 +64,11 @@ export const EmailAuthMiddleButton = styled.button<IProps>`
   width: 165px;
   height: 42px;
   background-color: ${(props) =>
-    props.disabledState ? `${GS.state.disabled}` : `${GS.base.primary}`};
-  color: ${(props) => (props.disabledState ? `${GS.gray[200]}` : "white")};
+    props.disabledState !== undefined
+      ? `${GS.state.disabled}`
+      : `${GS.base.primary}`};
+  color: ${(props) =>
+    props.disabledState !== undefined ? `${GS.gray[200]}` : "white"};
   border-radius: 12px;
 `;
 

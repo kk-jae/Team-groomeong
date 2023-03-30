@@ -2,9 +2,6 @@ import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import * as S from "./index.styled";
 
-// 사용 방법
-// <Input label="라벨" placeholder="placeholder" error="에러메세지" />
-
 interface IProps {
   defaultValue?: string;
   label: string;
