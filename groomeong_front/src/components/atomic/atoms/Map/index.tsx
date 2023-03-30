@@ -1,10 +1,14 @@
 import { GoogleMap, MarkerClusterer } from "@react-google-maps/api";
 import getLatLng from "../../../../commons/Utils/getLatLng";
+import useLoggined from "../../../commons/hooks/custom/useLoggined";
 import { useMap } from "../../../commons/hooks/custom/useMap";
 import MapMarker from "../MapMarker";
+import { TopBarMap } from "../TopBar/TopBarMap";
 import { Div } from "./index.styled";
 
 export const Map = (): JSX.Element => {
+  const loggedIn = useLoggined();
+
   const {
     onClickMap,
     fetchShops,
@@ -26,6 +30,7 @@ export const Map = (): JSX.Element => {
         zoom={12}
         onLoad={onLoad}
       >
+        <TopBarMap loggedIn={loggedIn}></TopBarMap>
         <MarkerClusterer>
           {(clusterer) => (
             <div>
