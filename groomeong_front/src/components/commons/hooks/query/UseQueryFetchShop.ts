@@ -31,7 +31,7 @@ export const FETCH_SHOP = gql`
       review {
         id
         contents
-        createAt
+        createdAt
         star
       }
       image {

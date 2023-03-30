@@ -34,7 +34,7 @@ export const FETCH_SHOPS = gql`
       review {
         id
         contents
-        createAt
+        createdAt
         star
       }
     }

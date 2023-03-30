@@ -13,7 +13,7 @@ export const FETCH_REVIEWS_BY_SHOP_ID = gql`
     fetchReviewsByShopId(page: $page, shopId: $shopId) {
       id
       contents
-      createAt
+      createdAt
       star
     }
   }
