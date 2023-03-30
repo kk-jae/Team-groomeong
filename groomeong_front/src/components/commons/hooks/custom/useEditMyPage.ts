@@ -12,10 +12,6 @@ interface IFetchData {
   image?: any;
 }
 
-// interface IuseEditMyPage {
-//   onClickEditBtn: (data: IFetchData) => Promise<void>;
-// }
-
 export const useEditMyPage = () => {
   const [updateUser] = UseMutationUpdateUser();
   const { data: userData } = UseQueryFetchLoginUser();
@@ -27,9 +23,9 @@ export const useEditMyPage = () => {
       phone: data.phone,
       image: data.image,
     };
-    if (updateUserInput.name !== "")
+    if (updateUserInput.name === "")
       updateUserInput.name = userData?.fetchLoginUser.name;
-    if (updateUserInput.phone !== "")
+    if (updateUserInput.phone === "")
       updateUserInput.phone = userData?.fetchLoginUser.phone;
 
     if (updateUserInput.image?.length === 0) {

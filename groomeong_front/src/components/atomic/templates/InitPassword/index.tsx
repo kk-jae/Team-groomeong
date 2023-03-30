@@ -28,11 +28,13 @@ export const InitPasswordTemplate = (): JSX.Element => {
               label="비밀번호"
               name="password"
               placeholder="비밀번호를 입력해주세요."
+              type="password"
             />
             <InputMiddle
               label="비밀번호 확인"
               name="password2"
               placeholder="비밀번호를 다시 입력해주세요"
+              type="password"
             />
             <S.BtnWrapper>
               <Buttons label="비밀번호 초기화"></Buttons>

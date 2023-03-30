@@ -10,6 +10,8 @@ import Background from "../../organisms/Background";
 import * as S from "./index.styled";
 import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
+import { Modal } from "antd";
+import { UseQueryFetchUsers } from "../../../commons/hooks/query/UseQueryFetchUsers";
 
 export const EmailAuthTemplates = (): JSX.Element => {
   const { onClickMoveToPage } = useMoveToPage();
@@ -23,25 +25,38 @@ export const EmailAuthTemplates = (): JSX.Element => {
   const [timeInterval, setTimeInterval] = useState<
     NodeJS.Timer | NodeJS.Timeout
   >();
+  const { data: fetchUsersData } = UseQueryFetchUsers();
 
   const method = useForm({
     mode: "onChange",
   });
 
   const onClickSendEmail = (data: IEmail): void => {
-    void sendEmail(data)();
-    setDisabledState(true);
-    let min = 2;
-    let sec = 60;
-    const timeInterval = setInterval(() => {
-      sec = sec - 1;
-      if (sec === -1) {
-        min = min - 1;
-        sec = 59;
-      }
-      setTimer(`${min}:${String(sec).padStart(2, "0")}`);
-    }, 1000);
-    setTimeInterval(timeInterval);
+    const UsersEmail = fetchUsersData?.fetchUsers.map((el) => el.email);
+    if (data.email === "") {
+      Modal.error({
+        content: "이메일을 입력해주세요",
+      });
+    }
+    if (UsersEmail?.includes(String(data.email)) !== false) {
+      void sendEmail(data)();
+      setDisabledState(true);
+      let min = 2;
+      let sec = 60;
+      const timeInterval = setInterval(() => {
+        sec = sec - 1;
+        if (sec === -1) {
+          min = min - 1;
+          sec = 59;
+        }
+        setTimer(`${min}:${String(sec).padStart(2, "0")}`);
+      }, 1000);
+      setTimeInterval(timeInterval);
+    } else {
+      Modal.error({
+        content: "회원가입되지 않은 이메일입니다.",
+      });
+    }
   };
 
   if (clearTimer) {

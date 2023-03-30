@@ -85,7 +85,7 @@ export type IDog = {
 
 export type IMutation = {
   __typename?: 'Mutation';
-  /** 인증번호 검증 */
+  /** Return: 인증번호 검증 */
   checkValidToken: Scalars['Boolean'];
   /**  Return: DB에 저장된 강아지 데이터  */
   createDog: IDog;
@@ -109,12 +109,14 @@ export type IMutation = {
   deleteShopImage: Scalars['Boolean'];
   /**  Return: 유저 정보 삭제하기  */
   deleteUser: Scalars['Boolean'];
-  /**  이메일 인증번호 전송  */
+  /**  Return: 이메일 인증번호 전송  */
   getTokenEmail: Scalars['String'];
   /**  Return: 유저 로그인  */
   login: Scalars['String'];
   /**  return: 유저 로그아웃  */
   logout: Scalars['String'];
+  /** Return: 비밀번호 초기화하기(찾기) */
+  resetPwd: IUser;
   /**  Return: accessToken 복원  */
   restoreAccessToken: Scalars['String'];
   /**  Return: 업데이트한 강아지 데이터  */
@@ -208,6 +210,12 @@ export type IMutationGetTokenEmailArgs = {
 export type IMutationLoginArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
+};
+
+
+export type IMutationResetPwdArgs = {
+  email: Scalars['String'];
+  newPassword: Scalars['String'];
 };
 
 

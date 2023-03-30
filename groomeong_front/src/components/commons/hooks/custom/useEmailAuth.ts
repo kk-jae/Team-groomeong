@@ -4,7 +4,7 @@ import { Modal } from "antd";
 import { UseMutationGetTokenEmail } from "./../mutation/UseMutationGetTokenEmail";
 
 export interface IEmail {
-  email?: string;
+  email?: string | undefined;
   token?: string;
 }
 
@@ -21,6 +21,7 @@ export const useEmailAuth = (): IuseEmailAuth => {
   const [randomToken, setRandomToken] = useState("");
   const [isOpenRandomCode, setIsOpenRandomCode] = useState(false);
   const [clearTimer, setClearTimer] = useState(false);
+  const [checkEmail, setCheckEmail] = useState("");
 
   const sendEmail = (data: IEmail) => async () => {
     try {
@@ -34,6 +35,7 @@ export const useEmailAuth = (): IuseEmailAuth => {
       });
       setRandomToken(`${String(result.data?.getTokenEmail)}`);
       setIsOpenRandomCode(true);
+      setCheckEmail(String(data.email));
     } catch (error) {
       if (error instanceof Error) {
         Modal.error({
@@ -50,6 +52,7 @@ export const useEmailAuth = (): IuseEmailAuth => {
       });
       void router.push("/initPassword");
       setClearTimer(true);
+      localStorage.setItem("email", checkEmail);
     } else {
       Modal.error({
         content: "인증번호가 다릅니다.",
