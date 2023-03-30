@@ -1,6 +1,7 @@
 import { Variants } from "framer-motion";
+import * as GS from "../../../../../theme/global";
 
-export const MapListContentsWrapperVariants: Variants = {
+export const MapListBodyWrapperVariants: Variants = {
   open: {
     x: 0,
     opacity: 1,
@@ -8,5 +9,11 @@ export const MapListContentsWrapperVariants: Variants = {
   closed: {
     x: "-100%",
     opacity: 1,
+  },
+};
+
+export const MapListContentsWrapperVariants: Variants = {
+  initial: {
+    backgroundColor: "#efefef",
   },
 };

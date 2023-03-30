@@ -45,7 +45,7 @@ export const MapListSearchBarButton = styled(motion.button)`
 export const MapListBodyWrapper = styled(S.Div)`
   position: absolute;
   top: 0;
-`
+`;
 
 export const MapListContentsWrapper = styled(S.Div)`
   flex-direction: column;
@@ -72,3 +72,22 @@ export const MapListButton = styled(motion.button)`
   height: 62px;
   background-color: ${GS.base.secondary};
 `;
+
+export const ImgDiv = styled(motion.image)`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url("/image/img-character-dog.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 326px;
+`;
+
+export const Span = styled(S.Span)`
+  ${GS.Label.Large}
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: ${GS.base.tertiary}
+`

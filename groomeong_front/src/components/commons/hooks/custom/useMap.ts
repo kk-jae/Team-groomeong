@@ -1,9 +1,10 @@
 import { mapState } from "./../../../../commons/Store/index";
 import { UseQueryFetchShops } from "./../query/UseQueryFetchShops";
 import { useJsApiLoader } from "@react-google-maps/api";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { useRecoilState } from "recoil";
 import getLatLng from "../../../../commons/Utils/getLatLng";
+import { getGeoData } from "../../GeoData/getGeoData";
 
 export const useMap = () => {
   const [mapInfo, setMapInfo] = useRecoilState(mapState);
@@ -12,6 +13,7 @@ export const useMap = () => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_API_KEY as string,
   });
 
+  const geoData = useMemo(() => getGeoData(), []);
   const onClickMap = () => {
     setMapInfo((prev) => ({
       ...prev,
@@ -21,7 +23,6 @@ export const useMap = () => {
     if (pos !== null) mapInfo.map?.panTo(pos);
     else mapInfo.map?.panTo(center);
   };
-
 
   const mapContainerStyle = {
     width: "100vw",
@@ -53,5 +54,6 @@ export const useMap = () => {
     center,
     options,
     mapContainerStyle,
+    geoData,
   };
 };
