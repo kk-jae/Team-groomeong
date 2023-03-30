@@ -1,8 +1,8 @@
 import { ReservationTemplate } from "../../../../src/components/atomic/templates/Reservation";
-import { withAuth } from "../../../../src/components/commons/withAuth";
+import { useAuth } from "../../../../src/components/commons/hooks/useAuth/UseAuth";
 
-function ReservationPage(): JSX.Element {
+export default function ReservationPage(): JSX.Element {
+  useAuth();
+
   return <ReservationTemplate />;
 }
-
-export default withAuth(ReservationPage);

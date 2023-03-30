@@ -1,8 +1,7 @@
 import ShopCreateTemplate from "../../src/components/atomic/templates/ShopCreate";
-import { withAuth } from "../../src/components/commons/withAuth";
+import { useAuth } from "../../src/components/commons/hooks/useAuth/UseAuth";
 
-function ShopCreate(): JSX.Element {
+export default function ShopCreate(): JSX.Element {
+  useAuth();
   return <ShopCreateTemplate />;
 }
-
-export default withAuth(ShopCreate);
