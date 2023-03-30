@@ -15,7 +15,9 @@ import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 export const EmailAuthTemplates = (): JSX.Element => {
   const { onClickMoveToPage } = useMoveToPage();
   const { data: fetchLoginUserData } = UseQueryFetchLoginUser();
-  const [disabledState, setDisabledState] = useState(false);
+  const [disabledState, setDisabledState] = useState<undefined | boolean>(
+    undefined
+  );
   const { sendEmail, onClickCheckToken, isOpenRandomCode, clearTimer } =
     useEmailAuth();
   const [timer, setTimer] = useState("3:00");
@@ -28,33 +30,24 @@ export const EmailAuthTemplates = (): JSX.Element => {
   });
 
   const onClickSendEmail = (data: IEmail): void => {
-    data.email = fetchLoginUserData?.fetchLoginUser.email;
-    if (data.email === fetchLoginUserData?.fetchLoginUser.email) {
-      void sendEmail(data)();
-      setDisabledState(true);
-      let min = 2;
-      let sec = 60;
-      const timeInterval = setInterval(() => {
-        sec = sec - 1;
-        if (sec === -1) {
-          min = min - 1;
-          sec = 59;
-        }
-        setTimer(`${min}:${String(sec).padStart(2, "0")}`);
-      }, 1000);
-
-      setTimeInterval(timeInterval);
-    } else {
-      Modal.error({
-        content: "로그인 이메일과 다릅니다.",
-      });
-    }
+    void sendEmail(data)();
+    setDisabledState(true);
+    let min = 2;
+    let sec = 60;
+    const timeInterval = setInterval(() => {
+      sec = sec - 1;
+      if (sec === -1) {
+        min = min - 1;
+        sec = 59;
+      }
+      setTimer(`${min}:${String(sec).padStart(2, "0")}`);
+    }, 1000);
+    setTimeInterval(timeInterval);
   };
 
   if (clearTimer) {
     clearInterval(timeInterval as NodeJS.Timeout);
   }
-
   return (
     <Background>
       <S.EmailAuthWrapper>
@@ -69,7 +62,7 @@ export const EmailAuthTemplates = (): JSX.Element => {
                 name="email"
                 placeholder="이메일을 입력해주세요"
                 type="email"
-                disabled={true}
+                disabled={disabledState}
                 value={fetchLoginUserData?.fetchLoginUser.email}
               />
               <S.EmailAuthMiddleButton
