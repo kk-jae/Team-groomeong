@@ -53,7 +53,7 @@ export const ShopDetail = (props: IShopDetailProps): JSX.Element => {
             <Comment
               key={el.id}
               contents={el.contents}
-              date={el.createAt}
+              date={el.createdAt}
               rate={el.star}
               state={true}
               iconView={true}

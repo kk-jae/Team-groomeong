@@ -9,7 +9,6 @@ import PageHeader from "../../atoms/PageHeader";
 import Background from "../../organisms/Background";
 import * as S from "./index.styled";
 import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
-import { Modal } from "antd";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 
 export const EmailAuthTemplates = (): JSX.Element => {
