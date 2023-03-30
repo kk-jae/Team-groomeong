@@ -31,19 +31,21 @@ const SignUp = (): JSX.Element => {
             label="닉네임"
             name="name"
             placeholder="닉네임을 입력해주세요."
-            maxLength={3}
+            maxLength={5}
           />
           <InputMiddle
             label="비밀번호"
             name="password"
             placeholder="비밀번호를 입력해주세요."
             type="password"
+            maxLength={13}
           />
           <InputMiddle
             label="비밀번호 확인"
             name="checkPassword"
             placeholder="비밀번호를 입력해주세요."
             type="password"
+            maxLength={13}
           />
           <InputMiddle
             label="연락처"

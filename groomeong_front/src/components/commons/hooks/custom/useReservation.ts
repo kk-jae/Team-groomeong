@@ -43,7 +43,9 @@ export const useReservationDog = (): IuseReservationDog => {
             },
           ],
         });
-        alert("예약 성공");
+        Modal.success({
+          content: `${date}, ${time} 예약이 접수되었습니다.`,
+        });
         await router.push("/reservation");
       } catch (error) {
         if (error instanceof Error) {

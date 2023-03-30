@@ -32,7 +32,6 @@ const SignUpValidateInput = (props: ISignUpvalidateInputProps): JSX.Element => {
         label="이메일"
         name="email"
         placeholder="이메일을 입력해주세요."
-        // disabled={validation.emailAuth || validation.valid}
         disabled={validation.emailAuth ? true : undefined}
       />
       <ValidateWrapper>

@@ -32,8 +32,9 @@ export const MyPageEditBodyTemplate = (): JSX.Element => {
             defaultValue={userData?.fetchLoginUser?.name}
             placeholder={userData?.fetchLoginUser?.name}
             name={"name"}
-            maxLength={3}
+            maxLength={5}
           />
+
           <InputMiddle
             label="이메일"
             value={userData?.fetchLoginUser?.email}

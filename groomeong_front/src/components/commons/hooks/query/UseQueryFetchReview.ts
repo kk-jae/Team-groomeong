@@ -13,7 +13,7 @@ export const FETCH_REVIEW = gql`
     fetchReview(reviewId: $reviewId) {
       id
       contents
-      createAt
+      createdAt
       star
     }
   }

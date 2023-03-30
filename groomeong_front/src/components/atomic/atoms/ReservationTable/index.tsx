@@ -11,13 +11,12 @@ import {
 } from "../../../commons/hooks/query/UseQueryFetchReservationByUserId";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 import { Th } from "./index.styled";
+import { Modal } from "antd";
 
 export const ReservationTable = (): JSX.Element => {
   const { data } = UseQueryFetchReservationByUser();
   const [deleteReservation] = UseMutationDeleteReservation();
   const { onClickMoveToPage } = useMoveToPage();
-
-  console.log(data?.fetchReservationsByUser[0].shop.id);
 
   const onClickDelete = async (
     event: MouseEvent<HTMLButtonElement>
@@ -27,7 +26,9 @@ export const ReservationTable = (): JSX.Element => {
         variables: { reservationId: event.currentTarget.id },
         refetchQueries: [{ query: FETCH_RESERVATIONS_BY_USER }],
       });
-      alert("예약이 취소되었습니다");
+      Modal.success({
+        content: "예약이 취소되었습니다.",
+      });
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }

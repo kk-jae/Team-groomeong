@@ -30,10 +30,10 @@ export const ReservationTime = (props: IPropsFetchShop): JSX.Element => {
     );
   }
 
-  const reservationDateArr = props.data?.fetchShop.reservation.map(
+  const reservationDateArr = props.data?.fetchShop?.reservation?.map(
     (el: IFetchShop) => el.date.slice(0, 10)
   );
-  const reservationTime = props.data?.fetchShop.reservation.map(
+  const reservationTime = props.data?.fetchShop?.reservation?.map(
     (el: IFetchShop) => el.time
   );
 

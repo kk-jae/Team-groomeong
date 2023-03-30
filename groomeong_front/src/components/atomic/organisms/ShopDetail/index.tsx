@@ -32,7 +32,7 @@ export const ShopDetail = (props: IShopDetailProps): JSX.Element => {
         <S.ShopDetailWrapper>
           <S.ShopImage
             src={
-              data?.fetchShop?.image[0] != null
+              data?.fetchShop?.image?.[0] !== undefined
                 ? `https://storage.googleapis.com/${data?.fetchShop?.image[0].imageUrl}`
                 : "/image/img_shop_default.svg"
             }
@@ -53,11 +53,11 @@ export const ShopDetail = (props: IShopDetailProps): JSX.Element => {
             <Comment
               key={el.id}
               contents={el.contents}
-              date={el.createAt}
+              date={el.createdAt}
               rate={el.star}
               state={true}
               iconView={true}
-              shopId={props.id}
+              shopId={String(router.query.shopId)}
             ></Comment>
           ))}
         </S.ShopDetailWrapper>

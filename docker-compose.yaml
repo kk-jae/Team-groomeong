@@ -1,0 +1,17 @@
+version: "3.7"
+
+# 컴퓨터들
+services:
+  # 첫번째 컴퓨터 이름
+  groomeong:
+    # 컴퓨터 최적화
+    build:
+      # 도커 파일은 무엇이고 위치는?
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+      # 3000번으로 들어온 애들 3000번으로 접속
+
+  # 두번째 컴퓨터 이름
+  # ..

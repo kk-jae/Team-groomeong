@@ -80,13 +80,13 @@ export const TextArea_TopBox_Rate = styled.div`
 `;
 
 export const TextArea_TopBox_Date = styled.div`
-  width: 82px;
+  width: 100px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   ${GS.Paragraph.Medium}
-  color: ${GS.contents.contentTertiary}
+  color: ${GS.contents.contentTertiary};
 `;
 
 export const TextArea_ContentBox = styled.div`

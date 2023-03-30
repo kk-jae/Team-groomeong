@@ -1549,15 +1549,22 @@
   resolved "https://registry.npmjs.org/@types/extract-files/-/extract-files-8.1.1.tgz"
   integrity sha512-dMJJqBqyhsfJKuK7p7HyyNmki7qj1AlwhUKWx6KrU7i1K2T2SPsUsSUTWFmr/sEM1q8rfR8j5IyUmYrDbrhfjQ==
 
+"@types/google-maps@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@types/google-maps/-/google-maps-3.2.3.tgz#ea99526e40d3b58a2c07f0b3d5f3b8e0750119c3"
+  integrity sha512-+GR/7sMvo2bENS26H4t2QqoCqE4FE5qhsG8aaDM9mJAlsorkLyaFdTQra8VkmS1RNE09fx9c1kac+GKG0RtA2A==
+  dependencies:
+    "@types/google.maps" "*"
+
+"@types/google.maps@*", "@types/google.maps@^3.52.4":
+  version "3.52.4"
+  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.52.4.tgz#01d640d7c49f153570b22fe337a35aea7ac41eb9"
+  integrity sha512-FXtZsLDX7fbxJ03zbze3MdUjaH4Y/zRmW8O65LNIWEHJ7RqddrabusRm/U3zF1ifmqe8y4oPqBvs+vBG8kv0yQ==
+
 "@types/google.maps@3.50.5":
   version "3.50.5"
   resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.50.5.tgz#a0d12675b547205fc163c4b8d999db305ba3862a"
   integrity sha512-RuZf1MJtctGlpW+Gd4a/eGtAufUDjMf+eyN1l+B3fbe2YLScJbg8KEljJfb+6vnSPFAeM1/48geVIEg3vqOkxw==
-
-"@types/google.maps@^3.52.4":
-  version "3.52.4"
-  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.52.4.tgz#01d640d7c49f153570b22fe337a35aea7ac41eb9"
-  integrity sha512-FXtZsLDX7fbxJ03zbze3MdUjaH4Y/zRmW8O65LNIWEHJ7RqddrabusRm/U3zF1ifmqe8y4oPqBvs+vBG8kv0yQ==
 
 "@types/js-yaml@^4.0.0":
   version "4.0.5"
