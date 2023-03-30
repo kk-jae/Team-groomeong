@@ -35,7 +35,7 @@ export const MapOverlayVeiwContents = () => {
           </Div>
         </Div>
         <Div justyfyContents="flex-start" alignItems="center">
-          <Span right="16px">리뷰 ({shop?.review.length})건</Span>
+          <Span right="16px">리뷰 ({shop?.review?.length})건</Span>
           <StarRate star={shop?.averageStar} state={true} />
         </Div>
       </TitleWrapper>

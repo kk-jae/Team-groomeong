@@ -22,7 +22,7 @@ export const MapSideList = (): JSX.Element => {
                 address={el.address}
                 star={el.averageStar}
                 id={el.id}
-                shopImg={el.image.map((el) => el.imageUrl)}
+                shopImg={el.image?.map((el) => el.imageUrl)}
               />
             </div>
           ))}
