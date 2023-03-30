@@ -13,7 +13,7 @@ export const GetAccessToken = async (): Promise<string | undefined> => {
 
   try {
     const graphQLClient = new GraphQLClient("https://groomeong.shop/graphql", {
-      // credentials: "include",
+      credentials: "include",
     });
     const result = await graphQLClient.request<
       Pick<IMutation, "restoreAccessToken">

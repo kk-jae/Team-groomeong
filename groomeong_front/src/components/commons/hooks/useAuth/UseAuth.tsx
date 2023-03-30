@@ -1,3 +1,4 @@
+import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useRecoilValueLoadable } from "recoil";
@@ -11,7 +12,9 @@ export const useAuth = (): void => {
     void aaa.toPromise().then((newAccessToken) => {
       // 받아온 accessToken유무만 판단하면됨 // 담는건 app.tsx에서 하기에.
       if (newAccessToken === undefined) {
-        alert("로그인 후 이용 가능합니다");
+        Modal.confirm({
+          content: "로그인 후 이용 가능합니다.",
+        });
         void router.push(`/login`);
       }
     });

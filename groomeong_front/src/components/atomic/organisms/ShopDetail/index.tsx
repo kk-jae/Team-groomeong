@@ -6,7 +6,6 @@ import { UseQueryFetchShop } from "../../../commons/hooks/query/UseQueryFetchSho
 import { UseQueryFetchReviewsByShopId } from "../../../commons/hooks/query/UseQueryFetchReviewsByShopId";
 import { MouseEvent } from "react";
 import { useRouter } from "next/router";
-import { ButtonCommons } from "../../atoms/ButtonCommons/index.styles";
 import { Buttons } from "../../atoms/Buttons";
 import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 

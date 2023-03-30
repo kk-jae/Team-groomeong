@@ -27,7 +27,6 @@ export const useLogInButton = () => {
       const accessToken = createLogIn.data?.login;
       if (accessToken !== undefined) {
         setAccessToken(accessToken);
-        localStorage.setItem("accessToken", accessToken);
       }
       void router.push("/home");
     } catch (error) {
