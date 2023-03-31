@@ -9,7 +9,7 @@ interface IBackgroundProps {
 }
 
 const Background = (props: IBackgroundProps): JSX.Element => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [, setLoggedIn] = useState(false);
 
   useEffect(() => {
     if (localStorage.accessToken !== null) {
@@ -20,7 +20,7 @@ const Background = (props: IBackgroundProps): JSX.Element => {
   return (
     <>
       <BackgroundWrapper centered={props.centered} viewport={props.viewport}>
-        <TopBarDefault loggedIn={loggedIn} />
+        <TopBarDefault />
         {props.children}
       </BackgroundWrapper>
     </>
