@@ -1,7 +1,8 @@
-import { GoogleMap, MarkerClusterer, Polygon } from "@react-google-maps/api";
+import { GoogleMap, MarkerClusterer } from "@react-google-maps/api";
 import getLatLng from "../../../../commons/Utils/getLatLng";
 import { useMap } from "../../../commons/hooks/custom/useMap";
 import MapMarker from "../MapMarker";
+import MapPolygon from "../MapPolygon";
 import { Div } from "./index.styled";
 
 export const Map = (): JSX.Element => {
@@ -14,9 +15,9 @@ export const Map = (): JSX.Element => {
     options,
     center,
     geoData,
+    mapInfo,
   } = useMap();
 
-  console.log(geoData)
   return isLoaded ? (
     <Div>
       <GoogleMap
@@ -27,25 +28,26 @@ export const Map = (): JSX.Element => {
         zoom={12}
         onLoad={onLoad}
       >
-        {
-          geoData.map((map) => (
-            <Polygon 
-              key={map.properties.code}
-              paths={map.geometry} 
-            />
-          ))
-        }
+        {geoData.map((map) => (
+          <>
+            <MapPolygon map={map} />
+          </>
+        ))}
         <MarkerClusterer>
           {(clusterer) => (
             <div>
-              {fetchShops?.map((shop) => (
-                <MapMarker
-                  key={shop.id}
-                  shop={shop}
-                  position={getLatLng(shop.lat, shop.lng) ?? center}
-                  clusterer={clusterer}
-                />
-              ))}
+              {fetchShops?.map((shop) =>
+                mapInfo.code === shop.code ? (
+                  <MapMarker
+                    key={shop.id}
+                    shop={shop}
+                    position={getLatLng(shop.lat, shop.lng) ?? center}
+                    clusterer={clusterer}
+                  />
+                ) : (
+                  <></>
+                )
+              )}
             </div>
           )}
         </MarkerClusterer>

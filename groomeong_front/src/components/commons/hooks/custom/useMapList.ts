@@ -9,7 +9,7 @@ const useMapList = () => {
     if (data === undefined) return;
     void fetchMore({
       variables: {
-        page: Math.ceil((data?.fetchShops.length ?? 7) / 10) + 1,
+        page: Math.ceil((data?.fetchShops.length ?? 7) / 7) + 1,
         count: 7,
       },
       updateQuery: (prev, { fetchMoreResult }) => {

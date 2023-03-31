@@ -1,5 +1,6 @@
 import React from "react";
 import { Marker, MarkerProps } from "@react-google-maps/api";
+import { isEqual } from "lodash";
 import { useMaker } from "../../../commons/hooks/custom/useMaker";
 import MapOverlayView from "../MapOverlayView";
 import { IShop } from "../../../../commons/types/generated/types";
@@ -11,13 +12,15 @@ interface IMarkerProps extends MarkerProps {
 }
 
 const MapMarker = (props: IMarkerProps) => {
-  const { onClickMaker, markerRef } = useMaker(props.shop);
+  const { onClickMaker,  markerRef } = useMaker(props.shop);
   const mapInfo = useRecoilValue(mapState);
-  const isClicked = mapInfo?.shop?.id === props.shop.id;
+  const isClicked = isEqual(mapInfo?.shop?.id, props.shop.id);
+
   return (
     <Marker
       ref={markerRef}
       position={props.position}
+      zIndex={1000}
       title={props.shop.name}
       icon={{
         url: "/image/icon-marker.svg",

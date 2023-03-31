@@ -2,13 +2,21 @@ import { IShop } from "./../types/generated/types";
 import { atom, selector } from "recoil";
 import { GetAccessToken } from "../../components/commons/libraries/GetAccessToken";
 import { RefObject } from "react";
-import { Marker } from "@react-google-maps/api";
+import { Marker, Polygon } from "@react-google-maps/api";
+
+export interface IPolyInfo {
+  ref: RefObject<Polygon> | null
+  code?: number,
+  bounds: google.maps.LatLngBounds | null,
+  isHover: boolean,
+  isActive: boolean,
+}
 
 export interface IMapState {
   map: google.maps.Map | null;
   marker: RefObject<Marker> | null;
   shop?: IShop;
-  code?: number;
+  polygon: IPolyInfo;
 }
 
 export const accessTokenState = atom({
@@ -31,5 +39,12 @@ export const mapState = atom<IMapState>({
     map: null,
     marker: null,
     shop: undefined,
+    polygon: {
+      bounds: null,
+      isActive: false,
+      isHover: false,
+      ref: null,
+      code: undefined,
+    }
   },
 });

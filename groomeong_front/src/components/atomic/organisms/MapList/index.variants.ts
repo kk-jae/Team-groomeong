@@ -1,5 +1,4 @@
 import { Variants } from "framer-motion";
-import * as GS from "../../../../../theme/global";
 
 export const MapListBodyWrapperVariants: Variants = {
   open: {

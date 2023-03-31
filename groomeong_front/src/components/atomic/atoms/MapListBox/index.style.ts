@@ -5,6 +5,7 @@ export const MapListBoxWrapper = styled(S.Div)`
   display: flex;
   width: 100%;
   padding: 16px;
+  margin: 16px 0;
   flex-direction: column;
   z-index: 100;
 `;

@@ -9,8 +9,10 @@ export const useMaker = (shop: IShop) => {
   const [mapInfo, setMapInfo] = useRecoilState(mapState);
   // const [isClicked, setIsCliecked] = useState<boolean>(false);
   const markerRef = useRef<Marker>(null);
+
   const onClickMaker = (e: google.maps.MapMouseEvent) => {
-    console.log(e);
+    e.domEvent.stopPropagation();
+    e.domEvent.stopImmediatePropagation();
     setMapInfo((prev) => ({
       ...prev,
       marker: markerRef,
@@ -18,11 +20,11 @@ export const useMaker = (shop: IShop) => {
     }));
     const pos = getLatLng(shop?.lat, shop?.lng);
     if (pos !== null) {
-      console.log(mapInfo);
       mapInfo?.map?.setZoom(15);
       mapInfo?.map?.panTo(pos);
     }
   };
+
 
   useEffect(() => {
     if (shop.id === mapInfo?.shop?.id) {

@@ -1,29 +1,19 @@
 import { mapState } from "./../../../../commons/Store/index";
 import { UseQueryFetchShops } from "./../query/UseQueryFetchShops";
 import { useJsApiLoader } from "@react-google-maps/api";
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import { useRecoilState } from "recoil";
 import getLatLng from "../../../../commons/Utils/getLatLng";
 import { getGeoData } from "../../GeoData/getGeoData";
 
 export const useMap = () => {
   const [mapInfo, setMapInfo] = useRecoilState(mapState);
-  const { data } = UseQueryFetchShops(1, 1000);
+  const { data } = useQueryFetch(1, 1000);
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_API_KEY as string,
   });
 
   const geoData = useMemo(() => getGeoData(), []);
-  const onClickMap = () => {
-    setMapInfo((prev) => ({
-      ...prev,
-      shop: undefined,
-    }));
-    const pos = getLatLng(mapInfo.shop?.lat, mapInfo.shop?.lng);
-    if (pos !== null) mapInfo.map?.panTo(pos);
-    else mapInfo.map?.panTo(center);
-  };
-
   const mapContainerStyle = {
     width: "100vw",
     height: "100vh",
@@ -31,6 +21,7 @@ export const useMap = () => {
 
   const options: google.maps.MapOptions = {
     disableDefaultUI: true,
+    disableDoubleClickZoom: true,
     clickableIcons: false,
   };
 
@@ -39,12 +30,24 @@ export const useMap = () => {
     lng: 126.986,
   };
 
-  const onLoad = useCallback((mapInstance: google.maps.Map) => {
+  const onLoad = (mapInstance: google.maps.Map) => {
     setMapInfo((prev) => ({
       ...prev,
       map: mapInstance,
     }));
-  }, []);
+  };
+
+  const onClickMap = () => {
+    setMapInfo((prev) => ({
+      ...prev,
+      shop: undefined,
+    }));
+    const pos = getLatLng(mapInfo.shop?.lat, mapInfo.shop?.lng);
+    if (pos !== null) mapInfo.map?.panTo(pos);
+    else {
+      mapInfo.map?.panTo(center);
+    }
+  };
 
   return {
     fetchShops: data?.fetchShops,
@@ -55,5 +58,6 @@ export const useMap = () => {
     options,
     mapContainerStyle,
     geoData,
+    mapInfo,
   };
 };
