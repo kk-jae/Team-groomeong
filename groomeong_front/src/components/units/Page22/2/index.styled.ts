@@ -1,61 +1,53 @@
 import styled from "@emotion/styled";
-import * as GS from "../../../../../theme/global";
 
 export const Container = styled.div`
-  height: 80vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #f4f4f4;
-  color: #08182b;
+  height: 2000px;
 `;
 
 export const Wrapper = styled.div`
-  width: 75%;
-  height: 100%;
-  display: flex;
-  justify-content: row;
-  align-items: center;
-`;
-export const Wrapper_left = styled.div`
-  width: 100%;
-  height: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
+  height: 800px;
+  width: 1000vw;
+  background: url(https://www.starbucks.co.kr/common/img/main/fav_prod_bg_new.jpg)
+    fixed;
 `;
 
-export const Left_Img = styled.img`
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
+export const Img = styled.img`
+  position: absolute;
+  top: 100px;
+  right: 200px;
 `;
 
-export const Wrapper_right = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-`;
-
-export const Right_subText = styled.span`
-  font-size: 23px;
-  font-weight: 600;
-  color: #ee2560;
-`;
-
-export const Right_title = styled.span`
-  font-size: 50px;
+export const Text = styled.h1`
+  font-size: 6em;
+  width: 258px;
+  color: white;
+  font-family: sans-serif;
+  position: absolute;
+  top: 80px;
+  left: 200px;
   font-weight: 700;
-  position: relative;
-`;
-export const Right_bottomText = styled.span`
-  color: #bfbfbf;
-  font-size: 18px;
-  font-weight: 500;
-  padding-top: 20px;
+  animation: slide 2s ease-out;
+
+  @keyframes slide {
+    from {
+      left: -100px;
+      opacity: 0;
+    }
+    to {
+      left: 200px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes disappear {
+    from {
+      left: 200px;
+      opacity: 1;
+    }
+    to {
+      left: -100px;
+      opacity: 0;
+    }
+  }
 `;

@@ -1,19 +1,30 @@
 import * as S from "./index.styled";
 
 export default function Page22() {
+  let location;
+  if (typeof document !== "undefined") {
+    location = document.location;
+
+    let mainText = document.querySelector("h1");
+
+    window.addEventListener("scroll", function () {
+      let value = window.scrollY;
+
+      if (value > 200) {
+        mainText?.style.animation === "disappear 1s ease-out forwards";
+      } else {
+        mainText?.style.animation === "slide 1s ease-out forwards";
+      }
+    });
+  }
+
   return (
     <S.Container>
       <S.Wrapper>
-        <S.Wrapper_left>
-          <S.Left_Img src="/image/main_reservation.png" />
-        </S.Wrapper_left>
-        <S.Wrapper_right>
-          <S.Right_subText>기다림 없는 실시간 온라인예약</S.Right_subText>
-          <S.Right_title>실시간 예약 현황 바로 확인</S.Right_title>
-          <S.Right_bottomText>
-            기다림없는 실시간 예약으로 원하는 시간대에 바로 예약하세요
-          </S.Right_bottomText>
-        </S.Wrapper_right>
+        <S.Text id="h1" style={{ animation: "none" }}>
+          PICK YOUR FAVORITE
+        </S.Text>
+        <S.Img src="https://image.istarbucks.co.kr/upload/common/img/main/2023/2023_spring2_pick_img.png" />
       </S.Wrapper>
     </S.Container>
   );
