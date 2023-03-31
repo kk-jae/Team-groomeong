@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../../theme/global";
+import { mediaQueries } from "../../../../commons/libraries/MediaQueries";
 
 export interface ITextAreaProps {
   contents?: string;
@@ -17,6 +18,10 @@ export const TextArea_Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 32px;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+  }
 `;
 
 export const TextArea_TopBox = styled.div`
@@ -45,6 +50,10 @@ export const TextArea_TopBox_Profile = styled.div`
     align-items: center;
     ${GS.Paragraph.Medium}
     margin-right: 32px;
+
+    ${mediaQueries("phone")} {
+      ${GS.Paragraph.Small};
+    }
   }
 `;
 
@@ -67,6 +76,16 @@ export const TextArea_Profile_Icon = styled.button`
     border: 1px solid ${GS.border.borderTransparent};
     border-radius: 50px;
     object-fit: contain;
+
+    ${mediaQueries("phone")} {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  ${mediaQueries("phone")} {
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
   }
 `;
 
@@ -77,6 +96,12 @@ export const TextArea_TopBox_Rate = styled.div`
   justify-content: flex-end;
   align-items: center;
   position: relative;
+
+  ${mediaQueries("tablet")} {
+    .css-gg5brn {
+      font-size: 20px;
+    }
+  }
 `;
 
 export const TextArea_TopBox_Date = styled.div`
@@ -109,6 +134,10 @@ export const TextArea_MiddleBox_Input = styled.textarea`
   }
   ::placeholder {
     color: #bdbdbd;
+  }
+
+  ${mediaQueries("tablet")} {
+    ${GS.Paragraph.Small};
   }
 `;
 
