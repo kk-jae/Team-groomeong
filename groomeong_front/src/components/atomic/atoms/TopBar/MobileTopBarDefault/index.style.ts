@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 export const MenuBox = styled(motion.div)`
   display: none;
+  z-index: 100;
 
   @media screen and (max-width: 1024px) {
     display: flex;
@@ -11,7 +12,7 @@ export const MenuBox = styled(motion.div)`
     background-color: rgba(0, 0, 0, 0.867);
     position: absolute;
     right: 0px;
-    top: 112px;
+    top: 88px;
     display: flex;
     flex-direction: column;
   }

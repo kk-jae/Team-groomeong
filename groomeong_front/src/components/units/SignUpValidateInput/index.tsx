@@ -59,7 +59,7 @@ const SignUpValidateInput = (props: ISignUpvalidateInputProps): JSX.Element => {
             <Buttons
               type="button"
               variation="primary"
-              label="인증하기"
+              label="인증 완료"
               size="small"
               state={
                 !validation.emailAuth

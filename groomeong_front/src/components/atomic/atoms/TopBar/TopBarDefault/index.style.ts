@@ -22,6 +22,8 @@ export const TopBarBox = styled.div`
     animation-name: identifier;
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
+    height: 88px;
+    margin-bottom: 12px;
   }
 
   @keyframes identifier {
