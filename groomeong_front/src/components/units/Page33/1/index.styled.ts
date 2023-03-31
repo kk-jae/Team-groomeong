@@ -10,13 +10,13 @@ export const Container = styled.div`
   height: 2000000px;
   overflow: hidden;
   background-color: #f4f4f4;
+  color: white;
 `;
 
 export const Page1 = styled.div<IProps>`
   position: fixed;
   width: 100%;
   height: 100vh;
-  /* background-color: #f4f4f4; */
   background-color: ${GS.base.primary};
   background-size: cover;
   overflow: hidden;
@@ -111,7 +111,7 @@ export const FlyAway2 = styled.img`
   top: 9%;
   right: 5%;
   transform: rotate(-30deg);
-  animation: fly2 4.8s ease-in-out;
+  animation: fly2 4.4s ease-in-out;
 
   @keyframes fly2 {
     0% {
@@ -175,14 +175,16 @@ export const Scroll = styled.div`
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  color: BLACK;
+
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
   background-color: #f4f4f4;
   font-weight: 700;
   font-style: italic;
   animation-name: aaa, bbb, ccc;
-  animation-duration: 6.5s, 2s, 1s;
+  animation-duration: 6s, 2s, 1s;
   animation-timing-function: ease, ease-in-out, ease-in-out;
-  animation-delay: 0s, 6.5s, 6.5s;
+  animation-delay: 0s, 6s, 6s;
   animation-iteration-count: 1, 1, infinite;
   animation-direction: normal, normal, alternate-reverse;
 
@@ -222,54 +224,147 @@ export const Page2 = styled.div<IProps>`
   opacity: ${(props) => (props.position ? `${props.position / 1000}` : 0)};
 `;
 
-export const Introduce = styled.div`
+export const Shop = styled.div<IProps>`
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  display: ${(props) => (props.position >= 3000 ? "none" : "flex")};
 `;
 
-export const Introduce_one = styled.div<IProps>`
-  width: 350px;
-  height: 500px;
-  background-color: #f4f4f4;
+export const Shop_Detail = styled.div<IProps>`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 0px 60px 0px 60px;
+  /* transition: all 0.1s ease-in-out; */
+  transform: scale(
+      ${(props) =>
+        props.position >= 1000 ? `${1 + (props.position - 1000) / 1200}` : 0}
+    )
+    translate(
+      ${(props) =>
+        props.position >= 1000 ? `${(props.position - 2000) / 2}px` : 0},
+      ${(props) =>
+        props.position >= 1000 ? `${(props.position - 2000) / 2}px` : 0}
+    );
   opacity: ${(props) =>
-    props.position ? `${(props.position - 1000) / 800}` : 0};
-  font-size: 30px;
-  font-weight: 600;
-  color: white;
+    props.position >= 1000 && props.position <= 1800
+      ? `${(props.position - 1000) / 800}`
+      : `${1800 / props.position}`};
 `;
-export const Introduce_two = styled.div<IProps>`
-  width: 350px;
-  height: 500px;
-  background-color: #f4f4f4;
+
+export const Shop_Img = styled.img`
+  width: 30%;
+  height: 60%;
+`;
+export const Shop_Text = styled.div``;
+
+export const Reservation = styled.div<IProps>`
+  width: 100%;
+  height: 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  display: ${(props) => (props.position >= 4800 ? "none" : "flex")};
+`;
+
+export const Reservation_Detail = styled.div<IProps>`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 0px 60px 0px 60px;
+  /* transition: all 0.1s ease-in-out; */
+  transform: scale(
+      ${(props) =>
+        props.position >= 3000 ? `${1 + (props.position - 3000) / 1000}` : 0}
+    )
+    translateY(
+      ${(props) =>
+        props.position >= 3000 ? `${(props.position - 4000) / 2}px` : 0}
+    );
+  opacity: ${(props) =>
+    props.position >= 3000 ? `${(props.position - 3000) / 1000}` : `0`};
+`;
+
+export const Reservation_Text = styled.div``;
+
+export const Reservation_Img = styled.img`
+  width: 30%;
+  height: 60%;
+`;
+
+export const Review = styled.div<IProps>`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  display: ${(props) => (props.position >= 7200 ? "none" : "flex")};
+`;
+export const Review_Detail = styled.div<IProps>`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 60px 0px 60px;
+  transform: scale(
+      ${(props) =>
+        props.position >= 4800 ? `${1.0 + (props.position - 4800) / 500}` : 0}
+    )
+    translateX(
+      ${(props) =>
+        props.position >= 4800 ? `${(props.position - 6000) / 2}px` : "0px"}
+    );
+  opacity: ${(props) =>
+    props.position >= 4800 && props.position <= 6000
+      ? `${(props.position - 4800) / 1000}`
+      : `${6000 / props.position}`};
+`;
+
+export const Review_Img = styled.img`
+  width: 30%;
+  height: 60%;
+`;
+
+export const Review_Text = styled.div``;
+
+export const Introduce = styled.div<IProps>`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Introduce_Text = styled.div`
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+`;
+export const Introduce_subTitle = styled.div<IProps>`
+  font-size: 50px;
   opacity: ${(props) =>
     props.position ? `${(props.position - 2000) / 800}` : 0};
-  font-size: 30px;
-  font-weight: 600;
-  color: white;
 `;
-export const Introduce_three = styled.div<IProps>`
-  width: 350px;
-  height: 500px;
-  background-color: #f4f4f4;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+export const Introduce_Title = styled.div<IProps>`
+  font-size: 100px;
   opacity: ${(props) =>
     props.position ? `${(props.position - 3000) / 800}` : 0};
-  font-size: 30px;
-  font-weight: 600;
+`;
+
+export const Introduce_Img = styled.img`
   color: white;
+  width: 9%;
+  height: 18%;
 `;
