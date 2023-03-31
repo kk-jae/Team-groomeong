@@ -52,7 +52,7 @@ export const TopBarButtons = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media screen and (max-width: 1024px) {
+  ${mediaQueries("tablet")} {
     display: none;
   }
 `;
