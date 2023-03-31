@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../../theme/global";
 import MenuIcon from "@mui/icons-material/Menu";
+import { mediaQueries } from "../../../../commons/libraries/MediaQueries";
 
 export interface ITopBarDefault {
   loggedIn: boolean;
@@ -15,7 +16,7 @@ export const TopBarBox = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media screen and (max-width: 1124px) {
+  ${mediaQueries("tablet")} {
     transition: identifier;
     width: 100%;
     animation-name: identifier;
@@ -59,7 +60,7 @@ export const TopBarButtons = styled.div`
 export const HamBurger = styled(MenuIcon)`
   display: none;
 
-  @media screen and (max-width: 1024px) {
+  ${mediaQueries("tablet")} {
     display: block;
     width: 44px;
     height: 44px;
@@ -80,7 +81,7 @@ export const HamBurger = styled(MenuIcon)`
 export const MenuBox = styled.div`
   display: none;
 
-  @media screen and (max-width: 1024px) {
+  ${mediaQueries("tablet")} {
     display: flex;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.867);
@@ -93,7 +94,7 @@ export const MenuBox = styled.div`
 `;
 
 export const MenuButton = styled.button`
-  @media screen and (max-width: 1024px) {
+  ${mediaQueries("tablet")} {
     display: flex;
     flex-direction: column;
     justify-content: center;

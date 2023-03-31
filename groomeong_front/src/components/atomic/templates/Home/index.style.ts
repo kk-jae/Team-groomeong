@@ -1,24 +1,25 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
 import { motion } from "framer-motion";
-import { SearchBox } from "../../atoms/SearchBar/index.styles";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 export const MainText = styled(motion.h1)`
-  @media screen and (max-width: 1024px) {
+  color: ${GS.white};
+  margin: 56px 0px;
+
+  ${mediaQueries("tablet")} {
     ${GS.Heading.XL}
+    margin: 35px 0px 56px 0px;
+  }
+
+  ${mediaQueries("phone")} {
+    ${GS.Heading.Large}
+    margin: 0px 0px 56px 0px;
   }
 `;
 
 export const MainCharacter = styled(motion.img)`
-  @media screen and (max-width: 1024px) {
-    width: 30rem;
-    height: 30rem;
-  }
-`;
-
-export const Search = styled(SearchBox)`
-  @media screen and (max-width: 1024px) {
-    width: 30rem;
-    height: 30rem;
-  }
+  width: 60%;
+  height: 60%;
+  margin-top: 56px;
 `;

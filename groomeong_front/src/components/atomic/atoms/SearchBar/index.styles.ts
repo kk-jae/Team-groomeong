@@ -2,17 +2,14 @@ import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
 
 interface ISearchBarProps {
-  sizes: "small" | "medium" | "large";
-}
-
-interface IInputContentProps {
-  sizes: "small" | "medium" | "large";
-  placeholder: string;
+  sizes: "mini" | "small" | "medium" | "large";
 }
 
 export const SearchBox = styled.div`
   width: ${(props: ISearchBarProps) =>
-    props.sizes === "small"
+    props.sizes === "mini"
+      ? "350px"
+      : props.sizes === "small"
       ? "508px"
       : props.sizes === "medium"
       ? "744px"
@@ -20,7 +17,9 @@ export const SearchBox = styled.div`
       ? "1054px"
       : ""};
   height: ${(props: ISearchBarProps) =>
-    props.sizes === "small"
+    props.sizes === "mini"
+      ? "60px"
+      : props.sizes === "small"
       ? "60px"
       : props.sizes === "medium"
       ? "76px"
@@ -36,14 +35,7 @@ export const SearchBox = styled.div`
 `;
 
 export const InputContent = styled.input`
-  width: ${(props: IInputContentProps) =>
-    props.sizes === "small"
-      ? "404px"
-      : props.sizes === "medium"
-      ? "640px"
-      : props.sizes === "large"
-      ? "950px"
-      : ""};
+  width: 100%;
   height: 100%;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;

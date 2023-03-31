@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 interface IBackgroundWrapperProps {
   centered?: boolean;
@@ -14,4 +15,8 @@ export const BackgroundWrapper = styled.div<IBackgroundWrapperProps>`
   background-color: ${GS.base.primary};
   width: 100%;
   padding: 0px 64px 150px 64px;
+
+  ${mediaQueries("tablet")} {
+    padding: 0px 16px 32px 16px;
+  }
 `;
