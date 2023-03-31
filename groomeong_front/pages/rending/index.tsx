@@ -5,6 +5,7 @@ import Page11 from "../../src/components/units/Page22/1";
 import Page22 from "../../src/components/units/Page22/2";
 import Page33 from "../../src/components/units/Page22/3";
 import Page44 from "../../src/components/units/Page22/4";
+import Page55 from "../../src/components/units/Page33/1";
 
 export default function HomePage() {
   return (
@@ -15,7 +16,8 @@ export default function HomePage() {
       {/* <Page11 /> */}
       {/* <Page22 /> */}
       {/* <Page33 /> */}
-      <Page44 />
+      {/* <Page44 /> */}
+      <Page55 />
     </>
   );
 }
