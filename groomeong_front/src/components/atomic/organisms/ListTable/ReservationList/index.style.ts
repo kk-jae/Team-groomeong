@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../../theme/global";
+import { mediaQueries } from "../../../../commons/libraries/MediaQueries";
 
 export const ReservationListWrapper = styled.div`
   width: 100%;
@@ -29,21 +30,25 @@ export const Table = styled.div`
 
     thead {
       background-color: ${GS.gray[100]};
+      word-break: keep-all;
 
       tr {
         border-bottom: 1px solid ${GS.black};
+        ${mediaQueries("phone")} {
+          ${GS.Paragraph.Small}
+        }
 
         th {
           height: 44px;
           width: 21%;
-          padding: 10px 0px;
+          padding: 8px 4px;
           border-right: 1px solid black;
         }
 
         th:nth-child(5) {
           height: 44px;
           width: 16%;
-          padding: 10px 0px;
+          padding: 8px 4px;
           border-right: 0px;
         }
       }
@@ -52,11 +57,14 @@ export const Table = styled.div`
     tbody {
       background-color: ${GS.white};
       height: 44px;
+      ${mediaQueries("phone")} {
+        ${GS.Paragraph.Small}
+      }
 
       th {
         height: 44px;
         width: 21%;
-        padding: 5px 0px;
+        padding: 8px 4px;
         border-right: 1px solid black;
         border-bottom: 1px solid black;
       }
@@ -64,7 +72,7 @@ export const Table = styled.div`
       th:nth-child(5) {
         height: 44px;
         width: 16%;
-        padding: 10px 0px;
+        padding: 8px 4px;
         border-right: 0px;
 
         div {

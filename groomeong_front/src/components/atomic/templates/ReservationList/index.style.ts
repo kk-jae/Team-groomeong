@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 export const BodyWrapper = styled.div`
   width: 1124px;
@@ -9,6 +10,13 @@ export const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 64px;
+    padding: 0px 32px 32px 32px;
+  }
 `;
 
 export const BodyTopWrapper = styled.div`
@@ -24,4 +32,12 @@ export const BodyContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${mediaQueries("tablet")} {
+    padding: 0px 32px;
+  }
+
+  ${mediaQueries("phone")} {
+    padding: 0px 0px;
+  }
 `;

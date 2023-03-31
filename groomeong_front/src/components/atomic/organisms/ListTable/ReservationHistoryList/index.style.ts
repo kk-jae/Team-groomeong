@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../../theme/global";
+import { mediaQueries } from "../../../../commons/libraries/MediaQueries";
 
 export const ReservationListWrapper = styled.div`
   width: 100%;
@@ -25,9 +26,13 @@ export const Table = styled.div`
   table {
     width: 100%;
     ${GS.Paragraph.Medium}
+    ${mediaQueries("phone")} {
+      ${GS.Paragraph.Small}
+    }
 
     thead {
       background-color: ${GS.gray[100]};
+      word-break: keep-all;
 
       tr {
         border-bottom: 1px solid ${GS.black};
@@ -35,14 +40,14 @@ export const Table = styled.div`
         th {
           height: 44px;
           width: 20%;
-          padding: 10px 0px;
+          padding: 8px 4px;
           border-right: 1px solid black;
         }
 
         th:nth-child(5) {
           height: 44px;
           width: 20%;
-          padding: 10px 0px;
+          padding: 8px 4px;
           border-right: 0px;
         }
       }
@@ -51,11 +56,14 @@ export const Table = styled.div`
     tbody {
       background-color: ${GS.white};
       height: 44px;
+      ${mediaQueries("phone")} {
+        ${GS.Paragraph.Small}
+      }
 
       th {
         height: 44px;
         width: 20%;
-        padding: 5px 0px;
+        padding: 8px 4px;
         border-right: 1px solid black;
         border-bottom: 1px solid black;
       }
@@ -63,13 +71,27 @@ export const Table = styled.div`
       th:nth-child(5) {
         height: 44px;
         width: 20%;
-        padding: 10px 0px;
+        padding: 8px 4px;
         border-right: 0px;
 
         div {
           display: flex;
           flex-direction: row;
           justify-content: center;
+
+          button {
+            padding: 4px 12px;
+            background-color: ${GS.base.primary};
+            border: 0px;
+            color: ${GS.white};
+            ${GS.Paragraph.Medium}
+            cursor: pointer;
+
+            ${mediaQueries("phone")} {
+              ${GS.Paragraph.Small};
+              word-break: keep-all;
+            }
+          }
         }
       }
     }

@@ -50,7 +50,7 @@ export const PageHeaderTitle = styled.h1`
   }
 
   ${mediaQueries("phone")} {
-    ${GS.Heading.XXL}
+    ${GS.Heading.XL}
     margin-bottom: 8px;
   }
 `;
