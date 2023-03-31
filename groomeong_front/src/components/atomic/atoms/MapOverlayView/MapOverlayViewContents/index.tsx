@@ -62,7 +62,6 @@ export const MapOverlayVeiwContents = () => {
                 onClick={onClickMoveToPage(`/map/${shop?.id as string}/detail`)}
               >
                 상세보기
-                {/* {isModalOpen ? console.log("true") : console.log("false")} */}
               </ContentsButton>
             </>
           </Div>
