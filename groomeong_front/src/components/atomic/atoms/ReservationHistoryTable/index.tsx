@@ -51,18 +51,15 @@ export const ReservationHistoryTable = (): JSX.Element => {
                   <th>
                     <div>
                       {el.review != null ? (
-                        <div>리뷰 작성 완료</div>
+                        <div>작성 완료</div>
                       ) : (
-                        <Buttons
-                          variation="primary"
-                          label="리뷰 쓰기"
-                          border="none"
-                          size="small"
-                          type="button"
+                        <button
                           onClick={onClickReview}
                           id={el.id}
                           className={el.shop.id}
-                        ></Buttons>
+                        >
+                          리뷰 작성
+                        </button>
                       )}
 
                       {onReview ? (
