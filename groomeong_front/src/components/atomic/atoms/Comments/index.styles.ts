@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
 import StoreSharpIcon from "@mui/icons-material/StoreSharp";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 interface IButtonStateProps {
   buttonState?: boolean;
@@ -11,7 +12,14 @@ export const CommentsBoxModalStyles = styled.div`
   flex-direction: column;
   gap: ${`${GS.Spacing[16]}px`};
   margin-bottom: 32px;
+
+  ${mediaQueries("tablet")} {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 `;
+
 export const CommentsHeaderModalTitleStyles = styled.div`
   display: flex;
   align-items: center;
@@ -25,6 +33,20 @@ export const CommentsHeaderModalTitleStyles = styled.div`
   & > h1 {
     ${GS.Heading.XXXL};
     color: ${GS.contents.contentPrimary};
+
+    ${mediaQueries("tablet")} {
+      ${GS.Heading.XXL};
+    }
+
+    ${mediaQueries("phone")} {
+      ${GS.Heading.Large};
+    }
+  }
+
+  ${mediaQueries("tablet")} {
+    flex-direction: column;
+    width: 100%;
+    gap: 0px;
   }
 `;
 
@@ -40,6 +62,10 @@ export const CommentsHeaderModalStyles = styled.div`
 export const ShopIconStyles = styled(StoreSharpIcon)`
   width: 45px;
   height: 45px;
+
+  ${mediaQueries("tablet")} {
+    display: none;
+  }
 `;
 export const CommentsFooterModalStyles = styled.div`
   display: flex;
@@ -57,6 +83,10 @@ export const FooterLabelNameStyles = styled.span`
   & > label {
     ${GS.Paragraph.Medium}
     margin-bottom: 8px;
+
+    ${mediaQueries("phone")} {
+      ${GS.Paragraph.Small}
+    }
   }
 `;
 export const FooterModalButtonBox = styled.div`
