@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 export const SignUpWrapper = styled.div`
   display: flex;
@@ -9,6 +10,13 @@ export const SignUpWrapper = styled.div`
   border-radius: 20px;
   width: 1130px;
   background-color: ${GS.base.secondary};
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+    padding: 0px 64px;
+    padding-bottom: 54px;
+    height: 100%;
+  }
 `;
 
 export const SignUpForm = styled.form`
