@@ -9,12 +9,12 @@ import PageHeader from "../../atoms/PageHeader";
 import Background from "../../organisms/Background";
 import * as S from "./index.styled";
 import { UseQueryFetchLoginUser } from "../../../commons/hooks/query/UseQueryFetchLoginUser";
-import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 import { Modal } from "antd";
 import { UseQueryFetchUsers } from "../../../commons/hooks/query/UseQueryFetchUsers";
+import { useRouter } from "next/router";
 
 export const EmailAuthTemplates = (): JSX.Element => {
-  const { onClickMoveToPage } = useMoveToPage();
+  const router = useRouter();
   const { data: fetchLoginUserData } = UseQueryFetchLoginUser();
   const [disabledState, setDisabledState] = useState<undefined | boolean>(
     undefined
@@ -109,9 +109,7 @@ export const EmailAuthTemplates = (): JSX.Element => {
             <div></div>
           )}
         </S.EmailAuthMiddle>
-        <S.EmailAuthBottom onClick={onClickMoveToPage("/mypage/edit")}>
-          취소
-        </S.EmailAuthBottom>
+        <S.EmailAuthBottom onClick={router.back}>취소</S.EmailAuthBottom>
       </S.EmailAuthWrapper>
     </Background>
   );
