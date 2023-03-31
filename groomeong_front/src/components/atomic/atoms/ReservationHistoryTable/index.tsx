@@ -3,7 +3,6 @@ import { IReservation } from "../../../../commons/types/generated/types";
 import { getDate } from "../../../commons/libraries/GetDate";
 import { isSameDate } from "../../../commons/libraries/GetTimeStamp";
 import { UseQueryFetchReservationByUser } from "../../../commons/hooks/query/UseQueryFetchReservationByUserId";
-import { Buttons } from "../Buttons";
 import { MouseEvent, useState } from "react";
 import { ReviewModal } from "../../organisms/ReviewModal";
 import { UseQueryFetchShopWithReviewAuth } from "../../../commons/hooks/query/UseQueryFetchShopWithReviewAuth";
