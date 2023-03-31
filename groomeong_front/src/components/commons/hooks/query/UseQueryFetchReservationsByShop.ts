@@ -6,15 +6,8 @@ interface IUseQueryFetchReservationByShop {
 }
 
 export const FETCH_RESERVATIONS_BY_SHOP = gql`
-  query {
-    fetchReservationsByShop {
-      id
-      date
-      time
-      shop {
-        id
-        name
-      }
+  query fetchReservationsByShop($shopId: String) {
+    fetchReservationsByShop(shopid: $shopId) {
       user {
         id
         name
@@ -25,12 +18,18 @@ export const FETCH_RESERVATIONS_BY_SHOP = gql`
   }
 `;
 
-export const UseQueryFetchReservationByShop =
-  (): IUseQueryFetchReservationByShop => {
-    const { data } = useQuery<Pick<IQuery, "fetchReservationsByShop">>(
-      FETCH_RESERVATIONS_BY_SHOP
-    );
-    return {
-      data,
-    };
+export const UseQueryFetchReservationByShop = (
+  shopId: string
+): IUseQueryFetchReservationByShop => {
+  const { data } = useQuery<Pick<IQuery, "fetchReservationsByShop">>(
+    FETCH_RESERVATIONS_BY_SHOP,
+    {
+      variables: {
+        shopId,
+      },
+    }
+  );
+  return {
+    data,
   };
+};
