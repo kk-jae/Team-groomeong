@@ -19,7 +19,6 @@ export const useInitPassword = () => {
     }
     if (data.password === data.password2) {
       email = localStorage.email;
-      // console.log(typeof email, typeof data.password2);
       try {
         await resetPwd({
           variables: {

@@ -38,7 +38,7 @@ export const EmailAuthTemplates = (): JSX.Element => {
         content: "이메일을 입력해주세요",
       });
     }
-    if (UsersEmail?.includes(String(data.email)) !== false) {
+    if (UsersEmail?.includes(String(data.email)) !== true) {
       void sendEmail(data)();
       setDisabledState(true);
       let min = 2;

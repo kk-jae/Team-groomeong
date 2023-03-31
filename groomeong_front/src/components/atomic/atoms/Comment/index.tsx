@@ -16,9 +16,6 @@ export interface ICommentProps {
 export const Comment = (props: ICommentProps): JSX.Element => {
   const { data } = UseQueryFetchForShopDetailPage(String(props.shopId));
 
-  console.log(props.shopId);
-  console.log(data);
-
   return (
     <>
       <S.TextArea_Wrapper>

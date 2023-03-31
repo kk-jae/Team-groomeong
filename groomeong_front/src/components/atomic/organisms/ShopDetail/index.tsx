@@ -23,6 +23,7 @@ export const ShopDetail = (props: IShopDetailProps): JSX.Element => {
   );
   const { onClickMoveToPage } = useMoveToPage();
 
+  console.log(data?.fetchShop?.image?.[0].imageUrl);
   return (
     <>
       <S.ShopDetailModal
@@ -35,8 +36,8 @@ export const ShopDetail = (props: IShopDetailProps): JSX.Element => {
         <S.ShopDetailWrapper>
           <S.ShopImage
             src={
-              data?.fetchShop?.image?.[0] !== undefined
-                ? `https://storage.googleapis.com/${data?.fetchShop?.image[0].imageUrl}`
+              data?.fetchShop?.image?.[0].imageUrl !== undefined
+                ? `https://storage.googleapis.com/${data?.fetchShop?.image?.[0].imageUrl}`
                 : "/image/img_shop_default.svg"
             }
           />
