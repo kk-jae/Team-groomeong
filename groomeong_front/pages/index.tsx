@@ -3,7 +3,7 @@ import * as S from "../src/commons/RendingStyles/index";
 import { useMoveToPage } from "../src/components/commons/hooks/custom/useMovedToPage";
 import { ArrowDownward } from "@mui/icons-material";
 
-export default function Page55() {
+export default function Rending() {
   const [position, setPosition] = useState(0);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
