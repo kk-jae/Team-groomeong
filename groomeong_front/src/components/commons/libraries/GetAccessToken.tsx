@@ -8,11 +8,9 @@ const RESTORE_ACCESS_TOKEN = gql`
 `;
 
 export const GetAccessToken = async (): Promise<string | undefined> => {
-  // const router = useRouter();
-
   try {
     const graphQLClient = new GraphQLClient("https://groomeong.shop/graphql", {
-      // credentials: "include",
+      credentials: "include",
     });
     const result = await graphQLClient.request<
       Pick<IMutation, "restoreAccessToken">

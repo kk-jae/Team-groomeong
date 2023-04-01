@@ -27,7 +27,6 @@ export const ButtonCommons = styled.button<IButtonProps>`
   border: 0;
   outline: 0;
 
-  border-radius: ${`${GS.Spacing[12]}px`};
   ${GS.Paragraph.Medium};
   padding: ${(props) => {
     if (props.size === "small") {

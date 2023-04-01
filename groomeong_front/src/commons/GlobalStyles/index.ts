@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import * as S from "../../../theme/global";
 import * as GS from "../../../theme/global";
 
 export const GlobalStyle = css`
@@ -8,6 +7,12 @@ export const GlobalStyle = css`
   * {
     margin: 0px;
     box-sizing: border-box;
+  }
+
+  @media screen and (max-width: 1124px) {
+    .container1 {
+      width: 100% !important;
+    }
   }
 
   body {
@@ -143,18 +148,18 @@ export const GlobalStyle = css`
     border-spacing: 0;
   }
   h1 {
-    ${S.Heading.XXXL}
+    ${GS.Heading.XXXL}
   }
   h2 {
-    ${S.Heading.XXL}
+    ${GS.Heading.XXL}
   }
   h3 {
-    ${S.Heading.XL}
+    ${GS.Heading.XL}
   }
   h4 {
-    ${S.Heading.Large}
+    ${GS.Heading.Large}
   }
   h5 {
-    ${S.Heading.Medium}
+    ${GS.Heading.Medium}
   }
 `;

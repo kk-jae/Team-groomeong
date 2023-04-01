@@ -66,7 +66,7 @@ export const ReservationTime = (props: IPropsFetchShop): JSX.Element => {
           <S.ReservationWrapperBottomItemTimeDetail
             disabled={
               reservedDateTime.includes(String(el)) ||
-              props.reservationDate <= getDate(String(new Date()))
+              props.reservationDate < getDate(String(new Date()))
             }
             reservationTime={props.reservationTime}
             el={String(el)}

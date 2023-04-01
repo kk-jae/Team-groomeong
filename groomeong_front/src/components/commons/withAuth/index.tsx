@@ -1,20 +1,23 @@
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useRecoilValueLoadable } from "recoil";
+import { restoreAccessTokenLoadable } from "../../../commons/Store";
 
-// hooks에 useAuth폴더 만들어 놓음.
-// eslint에서 끔
 // eslint-disable-next-line react/display-name
 export const withAuth = (Component: any) => (props: any) => {
   const router = useRouter();
+  const aaa = useRecoilValueLoadable(restoreAccessTokenLoadable);
 
   useEffect(() => {
-    if (localStorage.getItem("accessToken") === null) {
-      Modal.confirm({
-        content: "로그인을 먼저 해주세요",
-      });
-      void router.push("/login");
-    }
+    void aaa.toPromise().then((newAccessToken) => {
+      if (newAccessToken === undefined) {
+        Modal.confirm({
+          content: "로그인 후 이용 가능합니다.",
+        });
+        void router.push(`/login`);
+      }
+    });
   }, []);
 
   return (

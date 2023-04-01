@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 export const LogInWrapper = styled.div`
   width: 1130px;
@@ -9,23 +10,17 @@ export const LogInWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+  padding: 0px 64px;
 
-export const LogInTop = styled.div`
-  width: 996px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  ${GS.Heading.XXXL}
-  padding:104px 0px 8px 0px;
-  border-bottom: 1px solid ${GS.border.borderOpaque};
-  margin-bottom: 32px;
+  ${mediaQueries("tablet")} {
+    padding: 0px 64px;
+    padding-bottom: 54px;
+    height: 100%;
+  }
 `;
-export const LogInTopText = styled.span``;
 
 export const LogInMiddle = styled.form`
-  width: 996px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -41,6 +36,10 @@ export const LogInBottom = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+  }
 `;
 
 export const LogInBottomSocial = styled.div`
@@ -87,6 +86,15 @@ export const LogInBottomSighUp = styled.div`
   justify-content: space-between;
   width: 269px;
   padding-bottom: 32px;
+
+  ${mediaQueries("phone")} {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 32px;
+  }
 `;
 export const LogInBottomSighUpTop = styled.span`
   color: ${GS.contents.contentSecondary};
@@ -109,6 +117,14 @@ export const LogInBottomFindPassword = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 372px;
+
+  ${mediaQueries("phone")} {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 export const LogInBottomFindPasswordTop = styled.span`
   color: ${GS.contents.contentSecondary};

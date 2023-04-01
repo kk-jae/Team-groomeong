@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 interface IProps {
   disabledState: boolean | undefined;
@@ -11,6 +12,11 @@ export const EmailAuthWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+    padding: 0px 32px;
+  }
 `;
 
 export const EmailAuthTop = styled.div`
@@ -24,12 +30,14 @@ export const EmailAuthTop = styled.div`
   padding-bottom: 10px;
   ${GS.Heading.XXXL};
 `;
+
 export const EmailAuthTopImg = styled.img`
   width: 48px;
   height: 48px;
   object-fit: cover;
   margin-right: 32px;
 `;
+
 export const EmailAuthTopText = styled.div``;
 
 export const EmailAuthMiddle = styled.div`
@@ -43,21 +51,22 @@ export const EmailAuthMiddleLabel = styled.label`
   color: ${GS.contents.contentSecondary};
   margin-bottom: 32px;
 `;
+
 export const EmailAuthMiddleTextButtonWrapper = styled.form`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  ${mediaQueries("tablet")} {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 `;
-export const EmailAuthMiddleText = styled.input`
-  width: 500px;
-  height: 66px;
-  border-radius: 12px;
-  padding-left: 32px;
-  outline: none;
-  border: 1px solid ${GS.border.borderOpaque};
-  margin-right: 32px;
-`;
+
 export const EmailAuthMiddleButton = styled.button<IProps>`
   cursor: pointer;
   border: none;
@@ -69,7 +78,6 @@ export const EmailAuthMiddleButton = styled.button<IProps>`
       : `${GS.base.primary}`};
   color: ${(props) =>
     props.disabledState !== undefined ? `${GS.gray[200]}` : "white"};
-  border-radius: 12px;
 `;
 
 export const EmailAuthMiddleTime = styled.span`
@@ -86,14 +94,12 @@ export const EmailAuthMiddleTimeButton = styled.button`
   height: 42px;
   background-color: ${GS.base.primary};
   color: white;
-  border-radius: 12px;
 `;
 
 export const EmailAuthBottom = styled.button`
   margin: 32px 0px 32px 0px;
   width: 92px;
   height: 42px;
-  border-radius: 12px;
   background-color: red;
   color: white;
   border: none;

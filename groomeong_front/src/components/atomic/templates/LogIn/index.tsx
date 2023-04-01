@@ -28,7 +28,7 @@ export const LogInTemplate = (): JSX.Element => {
 
   return (
     <Background>
-      <S.LogInWrapper>
+      <S.LogInWrapper className="container1">
         <PageHeader title="로그인" />
         <FormProvider {...method}>
           <S.LogInMiddle

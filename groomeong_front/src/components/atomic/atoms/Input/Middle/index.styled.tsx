@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 import * as GS from "../../../../../../theme/global";
+import { mediaQueries } from "../../../../commons/libraries/MediaQueries";
 
 interface IFocusLabel {
   focus: boolean;
@@ -9,12 +11,16 @@ interface IFocusInput {
   error: string;
 }
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled(motion.div)`
   width: 500px;
   margin-top: 32px;
   margin-bottom: 32px;
   position: relative;
   ${GS.Paragraph.Medium};
+
+  ${mediaQueries("phone")} {
+    width: 100%;
+  }
 `;
 
 export const Label = styled.label<IFocusLabel>`

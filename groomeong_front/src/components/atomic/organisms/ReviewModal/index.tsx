@@ -29,11 +29,12 @@ export const ReviewModal = (props: IReviewProps): JSX.Element => {
   return (
     <>
       <S.ReviewModalStyle
+        className="container1"
         open={true}
         onCancel={props.showModal}
         maskStyle={{ background: GS.blue[900], opacity: 0.8 }}
       >
-        <S.ShopDetailWrapper>
+        <S.ShopDetailWrapper className="container1">
           <S.ShopImage
             src={
               data?.fetchShop?.image?.[0].imageUrl != null

@@ -1,8 +1,10 @@
+import { useRouter } from "next/router";
 import { UseQueryFetchLoginUser } from "./../query/UseQueryFetchLoginUser";
-import { UseMutationUpdateUser } from "./../mutation/UseMutationUpdateUser";
 import { Modal } from "antd";
+import { UseMutationResetPwd } from "../mutation/UseMutationResetPwd";
 export const useInitPassword = () => {
-  const [updateUser] = UseMutationUpdateUser();
+  const router = useRouter();
+  const [resetPwd] = UseMutationResetPwd();
   const { data: fetchLoginUserData } = UseQueryFetchLoginUser();
 
   interface IData {
@@ -10,20 +12,25 @@ export const useInitPassword = () => {
     password2: string;
   }
 
+  let email = "";
   const onClickInitPassword = async (data: IData) => {
+    if (fetchLoginUserData !== undefined) {
+      email = fetchLoginUserData.fetchLoginUser.email;
+    }
     if (data.password === data.password2) {
+      email = localStorage.email;
       try {
-        await updateUser({
+        await resetPwd({
           variables: {
-            userId: String(fetchLoginUserData?.fetchLoginUser.id),
-            updateUserInput: {
-              password: data.password2,
-            },
+            email,
+            newPassword: data.password2,
           },
         });
         Modal.success({
           content: "비밀번호 변경 성공!",
         });
+        localStorage.removeItem("email");
+        void router.push("/home");
       } catch (error) {
         if (error instanceof Error) {
           Modal.error({

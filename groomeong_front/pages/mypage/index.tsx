@@ -1,8 +1,7 @@
 import { MyPageTemplate } from "../../src/components/atomic/templates/MyPage";
-import { withAuth } from "../../src/components/commons/withAuth";
+import { useAuth } from "../../src/components/commons/hooks/useAuth/UseAuth";
 
-function MyPagePage(): JSX.Element {
+export default function MyPagePage(): JSX.Element {
+  useAuth();
   return <MyPageTemplate />;
 }
-
-export default withAuth(MyPagePage);

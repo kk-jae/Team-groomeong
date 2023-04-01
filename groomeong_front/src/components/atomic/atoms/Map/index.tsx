@@ -1,12 +1,16 @@
 import { GoogleMap } from "@react-google-maps/api";
 import { v4 } from "uuid";
 import getLatLng from "../../../../commons/Utils/getLatLng";
+import useLoggined from "../../../commons/hooks/custom/useLoggined";
 import { useMap } from "../../../commons/hooks/custom/useMap";
 import MapMarker from "../MapMarker";
 import MapPolygon from "../MapPolygon";
+import { TopBarMap } from "../TopBar/TopBarMap";
 import { Div } from "./index.styled";
 
 export const Map = (): JSX.Element => {
+  const loggedIn = useLoggined();
+
   const {
     onClickMap,
     shops,
@@ -31,6 +35,7 @@ export const Map = (): JSX.Element => {
         zoom={11}
         onLoad={onLoad}
       >
+        <TopBarMap loggedIn={loggedIn}></TopBarMap>
         {geoData.map((map) => (
           <>
             <MapPolygon key={v4()} codes={codes} map={map} />

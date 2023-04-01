@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { Modal } from "antd";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/Store";
@@ -10,7 +9,6 @@ interface IHomePageLogInData {
 }
 
 export const useLogInButton = () => {
-  const router = useRouter();
   const [login] = UseMutationLogin();
   const [, setAccessToken] = useRecoilState(accessTokenState);
 
@@ -27,9 +25,8 @@ export const useLogInButton = () => {
       const accessToken = createLogIn.data?.login;
       if (accessToken !== undefined) {
         setAccessToken(accessToken);
-        localStorage.setItem("accessToken", accessToken);
       }
-      void router.push("/home");
+      window.location.replace("/home");
     } catch (error) {
       if (error instanceof Error)
         Modal.error({

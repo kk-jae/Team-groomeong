@@ -3,7 +3,6 @@ import { IReservation } from "../../../../commons/types/generated/types";
 import { getDate } from "../../../commons/libraries/GetDate";
 import { isSameDate } from "../../../commons/libraries/GetTimeStamp";
 import { UseQueryFetchReservationByUser } from "../../../commons/hooks/query/UseQueryFetchReservationByUserId";
-import { Buttons } from "../Buttons";
 import { MouseEvent, useState } from "react";
 import { ReviewModal } from "../../organisms/ReviewModal";
 import { UseQueryFetchShopWithReviewAuth } from "../../../commons/hooks/query/UseQueryFetchShopWithReviewAuth";
@@ -51,18 +50,15 @@ export const ReservationHistoryTable = (): JSX.Element => {
                   <th>
                     <div>
                       {el.review != null ? (
-                        <div>리뷰 작성 완료</div>
+                        <div>작성 완료</div>
                       ) : (
-                        <Buttons
-                          variation="primary"
-                          label="리뷰 쓰기"
-                          border="none"
-                          size="small"
-                          type="button"
+                        <button
                           onClick={onClickReview}
                           id={el.id}
                           className={el.shop.id}
-                        ></Buttons>
+                        >
+                          리뷰 작성
+                        </button>
                       )}
 
                       {onReview ? (
