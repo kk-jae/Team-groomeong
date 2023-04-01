@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 interface IDivProps {
   left?: string;
@@ -28,6 +29,18 @@ export const Div = styled(motion.div)<IDivProps>`
   flex-direction: ${({ direction }) => direction ?? "row"};
   justify-content: ${({ justyfyContents }) => justyfyContents ?? "flex-start"};
   align-items: ${({ alignItems }) => alignItems ?? "flex-start"};
+
+  .phoneDisable {
+    ${mediaQueries("phone")} {
+      display: none;
+    }
+  }
+
+  .css-gg5brn {
+    ${mediaQueries("phone")} {
+      font-size: 16px;
+    }
+  }
 `;
 
 export const TitleWrapper = styled(Div)`
@@ -57,10 +70,20 @@ export const MapOverlayViewWrapper = styled(Div)`
     border-radius: 8px;
     transform: translate((50%, 50%));
   }
+
+  ${mediaQueries("phone")} {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+  }
 `;
 
 export const H3 = styled(motion.h3)`
   ${GS.Heading.Large}
+
+  ${mediaQueries("phone")} {
+    ${GS.Heading.Medium}
+  }
 `;
 
 export const Divider = styled(Div)`

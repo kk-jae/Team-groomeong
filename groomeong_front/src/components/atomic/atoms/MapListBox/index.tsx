@@ -12,12 +12,13 @@ interface IMapListBoxProps {
 
 export const MapListBox = ({ shop }: IMapListBoxProps) => {
   const { onClickListBox } = useMapListBox(shop);
+
   return (
     <MapListBoxWrapper
       id={shop.id}
       onClick={onClickListBox}
       variants={MapListBoxVariants}
-      whileHover={'mouseOver'}
+      whileHover={"mouseOver"}
     >
       <MapListBoxTitleWrapper>
         <S.H4>{shop?.name}</S.H4>
