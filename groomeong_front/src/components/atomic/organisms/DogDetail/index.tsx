@@ -85,7 +85,7 @@ const DogDetail = (): JSX.Element => {
             onClick={onClickMoveBack}
           />
         </S.Div>
-        <S.Div left="32px">
+        <S.Div className="deleteButton">
           <Buttons
             label={"댕댕이 프로필 삭제하기"}
             size="medium"
