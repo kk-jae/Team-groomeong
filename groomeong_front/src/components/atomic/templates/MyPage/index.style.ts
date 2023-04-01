@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 export const MyPageWrapper = styled.div`
   width: 1124px;
@@ -8,6 +9,10 @@ export const MyPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 32px;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+  }
 `;
 
 export const MyPageBodyWrapper = styled.div`
@@ -22,5 +27,9 @@ export const MyPageBodyWrapper = styled.div`
     flex-direction: row;
     justify-content: center;
     margin-top: 32px;
+  }
+
+  ${mediaQueries("tablet")} {
+    padding: 32px 28px;
   }
 `;

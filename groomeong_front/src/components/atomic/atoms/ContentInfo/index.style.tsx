@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 interface IContentInfoWrapperProps {
   left?: string;
@@ -22,10 +23,19 @@ export const ContetnInfoLabel = styled.span`
   color: ${GS.contents.contentSecondary};
   padding-bottom: 32px;
   ${GS.Label.Medium}
+
+  ${mediaQueries("phone")} {
+    ${GS.Label.Small}
+    padding-bottom: 24px;
+  }
 `;
 
 export const ContentInfoContent = styled.span`
   display: inline-block;
   color: ${GS.contents.contentPrimary};
   ${GS.Paragraph.Large}
+
+  ${mediaQueries("phone")} {
+    ${GS.Label.Medium}
+  }
 `;
