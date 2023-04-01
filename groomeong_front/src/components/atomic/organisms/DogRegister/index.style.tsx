@@ -30,7 +30,7 @@ export const DogRegisterWrapper = styled(Div)`
 
   ${mediaQueries("tablet")} {
     width: 100%;
-    padding: 32px 16px;
+    padding: 8px 16px;
   }
 `;
 
@@ -59,10 +59,23 @@ export const DogRegisterFooter = styled(Div)`
   align-items: center;
 `;
 
-export const DogRegisterFooterSpan = styled.span`
+export const DogRegisterFooterDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  .cancel {
+    margin-left: 32px;
+    ${mediaQueries("phone")} {
+      margin-left: 0px;
+      margin-top: 16px;
+    }
+  }
+
+  ${mediaQueries("phone")} {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 // export const DogRegisterBadgeButtonWrapper = styled(Div)``;

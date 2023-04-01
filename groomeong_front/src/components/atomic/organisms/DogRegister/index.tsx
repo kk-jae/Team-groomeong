@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import { useDogRegister } from "../../../commons/hooks/custom/useDogRegister";
 import { SizeBadge } from "../../atoms/Badge/SizeBadge";
@@ -12,10 +13,11 @@ import {
   DogRegisterWrapper,
   DogRegisterContentWrapper,
   Div,
-  DogRegisterFooterSpan,
+  DogRegisterFooterDiv,
 } from "./index.style";
 
 const DogRegister = (): JSX.Element => {
+  const router = useRouter();
   const { FormProvider, method, onClickRegisterDog, uploadDogImage } =
     useDogRegister();
 
@@ -67,13 +69,22 @@ const DogRegister = (): JSX.Element => {
               }
             />
             <DogRegisterWrapper>
-              <DogRegisterFooterSpan>
+              <DogRegisterFooterDiv>
                 <Buttons
                   label="댕댕이 저장하기"
                   size="large"
                   variation="primary"
                 />
-              </DogRegisterFooterSpan>
+                <Buttons
+                  className="cancel"
+                  label="뒤로가기"
+                  size="large"
+                  variation="primary"
+                  border="border"
+                  type="button"
+                  onClick={router.back}
+                />
+              </DogRegisterFooterDiv>
             </DogRegisterWrapper>
           </DogRegisterForm>
         </FormProvider>
