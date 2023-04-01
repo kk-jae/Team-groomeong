@@ -23,6 +23,9 @@ export const TopBarDefaultMobile = (): JSX.Element => {
             <S.MenuButton onClick={onClickMoveToPage("/reservation")}>
               예약일정
             </S.MenuButton>
+            <S.MenuButton onClick={onClickMoveToPage("/mypage")}>
+              마이페이지
+            </S.MenuButton>
             <S.MenuButton onClick={onClickLogOut}>로그아웃</S.MenuButton>
           </S.MenuBox>
         </>
