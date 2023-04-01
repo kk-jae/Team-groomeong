@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 import * as S from "../../../commons/style";
 
 export const MapListWrapper = styled(S.Div)`
@@ -17,6 +18,11 @@ export const MapListSearchBarWrapper = styled(S.Div)`
   width: 440px;
   padding: 8px;
   background-color: ${GS.base.secondary};
+
+  ${mediaQueries("phone")} {
+    width: 100%;
+    top: 370px;
+  }
 `;
 
 export const MapListSearchBar = styled(motion.input)`
@@ -46,6 +52,11 @@ export const MapListBodyWrapper = styled(S.Div)`
   position: absolute;
   top: 74px;
   height: calc(100vh - 74px);
+
+  ${mediaQueries("phone")} {
+    width: 100%;
+    top: 440px;
+  }
 `;
 
 export const MapListContentsWrapper = styled(S.Div)`
@@ -56,6 +67,10 @@ export const MapListContentsWrapper = styled(S.Div)`
   padding: 16px;
   background-color: ${GS.base.secondary};
   overflow: auto;
+
+  ${mediaQueries("phone")} {
+    width: 100%;
+  }
 `;
 
 export const MapListButton = styled(motion.button)`
@@ -71,6 +86,10 @@ export const MapListButton = styled(motion.button)`
   width: 24px;
   height: 62px;
   background-color: ${GS.base.secondary};
+
+  ${mediaQueries("phone")} {
+    display: none;
+  }
 `;
 
 export const ImgDiv = styled(motion.div)`
@@ -89,5 +108,5 @@ export const Span = styled(S.Span)`
   top: 68%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: ${GS.base.tertiary}
-`
+  color: ${GS.base.tertiary};
+`;

@@ -15,7 +15,7 @@ import useMapOverlayView from "../../../../commons/hooks/custom/useMapOverlayVie
 import { IAutocompleteShopsOutput } from "../../../../../commons/types/generated/types";
 
 interface IMapOverlayViewContetnsProps {
-  shop: IAutocompleteShopsOutput
+  shop: IAutocompleteShopsOutput;
 }
 
 export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
@@ -31,13 +31,21 @@ export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
         <Div style={{ width: "100%" }} justyfyContents="space-between">
           <H3>{shop?.name}</H3>
           <Div left="16px">
-            <Span right={"8px"}>영업시간: </Span>
-            <HighlightSpan>{shop?.openHour} - </HighlightSpan>
-            <HighlightSpan>{shop?.closeHour}</HighlightSpan>
+            <Span className="phoneDisable" right={"8px"}>
+              영업시간:{" "}
+            </Span>
+            <HighlightSpan className="phoneDisable">
+              {shop?.openHour} -{" "}
+            </HighlightSpan>
+            <HighlightSpan className="phoneDisable">
+              {shop?.closeHour}
+            </HighlightSpan>
           </Div>
         </Div>
         <Div justyfyContents="flex-start" alignItems="center">
-          <Span right="16px">리뷰 ({shop?.review?.length})건</Span>
+          <Span className="phoneDisable" right="16px">
+            리뷰 ({shop?.review?.length})건
+          </Span>
           <StarRate star={shop?.averageStar} state={true} />
         </Div>
       </TitleWrapper>
@@ -52,7 +60,7 @@ export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
         animate={"visible"}
       >
         <Div>
-          <Span>{shop?.address}</Span>
+          <Span className="phoneDisable">{shop?.address}</Span>
         </Div>
         <Div top="8px">
           <Div>

@@ -4,6 +4,9 @@ import { Buttons } from "../../Buttons";
 import { useMoveToPage } from "../../../../commons/hooks/custom/useMovedToPage";
 import { useLogout } from "../../../../commons/hooks/custom/useLogout";
 import { UseQueryFetchLoginUser } from "../../../../commons/hooks/query/UseQueryFetchLoginUser";
+import useLoggined from "../../../../commons/hooks/custom/useLoggined";
+import { useState } from "react";
+import { TopBarDefaultMobile } from "../MobileTopBarDefault";
 
 interface ITopBarMapProps {
   loggedIn: boolean;
@@ -13,6 +16,8 @@ export const TopBarMap = (props: ITopBarMapProps): JSX.Element => {
   const { data } = UseQueryFetchLoginUser();
   const { onClickLogOut } = useLogout();
   const { onClickMoveToPage } = useMoveToPage();
+  const loggedIn = useLoggined();
+  const [onMenuBox, setOnMenuBox] = useState(false);
 
   return (
     <>
@@ -20,8 +25,9 @@ export const TopBarMap = (props: ITopBarMapProps): JSX.Element => {
         <S.TopBarLogo onClick={onClickMoveToPage("/home")}>
           <img src="/image/img_logo_raw_black.png" alt="" />
         </S.TopBarLogo>
-        <S.TopBarButtons loggedIn={props.loggedIn}>
-          {props.loggedIn ? (
+        <S.TopBarButtons loggedIn={loggedIn}>
+          {onMenuBox ? <S.MenuBox></S.MenuBox> : <></>}
+          {loggedIn ? (
             <>
               <Buttons
                 iconImg={<EventAvailableIcon />}
@@ -68,6 +74,13 @@ export const TopBarMap = (props: ITopBarMapProps): JSX.Element => {
             </>
           )}
         </S.TopBarButtons>
+
+        <S.HamBurger
+          onClick={() => {
+            setOnMenuBox(!onMenuBox);
+          }}
+        ></S.HamBurger>
+        {onMenuBox ? <TopBarDefaultMobile></TopBarDefaultMobile> : <></>}
       </S.TopBarBox>
     </>
   );
