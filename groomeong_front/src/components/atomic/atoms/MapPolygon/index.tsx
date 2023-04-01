@@ -1,5 +1,4 @@
 import { OverlayView, Polygon } from "@react-google-maps/api";
-import { memo } from "react";
 import { IDataProps } from "../../../commons/GeoData/getGeoData";
 import useMapPolygon from "../../../commons/hooks/custom/useMapPolygon";
 import { PolygonOverlayViewWrapper, PolygonOverlayViewTitle } from "./index.styled";
