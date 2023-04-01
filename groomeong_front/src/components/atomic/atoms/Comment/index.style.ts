@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 export interface ICommentProps {
   contents?: string;
@@ -19,6 +20,12 @@ export const TextArea_Wrapper = styled.div`
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.05);
   background-color: white;
   margin-bottom: 32px;
+
+  ${mediaQueries("tablet")} {
+    width: 92%;
+    padding: 0px 20px;
+    margin-bottom: 12px;
+  }
 `;
 
 export const TextArea_TopBox = styled.div`
@@ -77,6 +84,18 @@ export const TextArea_TopBox_Rate = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+
+  .ant-rate-disabled {
+    ${mediaQueries("tablet")} {
+      font-size: 20px;
+    }
+  }
+
+  .ant-rate-disabled {
+    ${mediaQueries("phone")} {
+      font-size: 12px;
+    }
+  }
 `;
 
 export const TextArea_TopBox_Date = styled.div`
@@ -87,6 +106,10 @@ export const TextArea_TopBox_Date = styled.div`
   align-items: center;
   ${GS.Paragraph.Medium}
   color: ${GS.contents.contentTertiary};
+
+  ${mediaQueries("phone")} {
+    ${GS.Paragraph.Small}
+  }
 `;
 
 export const TextArea_ContentBox = styled.div`
@@ -102,4 +125,8 @@ export const TextArea_ContentBox = styled.div`
   border: 0px;
   padding: 16px 28px;
   margin-bottom: 8px;
+
+  ${mediaQueries("phone")} {
+    ${GS.Paragraph.Small}
+  }
 `;
