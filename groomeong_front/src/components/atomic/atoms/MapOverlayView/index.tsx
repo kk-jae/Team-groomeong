@@ -1,12 +1,14 @@
 import { OverlayView, OverlayViewProps } from "@react-google-maps/api";
+import { IAutocompleteShopsOutput } from "../../../../commons/types/generated/types";
 import { MapOverlayViewWrapper } from "./index.style";
 import * as V from "./index.variants";
 import { MapOverlayVeiwContents } from "./MapOverlayViewContents";
-interface IMapOVerlayViewProps extends Omit<OverlayViewProps, "mapPaneName"> {
+interface IMapOverlayViewProps extends Omit<OverlayViewProps, "mapPaneName"> {
   isClicked: boolean;
+  shop: IAutocompleteShopsOutput
 }
 
-const MapOverlayView = (props: IMapOVerlayViewProps) => {
+const MapOverlayView = (props: IMapOverlayViewProps) => {
   return (
     <OverlayView position={props.position} mapPaneName="overlayMouseTarget">
       {props.isClicked ? (
@@ -15,7 +17,7 @@ const MapOverlayView = (props: IMapOVerlayViewProps) => {
           initial={"initial"}
           animate={"visible"}
         >
-          <MapOverlayVeiwContents />
+          <MapOverlayVeiwContents shop={props.shop}/>
         </MapOverlayViewWrapper>
       ) : (
         <></>

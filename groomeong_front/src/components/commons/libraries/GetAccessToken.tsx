@@ -1,6 +1,5 @@
 import { gql, GraphQLClient } from "graphql-request";
 import { IMutation } from "../../../commons/types/generated/types";
-// import { useRouter } from "next/router";
 
 const RESTORE_ACCESS_TOKEN = gql`
   mutation {

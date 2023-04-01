@@ -12,12 +12,14 @@ import {
 } from "../index.style";
 import { StarRate } from "../../StarRate";
 import useMapOverlayView from "../../../../commons/hooks/custom/useMapOverlayView";
+import { IAutocompleteShopsOutput } from "../../../../../commons/types/generated/types";
 
-export const MapOverlayVeiwContents = () => {
-  const {
-    mapInfo: { shop },
-    onClickMoveToPage,
-  } = useMapOverlayView();
+interface IMapOverlayViewContetnsProps {
+  shop: IAutocompleteShopsOutput
+}
+
+export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
+  const { shop, onClickMoveToPage } = useMapOverlayView(props.shop);
 
   return (
     <>

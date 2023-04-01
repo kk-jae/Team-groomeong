@@ -1,13 +1,14 @@
-import { useMoveToPage } from './useMovedToPage';
-import { mapState } from "./../../../../commons/Store/index";
-import { useRecoilValue } from "recoil";
+import { useMoveToPage } from "./useMovedToPage";
+import { UseQueryFetchShop } from "../query/UseQueryFetchShop";
+import { IAutocompleteShopsOutput } from "../../../../commons/types/generated/types";
 
-const useMapOverlayView = () => {
-  const mapInfo = useRecoilValue(mapState);
-  const { onClickMoveToPage } = useMoveToPage()
+const useMapOverlayView = (shop: IAutocompleteShopsOutput) => {
+  console.log(shop);
+  const { data } = UseQueryFetchShop(shop?.shopid);
+  const { onClickMoveToPage } = useMoveToPage();
 
   return {
-    mapInfo,
+    shop: data?.fetchShop,
     onClickMoveToPage,
   };
 };
