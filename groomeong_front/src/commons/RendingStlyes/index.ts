@@ -6,17 +6,10 @@ interface IProps {
 }
 
 export const Container = styled.div`
-  height: 11000px;
+  height: 16000px;
   overflow: hidden;
   color: white;
-  /* transition: all 0.1s ease-in-out; */
   cursor: none;
-  font-family: "RendingFont";
-
-  @font-face {
-    font-family: "rendingFont";
-    src: url("/font/Danjunghae.ttf");
-  }
 `;
 
 export const Page1 = styled.div<IProps>`
@@ -32,13 +25,13 @@ export const Page1 = styled.div<IProps>`
   display: ${(props) => (props.position >= 960 ? "none" : "flex")};
   border-radius: ${(props) => `${props.position / 30}%`};
 
-  ::before {
+  /* ::before {
     content: "";
     display: block;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.1);
-  }
+  } */
 `;
 
 export const Img1 = styled.img`
@@ -251,122 +244,138 @@ export const Shop = styled.div<IProps>`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  display: ${(props) => (props.position >= 3000 ? "none" : "flex")};
   background-color: ${GS.base.primary};
-
-  ::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    position: absolute;
-  }
 `;
 
 export const Shop_Detail = styled.div<IProps>`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  transform: scale(
-      ${(props) =>
-        props.position >= 1000 ? `${1 + (props.position - 1000) / 1200}` : 0}
-    )
-    translate(
-      ${(props) =>
-        props.position >= 1000 ? `${(props.position - 2000) / 2}px` : 0},
-      ${(props) =>
-        props.position >= 1000 ? `${(props.position - 2000) / 2}px` : 0}
-    );
-  opacity: ${(props) =>
-    props.position >= 1000 && props.position <= 1800
-      ? `${(props.position - 1000) / 800}`
-      : `${1800 / props.position}`};
-
-  ::before {
-    content: "";
-    display: block;
-    width: 22%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    border-radius: 1%;
-  }
-`;
-
-export const Shop_Img = styled.img`
-  width: 22%;
-  height: auto;
-  border-radius: 1%;
-`;
-export const Shop_Text = styled.div`
-  font-size: 35px;
-  font-weight: 400;
-  position: absolute;
-`;
-
-export const Reservation = styled.div<IProps>`
   width: 100%;
-  height: 100%;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  display: ${(props) => (props.position >= 4800 ? "none" : "flex")};
-
-  ::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    position: absolute;
-  }
-`;
-
-export const Reservation_Detail = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: scale(
-      ${(props) =>
-        props.position >= 3000 ? `${1 + (props.position - 3000) / 1000}` : 0}
-    )
-    translateY(
-      ${(props) =>
-        props.position >= 3000 ? `${(props.position - 4000) / 2}px` : 0}
-    );
-  opacity: ${(props) =>
-    props.position >= 3000 ? `${(props.position - 3000) / 1000}` : `0`};
+  transition: all 0.2s ease;
+  transform: translateY(
+    ${(props) =>
+      props.position >= 3720 ? `${props.position / 3.1}px` : "1100px"}
+  );
+`;
 
-  ::before {
-    content: "";
-    display: block;
-    width: 20%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    border-radius: 1%;
-  }
+export const Shop_Img = styled.img<IProps>`
+  width: 50%;
+  height: auto;
+  border-radius: 1%;
+  position: absolute;
+  opacity: ${(props) =>
+    props.position >= 2300 ? `${(props.position - 2300) / 1000}` : `0`};
+`;
+
+export const Shop_Text = styled.div<IProps>`
+  z-index: 5;
+  font-weight: 600;
+  font-size: 65px;
+  color: white;
+  transform: translateY(-550%);
+
+  opacity: ${(props) =>
+    props.position >= 1200 ? `${(props.position - 1200) / 1000}` : `0`};
+`;
+export const Bubble = styled.div`
+  width: 312px;
+  height: 312px;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -1480%;
+  left: 5%;
+`;
+
+export const Bubble2 = styled.div`
+  width: 1114px;
+  height: 1114px;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -2400%;
+  right: -27%;
+`;
+export const Bubble3 = styled.div`
+  width: 361px;
+  height: 361px;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -950%;
+  left: 26%;
+`;
+export const Bubble4 = styled.div`
+  width: 262px;
+  height: 262px;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  left: -5%;
+  bottom: -300%;
+`;
+export const Bubble5 = styled.div`
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -6000%;
+  left: 10%;
+`;
+
+export const Bubble6 = styled.div`
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -7200%;
+  right: 30%;
+`;
+
+export const Reservation_Detail = styled.div<IProps>`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 28%;
+
+  transform: translateY(
+    ${(props) =>
+      props.position >= 2400 ? `${(props.position - 4000) / 3.5}px` : 0}
+  );
+
+  opacity: ${(props) =>
+    props.position >= 3720 ? `${(props.position - 3720) / 2000}` : `0`};
 `;
 
 export const Reservation_Text = styled.div`
-  font-size: 30px;
-  font-weight: 400;
-  position: absolute;
+  font-size: 65px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+`;
+
+export const Reservation_Text_One = styled.div<IProps>`
+  opacity: ${(props) =>
+    props.position >= 4000 ? `${(props.position - 4000) / 1000}` : `0`};
+`;
+export const Reservation_Text_Two = styled.div<IProps>`
+  opacity: ${(props) =>
+    props.position >= 5000 ? `${(props.position - 5000) / 1000}` : `0`};
 `;
 
 export const Reservation_Img = styled.img`
-  width: 20%;
+  width: 36%;
   height: auto;
-  border-radius: 1%;
 `;
 
 export const Review = styled.div<IProps>`
@@ -376,56 +385,55 @@ export const Review = styled.div<IProps>`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  display: ${(props) => (props.position >= 7200 ? "none" : "flex")};
+  /* display: ${(props) => (props.position >= 7200 ? "none" : "flex")}; */
 
-  ::before {
+  /* ::before {
     content: "";
     display: block;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
-  }
+  } */
 `;
 export const Review_Detail = styled.div<IProps>`
+  position: relative;
+  width: 110%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  transform: scale(
-      ${(props) =>
-        props.position >= 4800 ? `${1.0 + (props.position - 4800) / 500}` : 0}
-    )
-    translateX(
-      ${(props) =>
-        props.position >= 4800 ? `${(props.position - 6000) / 2}px` : "0px"}
-    );
   opacity: ${(props) =>
-    props.position >= 4800 && props.position <= 6000
-      ? `${(props.position - 4800) / 1000}`
-      : `${6000 / props.position}`};
-
-  ::before {
-    content: "";
-    display: block;
-    width: 11.5%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: absolute;
-    border-radius: 1%;
-  }
+    props.position >= 6480 ? `${(props.position - 6480) / 2000}` : `0`};
+  transform: translateY(
+    ${(props) =>
+      props.position >= 4920 ? `${(props.position - 9940) / 3.5}px` : 0}
+  );
 `;
 
 export const Review_Img = styled.img`
-  width: 11.5%;
+  width: 50%;
   height: auto;
-  border-radius: 1%;
+  margin-left: -20%;
 `;
 
 export const Review_Text = styled.div`
-  font-size: 20px;
-  font-weight: 400;
-  position: absolute;
+  font-size: 65px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  margin-left: 6%;
+`;
+
+export const Review_Text_One = styled.div<IProps>`
+  opacity: ${(props) =>
+    props.position >= 7300 ? `${(props.position - 7300) / 1000}` : `0`};
+`;
+export const Review_Text_Two = styled.div<IProps>`
+  opacity: ${(props) =>
+    props.position >= 8300 ? `${(props.position - 8300) / 1000}` : `0`};
 `;
 
 export const Introduce = styled.div<IProps>`
@@ -437,7 +445,7 @@ export const Introduce = styled.div<IProps>`
   justify-content: center;
   transition: all 0.2s ease-in-out;
 
-  ::before {
+  /* ::before {
     content: "";
     display: block;
     width: 100%;
@@ -445,55 +453,96 @@ export const Introduce = styled.div<IProps>`
     background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
     z-index: -1;
-  }
+  } */
 `;
 
 export const Introduce_Text = styled.div`
-  color: white;
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  font-weight: 500;
+  position: fixed;
+  top: 37%;
+  left: 30%;
 `;
 export const Introduce_subTitle = styled.div<IProps>`
-  font-size: 50px;
-`;
-export const Introduce_Title = styled.div<IProps>`
-  font-size: 95px;
+  font-size: 65px;
   opacity: ${(props) =>
-    props.position ? `${(props.position - 8500) / 800}` : 0};
-  position: relative;
+    props.position >= 11380 ? `${(props.position - 11380) / 2000}` : `0`};
+`;
+
+export const Introduce_Title = styled.div<IProps>`
+  width: 1000px;
+  font-size: 65px;
+  position: absolute;
+  bottom: -220%;
+  left: 45%;
+  opacity: ${(props) =>
+    props.position >= 12500 ? `${(props.position - 12500) / 2000}` : `0`};
 `;
 
 export const Introduce_Img = styled.img`
   width: 600%;
-  height: 18%;
+  height: auto;
 `;
 
 export const Logo = styled.span`
   font-weight: 500;
   font-size: 120px;
+  /* cursor: pointer; */
+
+  /* :hover {
+    font-weight: 700;
+  } */
+`;
+// export const Button = styled.div`
+//   position: absolute;
+//   font-size: 15px;
+//   font-weight: 600;
+//   right: 32%;
+//   top: -20%;
+//   transform: rotate(20deg);
+//   animation: click 0.8s ease-in-out infinite alternate-reverse;
+
+//   @keyframes click {
+//     0% {
+//       transform: rotate(10deg) translateY(0);
+//     }
+
+//     100% {
+//       transform: rotate(10deg) translateY(3px);
+//     }
+//   }
+// `;
+
+export const LastLogo = styled.img<IProps>`
+  position: absolute;
+  bottom: -700%;
+  right: -20%;
+  transition: all 0.3s ease-in-out;
+  opacity: ${(props) =>
+    props.position >= 12800 ? `${(props.position - 12800) / 2000}` : `0`};
   cursor: pointer;
 
   :hover {
-    font-weight: 700;
+    transform: scale(1.05);
   }
 `;
-export const Button = styled.div`
+export const ClickBtn = styled.img<IProps>`
   position: absolute;
-  font-size: 20px;
-  font-weight: 600;
-  right: 32%;
-  top: -20%;
-  transform: rotate(20deg);
-  animation: click 0.8s ease-in-out infinite alternate-reverse;
+  transform: rotate(180deg);
+  top: 540%;
+  left: 75%;
+  animation: click 1s ease-out infinite;
+  opacity: ${(props) =>
+    props.position >= 12800 ? `${(props.position - 12800) / 2000}` : `0`};
+  width: 13%;
 
   @keyframes click {
     0% {
-      transform: rotate(10deg) translateY(0);
+      transform: rotate(180deg) translateY(5px);
     }
-
     100% {
-      transform: rotate(10deg) translateY(3px);
+      transform: rotate(180deg) translateY(-8px);
     }
   }
 `;
