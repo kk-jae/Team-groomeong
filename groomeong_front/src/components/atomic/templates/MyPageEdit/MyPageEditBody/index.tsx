@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { FormProvider, useForm } from "react-hook-form";
 import { IMutationUpdateUserArgs } from "../../../../../commons/types/generated/types";
 import { withPromiseVoidFunc } from "../../../../../commons/Utils/withFunc";
@@ -12,6 +13,7 @@ import { InputMiddle } from "../../../atoms/Input/Middle";
 import * as S from "./index.style";
 
 export const MyPageEditBodyTemplate = (): JSX.Element => {
+  const router = useRouter();
   const method = useForm<IMutationUpdateUserArgs>({
     mode: "onChange",
     // resolver: yupResolver(Schema),
@@ -69,6 +71,15 @@ export const MyPageEditBodyTemplate = (): JSX.Element => {
           </S.LabelWrapper>
           <S.ButtonBox>
             <Buttons size="large" label="수정 완료"></Buttons>
+            <Buttons
+              className="cancel"
+              type="button"
+              size="large"
+              border="border"
+              variation="primary"
+              label="수정 취소"
+              onClick={router.back}
+            ></Buttons>
           </S.ButtonBox>
         </form>
       </FormProvider>

@@ -12,6 +12,11 @@ export const MyPageWrapper = styled.div`
 
   ${mediaQueries("tablet")} {
     width: 100%;
+    padding: 32px 32px;
+  }
+
+  ${mediaQueries("phone")} {
+    padding: 8px 16px;
   }
 `;
 
@@ -30,6 +35,6 @@ export const MyPageBodyWrapper = styled.div`
   }
 
   ${mediaQueries("tablet")} {
-    padding: 32px 28px;
+    padding: 16px 16px;
   }
 `;

@@ -35,7 +35,7 @@ export const Table = styled.div`
     width: 100%;
     ${GS.Paragraph.Medium}
 
-    ${mediaQueries("tablet")} {
+    ${mediaQueries("phone")} {
       ${GS.Paragraph.Small}
     }
 
@@ -49,14 +49,14 @@ export const Table = styled.div`
         th {
           height: 44px;
           width: 20%;
-          padding: 4px 8px;
+          padding: 8px 8px;
           border-right: 1px solid black;
         }
 
         th:nth-child(5) {
           height: 44px;
           width: 20%;
-          padding: 4px 8px;
+          padding: 8px 8px;
           border-right: 0px;
         }
       }
@@ -70,7 +70,7 @@ export const Table = styled.div`
       th {
         height: 44px;
         width: 20%;
-        padding: 4px 8px;
+        padding: 8px 8px;
         border-right: 1px solid black;
         border-bottom: 1px solid black;
       }
@@ -78,7 +78,7 @@ export const Table = styled.div`
       th:nth-child(5) {
         height: 44px;
         width: 20%;
-        padding: 4px 8px;
+        padding: 8px 8px;
         border-right: 0px;
 
         button {
