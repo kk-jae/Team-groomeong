@@ -1,10 +1,6 @@
-import { Select } from "antd";
 import { UseQueryFetchUserDogs } from "../../commons/hooks/query/UseQueryFetchUserDogs";
+import * as S from "./index.styled";
 
-// interface IFetchUserDogs {
-//   value: string;
-//   id: string;
-// }
 export const DogSelect = (props: any): JSX.Element => {
   const { data: dataDog } = UseQueryFetchUserDogs();
 
@@ -12,13 +8,12 @@ export const DogSelect = (props: any): JSX.Element => {
     dataDog?.fetchUserDogs.map((el) => ({ value: el.name, id: el.id })),
   ];
 
-  const onChange = (value: string, id: any): void => {
+  const onChange = (id: any): void => {
     props.setDogId(id.id);
   };
 
   return (
-    <Select
-      style={{ width: 428 }}
+    <S.SelectStyle
       size="large"
       showSearch
       placeholder="댕댕이를 선택해주세요"

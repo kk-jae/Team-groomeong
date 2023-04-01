@@ -1,5 +1,6 @@
-import { DatePicker, Space } from "antd";
+import { Space } from "antd";
 import type { DatePickerProps } from "antd";
+import * as S from "./index.styled";
 
 interface IProps {
   setReservationDate: any;
@@ -14,15 +15,7 @@ export const ReservationDate = (props: IProps): JSX.Element => {
 
   return (
     <Space direction="vertical">
-      <DatePicker
-        onChange={onChange}
-        style={{
-          width: "428px",
-          height: "43px",
-          borderRadius: "12px",
-          paddingLeft: "25px",
-        }}
-      />
+      <S.DatePickerStyler onChange={onChange} />
     </Space>
   );
 };
