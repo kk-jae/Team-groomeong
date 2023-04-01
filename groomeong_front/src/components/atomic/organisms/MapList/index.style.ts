@@ -44,13 +44,13 @@ export const MapListSearchBarButton = styled(motion.button)`
 
 export const MapListBodyWrapper = styled(S.Div)`
   position: absolute;
-  top: 0;
+  top: 74px;
+  height: calc(100vh - 74px);
 `;
 
 export const MapListContentsWrapper = styled(S.Div)`
   flex-direction: column;
   position: relative;
-  top: 76px;
   width: 440px;
   height: calc(100vh - 76px);
   padding: 16px;
@@ -73,7 +73,7 @@ export const MapListButton = styled(motion.button)`
   background-color: ${GS.base.secondary};
 `;
 
-export const ImgDiv = styled(motion.image)`
+export const ImgDiv = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 100%;

@@ -2,24 +2,24 @@ import { OverlayView, Polygon } from "@react-google-maps/api";
 import { memo } from "react";
 import { IDataProps } from "../../../commons/GeoData/getGeoData";
 import useMapPolygon from "../../../commons/hooks/custom/useMapPolygon";
+import { PolygonOverlayViewWrapper, PolygonOverlayViewTitle } from "./index.styled";
 
 interface IMapPolygon {
   map: IDataProps;
+  codes: number[];
 }
 
 const MapPolygon = (props: IMapPolygon) => {
   const {
     polygonRef,
-    onDbClickpolygon,
+    onClickpolygon,
     onMouseOutpolygon,
     onMouseOverpolygon,
     polygonOption,
     bounds,
     isHover,
-    mapInfo,
-  } = useMapPolygon(props.map);
-
-  console.log(mapInfo);
+    isActive
+  } = useMapPolygon(props.map, props.codes);
 
   return (
     <>
@@ -30,17 +30,35 @@ const MapPolygon = (props: IMapPolygon) => {
         options={polygonOption}
         onMouseOver={onMouseOverpolygon}
         onMouseOut={onMouseOutpolygon}
-        onDblClick={onDbClickpolygon}
+        onClick={onClickpolygon}
       />
-      {isHover ? (
+      {isActive ? (
         <OverlayView mapPaneName="overlayMouseTarget" bounds={bounds}>
-          <h1>{props.map.properties.name}</h1>
+          <PolygonOverlayViewWrapper>
+            <PolygonOverlayViewTitle
+              initial={{x: 0, opacity: 1, }}
+              animate={{x: 100, opacity: 0 }}
+              transition={{ duration: .5, times: [] }}
+            >
+              {props.map.properties.name}
+            </PolygonOverlayViewTitle>
+          </PolygonOverlayViewWrapper>
         </OverlayView>
       ) : (
-        <></>
+        isHover ? (
+        <OverlayView mapPaneName="overlayMouseTarget" bounds={bounds}>
+          <PolygonOverlayViewWrapper>
+            <PolygonOverlayViewTitle
+              animate={{x: 100, opacity: 1 }}
+            >
+              {props.map.properties.name}
+            </PolygonOverlayViewTitle>
+          </PolygonOverlayViewWrapper>
+        </OverlayView>
+        ) : <></>
       )}
     </>
   );
 };
 
-export default memo(MapPolygon);
+export default MapPolygon;

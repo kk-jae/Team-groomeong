@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ShopDetail } from "../../organisms/ShopDetail";
 import { StarRate } from "../StarRate";
 import * as S from "./index.styled";

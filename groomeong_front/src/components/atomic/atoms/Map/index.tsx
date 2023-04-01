@@ -1,4 +1,5 @@
-import { GoogleMap, MarkerClusterer } from "@react-google-maps/api";
+import { GoogleMap } from "@react-google-maps/api";
+import { v4 } from "uuid";
 import getLatLng from "../../../../commons/Utils/getLatLng";
 import { useMap } from "../../../commons/hooks/custom/useMap";
 import MapMarker from "../MapMarker";
@@ -8,7 +9,7 @@ import { Div } from "./index.styled";
 export const Map = (): JSX.Element => {
   const {
     onClickMap,
-    fetchShops,
+    shops,
     isLoaded,
     onLoad,
     mapContainerStyle,
@@ -16,7 +17,9 @@ export const Map = (): JSX.Element => {
     center,
     geoData,
     mapInfo,
+    codes,
   } = useMap();
+
 
   return isLoaded ? (
     <Div>
@@ -24,33 +27,24 @@ export const Map = (): JSX.Element => {
         onClick={onClickMap}
         mapContainerStyle={mapContainerStyle}
         options={options}
-        center={center}
-        zoom={12}
+        center={mapInfo?.codes.length === 0 ? center : undefined}
+        zoom={11}
         onLoad={onLoad}
       >
         {geoData.map((map) => (
           <>
-            <MapPolygon map={map} />
+            <MapPolygon key={v4()} codes={codes} map={map} />
           </>
         ))}
-        <MarkerClusterer>
-          {(clusterer) => (
-            <div>
-              {fetchShops?.map((shop) =>
-                mapInfo.code === shop.code ? (
-                  <MapMarker
-                    key={shop.id}
-                    shop={shop}
-                    position={getLatLng(shop.lat, shop.lng) ?? center}
-                    clusterer={clusterer}
-                  />
-                ) : (
-                  <></>
-                )
-              )}
-            </div>
-          )}
-        </MarkerClusterer>
+          <div>
+            {shops?.map((shop) => (
+              <MapMarker
+                key={shop.id}
+                shop={shop}
+                position={getLatLng(shop.lat, shop.lng) ?? center}
+              />
+            ))}
+          </div>
       </GoogleMap>
     </Div>
   ) : (

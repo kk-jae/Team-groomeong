@@ -3,12 +3,12 @@ import { Marker, MarkerProps } from "@react-google-maps/api";
 import { isEqual } from "lodash";
 import { useMaker } from "../../../commons/hooks/custom/useMaker";
 import MapOverlayView from "../MapOverlayView";
-import { IShop } from "../../../../commons/types/generated/types";
+import { IAutocompleteShopsOutput } from "../../../../commons/types/generated/types";
 import { useRecoilValue } from "recoil";
 import { mapState } from "../../../../commons/Store";
 
 interface IMarkerProps extends MarkerProps {
-  shop: IShop;
+  shop: IAutocompleteShopsOutput;
 }
 
 const MapMarker = (props: IMarkerProps) => {
@@ -26,11 +26,10 @@ const MapMarker = (props: IMarkerProps) => {
         url: "/image/icon-marker.svg",
         scaledSize: new google.maps.Size(64, 64),
       }}
-      clusterer={props.clusterer}
       onClick={onClickMaker}
       animation={isClicked ? 1 : undefined}
     >
-      <MapOverlayView isClicked={isClicked} position={props.position} />
+      <MapOverlayView shop={props.shop} isClicked={isClicked} position={props.position} />
     </Marker>
   );
 };

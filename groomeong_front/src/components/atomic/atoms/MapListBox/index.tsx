@@ -1,36 +1,27 @@
 import * as S from "../../../commons/style";
 import * as GS from "../../../../../theme/global";
-import { IShop } from "../../../../commons/types/generated/types";
+import { IAutocompleteShopsOutput } from "../../../../commons/types/generated/types";
 import { MapListBoxWrapper, MapListBoxTitleWrapper } from "./index.style";
 import { useMapListBox } from "../../../commons/hooks/custom/useMapListBox";
 import { StarRate } from "../StarRate";
+import { MapListBoxVariants } from "./index.variants";
 
 interface IMapListBoxProps {
-  shop: IShop;
+  shop: IAutocompleteShopsOutput;
 }
 
 export const MapListBox = ({ shop }: IMapListBoxProps) => {
-  const { onClickListBox, mapInfo } = useMapListBox(shop);
+  const { onClickListBox } = useMapListBox(shop);
   return (
     <MapListBoxWrapper
       id={shop.id}
       onClick={onClickListBox}
-      animate={
-        shop.id === mapInfo?.shop?.id
-          ? {
-              backgroundColor: `rgba(32, 148, 255, .1)`,
-            }
-          : {
-              backgroundColor: "#fff",
-            }
-      }
-      whileHover={{
-        backgroundColor: `rgba(32, 148, 255, .1)`,
-      }}
+      variants={MapListBoxVariants}
+      whileHover={'mouseOver'}
     >
       <MapListBoxTitleWrapper>
         <S.H4>{shop?.name}</S.H4>
-        <StarRate state={true} star={shop?.averageStar} />
+        <StarRate state={true} star={shop?.averagestar} />
       </MapListBoxTitleWrapper>
       <S.Divider />
       <S.Div>
@@ -47,7 +38,7 @@ export const MapListBox = ({ shop }: IMapListBoxProps) => {
               fontWeight: 600,
             }}
           >
-            {shop?.openHour} - {shop?.closeHour}
+            {shop?.openhour} - {shop?.closehour}
           </S.Span>
         </S.Div>
       </S.Div>

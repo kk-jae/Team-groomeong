@@ -15,7 +15,6 @@ export interface IDataProps {
 }
 
 export const getGeoData = () => {
-  console.log(geoData);
   const data: IDataProps[] = [];
   geoData.features.forEach((map, idx) => {
     const mapObj: IDataProps | any = {

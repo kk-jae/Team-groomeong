@@ -12,7 +12,7 @@ export const SearchBar = (props: ISearchBarProps): JSX.Element => {
         <InputContent
           sizes={props.sizes}
           placeholder={props.placeholder}
-        ></InputContent>
+        />
         <SearchButton>
           <span>
             <img src="/image/icon-magnify_white.svg" />

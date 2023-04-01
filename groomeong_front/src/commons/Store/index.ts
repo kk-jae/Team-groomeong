@@ -1,22 +1,22 @@
-import { IShop } from "./../types/generated/types";
+import { IAutocompleteShopsOutput } from "./../types/generated/types";
 import { atom, selector } from "recoil";
 import { GetAccessToken } from "../../components/commons/libraries/GetAccessToken";
 import { RefObject } from "react";
 import { Marker, Polygon } from "@react-google-maps/api";
 
 export interface IPolyInfo {
-  ref: RefObject<Polygon> | null
-  code?: number,
-  bounds: google.maps.LatLngBounds | null,
-  isHover: boolean,
-  isActive: boolean,
+  ref: RefObject<Polygon> | null;
+  bounds: google.maps.LatLngBounds | null;
+  isHover: boolean;
+  isActive: boolean;
 }
 
 export interface IMapState {
   map: google.maps.Map | null;
   marker: RefObject<Marker> | null;
-  shop?: IShop;
+  shop: IAutocompleteShopsOutput | null;
   polygon: IPolyInfo;
+  codes: number[];
 }
 
 export const accessTokenState = atom({
@@ -32,19 +32,24 @@ export const restoreAccessTokenLoadable = selector({
   },
 });
 
+export const searchState = atom<string>({
+  key: "searchState",
+  default: "",
+});
+
 export const mapState = atom<IMapState>({
   key: "mapState",
   dangerouslyAllowMutability: true,
   default: {
     map: null,
     marker: null,
-    shop: undefined,
+    shop: null,
     polygon: {
       bounds: null,
       isActive: false,
       isHover: false,
       ref: null,
-      code: undefined,
-    }
+    },
+    codes: [],
   },
 });
