@@ -17,7 +17,7 @@ export const MyPageTemplate = (): JSX.Element => {
       <Background>
         <S.MyPageWrapper>
           <PageHeader
-            icon="image/icon-account-cog.svg"
+            icon="/image/icon-account-cog.svg"
             title="마이페이지"
           ></PageHeader>
           <S.MyPageBodyWrapper>
