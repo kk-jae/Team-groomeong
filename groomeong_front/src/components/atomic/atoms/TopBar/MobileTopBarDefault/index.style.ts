@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../../theme/global";
 import { motion } from "framer-motion";
+import { mediaQueries } from "../../../../commons/libraries/MediaQueries";
 
 export const MenuBox = styled(motion.div)`
   display: none;
   z-index: 100;
 
-  @media screen and (max-width: 1024px) {
+  ${mediaQueries("tablet")} {
     display: flex;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.867);
@@ -19,7 +20,7 @@ export const MenuBox = styled(motion.div)`
 `;
 
 export const MenuButton = styled.button`
-  @media screen and (max-width: 1024px) {
+  ${mediaQueries("tablet")} {
     display: flex;
     flex-direction: column;
     justify-content: center;
