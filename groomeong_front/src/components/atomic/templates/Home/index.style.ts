@@ -19,7 +19,12 @@ export const MainText = styled(motion.h1)`
 `;
 
 export const MainCharacter = styled(motion.img)`
-  width: 60%;
-  height: 60%;
+  width: 623px;
+  height: 453px;
   margin-top: 56px;
+
+  ${mediaQueries("tablet")} {
+    width: 60%;
+    height: 60%;
+  }
 `;
