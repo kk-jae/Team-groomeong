@@ -27,7 +27,7 @@ const MapMarker = (props: IMarkerProps) => {
         scaledSize: new google.maps.Size(64, 64),
       }}
       onClick={onClickMaker}
-      animation={isClicked === true ? 1 : undefined}
+      animation={isClicked ? 1 : undefined}
     >
       <MapOverlayView
         shop={props.shop}
