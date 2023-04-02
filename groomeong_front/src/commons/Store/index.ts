@@ -14,7 +14,7 @@ export interface IPolyInfo {
 export interface IMapState {
   map: google.maps.Map | null;
   marker: RefObject<Marker> | null;
-  shop: IAutocompleteShopsOutput | null;
+  shop?: IAutocompleteShopsOutput | null;
   polygon: IPolyInfo;
   codes: number[];
 }
