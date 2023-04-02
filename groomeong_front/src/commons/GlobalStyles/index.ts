@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import * as GS from "../../../theme/global";
+import { mediaQueries } from "../../components/commons/libraries/MediaQueries";
 
 export const GlobalStyle = css`
   @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
@@ -9,7 +10,7 @@ export const GlobalStyle = css`
     box-sizing: border-box;
   }
 
-  @media screen and (max-width: 1124px) {
+  ${mediaQueries("tablet")} {
     .container1 {
       width: 100% !important;
     }

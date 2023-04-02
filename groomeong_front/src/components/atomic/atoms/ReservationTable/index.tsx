@@ -1,5 +1,4 @@
 import { getDate } from "../../../commons/libraries/GetDate";
-import { Buttons } from "../Buttons";
 import { IReservation } from "../../../../commons/types/generated/types";
 import { isSameDate } from "../../../commons/libraries/GetTimeStamp";
 import { UseMutationDeleteReservation } from "../../../commons/hooks/mutation/UseMutationDeleteReservation";
@@ -53,15 +52,9 @@ export const ReservationTable = (): JSX.Element => {
                 <th>{el.dog.name}</th>
                 <th>
                   <div>
-                    <Buttons
-                      variation="primary"
-                      label="예약 취소"
-                      border="none"
-                      size="small"
-                      type="button"
-                      onClick={onClickDelete}
-                      id={el.id}
-                    ></Buttons>
+                    <button onClick={onClickDelete} id={el.id}>
+                      예약 취소
+                    </button>
                   </div>
                 </th>
               </tr>

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 interface IDivProps {
   crossAxis?: boolean;
@@ -27,6 +28,11 @@ export const DogDetailWrapper = styled.div`
   background-color: ${GS.base.secondary};
   border-radius: 20px;
   padding: 32px 64px;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+    padding: 12px 16px;
+  }
 `;
 export const DogDetailContentWrapper = styled.div`
   display: flex;
@@ -35,6 +41,15 @@ export const DogDetailContentWrapper = styled.div`
   align-items: flex-start;
   width: 100%;
   padding: 32px 128px;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+    padding: 16px 64px;
+  }
+
+  ${mediaQueries("phone")} {
+    padding: 16px 16px;
+  }
 `;
 
 export const DogDetailImgLabel = styled.div`
@@ -46,6 +61,10 @@ export const DogDetailImgLabel = styled.div`
   div {
     margin-bottom: 28px;
   }
+
+  ${mediaQueries("phone")} {
+    ${GS.Label.Small};
+  }
 `;
 
 export const DogDetailContentImg = styled.div<DogDetailContentImgProps>`
@@ -56,6 +75,16 @@ export const DogDetailContentImg = styled.div<DogDetailContentImgProps>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  ${mediaQueries("tablet")} {
+    width: 280px;
+    height: 280px;
+  }
+
+  ${mediaQueries("phone")} {
+    width: 160px;
+    height: 160px;
+  }
 `;
 
 export const DogDetailFooter = styled.div`
@@ -63,6 +92,21 @@ export const DogDetailFooter = styled.div`
   justify-content: center;
   display: flex;
   margin: 32px;
+
+  .deleteButton {
+    margin-left: 32px;
+
+    ${mediaQueries("phone")} {
+      margin-left: 0px;
+      margin-top: 16px;
+    }
+  }
+
+  ${mediaQueries("phone")} {
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 0px 16px 0px;
+  }
 `;
 
 export const DogDetailSpecifics = styled.div`

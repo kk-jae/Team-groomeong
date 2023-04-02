@@ -32,7 +32,6 @@ export const Table = styled.div`
 
     thead {
       background-color: ${GS.gray[100]};
-      word-break: keep-all;
 
       tr {
         border-bottom: 1px solid ${GS.black};
@@ -59,6 +58,7 @@ export const Table = styled.div`
       ${mediaQueries("phone")} {
         ${GS.Paragraph.Small}
       }
+      word-break: keep-all;
 
       th {
         height: 44px;

@@ -1,11 +1,16 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../theme/global";
+import { mediaQueries } from "../../commons/libraries/MediaQueries";
 
 export const ReservationWrapperBottomItemTimeWrapper = styled.div`
   width: 885px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+  }
 `;
 
 interface IReservationWrapperBottomItemTimeDetail {
@@ -22,7 +27,6 @@ export const ReservationWrapperBottomItemTimeDetail = styled.button<IReservation
   width: 196px;
   height: 82px;
   border: 1px solid ${GS.border.borderTransparent};
-  border-radius: 12px;
   ${GS.Paragraph.Large}
   margin-bottom: 30px;
   margin-right: 20px;
@@ -32,5 +36,17 @@ export const ReservationWrapperBottomItemTimeDetail = styled.button<IReservation
 
   :hover {
     background-color: ${(props) => (props.disabled ? "none" : GS.base.primary)};
+  }
+
+  ${mediaQueries("tablet")} {
+    width: 8em;
+    height: 4em;
+  }
+
+  ${mediaQueries("phone")} {
+    width: 5em;
+    height: 3em;
+    margin-right: 15px;
+    ${GS.Paragraph.Medium}
   }
 `;

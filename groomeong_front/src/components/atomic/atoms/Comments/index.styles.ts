@@ -14,9 +14,8 @@ export const CommentsBoxModalStyles = styled.div`
   margin-bottom: 32px;
 
   ${mediaQueries("tablet")} {
-    justify-content: center;
-    align-items: center;
     width: 100%;
+    padding: 0px 20px;
   }
 `;
 

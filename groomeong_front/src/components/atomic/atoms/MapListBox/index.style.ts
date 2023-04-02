@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 import * as S from "../../../commons/style";
 
 export const MapListBoxWrapper = styled(S.Div)`
@@ -8,6 +9,10 @@ export const MapListBoxWrapper = styled(S.Div)`
   margin: 16px 0;
   flex-direction: column;
   z-index: 100;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+  }
 `;
 
 export const MapListBoxTitleWrapper = styled(S.Div)`

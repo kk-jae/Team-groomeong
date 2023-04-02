@@ -9,17 +9,24 @@ export const MainText = styled(motion.h1)`
 
   ${mediaQueries("tablet")} {
     ${GS.Heading.XL}
-    margin: 35px 0px 56px 0px;
+    margin: 36px 0px 56px 0px;
   }
 
   ${mediaQueries("phone")} {
     ${GS.Heading.Large}
-    margin: 0px 0px 56px 0px;
+    margin:16px 0px 40px 0px;
+    padding: 0px 32px;
+    text-align: center;
   }
 `;
 
 export const MainCharacter = styled(motion.img)`
-  width: 60%;
-  height: 60%;
+  width: 623px;
+  height: 453px;
   margin-top: 56px;
+
+  ${mediaQueries("tablet")} {
+    width: 60%;
+    height: 60%;
+  }
 `;

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 interface IDivProps {
   left?: string;
@@ -26,6 +27,11 @@ export const DogRegisterWrapper = styled(Div)`
   padding: 32px 64px;
   background-color: ${GS.base.secondary};
   border-radius: 20px;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+    padding: 8px 16px;
+  }
 `;
 
 export const DogRegisterContentWrapper = styled(Div)`
@@ -34,6 +40,11 @@ export const DogRegisterContentWrapper = styled(Div)`
   padding: 32px 64px;
   background-color: ${GS.base.secondary};
   border-radius: 20px;
+
+  ${mediaQueries("phone")} {
+    width: 100%;
+    padding: 16px 16px;
+  }
 `;
 
 export const DogRegisterForm = styled.form`
@@ -48,10 +59,23 @@ export const DogRegisterFooter = styled(Div)`
   align-items: center;
 `;
 
-export const DogRegisterFooterSpan = styled.span`
+export const DogRegisterFooterDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  .cancel {
+    margin-left: 32px;
+    ${mediaQueries("phone")} {
+      margin-left: 0px;
+      margin-top: 16px;
+    }
+  }
+
+  ${mediaQueries("phone")} {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 // export const DogRegisterBadgeButtonWrapper = styled(Div)``;

@@ -8,7 +8,7 @@ export interface ITopBarDefault {
 }
 
 export const TopBarBox = styled.div`
-  width: 65%;
+  width: 80%;
   height: 112px;
   margin-bottom: 46px;
   display: flex;

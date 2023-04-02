@@ -44,6 +44,10 @@ export const EmailAuthMiddle = styled.div`
   width: 697px;
   display: flex;
   flex-direction: column;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+  }
 `;
 
 export const EmailAuthMiddleLabel = styled.label`

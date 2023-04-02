@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 export const ReservationWrapper = styled.div`
   width: 1124px;
@@ -8,6 +9,15 @@ export const ReservationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+    padding: 0px 64px;
+  }
+
+  ${mediaQueries("phone")} {
+    padding: 0px 28px;
+  }
 `;
 
 export const ReservationWrapperTop = styled.div`
@@ -16,25 +26,44 @@ export const ReservationWrapperTop = styled.div`
   margin: 32px 64px 32px 64px;
   display: flex;
   flex-direction: row;
-  display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid ${GS.border.borderOpaque};
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+  }
 `;
 
 export const ReservationTopImg = styled.img`
   width: 45px;
   height: 45px;
   object-fit: cover;
+
+  ${mediaQueries("phone")} {
+    display: none;
+  }
 `;
 export const ReservationTopText = styled.span`
   ${GS.Heading.XXXL}
   padding-left:32px;
+
+  ${mediaQueries("tablet")} {
+    ${GS.Heading.XXL}
+  }
+
+  ${mediaQueries("phone")} {
+    ${GS.Heading.XL}
+    padding-left:0px;
+  }
 `;
 
 export const ReservationWrapperBottom = styled.div`
   width: 996px;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+  }
 `;
 
 export const ReservationWrapperBottomItem = styled.div`
@@ -42,6 +71,10 @@ export const ReservationWrapperBottomItem = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 64px;
+
+  ${mediaQueries("phone")} {
+    padding-bottom: 40px;
+  }
 `;
 
 export const ReservationWrapperBottomItemTitle = styled.span`
@@ -61,6 +94,10 @@ export const ReservationWrapperBottomSubmitWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 32px 0px 32px 0px;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+  }
 `;
 
 export const ReservationWrapperBottomSubmit = styled.button`
@@ -68,7 +105,6 @@ export const ReservationWrapperBottomSubmit = styled.button`
   height: 42px;
   background-color: ${GS.base.primary};
   border: none;
-  border-radius: 12px;
   color: white;
   ${GS.Paragraph.Medium}
   cursor: pointer;
