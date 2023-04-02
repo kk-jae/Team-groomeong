@@ -12,8 +12,7 @@ import getLatLng from "../../../../commons/Utils/getLatLng";
 export const MapList = () => {
   const { onChangeSearch, search } = useDebounceOnchage();
   const [mapInfo] = useRecoilState(mapState);
-  const { isClicked, onClickSetClicked, shops, globalSearch } =
-    useMapList();
+  const { isClicked, onClickSetClicked, shops, globalSearch } = useMapList();
 
   useEffect(() => {
     if (mapInfo.isLoaded && shops != null) {
@@ -38,7 +37,6 @@ export const MapList = () => {
           value={search}
           onChange={onChangeSearch}
         />
-        <LS.MapListSearchBarButton />
       </LS.MapListSearchBarWrapper>
       <LS.MapListBodyWrapper
         animate={!isClicked ? "open" : "closed"}

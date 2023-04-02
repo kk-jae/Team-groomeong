@@ -31,9 +31,12 @@ export const MapListSearchBar = styled(motion.input)`
   border: none;
   width: 100%;
   height: 52px;
-  padding: 16px;
+  padding: 16px 64px 16px 16px;
   border: 1px solid ${GS.gray[100]};
   background-color: ${GS.base.secondary};
+  background-image: url("/image/icon-magnify.svg");
+  background-repeat: no-repeat;
+  background-position: 95% center;
 `;
 
 export const MapListSearchBarButton = styled(motion.button)`
