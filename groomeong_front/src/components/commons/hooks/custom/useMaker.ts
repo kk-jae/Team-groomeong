@@ -5,7 +5,7 @@ import getLatLng from "../../../../commons/Utils/getLatLng";
 import { useEffect, useRef } from "react";
 import { Marker } from "@react-google-maps/api";
 
-export const useMaker = (shop: IAutocompleteShopsOutput) => {
+export const useMaker = (shop?: IAutocompleteShopsOutput) => {
   const [mapInfo, setMapInfo] = useRecoilState(mapState);
   const markerRef = useRef<Marker>(null);
 
@@ -24,7 +24,7 @@ export const useMaker = (shop: IAutocompleteShopsOutput) => {
   };
 
   useEffect(() => {
-    if (shop.id === mapInfo?.shop?.id) {
+    if (shop?.id === mapInfo?.shop?.id) {
       const pos = getLatLng(shop?.lat, shop?.lng);
       mapInfo?.map?.setZoom(15);
       mapInfo?.map?.panTo(pos as google.maps.LatLngLiteral);

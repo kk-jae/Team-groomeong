@@ -5,7 +5,7 @@ import * as V from "./index.variants";
 import { MapOverlayVeiwContents } from "./MapOverlayViewContents";
 interface IMapOverlayViewProps extends Omit<OverlayViewProps, "mapPaneName"> {
   isClicked: boolean;
-  shop: IAutocompleteShopsOutput;
+  shop?: IAutocompleteShopsOutput;
 }
 
 const MapOverlayView = (props: IMapOverlayViewProps) => {

@@ -15,7 +15,7 @@ import useMapOverlayView from "../../../../commons/hooks/custom/useMapOverlayVie
 import { IAutocompleteShopsOutput } from "../../../../../commons/types/generated/types";
 
 interface IMapOverlayViewContetnsProps {
-  shop: IAutocompleteShopsOutput;
+  shop?: IAutocompleteShopsOutput;
 }
 
 export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
