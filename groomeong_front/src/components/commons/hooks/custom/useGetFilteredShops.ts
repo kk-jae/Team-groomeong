@@ -21,5 +21,6 @@ export const useGetFilteredShops = () => {
     fetchShops,
     filteredShops,
     codes,
+    globalSearch: search,
   };
 };

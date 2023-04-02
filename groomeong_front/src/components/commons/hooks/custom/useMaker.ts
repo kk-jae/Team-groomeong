@@ -16,19 +16,24 @@ export const useMaker = (shop?: IAutocompleteShopsOutput) => {
       ...prev,
       shop,
     }));
-    const pos = getLatLng(shop?.lat, shop?.lng);
-    mapInfo?.map?.setZoom(15);
-    if (pos !== null) {
-      mapInfo?.map?.panTo(pos);
+    if (shop != null) {
+      const pos = getLatLng(shop.lat, shop.lng);
+      mapInfo?.map?.setZoom(17);
+      if (pos !== null) {
+        mapInfo?.map?.panTo(pos);
+      }
     }
   };
 
   useEffect(() => {
-    if (shop?.id === mapInfo?.shop?.id) {
-      const pos = getLatLng(shop?.lat, shop?.lng);
-      mapInfo?.map?.setZoom(15);
-      mapInfo?.map?.panTo(pos as google.maps.LatLngLiteral);
-    }
+    if (shop != null) {
+      if (shop?.id === mapInfo?.shop?.id) {
+        const pos = getLatLng(shop?.lat, shop?.lng);
+        mapInfo?.map?.setZoom(15);
+        mapInfo?.map?.panTo(pos);
+  
+      }
+   }
   }, [onClickMaker]);
 
   return {

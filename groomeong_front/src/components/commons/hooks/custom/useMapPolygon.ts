@@ -1,38 +1,62 @@
+import { useState, useEffect } from "react";
 import { includes } from "lodash";
-import * as GS from "../../../../../theme/global";
 import { IDataProps } from "./../../GeoData/getGeoData";
 import { getLatLngBounds } from "../../libraries/GetLatLngBounds";
+import * as GS from "../../../../../theme/global";
 import {
   mapState,
   IMapState,
   searchState,
+  polygonState,
+  polygonsState,
+  IPolyInfo,
 } from "./../../../../commons/Store/index";
-import { useEffect, useRef, useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { Polygon } from "@react-google-maps/api";
 
 const useMapPolygon = (map: IDataProps, codes: number[]) => {
-  const polygonRef = useRef<Polygon>(null);
-  const [isHover, setIsHover] = useState(false);
+  const [isHover, setIsHover] = useState("transparent");
   const [isActive, setIsActive] = useState(false);
-  const [mapInfo, setMapInfo] = useRecoilState(mapState);
-  const setSearchState = useSetRecoilState(searchState);
-
-  const bounds = getLatLngBounds(map);
-  const polygonOption: google.maps.PolygonOptions = {
-    fillColor: isHover || isActive ? "rgba(32, 148, 255, 0.3)" : "transparent",
+  const [polygonOption, setPolygonOption] = useState({
+    fillColor: "transparent",
     fillOpacity: 0.4,
     strokeColor: GS.blue[500],
     strokeOpacity: 0.8,
     strokeWeight: 0.5,
-  };
+  });
+  const [mapInfo, setMapInfo] = useRecoilState(mapState);
+  const setPolygonInfo = useSetRecoilState(polygonState);
+  const [polygonsInfo, setPolygonsInfo] = useRecoilState(polygonsState);
+  const setSearch = useSetRecoilState(searchState);
 
+  const bounds = getLatLngBounds(map);
   const onMouseOverpolygon = () => {
-    setIsHover(true);
+    if (!isActive) setIsHover("rgba(32, 148, 255, 0.3)");
   };
 
   const onMouseOutpolygon = () => {
-    setIsHover(false);
+    setIsHover("transparent");
+  };
+
+  const onMountPolygon = () => {
+    if (polygonsInfo.length === 0) {
+      setPolygonsInfo((prev: IPolyInfo[] | []) => [
+        ...prev,
+        {
+          code: Number(map.properties.code),
+          bounds,
+        },
+      ]);
+    }
+  };
+
+  const onUnmountPolygon = () => {
+    setPolygonOption({
+      fillColor: "transparent",
+      fillOpacity: 0.4,
+      strokeColor: GS.blue[500],
+      strokeOpacity: 0.8,
+      strokeWeight: 0.5,
+    });
   };
 
   const onClickpolygon = (e: google.maps.MapMouseEvent) => {
@@ -42,36 +66,43 @@ const useMapPolygon = (map: IDataProps, codes: number[]) => {
       ...prev,
       shop: null,
       codes: [Number(map.properties.code)],
-      polygon: {
-        isHover,
-        bounds,
-        isActive,
-        ref: polygonRef,
-      },
     }));
-
-    setSearchState(map.properties.name);
+    setPolygonInfo((prev) => ({
+      isHover: isHover !== "transparent",
+      bounds,
+      isActive,
+    }));
+    setPolygonOption((prev) => ({
+      ...prev,
+      fillColor: "transparent",
+    }));
+    setSearch(map.properties.name);
     mapInfo.map?.fitBounds(bounds);
   };
 
   useEffect(() => {
     setIsActive(includes(codes, Number(map.properties.code)));
-    if (includes(codes, Number(map.properties.code))) {
-      mapInfo.map?.fitBounds(bounds);
-    }
-  }, [codes, bounds, map, mapInfo]);
+    setPolygonOption((prev) => ({
+      ...prev,
+      fillColor: isHover,
+    }));
+  }, [codes, map, isHover]);
 
   return {
     isHover,
     mapInfo,
+    onMountPolygon,
     onMouseOverpolygon,
     onMouseOutpolygon,
+    onUnmountPolygon,
     onClickpolygon,
     polygonOption,
     bounds,
-    polygonRef,
     isActive,
+    setIsActive,
+    setPolygonOption,
     setMapInfo,
+    codes,
   };
 };
 

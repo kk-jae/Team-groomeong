@@ -1,13 +1,19 @@
 import { useGetFilteredShops } from "./useGetFilteredShops";
-import { mapState } from "./../../../../commons/Store/index";
+import {
+  mapState,
+  polygonState,
+  searchState,
+} from "./../../../../commons/Store/index";
 import { useJsApiLoader } from "@react-google-maps/api";
 import { useEffect, useMemo } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { getGeoData } from "../../GeoData/getGeoData";
 import getLatLng from "../../../../commons/Utils/getLatLng";
 
 export const useMap = () => {
+  const setSearch = useSetRecoilState(searchState);
   const [mapInfo, setMapInfo] = useRecoilState(mapState);
+  const polygonInfo = useRecoilValue(polygonState);
   const { codes, autoShops } = useGetFilteredShops();
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_API_KEY as string,
@@ -26,7 +32,7 @@ export const useMap = () => {
   };
 
   const center: google.maps.LatLngLiteral = {
-    lat: 37.541,  
+    lat: 37.541,
     lng: 126.986,
   };
 
@@ -34,6 +40,7 @@ export const useMap = () => {
     setMapInfo((prev) => ({
       ...prev,
       map: mapInstance,
+      isLoaded,
     }));
   };
 
@@ -41,21 +48,30 @@ export const useMap = () => {
     setMapInfo((prev) => ({
       ...prev,
       shop: null,
+      polygon: {
+        bounds: null,
+        isActive: false,
+        isHover: false,
+        ref: null,
+      },
     }));
+    setSearch("");
+    if (mapInfo.shop != null) {
     const pos = getLatLng(mapInfo.shop?.lat, mapInfo.shop?.lng);
-    if (mapInfo.polygon.bounds !== null) {
-      mapInfo.map?.fitBounds(mapInfo.polygon.bounds);
-    } else if (pos !== null) {
+    if (pos !== null) {
       mapInfo.map?.panTo(pos);
+    }
+    if (polygonInfo.bounds !== null) {
+      mapInfo.map?.fitBounds(polygonInfo.bounds);
     } else {
       mapInfo.map?.panTo(center);
-      mapInfo.map?.setZoom(11);
+    }
     }
   };
 
   useEffect(() => {
-    if (mapInfo.polygon.bounds !== null) {
-      mapInfo?.map?.fitBounds(mapInfo?.polygon.bounds);
+    if (polygonInfo.bounds !== null) {
+      mapInfo?.map?.fitBounds(polygonInfo.bounds);
     }
   }, [mapInfo]);
 

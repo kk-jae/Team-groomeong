@@ -6,7 +6,7 @@ import { useGetFilteredShops } from "./useGetFilteredShops";
 const useMapList = () => {
   const [mapInfo, setMapInfo] = useRecoilState(mapState);
   const [isClicked, setIsClicked] = useState(false);
-  const { autoShops, codes } = useGetFilteredShops();
+  const { autoShops, codes, globalSearch } = useGetFilteredShops();
 
   useEffect(() => {
     setMapInfo((prev) => ({
@@ -45,7 +45,8 @@ const useMapList = () => {
     onClickSetClicked,
     shops: autoShops?.autocompleteShops,
     mapInfo,
-    // onLoadMore,
+    codes,
+    globalSearch,
   };
 };
 

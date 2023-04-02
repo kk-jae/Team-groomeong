@@ -24,7 +24,6 @@ export const Map = (): JSX.Element => {
     codes,
   } = useMap();
 
-
   return isLoaded ? (
     <Div>
       <GoogleMap
@@ -41,15 +40,15 @@ export const Map = (): JSX.Element => {
             <MapPolygon key={v4()} codes={codes} map={map} />
           </>
         ))}
-          <div>
-            {shops?.map((shop) => (
-              <MapMarker
-                key={shop.id}
-                shop={shop}
-                position={getLatLng(shop.lat, shop.lng) ?? center}
-              />
-            ))}
-          </div>
+        <div>
+          {shops?.map((shop) => (
+            <MapMarker
+              key={shop.id}
+              shop={shop}
+              position={getLatLng(shop.lat, shop.lng) ?? center}
+            />
+          ))}
+        </div>
       </GoogleMap>
     </Div>
   ) : (

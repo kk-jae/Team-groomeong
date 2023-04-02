@@ -11,12 +11,14 @@ interface IMapListBoxProps {
 }
 
 export const MapListBox = ({ shop }: IMapListBoxProps) => {
-  const { onClickListBox } = useMapListBox(shop);
+  const { onClickListBox, mapInfo } = useMapListBox(shop);
+  console.log(shop.id === mapInfo.shop?.id);
 
   return (
     <MapListBoxWrapper
       id={shop.id}
       onClick={onClickListBox}
+      animate={shop.id === mapInfo.shop?.id ? "initial" : undefined}
       variants={MapListBoxVariants}
       whileHover={"mouseOver"}
     >

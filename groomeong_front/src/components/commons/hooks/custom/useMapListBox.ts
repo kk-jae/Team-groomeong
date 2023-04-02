@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { IAutocompleteShopsOutput } from "./../../../../commons/types/generated/types";
-import { mapState } from "./../../../../commons/Store/index";
-import { useRecoilState } from "recoil";
+import { mapState, polygonState } from "./../../../../commons/Store/index";
+import { useRecoilState, useRecoilValue } from "recoil";
 import getLatLng from "../../../../commons/Utils/getLatLng";
 export const useMapListBox = (shop: IAutocompleteShopsOutput) => {
   const [pos, setPos] = useState<google.maps.LatLngLiteral | null>(null);
   const [mapInfo, setMapInfo] = useRecoilState(mapState);
+  const polygonInfo = useRecoilValue(polygonState);
 
   useEffect(() => {
     if (pos !== null) {
+      console.log("pos??");
+      mapInfo.map?.setZoom(17);
       mapInfo.map?.panTo(pos);
-      mapInfo.map?.setZoom(15)
-    }
-    if (mapInfo.polygon.bounds !== null) {
-      mapInfo.map?.fitBounds(mapInfo.polygon.bounds)
+    } else if (polygonInfo.bounds !== null) {
+      mapInfo.map?.fitBounds(polygonInfo.bounds);
     }
   }, [pos]);
 
@@ -24,18 +25,21 @@ export const useMapListBox = (shop: IAutocompleteShopsOutput) => {
     }
   });
 
-  const onClickListBox = () => {
+  const onClickListBox = useCallback(() => {
     setMapInfo((prev) => ({
       ...prev,
-      shop
-    }))
+      shop,
+    }));
     setMapInfo((prev) => ({
       ...prev,
       shop,
     }));
     const pos = getLatLng(shop?.lat, shop?.lng);
-    setPos(pos);
-  };
+    if (pos !== null) {
+      setPos(pos);
+      mapInfo.map?.setZoom(15);
+    }
+  }, [setPos]);
 
   return {
     mapInfo,

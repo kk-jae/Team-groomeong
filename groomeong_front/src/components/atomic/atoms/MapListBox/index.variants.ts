@@ -7,4 +7,7 @@ export const MapListBoxVariants: Variants = {
   mouseOut: {
     backgroundColor: "#fff",
   },
+  initial: {
+    backgroundColor: `rgba(32, 148, 255, .1)`,
+  }
 };
