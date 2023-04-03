@@ -14,7 +14,7 @@ export const BackgroundWrapper = styled.div<IBackgroundWrapperProps>`
   align-items: center;
   background-color: ${GS.base.primary};
   width: 100%;
-  padding: 0px 64px 150px 64px;
+  padding: 0px 64px 0px 64px;
 
   ${mediaQueries("tablet")} {
     padding: 0px 16px 32px 16px;

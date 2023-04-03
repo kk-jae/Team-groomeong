@@ -5,11 +5,11 @@ import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 export const MainText = styled(motion.h1)`
   color: ${GS.white};
-  margin: 56px 0px;
+  margin: 0px 0px 56px 0px;
 
   ${mediaQueries("tablet")} {
     ${GS.Heading.XL}
-    margin: 36px 0px 56px 0px;
+    margin: 0px 0px 32px 0px;
   }
 
   ${mediaQueries("phone")} {

@@ -46,10 +46,10 @@ export default function Rending() {
         <S.Page1 position={position}>
           <S.Img1 src="/image/img_not_character.svg" />
           <S.Img2 src="/image/img-character-dog.svg" />
-          <S.FlyAway1 src="/image/img_1.jpg" />
+          {/* <S.FlyAway1 src="/image/img_1.jpg" />
           <S.FlyAway2 src="/image/img_2.jpg" />
           <S.FlyAway3 src="/image/img_3.jpg" />
-          <S.FlyAway4 src="/image/img_4.jpg" position={position} />
+          <S.FlyAway4 src="/image/img_4.jpg" position={position} /> */}
         </S.Page1>
         <S.Page2 position={position}>
           <S.Shop position={position}>
