@@ -33,8 +33,6 @@ export const ReservationHistoryTable = (): JSX.Element => {
         data?.fetchReservationsByUser.map((el: IReservation, index) => (
           <>
             {!isSameDate(el.date) ? (
-              <></>
-            ) : (
               <tbody key={el.id}>
                 <tr>
                   <Th
@@ -74,6 +72,8 @@ export const ReservationHistoryTable = (): JSX.Element => {
                   </th>
                 </tr>
               </tbody>
+            ) : (
+              <></>
             )}
           </>
         ))

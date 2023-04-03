@@ -46,24 +46,29 @@ export default function Rending() {
         <S.Page1 position={position}>
           <S.Img1 src="/image/img_not_character.svg" />
           <S.Img2 src="/image/img-character-dog.svg" />
-          <S.FlyAway1 src="/image/img_1.jpg" />
+          {/* <S.FlyAway1 src="/image/img_1.jpg" />
           <S.FlyAway2 src="/image/img_2.jpg" />
           <S.FlyAway3 src="/image/img_3.jpg" />
-          <S.FlyAway4 src="/image/img_4.jpg" position={position} />
+          <S.FlyAway4 src="/image/img_4.jpg" position={position} /> */}
         </S.Page1>
         <S.Page2 position={position}>
           <S.Shop position={position}>
             <S.Shop_Detail position={position}>
+              <S.Bubble position={position}></S.Bubble>
+              <S.Bubble2 position={position}></S.Bubble2>
+              <S.Bubble3 position={position}></S.Bubble3>
+              <S.Bubble4 position={position}></S.Bubble4>
+              <S.Bubble5 position={position}></S.Bubble5>
+              <S.Bubble6 position={position}></S.Bubble6>
+              <S.Bubble7 position={position}></S.Bubble7>
+              <S.Bubble8 position={position}></S.Bubble8>
+              <S.Bubble9 position={position}></S.Bubble9>
+              <S.Bubble10 position={position}></S.Bubble10>
+              <S.Bubble11 position={position}></S.Bubble11>
               <S.Shop_Text position={position}>
                 가까운 반려견 미용샵 찾으시나요?
               </S.Shop_Text>
               <S.Shop_Img src="image/img_shop.png" position={position} />
-              <S.Bubble></S.Bubble>
-              <S.Bubble2></S.Bubble2>
-              <S.Bubble3></S.Bubble3>
-              <S.Bubble4></S.Bubble4>
-              <S.Bubble5></S.Bubble5>
-              <S.Bubble6></S.Bubble6>
             </S.Shop_Detail>
             <S.Reservation_Detail position={position}>
               <S.Reservation_Text>
@@ -87,41 +92,40 @@ export default function Rending() {
                 </S.Review_Text_Two>
               </S.Review_Text>
             </S.Review_Detail>
-            <S.Introduce_Text id="last" style={{ animation: "none" }}>
+            <S.Introduce_Detail position={position}>
               <S.Introduce_subTitle position={position}>
                 <span
                   style={{
-                    opacity: (position - 7500) / 1000,
+                    opacity: (position - 11555) / 800,
                   }}
                 >
                   사장님도,
                 </span>{" "}
                 <span
                   style={{
-                    opacity: (position - 8000) / 1000,
+                    opacity: (position - 13000) / 800,
                   }}
                 >
                   견주님도
                 </span>
+                <S.Introduce_Img
+                  src="/image/icon-magnify_white.svg"
+                  position={position}
+                />
               </S.Introduce_subTitle>
               <S.Introduce_Title position={position}>
-                <S.Logo>그루멍</S.Logo>
+                <S.Logo position={position}>그루멍</S.Logo>
                 에서 만나요 !
               </S.Introduce_Title>
-              <S.LastLogo
-                position={position}
-                src="/image/img_Groomeong_white.png"
-                onClick={onClickMoveToPage("/home")}
-              />
-              <S.ClickBtn position={position} src="/image/img_click.png" />
-            </S.Introduce_Text>
-            <div
-              style={{
-                opacity: (position - 7000) / 1000,
-              }}
-            >
-              <S.Introduce_Img src="/image/icon-magnify_white.svg" />
-            </div>
+              <S.Introduce_Bottom position={position}>
+                <S.ClickBtn position={position} src="/image/img_click.png" />
+                <S.LastLogo
+                  position={position}
+                  src="/image/img_Groomeong_white.png"
+                  onClick={onClickMoveToPage("/home")}
+                />
+              </S.Introduce_Bottom>
+            </S.Introduce_Detail>
           </S.Shop>
         </S.Page2>
       </S.Container>

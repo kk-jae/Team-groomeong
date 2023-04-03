@@ -25,11 +25,14 @@ export const CommentsHeaderModalTitleStyles = styled.div`
   justify-content: center;
   border-bottom: 1px solid ${GS.border.borderPrimary};
   width: 996px;
-
   padding: ${`${GS.Spacing[8]}px`};
   gap: ${`${GS.Spacing[32]}px`};
 
   & > h1 {
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     ${GS.Heading.XXXL};
     color: ${GS.contents.contentPrimary};
 
