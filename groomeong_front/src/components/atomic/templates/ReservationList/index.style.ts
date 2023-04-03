@@ -3,8 +3,7 @@ import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 export const BodyWrapper = styled.div`
   width: 1124px;
-  height: 1121px;
-  padding: 0px 64px;
+  padding: 64px 64px;
   background-color: white;
   border-radius: 20px;
   display: flex;
