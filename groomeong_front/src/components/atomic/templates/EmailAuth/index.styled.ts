@@ -14,7 +14,7 @@ export const EmailAuthWrapper = styled.div`
   align-items: center;
 
   ${mediaQueries("tablet")} {
-    width: 100%;
+    width: 100% !important;
     padding: 0px 32px;
   }
 `;

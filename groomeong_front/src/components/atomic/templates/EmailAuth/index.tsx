@@ -70,7 +70,7 @@ export const EmailAuthTemplates = (): JSX.Element => {
           <S.EmailAuthMiddleTextButtonWrapper
             onSubmit={method.handleSubmit(onClickSendEmail)}
           >
-            <FormProvider {...method}>
+            <FormProvider {...method} >
               <InputMiddle
                 label="이메일"
                 name="email"
