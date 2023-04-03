@@ -21,8 +21,8 @@ export default function Rending() {
   };
 
   const onMouse = (event: any) => {
-    setX(event.clientX);
-    setY(event.clientY);
+    // setX(event.clientX);
+    // setY(event.clientY);
   };
 
   useEffect(() => {
@@ -43,34 +43,19 @@ export default function Rending() {
             <ArrowDownward />
           </S.Scroll_Icon>
         </S.Scroll>
-        <S.Page1 position={position}>
+        {/* <S.Page1 position={position}>
           <S.Img1 src="/image/img_not_character.svg" />
           <S.Img2 src="/image/img-character-dog.svg" />
-          {/* <S.FlyAway1 src="/image/img_1.jpg" />
-          <S.FlyAway2 src="/image/img_2.jpg" />
-          <S.FlyAway3 src="/image/img_3.jpg" />
-          <S.FlyAway4 src="/image/img_4.jpg" position={position} /> */}
-        </S.Page1>
-        <S.Page2 position={position}>
-          <S.Shop position={position}>
-            <S.Shop_Detail position={position}>
-              <S.Bubble position={position}></S.Bubble>
-              <S.Bubble2 position={position}></S.Bubble2>
-              <S.Bubble3 position={position}></S.Bubble3>
-              <S.Bubble4 position={position}></S.Bubble4>
-              <S.Bubble5 position={position}></S.Bubble5>
-              <S.Bubble6 position={position}></S.Bubble6>
-              <S.Bubble7 position={position}></S.Bubble7>
-              <S.Bubble8 position={position}></S.Bubble8>
-              <S.Bubble9 position={position}></S.Bubble9>
-              <S.Bubble10 position={position}></S.Bubble10>
-              <S.Bubble11 position={position}></S.Bubble11>
+        </S.Page1> */}
+        <S.Page position={position}>
+          <S.Wrapper position={position}>
+            <S.First position={position}>
               <S.Shop_Text position={position}>
                 가까운 반려견 미용샵 찾으시나요?
               </S.Shop_Text>
               <S.Shop_Img src="image/img_shop.png" position={position} />
-            </S.Shop_Detail>
-            <S.Reservation_Detail position={position}>
+            </S.First>
+            <S.Second position={position}>
               <S.Reservation_Text>
                 <S.Reservation_Text_One position={position}>
                   내 주변 미용샵 검색부터
@@ -80,8 +65,8 @@ export default function Rending() {
                 </S.Reservation_Text_Two>
               </S.Reservation_Text>
               <S.Reservation_Img src="image/img_reservation.png" />
-            </S.Reservation_Detail>
-            <S.Review_Detail position={position}>
+            </S.Second>
+            <S.Third position={position}>
               <S.Review_Img src="image/img_review.png" />
               <S.Review_Text>
                 <S.Review_Text_One position={position}>
@@ -91,8 +76,8 @@ export default function Rending() {
                   <span style={{ fontSize: "80px" }}>찐! </span> 리뷰 확인까지
                 </S.Review_Text_Two>
               </S.Review_Text>
-            </S.Review_Detail>
-            <S.Introduce_Detail position={position}>
+            </S.Third>
+            <S.Fourth position={position}>
               <S.Introduce_subTitle position={position}>
                 <span
                   style={{
@@ -125,9 +110,9 @@ export default function Rending() {
                   onClick={onClickMoveToPage("/home")}
                 />
               </S.Introduce_Bottom>
-            </S.Introduce_Detail>
-          </S.Shop>
-        </S.Page2>
+            </S.Fourth>
+          </S.Wrapper>
+        </S.Page>
       </S.Container>
     </>
   );
