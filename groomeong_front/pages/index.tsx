@@ -24,7 +24,6 @@ export default function Rending() {
     setX(event.clientX);
     setY(event.clientY);
   };
-  console.log(position);
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
