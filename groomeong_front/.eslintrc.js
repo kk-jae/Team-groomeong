@@ -29,5 +29,6 @@ module.exports = {
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@next/next/no-img-element": "off",
   },
 };
