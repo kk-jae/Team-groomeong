@@ -5,7 +5,7 @@ import { isSameDate } from "../../../../commons/libraries/GetTimeStamp";
 
 export const ReservationList = (): JSX.Element => {
   const { data } = UseQueryFetchReservationByUser();
-  console.log(isSameDate(data?.fetchReservationsByUser.at(-1)?.date));
+
   return (
     <>
       <S.ReservationListWrapper>
@@ -23,7 +23,7 @@ export const ReservationList = (): JSX.Element => {
                 <th>예약 취소</th>
               </tr>
             </thead>
-            {!isSameDate(data?.fetchReservationsByUser.at(-1)?.date) &&
+            {isSameDate(data?.fetchReservationsByUser.at(-1)?.date) &&
             data?.fetchReservationsByUser[0]?.date !== undefined ? (
               <ReservationTable></ReservationTable>
             ) : (
