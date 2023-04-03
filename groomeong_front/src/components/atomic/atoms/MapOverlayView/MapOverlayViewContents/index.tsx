@@ -21,6 +21,12 @@ interface IMapOverlayViewContetnsProps {
 export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
   const { shop, onClickMoveToPage } = useMapOverlayView(props.shop);
 
+  const reviewCount = [];
+
+  if (shop?.reservation?.length !== 0) {
+    shop?.reservation?.map((el) => reviewCount.push(el.review));
+  }
+
   return (
     <>
       <TitleWrapper
@@ -35,7 +41,7 @@ export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
               영업시간:{" "}
             </Span>
             <HighlightSpan className="phoneDisable">
-              {shop?.openHour} -{" "}
+              {shop?.openHour}-{" "}
             </HighlightSpan>
             <HighlightSpan className="phoneDisable">
               {shop?.closeHour}
@@ -44,7 +50,7 @@ export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
         </Div>
         <Div justyfyContents="flex-start" alignItems="center">
           <Span className="phoneDisable" right="16px">
-            리뷰 ({shop?.review?.length})건
+            <span>리뷰 ({reviewCount.length})건</span>
           </Span>
           <StarRate star={shop?.averageStar} state={true} />
         </Div>
