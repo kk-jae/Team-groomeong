@@ -19,11 +19,11 @@ export const LogInTemplate = (): JSX.Element => {
   const { onClickHomePageLogIn } = useLogInButton();
 
   const onClickGoogleLogin = () => {
-    void router.push("https://groomeong.store/login/google");
+    void router.push("https://groomeong.shop/login/google");
   };
 
   const onClickKakaoLogin = async () => {
-    void router.push("https://groomeong.store/login/kakao");
+    void router.push("https://groomeong.shop/login/kakao");
   };
 
   return (
