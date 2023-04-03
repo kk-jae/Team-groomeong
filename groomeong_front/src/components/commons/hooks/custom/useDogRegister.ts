@@ -34,11 +34,11 @@ export const useDogRegister = () => {
       weight: Number(data.weight),
       breed: data.breed,
       specifics: data.specifics ?? "",
-      image: (data?.image?.uploadDogImage[0] as string) ?? null,
+      image: data?.image?.uploadDogImage?.[0],
+      // image: (data?.image?.uploadDogImage[0] as string) ?? null,
     };
-
     if (createDogInput.breed === undefined) createDogInput.breed = "LARGE";
-    // if (createDogInput.image?.length === 0) createDogInput.image = undefined;
+    // if (createDogInput?.image === undefined) createDogInput.image = undefined;
     try {
       await createDog({
         variables: {
