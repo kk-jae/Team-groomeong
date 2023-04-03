@@ -20,7 +20,6 @@ export const Page1 = styled.div<IProps>`
   position: fixed;
   width: 100%;
   height: 100vh;
-  /* background-color: ${GS.base.primary}; */
   background-size: cover;
   overflow: hidden;
   transform: scale(
