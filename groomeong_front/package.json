@@ -55,6 +55,7 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^3.2.2",
     "@graphql-codegen/typescript": "^3.0.2",
+    "@next/eslint-plugin-next": "^13.2.4",
     "@types/apollo-upload-client": "^17.0.2",
     "@types/google-maps": "^3.2.3",
     "@types/google.maps": "^3.52.4",
