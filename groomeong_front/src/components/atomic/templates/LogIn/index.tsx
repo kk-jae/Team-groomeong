@@ -18,12 +18,12 @@ export const LogInTemplate = (): JSX.Element => {
   const { onClickMoveToPage } = useMoveToPage();
   const { onClickHomePageLogIn } = useLogInButton();
 
-  const onClickGoogleLogin = async () => {
-    await router.push("https://groomeong.store/login/google");
+  const onClickGoogleLogin = () => {
+    void router.push("https://groomeong.store/login/google");
   };
 
   const onClickKakaoLogin = async () => {
-    await router.push("https://groomeong.store/login/kakao");
+    void router.push("https://groomeong.store/login/kakao");
   };
 
   return (
