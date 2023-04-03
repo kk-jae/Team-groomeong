@@ -35,40 +35,150 @@ export const Wrapper = styled.div<IProps>`
 
 export const First = styled.div<IProps>`
   width: 100%;
-  height: 80vh;
+  height: 100vh;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  transform: scale(
+      ${(props) =>
+        props.position < 150 ? "1" : `${1 - (props.position - 150) / 1800}`}
+    )
+    rotate(
+      ${(props) =>
+        props.position < 150 ? "0" : `${(props.position - 150) / 50}deg`}
+    );
+  opacity: ${(props) =>
+    props.position <= 150 ? "1" : `${1 - (props.position - 150) / 1000}`};
+
   /* transform: translateY(
     ${(props) =>
     props.position >= 3720 ? `${9 + (props.position - 3720) / 30}vh` : "8vh"}
   ); */
 `;
+export const First_Text_Wrapper = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  right: 7vw;
+  bottom: 12vh;
+  gap: 1vh;
+`;
 
-export const Shop_Img = styled.img<IProps>`
-  width: 42%;
-  height: auto;
+export const First_sub_Text = styled.div<IProps>`
+  font-weight: 600;
+  font-size: 1.8vw;
+  text-align: end;
+  animation-name: firstSubTextDisable, firstSubTextOpacity;
+  animation-duration: 2.5s, 3s;
+  animation-timing-function: ease, ease-in-out;
+  animation-delay: 0s, 2.5s;
+
+  @keyframes firstSubTextDisable {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes firstSubTextOpacity {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+`;
+
+export const First_Text = styled.div`
+  font-size: 5.8vw;
+  font-weight: 800;
+  animation-name: firstTextDisable, firstTextOpacity;
+  animation-duration: 4.5s, 2s;
+  animation-timing-function: ease, ease-in-out;
+  animation-delay: 0s, 4.5s;
+
+  @keyframes firstTextDisable {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes firstTextOpacity {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+`;
+
+export const First_Img_Wrapper = styled.div`
+  position: relative;
+  animation: imgWrapper 2s ease-in-out infinite alternate-reverse;
+
+  @keyframes imgWrapper {
+    0% {
+      transform: rotate(1deg);
+    }
+
+    100% {
+      transform: rotate(-1deg);
+    }
+  }
+`;
+export const First_Back_Img = styled.img<IProps>`
+  position: absolute;
+  width: 48vw;
+  height: 60vh;
+  bottom: -43vh;
+  left: -40vw;
   /* opacity: ${(props) =>
     props.position >= 2300 ? `${(props.position - 2300) / 1000}` : `0`}; */
 `;
+export const First_Dog_Img = styled.img<IProps>`
+  width: 36.2vw;
+  height: 77vh;
+  bottom: -43.7vh;
+  left: -32vw;
+  position: absolute;
+  animation: firstDog 2s ease-in-out;
 
-export const Shop_Text = styled.div<IProps>`
-  font-weight: 600;
-  font-size: 3vw;
-  /* opacity: ${(props) =>
-    props.position >= 1200 ? `${(props.position - 1200) / 1000}` : `0`}; */
+  @keyframes firstDog {
+    0% {
+      opacity: 0;
+      height: 8vh;
+      transform: translateY(-5vh);
+    }
+
+    60% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      height: 77vh;
+      transform: translateY(0);
+    }
+  }
 `;
 
 export const Second = styled.div<IProps>`
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   background-color: red;
-  /* padding-left: 28%; */
   /* transform: translateY(
     ${(props) =>
     props.position >= 4000
@@ -79,7 +189,7 @@ export const Second = styled.div<IProps>`
     props.position >= 4000 ? `${(props.position - 4000) / 1000}` : `0`}; */
 `;
 
-export const Reservation_Text = styled.div`
+export const Second_Text_Wrapper = styled.div`
   font-size: 3vw;
   font-weight: 600;
   display: flex;
@@ -88,11 +198,11 @@ export const Reservation_Text = styled.div`
   gap: 10px;
 `;
 
-export const Reservation_Text_One = styled.div<IProps>`
+export const Second_Main_Text = styled.div<IProps>`
   /* opacity: ${(props) =>
     props.position >= 4000 ? `${(props.position - 4000) / 1000}` : `0`}; */
 `;
-export const Reservation_Text_Two = styled.div<IProps>`
+export const Secont_Sub_Text = styled.div<IProps>`
   /* opacity: ${(props) =>
     props.position >= 5000 ? `${(props.position - 5000) / 1000}` : `0`}; */
 `;
@@ -188,7 +298,6 @@ export const Introduce_Bottom = styled.div<IProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
   bottom: 4vh;
   /* opacity: ${(props) =>
     props.position >= 15500 ? `${(props.position - 15500) / 1000}` : `0`}; */
@@ -237,7 +346,7 @@ export const Scroll = styled.div<IPropsCursor>`
     ${(props) => `${props.y}px`}
   );
   transition: all 0.08s ease;
-  background-color: rgba(244, 244, 244, 0.88);
+  background-color: rgba(232, 90, 113, 0.65);
   font-weight: 700;
   font-size: 14px;
   animation-name: disable, cursor;

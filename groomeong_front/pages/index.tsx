@@ -24,6 +24,7 @@ export default function Rending() {
     // setX(event.clientX);
     // setY(event.clientY);
   };
+  console.log(position);
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
@@ -38,35 +39,43 @@ export default function Rending() {
     <>
       <S.Container onMouseMove={onMouse}>
         <S.Scroll x={x} y={y}>
-          <S.Scroll_Text>SCROLL </S.Scroll_Text>
+          <S.Scroll_Text>SCROLL</S.Scroll_Text>
           <S.Scroll_Icon>
             <ArrowDownward />
           </S.Scroll_Icon>
         </S.Scroll>
-        {/* <S.Page1 position={position}>
-          <S.Img1 src="/image/img_not_character.svg" />
-          <S.Img2 src="/image/img-character-dog.svg" />
-        </S.Page1> */}
         <S.Page position={position}>
           <S.Wrapper position={position}>
-            <S.First position={position}>
-              <S.Shop_Text position={position}>
-                가까운 반려견 미용샵 찾으시나요?
-              </S.Shop_Text>
-              <S.Shop_Img src="image/img_shop.png" position={position} />
-            </S.First>
+            {/* <S.First position={position}>
+              <S.First_Img_Wrapper>
+                <S.First_Back_Img
+                  src="image/img_first_back.png"
+                  position={position}
+                />
+                <S.First_Dog_Img
+                  src="image/img_first_dog.png"
+                  position={position}
+                />
+              </S.First_Img_Wrapper>
+              <S.First_Text_Wrapper>
+                <S.First_sub_Text position={position}>
+                  반려견을 더욱 사랑스럽게, 더욱 건강하게
+                </S.First_sub_Text>
+                <S.First_Text position={position}>GROOMEONG</S.First_Text>
+              </S.First_Text_Wrapper>
+            </S.First> */}
             <S.Second position={position}>
-              <S.Reservation_Text>
-                <S.Reservation_Text_One position={position}>
-                  내 주변 미용샵 검색부터
-                </S.Reservation_Text_One>
-                <S.Reservation_Text_Two position={position}>
-                  실시간 예약은 물론
-                </S.Reservation_Text_Two>
-              </S.Reservation_Text>
+              <S.Second_Text_Wrapper>
+                <S.Second_Main_Text position={position}>
+                  가까운 반려견 미용샵을 찾으시나요?
+                </S.Second_Main_Text>
+                <S.Secont_Sub_Text position={position}>
+                  우리 동네 반려견 미용샵 찾기, <br /> GROOMENONG과 함께!
+                </S.Secont_Sub_Text>
+              </S.Second_Text_Wrapper>
               <S.Reservation_Img src="image/img_reservation.png" />
             </S.Second>
-            <S.Third position={position}>
+            {/* <S.Third position={position}>
               <S.Review_Img src="image/img_review.png" />
               <S.Review_Text>
                 <S.Review_Text_One position={position}>
@@ -110,7 +119,7 @@ export default function Rending() {
                   onClick={onClickMoveToPage("/home")}
                 />
               </S.Introduce_Bottom>
-            </S.Fourth>
+            </S.Fourth> */}
           </S.Wrapper>
         </S.Page>
       </S.Container>
