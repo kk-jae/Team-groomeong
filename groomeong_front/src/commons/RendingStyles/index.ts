@@ -7,17 +7,20 @@ interface IProps {
 }
 
 export const Container = styled.div`
-  height: 16000px;
+  width: 100vw;
+  height: 2300vh;
   overflow: hidden;
   color: white;
+  font-family: "Pretendard";
   cursor: none;
+  transition: all 0.08s ease-in-out;
 `;
 
 export const Page1 = styled.div<IProps>`
   position: fixed;
   width: 100%;
   height: 100vh;
-  background-color: ${GS.base.primary};
+  /* background-color: ${GS.base.primary}; */
   background-size: cover;
   overflow: hidden;
   transform: scale(
@@ -189,7 +192,6 @@ export const Scroll = styled.div<IPropsCursor>`
     ${(props) => `${props.y}px`}
   );
   transition: all 0.08s ease;
-  opacity: 1;
   background-color: rgba(244, 244, 244, 0.88);
   font-weight: 700;
   font-size: 14px;
@@ -227,128 +229,68 @@ export const Scroll_Icon = styled.div`
 export const Page2 = styled.div<IProps>`
   position: fixed;
   width: 100%;
-  height: 100vh;
+  /* height: 200vh; */
   background-color: ${GS.base.primary};
   opacity: ${(props) => (props.position ? `${props.position / 1000}` : 0)};
 `;
 
 export const Shop = styled.div<IProps>`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: center;
   background-color: ${GS.base.primary};
 `;
 
 export const Shop_Detail = styled.div<IProps>`
   width: 100%;
+  height: 100vh;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  transition: all 0.2s ease;
+  justify-content: flex-end;
   transform: translateY(
     ${(props) =>
-      props.position >= 3720 ? `${props.position / 3.1}px` : "1100px"}
+      props.position >= 3720 ? `${9 + (props.position - 3720) / 30}vh` : "8vh"}
   );
 `;
 
 export const Shop_Img = styled.img<IProps>`
-  width: 50%;
+  width: 42%;
   height: auto;
-  border-radius: 1%;
-  position: absolute;
   opacity: ${(props) =>
     props.position >= 2300 ? `${(props.position - 2300) / 1000}` : `0`};
 `;
 
 export const Shop_Text = styled.div<IProps>`
-  z-index: 5;
   font-weight: 600;
-  font-size: 65px;
-  color: white;
-  transform: translateY(-550%);
-
+  font-size: 3vw;
   opacity: ${(props) =>
     props.position >= 1200 ? `${(props.position - 1200) / 1000}` : `0`};
 `;
-export const Bubble = styled.div`
-  width: 312px;
-  height: 312px;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -1480%;
-  left: 5%;
-`;
-
-export const Bubble2 = styled.div`
-  width: 1114px;
-  height: 1114px;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -2400%;
-  right: -27%;
-`;
-export const Bubble3 = styled.div`
-  width: 361px;
-  height: 361px;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -950%;
-  left: 26%;
-`;
-export const Bubble4 = styled.div`
-  width: 262px;
-  height: 262px;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  left: -5%;
-  bottom: -300%;
-`;
-export const Bubble5 = styled.div`
-  width: 1000px;
-  height: 1000px;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -6000%;
-  left: 10%;
-`;
-
-export const Bubble6 = styled.div`
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -7200%;
-  right: 30%;
-`;
 
 export const Reservation_Detail = styled.div<IProps>`
+  width: 100%;
+  height: 80vh;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  padding-left: 28%;
-
+  /* padding-left: 28%; */
   transform: translateY(
     ${(props) =>
-      props.position >= 2400 ? `${(props.position - 4000) / 3.5}px` : 0}
+      props.position >= 4000
+        ? `${-159 + (props.position - 4000) / 30}vh`
+        : "-160vh"}
   );
-
   opacity: ${(props) =>
-    props.position >= 3720 ? `${(props.position - 3720) / 2000}` : `0`};
+    props.position >= 4000 ? `${(props.position - 4000) / 1000}` : `0`};
 `;
 
 export const Reservation_Text = styled.div`
-  font-size: 65px;
+  font-size: 3vw;
   font-weight: 600;
   display: flex;
   flex-direction: column;
@@ -366,124 +308,114 @@ export const Reservation_Text_Two = styled.div<IProps>`
 `;
 
 export const Reservation_Img = styled.img`
-  width: 36%;
+  width: 20%;
   height: auto;
+  margin-right: 13.5vw;
 `;
 
-export const Review = styled.div<IProps>`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-`;
 export const Review_Detail = styled.div<IProps>`
-  position: relative;
-  width: 110%;
+  width: 100%;
+  height: 80vh;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  opacity: ${(props) =>
-    props.position >= 6480 ? `${(props.position - 6480) / 2000}` : `0`};
   transform: translateY(
     ${(props) =>
-      props.position >= 4920 ? `${(props.position - 9940) / 3.5}px` : 0}
+      props.position >= 6800
+        ? `${-249 + (props.position - 6800) / 30}vh`
+        : "-250vh"}
   );
+  opacity: ${(props) =>
+    props.position >= 6800 ? `${(props.position - 6800) / 1000}` : `0`};
 `;
 
 export const Review_Img = styled.img`
-  width: 50%;
+  width: 35%;
   height: auto;
-  margin-left: -20%;
+  margin-left: 4vw;
 `;
 
 export const Review_Text = styled.div`
-  font-size: 65px;
+  font-size: 3vw;
   font-weight: 600;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
-  margin-left: 6%;
 `;
 
 export const Review_Text_One = styled.div<IProps>`
   opacity: ${(props) =>
-    props.position >= 7300 ? `${(props.position - 7300) / 1000}` : `0`};
+    props.position >= 8200 ? `${(props.position - 8200) / 1000}` : `0`};
 `;
 export const Review_Text_Two = styled.div<IProps>`
   opacity: ${(props) =>
-    props.position >= 8300 ? `${(props.position - 8300) / 1000}` : `0`};
+    props.position >= 8600 ? `${(props.position - 8600) / 1000}` : `0`};
 `;
 
-export const Introduce = styled.div<IProps>`
+export const Introduce_Detail = styled.div<IProps>`
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease-in-out;
-`;
-
-export const Introduce_Text = styled.div`
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-260vh);
   font-weight: 500;
-  position: fixed;
-  top: 37%;
-  left: 30%;
+  position: relative;
 `;
 export const Introduce_subTitle = styled.div<IProps>`
-  font-size: 65px;
-  opacity: ${(props) =>
-    props.position >= 11380 ? `${(props.position - 11380) / 2000}` : `0`};
+  font-size: 3vw;
+  position: relative;
+  /* padding-right: 12vw;
+  padding-bottom: 3vh; */
+  left: -6.2vw;
+  top: -1vh;
 `;
 
 export const Introduce_Title = styled.div<IProps>`
-  width: 1000px;
-  font-size: 65px;
-  position: absolute;
-  bottom: -220%;
-  left: 45%;
+  position: relative;
+  font-size: 3vw;
+  right: -7vw;
+  top: 1vh;
   opacity: ${(props) =>
-    props.position >= 12500 ? `${(props.position - 12500) / 2000}` : `0`};
+    props.position >= 14000 ? `${(props.position - 14000) / 1000}` : `0`};
+`;
+export const Logo = styled.span<IProps>`
+  font-size: 5vw;
+  font-weight: 700;
 `;
 
-export const Introduce_Img = styled.img`
-  width: 600%;
-  height: auto;
+export const Introduce_Img = styled.img<IProps>`
+  width: 5vw;
+  position: absolute;
+  top: -2.5vh;
+  opacity: ${(props) =>
+    props.position >= 10500 ? `${(props.position - 10500) / 1000}` : `0`};
 `;
 
-export const Logo = styled.span`
-  font-weight: 500;
-  font-size: 120px;
+export const Introduce_Bottom = styled.div<IProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 4vh;
+  opacity: ${(props) =>
+    props.position >= 15500 ? `${(props.position - 15500) / 1000}` : `0`};
 `;
 
 export const LastLogo = styled.img<IProps>`
-  position: absolute;
-  bottom: -700%;
-  right: -20%;
-  transition: all 0.3s ease-in-out;
-  opacity: ${(props) =>
-    props.position >= 12800 ? `${(props.position - 12800) / 2000}` : `0`};
+  width: 20vw;
   cursor: pointer;
-
   :hover {
     transform: scale(1.05);
   }
 `;
 export const ClickBtn = styled.img<IProps>`
-  position: absolute;
+  width: 4vw;
   transform: rotate(180deg);
-  top: 540%;
-  left: 75%;
   animation: click 1s ease-out infinite;
-  opacity: ${(props) =>
-    props.position >= 12800 ? `${(props.position - 12800) / 2000}` : `0`};
-  width: 13%;
 
   @keyframes click {
     0% {
@@ -493,4 +425,187 @@ export const ClickBtn = styled.img<IProps>`
       transform: rotate(180deg) translateY(-8px);
     }
   }
+`;
+
+export const Bubble = styled.div<IProps>`
+  z-index: -1;
+  width: 18vw;
+  height: 36vh;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -70vh;
+  left: 4vw;
+  /* transform: translateY(0); */
+  transform: translateY(
+    ${(props) =>
+      props.position >= 2800 ? `${1 + (props.position - 3000) / 20}vh` : "0vh"}
+  );
+  opacity: ${(props) =>
+    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
+`;
+export const Bubble2 = styled.div<IProps>`
+  z-index: -1;
+  width: 68vw;
+  height: 136vh;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -150vh;
+  right: -33vw;
+  transform: translateY(
+    ${(props) =>
+      props.position >= 1001 ? `${1 + (props.position - 1001) / 70}vh` : "0vh"}
+  );
+  opacity: ${(props) =>
+    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
+`;
+export const Bubble3 = styled.div<IProps>`
+  z-index: -1;
+  width: 21vw;
+  height: 42vh;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -40vh;
+  left: 30vw;
+  transform: translateY(
+    ${(props) =>
+      props.position >= 1001 ? `${1 + (props.position - 1600) / 50}vh` : "0vh"}
+  );
+  opacity: ${(props) =>
+    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
+`;
+export const Bubble4 = styled.div<IProps>`
+  z-index: -1;
+  width: 16vw;
+  height: 32vh;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  bottom: 110vh;
+  left: -6vw;
+  transform: translateY(
+    ${(props) =>
+      props.position >= 1001 ? `${1 + (props.position - 1600) / 20}vh` : "0vh"}
+  );
+
+  opacity: ${(props) =>
+    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
+`;
+export const Bubble5 = styled.div<IProps>`
+  z-index: -1;
+  width: 50vw;
+  height: 100vh;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -510vh;
+  right: -8vw;
+  opacity: ${(props) =>
+    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
+
+  transform: translateY(
+    ${(props) =>
+      props.position >= 1001 ? `${1 + (props.position - 1600) / 30}vh` : "0vh"}
+  );
+`;
+
+export const Bubble6 = styled.div<IProps>`
+  z-index: -1;
+  width: 20vw;
+  height: 40vh;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -380vh;
+  left: 18vw;
+  transform: translateY(
+    ${(props) =>
+      props.position >= 1001 ? `${1 + (props.position - 1600) / 20}vh` : "0vh"}
+  );
+  opacity: ${(props) =>
+    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
+`;
+export const Bubble7 = styled.div<IProps>`
+  z-index: -1;
+  width: 15vw;
+  height: 30vh;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -700vh;
+  left: 20vw;
+  transform: translateY(
+    ${(props) =>
+      props.position >= 1001 ? `${1 + (props.position - 1600) / 20}vh` : "0vh"}
+  );
+  opacity: ${(props) =>
+    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
+`;
+export const Bubble8 = styled.div<IProps>`
+  z-index: -1;
+  width: 10vw;
+  height: 20vh;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -500vh;
+  right: 20vw;
+  transform: translateY(
+    ${(props) =>
+      props.position >= 1001 ? `${1 + (props.position - 1600) / 40}vh` : "0vh"}
+  );
+  opacity: ${(props) =>
+    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
+`;
+export const Bubble9 = styled.div<IProps>`
+  z-index: -1;
+  width: 40vw;
+  height: 80vh;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -500vh;
+  left: -15vw;
+  transform: translateY(
+    ${(props) =>
+      props.position >= 1001 ? `${1 + (props.position - 1600) / 60}vh` : "0vh"}
+  );
+  opacity: ${(props) =>
+    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
+`;
+
+export const Bubble10 = styled.div<IProps>`
+  z-index: -1;
+  width: 10vw;
+  height: 20vh;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -500vh;
+  right: 20vw;
+  transform: translateY(
+    ${(props) =>
+      props.position >= 1001 ? `${1 + (props.position - 1600) / 120}vh` : "0vh"}
+  );
+  opacity: ${(props) =>
+    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
+`;
+
+export const Bubble11 = styled.div<IProps>`
+  z-index: -1;
+  width: 30vw;
+  height: 60vh;
+  border-radius: 50%;
+  background-color: #80baff;
+  position: absolute;
+  top: -650vh;
+  left: 20vw;
+  transform: translateY(
+    ${(props) =>
+      props.position >= 1001 ? `${1 + (props.position - 1600) / 80}vh` : "0vh"}
+  );
+  opacity: ${(props) =>
+    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
 `;
