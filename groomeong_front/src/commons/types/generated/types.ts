@@ -103,6 +103,8 @@ export type IMutation = {
   deleteDog: Scalars['Boolean'];
   /**  Return: 예약 삭제하기 */
   deleteReservation: Scalars['Boolean'];
+  /** Return: 리뷰 삭제 후 true 반환 */
+  deleteReview: Scalars['Boolean'];
   /** Return : 가게 정보 삭제 완료 시 true */
   deleteShop: Scalars['Boolean'];
   /** Return: 가게 이미지 삭제 완료 시, true */
@@ -184,6 +186,11 @@ export type IMutationDeleteDogArgs = {
 
 export type IMutationDeleteReservationArgs = {
   reservationId: Scalars['String'];
+};
+
+
+export type IMutationDeleteReviewArgs = {
+  reviewId: Scalars['String'];
 };
 
 
@@ -335,6 +342,7 @@ export type IQueryFetchReviewArgs = {
 
 
 export type IQueryFetchReviewsByShopIdArgs = {
+  count?: InputMaybe<Scalars['Float']>;
   page?: InputMaybe<Scalars['Float']>;
   shopId: Scalars['String'];
 };

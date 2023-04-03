@@ -16,6 +16,7 @@ export const MapList = () => {
 
   useEffect(() => {
     if (mapInfo.isLoaded && shops != null) {
+      console.log('ttt', shops)
       const newBounds = new google.maps.LatLngBounds();
       shops.forEach((shop) => {
         newBounds.extend(getLatLng(shop.lat, shop.lng));
@@ -23,7 +24,7 @@ export const MapList = () => {
       mapInfo.map?.setZoom(13);
       mapInfo.map?.fitBounds(newBounds);
     }
-  }, [search, shops]);
+  }, [mapInfo.isLoaded, search, shops, globalSearch]);
 
   return (
     <>

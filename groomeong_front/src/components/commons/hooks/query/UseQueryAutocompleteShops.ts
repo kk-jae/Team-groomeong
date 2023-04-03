@@ -24,7 +24,7 @@ export const QUERY_AUTOCOMPLETE_SHOPS = gql`
 `;
 
 const UseQueryAutocomplateShops = (search: string) => {
-  const { data, fetchMore } = useQuery<
+  const { data } = useQuery<
     Pick<IQuery, "autocompleteShops">,
     IQueryAutocompleteShopsArgs
   >(QUERY_AUTOCOMPLETE_SHOPS, {
@@ -33,7 +33,7 @@ const UseQueryAutocomplateShops = (search: string) => {
     },
   });
 
-  return { data, fetchMore };
+  return { data };
 };
 
 export default UseQueryAutocomplateShops;

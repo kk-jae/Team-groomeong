@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import * as GS from "../../../../../theme/global";
+import * as S from "../../../../components/commons/style";
 import { motion } from "framer-motion";
 import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
@@ -28,5 +29,57 @@ export const MainCharacter = styled(motion.img)`
   ${mediaQueries("tablet")} {
     width: 60%;
     height: 60%;
+    ${GS.Paragraph.Small}
   }
+`;
+
+export const MainBody = styled(S.Div)`
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px;
+
+  ${mediaQueries("tablet")} {
+    height: 80px;
+  }
+  ${mediaQueries("phone")} {
+    height: 60px;
+  }
+`;
+
+export const MainPopupBoxWrapper = styled(S.Div)`
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+`;
+
+export const MainPopupBox = styled(S.Div)`
+  position: absolute;
+  width: 100%;
+  flex-direction: column;
+  background-color: #fff;
+`;
+
+export const MainPopupBoxContentsWrapper = styled(S.Div)`
+  padding: 32px 44px;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+`;
+export const MainPopupBoxContentsButton = styled(motion.button)`
+  border: none;
+  outline: none;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: ${GS.base.secondary};
+  cursor: pointer;
+  border-bottom: 1px solid ${GS.gray[100]};
+`;
+
+export const MainPopupBoxContentsTitle = styled(S.Div)`
+  padding-right: 32px;
+  ${GS.Label.Medium}
 `;
