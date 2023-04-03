@@ -33,12 +33,13 @@ export const EmailAuthTemplates = (): JSX.Element => {
 
   const onClickSendEmail = (data: IEmail): void => {
     const UsersEmail = fetchUsersData?.fetchUsers.map((el) => el.email);
+
     if (data.email === "") {
       Modal.error({
         content: "이메일을 입력해주세요",
       });
     }
-    if (UsersEmail?.includes(String(data.email)) !== true) {
+    if (UsersEmail?.includes(String(data.email)) === true) {
       void sendEmail(data)();
       setDisabledState(true);
       let min = 2;
@@ -70,7 +71,7 @@ export const EmailAuthTemplates = (): JSX.Element => {
           <S.EmailAuthMiddleTextButtonWrapper
             onSubmit={method.handleSubmit(onClickSendEmail)}
           >
-            <FormProvider {...method} >
+            <FormProvider {...method}>
               <InputMiddle
                 label="이메일"
                 name="email"
