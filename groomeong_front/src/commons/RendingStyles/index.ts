@@ -14,7 +14,7 @@ export const Container = styled.div`
   font-family: "Pretendard";
   background-color: white;
   transition: all 0.08s ease-in-out;
-  /* cursor: none; */
+  cursor: none;
 
   ${mediaQueries("phone")} {
     height: 350vh;
@@ -106,7 +106,7 @@ export const First_sub_Text = styled.div<IProps>`
   }
 `;
 
-export const First_Text = styled.div`
+export const First_Text = styled.div<IProps>`
   font-size: 5.8vw;
   font-weight: 800;
   animation-name: firstTextDisable, firstTextOpacity;
@@ -626,6 +626,13 @@ export const Scroll = styled.div<IPropsCursor>`
     100% {
       opacity: 1;
     }
+  }
+  ${mediaQueries("phone")} {
+    display: none;
+  }
+
+  ${mediaQueries("tablet")} {
+    display: none;
   }
 `;
 

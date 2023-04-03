@@ -21,8 +21,8 @@ export default function Rending() {
   };
 
   const onMouse = (event: any) => {
-    // setX(event.clientX);
-    // setY(event.clientY);
+    setX(event.clientX);
+    setY(event.clientY);
   };
   console.log(position);
 
