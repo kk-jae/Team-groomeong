@@ -23,7 +23,7 @@ export const ReservationHistoryList = (): JSX.Element => {
                 <th>리뷰 작성</th>
               </tr>
             </thead>
-            {isSameDate(data?.fetchReservationsByUser[0]?.date) ? (
+            {!isSameDate(data?.fetchReservationsByUser[0]?.date) ? (
               <ReservationHistoryTable></ReservationHistoryTable>
             ) : (
               <>
