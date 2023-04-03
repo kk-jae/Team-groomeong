@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled from "@emotion/styled";
 import * as GS from "../../../theme/global";
+import { mediaQueries } from "../../components/commons/libraries/MediaQueries";
 
 interface IProps {
   position: number;
@@ -8,21 +9,23 @@ interface IProps {
 
 export const Container = styled.div`
   width: 100vw;
-  height: 2300vh;
-  overflow: hidden;
+  height: 520vh;
   color: black;
   font-family: "Pretendard";
   background-color: white;
   transition: all 0.08s ease-in-out;
   /* cursor: none; */
+
+  ${mediaQueries("phone")} {
+    height: 350vh;
+  }
+  ${mediaQueries("tablet")} {
+    height: 350vh;
+  }
 `;
 
 export const Page = styled.div<IProps>`
   width: 100%;
-  /* height: 200vh; */
-  /* background-color: ${GS.base.primary}; */
-  /* opacity: ${(props) =>
-    props.position ? `${props.position / 1000}` : 0}; */
 `;
 
 export const Wrapper = styled.div<IProps>`
@@ -31,10 +34,11 @@ export const Wrapper = styled.div<IProps>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
 export const First = styled.div<IProps>`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   position: relative;
   display: flex;
@@ -42,28 +46,35 @@ export const First = styled.div<IProps>`
   align-items: center;
   justify-content: center;
   transform: scale(
-      ${(props) =>
-        props.position < 150 ? "1" : `${1 - (props.position - 150) / 1800}`}
+      ${(props) => (props.position < 0 ? "1" : `${1 - props.position / 1800}`)}
     )
     rotate(
-      ${(props) =>
-        props.position < 150 ? "0" : `${(props.position - 150) / 50}deg`}
+      ${(props) => (props.position < 0 ? "0" : `${props.position / 50}deg`)}
     );
   opacity: ${(props) =>
     props.position <= 150 ? "1" : `${1 - (props.position - 150) / 1000}`};
 
-  /* transform: translateY(
-    ${(props) =>
-    props.position >= 3720 ? `${9 + (props.position - 3720) / 30}vh` : "8vh"}
-  ); */
+  ${mediaQueries("phone")} {
+    flex-direction: column;
+    height: 80vh;
+    transform: none;
+    opacity: 1;
+  }
+  ${mediaQueries("tablet")} {
+    height: 80vh;
+    flex-direction: column;
+    transform: none;
+    opacity: 1;
+  }
 `;
+
 export const First_Text_Wrapper = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  right: 7vw;
-  bottom: 12vh;
+  right: 10vw;
+  top: 70vh;
   gap: 1vh;
 `;
 
@@ -72,7 +83,7 @@ export const First_sub_Text = styled.div<IProps>`
   font-size: 1.8vw;
   text-align: end;
   animation-name: firstSubTextDisable, firstSubTextOpacity;
-  animation-duration: 2.5s, 3s;
+  animation-duration: 2.5s, 2.5s;
   animation-timing-function: ease, ease-in-out;
   animation-delay: 0s, 2.5s;
 
@@ -115,7 +126,6 @@ export const First_Text = styled.div`
     0% {
       opacity: 0;
     }
-
     100% {
       opacity: 1;
     }
@@ -130,25 +140,23 @@ export const First_Img_Wrapper = styled.div`
     0% {
       transform: rotate(1deg);
     }
-
     100% {
       transform: rotate(-1deg);
     }
   }
 `;
+
 export const First_Back_Img = styled.img<IProps>`
   position: absolute;
-  width: 48vw;
+  width: 40vw;
   height: 60vh;
-  bottom: -43vh;
-  left: -40vw;
-  /* opacity: ${(props) =>
-    props.position >= 2300 ? `${(props.position - 2300) / 1000}` : `0`}; */
+  top: -19vh;
+  left: -39vw;
 `;
 export const First_Dog_Img = styled.img<IProps>`
-  width: 36.2vw;
-  height: 77vh;
-  bottom: -43.7vh;
+  width: 30vw;
+  height: 75vh;
+  top: -33.5vh;
   left: -32vw;
   position: absolute;
   animation: firstDog 2s ease-in-out;
@@ -156,106 +164,268 @@ export const First_Dog_Img = styled.img<IProps>`
   @keyframes firstDog {
     0% {
       opacity: 0;
-      height: 8vh;
-      transform: translateY(-5vh);
+      height: 0vh;
+      transform: translateY(80vh);
     }
 
-    60% {
+    70% {
       opacity: 0;
     }
     100% {
       opacity: 1;
-      height: 77vh;
+      height: 75vh;
       transform: translateY(0);
     }
   }
 `;
 
 export const Second = styled.div<IProps>`
-  width: 100%;
+  position: relative;
+  z-index: 2;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: red;
-  /* transform: translateY(
-    ${(props) =>
-    props.position >= 4000
-      ? `${-159 + (props.position - 4000) / 30}vh`
-      : "-160vh"}
-  );
+  justify-content: flex-start;
   opacity: ${(props) =>
-    props.position >= 4000 ? `${(props.position - 4000) / 1000}` : `0`}; */
+    props.position >= 1050 ? `${1 + (1050 - props.position) / 2000}` : `1`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+    height: 80vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    height: 80vh;
+    opacity: 1;
+  }
 `;
 
 export const Second_Text_Wrapper = styled.div`
-  font-size: 3vw;
-  font-weight: 600;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
+  position: absolute;
+  top: 17vh;
+  left: 4vw;
 `;
 
 export const Second_Main_Text = styled.div<IProps>`
-  /* opacity: ${(props) =>
-    props.position >= 4000 ? `${(props.position - 4000) / 1000}` : `0`}; */
+  width: 50vw;
+  font-size: 4vw;
+  font-weight: 800;
+  padding-bottom: 5vh;
+  opacity: ${(props) =>
+    props.position >= 200 ? `${(props.position - 200) / 800}` : `0`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+    padding-bottom: 2vh;
+  }
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+  }
 `;
-export const Secont_Sub_Text = styled.div<IProps>`
-  /* opacity: ${(props) =>
-    props.position >= 5000 ? `${(props.position - 5000) / 1000}` : `0`}; */
+export const Second_Sub_Text = styled.div<IProps>`
+  font-size: 1.2vw;
+  font-weight: 700;
+  opacity: ${(props) =>
+    props.position >= 280 ? `${(props.position - 280) / 1000}` : `0`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+  }
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+  }
 `;
 
-export const Reservation_Img = styled.img`
-  width: 20%;
-  height: auto;
-  margin-right: 13.5vw;
+export const Second_Img_Wrapper = styled.div<IProps>`
+  position: relative;
+  opacity: ${(props) =>
+    props.position >= 50 ? `${(props.position - 50) / 800}` : `0`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+  }
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+  }
+`;
+export const Second_Img_Dog = styled.img<IProps>`
+  position: absolute;
+  width: 18vw;
+  right: -64vw;
+  top: 28.5vh;
+  z-index: 1;
+  transform: translateY(
+      ${(props) =>
+        props.position <= 800 ? `${(props.position - 800) / 10}vh` : 0}
+    )
+    rotate(
+      ${(props) =>
+        props.position <= 800 ? `${-((props.position - 800) / 10)}deg` : 0}
+    );
+
+  ${mediaQueries("phone")} {
+    transform: none;
+    top: 22%;
+  }
+  ${mediaQueries("tablet")} {
+    transform: none;
+    top: 22%;
+  }
+`;
+export const Second_Img_Table = styled.img<IProps>`
+  position: absolute;
+  width: 22vw;
+  right: -65vw;
+  top: 59.3vh;
+  z-index: 1;
+  transform: translateY(
+      ${(props) =>
+        props.position <= 800 ? `${(props.position - 800) / 10}vh` : 0}
+    )
+    rotate(
+      ${(props) =>
+        props.position <= 800 ? `${(props.position - 800) / 10}deg` : 0}
+    );
+
+  ${mediaQueries("phone")} {
+    display: none;
+    transform: none;
+  }
+  ${mediaQueries("tablet")} {
+    transform: none;
+    display: none;
+  }
+`;
+export const Second_Img_Back = styled.img<IProps>`
+  position: absolute;
+  width: 50vw;
+  right: -83vw;
+  top: 20vh;
+  z-index: 0;
+
+  ${mediaQueries("phone")} {
+    display: none;
+  }
+  ${mediaQueries("tablet")} {
+    display: none;
+  }
+`;
+export const Second_Img_Women = styled.img<IProps>`
+  position: absolute;
+  width: 23vw;
+  right: -89vw;
+  top: 13.5vh;
+  z-index: 1;
+  animation: imgWrapper 1s ease-in-out infinite alternate-reverse;
+
+  @keyframes imgWrapper {
+    0% {
+      transform: rotate(1deg);
+    }
+
+    100% {
+      transform: rotate(-1deg);
+    }
+  }
 `;
 
 export const Third = styled.div<IProps>`
-  width: 100%;
-  height: 80vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  background-color: blue;
-  /* transform: translateY(
+
+  ${mediaQueries("phone")} {
+    height: 80vh;
+  }
+  ${mediaQueries("tablet")} {
+    height: 80vh;
+    transform: translateY(-28vh);
+  }
+`;
+
+export const Third_Img_Wrapper = styled.div<IProps>`
+  position: relative;
+`;
+export const Third_Img_Back = styled.img<IProps>`
+  position: absolute;
+  width: 100vw;
+  height: 270vh;
+  top: -90vh;
+
+  ${mediaQueries("phone")} {
+    top: -100vh;
+    height: 170vh;
+  }
+  ${mediaQueries("tablet")} {
+    top: -100vh;
+    height: 170vh;
+  }
+`;
+export const Third_Img_Map = styled.img<IProps>`
+  width: 40vw;
+  transform: translateX(
     ${(props) =>
-    props.position >= 6800
-      ? `${-249 + (props.position - 6800) / 30}vh`
-      : "-250vh"}
+      props.position <= 1800 ? `${(props.position - 1800) / 30}vw` : 0}
   );
-  opacity: ${(props) =>
-    props.position >= 6800 ? `${(props.position - 6800) / 1000}` : `0`}; */
+  ${mediaQueries("phone")} {
+    transform: none;
+    transform: translateX();
+    transform: translateX(-15vh);
+  }
+  ${mediaQueries("tablet")} {
+    transform: none;
+    transform: translateX(0);
+    transform: translateY(-15vh);
+  }
 `;
 
-export const Review_Img = styled.img`
-  width: 35%;
-  height: auto;
-  margin-left: 4vw;
-`;
-
-export const Review_Text = styled.div`
-  font-size: 3vw;
-  font-weight: 600;
+export const Third_Text_Wrapper = styled.div<IProps>`
+  width: 100vw;
+  margin-right: 10vw;
+  padding-bottom: 32vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
+  z-index: 555;
+  opacity: ${(props) =>
+    props.position > 800 ? `${(props.position - 800) / 1000}` : `0`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+  }
+
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+  }
 `;
 
-export const Review_Text_One = styled.div<IProps>`
-  opacity: ${(props) =>
-    props.position >= 8200 ? `${(props.position - 8200) / 1000}` : `0`};
+export const Third_Main_Text = styled.div<IProps>`
+  text-align: end;
+  color: white;
+  font-size: 4.5vw;
+  font-weight: 800;
+  padding-bottom: 7vh;
+
+  ${mediaQueries("phone")} {
+    padding-bottom: 2vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    padding-bottom: 2vh;
+  }
 `;
-export const Review_Text_Two = styled.div<IProps>`
-  opacity: ${(props) =>
-    props.position >= 8600 ? `${(props.position - 8600) / 1000}` : `0`};
+export const Third_Sub_Text = styled.div<IProps>`
+  text-align: end;
+  font-size: 1.5vw;
+  color: white;
+  font-weight: 700;
 `;
 
 export const Fourth = styled.div<IProps>`
+  color: white;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -263,65 +433,15 @@ export const Fourth = styled.div<IProps>`
   justify-content: center;
   align-items: center;
   font-weight: 500;
-`;
-export const Introduce_subTitle = styled.div<IProps>`
-  font-size: 3vw;
+  z-index: 2;
   position: relative;
-  /* padding-right: 12vw;
-  padding-bottom: 3vh; */
-  left: -6.2vw;
-  top: -1vh;
-`;
 
-export const Introduce_Title = styled.div<IProps>`
-  position: relative;
-  font-size: 3vw;
-  right: -7vw;
-  top: 1vh;
-  /* opacity: ${(props) =>
-    props.position >= 14000 ? `${(props.position - 14000) / 1000}` : `0`}; */
-`;
-export const Logo = styled.span<IProps>`
-  font-size: 5vw;
-  font-weight: 700;
-`;
-
-export const Introduce_Img = styled.img<IProps>`
-  width: 5vw;
-  position: absolute;
-  top: -2.5vh;
-  /* opacity: ${(props) =>
-    props.position >= 10500 ? `${(props.position - 10500) / 1000}` : `0`}; */
-`;
-
-export const Introduce_Bottom = styled.div<IProps>`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  bottom: 4vh;
-  /* opacity: ${(props) =>
-    props.position >= 15500 ? `${(props.position - 15500) / 1000}` : `0`}; */
-`;
-
-export const LastLogo = styled.img<IProps>`
-  width: 20vw;
-  cursor: pointer;
-  :hover {
-    transform: scale(1.05);
+  ${mediaQueries("phone")} {
+    height: 0vh;
   }
-`;
-export const ClickBtn = styled.img<IProps>`
-  width: 4vw;
-  transform: rotate(180deg);
-  animation: click 1s ease-out infinite;
 
-  @keyframes click {
-    0% {
-      transform: rotate(180deg) translateY(5px);
-    }
-    100% {
-      transform: rotate(180deg) translateY(-8px);
-    }
+  ${mediaQueries("tablet")} {
+    height: 0vh;
   }
 `;
 
@@ -329,6 +449,143 @@ interface IPropsCursor {
   x: number;
   y: number;
 }
+export const Fourth_Text_Wrapper = styled.div<IProps>`
+  width: 100vw;
+  position: relative;
+  opacity: ${(props) =>
+    props.position > 1500 ? `${(props.position - 1500) / 800}` : `0`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+  }
+
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+  }
+`;
+export const Fourth_Main_Text = styled.div<IProps>`
+  font-size: 4.5vw;
+  position: absolute;
+  top: -25vh;
+  left: 10vw;
+  font-weight: 800;
+
+  ${mediaQueries("phone")} {
+    top: -32vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    top: -32vh;
+  }
+`;
+export const Fourth_Sub_Text = styled.div<IProps>`
+  font-size: 1.5vw;
+  position: absolute;
+  left: 10vw;
+  top: -2vh;
+  font-weight: 700;
+
+  ${mediaQueries("phone")} {
+    top: -25vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    top: -25vh;
+  }
+`;
+
+export const Fourth_Img_Wrapper = styled.div<IProps>`
+  position: relative;
+`;
+
+export const Fourth_Img_Reservation = styled.img<IProps>`
+  position: absolute;
+  width: 35vw;
+  top: -50vh;
+  right: -38vw;
+  transform: translateY(
+    ${(props) =>
+      props.position <= 2610 ? `${-((props.position - 2610) / 30)}vw` : 0}
+  );
+  ${mediaQueries("phone")} {
+    transform: none;
+  }
+
+  ${mediaQueries("tablet")} {
+    transform: none;
+  }
+`;
+
+export const Fifth = styled.div<IProps>`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  opacity: ${(props) =>
+    props.position >= 2800 ? `${(props.position - 2800) / 400}` : `0`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+  }
+
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+  }
+`;
+
+export const Fifth_Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10vh;
+  ${mediaQueries("phone")} {
+    padding: 0;
+  }
+
+  ${mediaQueries("tablet")} {
+    padding: 0;
+  }
+`;
+
+export const Fifth_Img_Wrapper = styled.div``;
+
+export const Fifth_Img = styled.img`
+  width: 22vw;
+`;
+export const Fifth_Text_Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const Fifth_Main_Text = styled.div`
+  font-size: 4.5vw;
+  font-weight: 800;
+  padding-top: 5vh;
+`;
+export const Fifth_SubButton_Text = styled.div<IProps>`
+  font-size: 1.3vw;
+  font-weight: 700;
+  padding-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  :hover {
+    font-weight: 1000;
+  }
+`;
+
+export const Icon = styled.span`
+  color: ${GS.base.primary};
+  padding-left: 0.3vw;
+  padding-bottom: 0.3vh;
+  font-size: 1.5vw;
+`;
 
 export const Scroll = styled.div<IPropsCursor>`
   z-index: 9999;
