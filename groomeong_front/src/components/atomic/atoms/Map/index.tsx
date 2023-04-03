@@ -14,7 +14,6 @@ export const Map = (): JSX.Element => {
   const {
     onClickMap,
     shops,
-    isLoaded,
     onLoad,
     mapContainerStyle,
     options,
@@ -24,7 +23,7 @@ export const Map = (): JSX.Element => {
     codes,
   } = useMap();
 
-  return isLoaded ? (
+  return (
     <Div>
       <GoogleMap
         onClick={onClickMap}
@@ -51,7 +50,5 @@ export const Map = (): JSX.Element => {
         </div>
       </GoogleMap>
     </Div>
-  ) : (
-    <></>
-  );
+  )
 };
