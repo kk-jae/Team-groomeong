@@ -3,7 +3,6 @@ import * as S from "./index.style";
 import { Comment } from "../../atoms/Comment";
 import * as GS from "../../../../../theme/global";
 import { UseQueryFetchShop } from "../../../commons/hooks/query/UseQueryFetchShop";
-import { UseQueryFetchReviewsByShopId } from "../../../commons/hooks/query/UseQueryFetchReviewsByShopId";
 import { MouseEvent } from "react";
 import { useRouter } from "next/router";
 import { Buttons } from "../../atoms/Buttons";
@@ -18,9 +17,7 @@ interface IShopDetailProps {
 export const ShopDetail = (props: IShopDetailProps): JSX.Element => {
   const router = useRouter();
   const { data } = UseQueryFetchShop(String(router.query.shopId));
-  const { data: review } = UseQueryFetchReviewsByShopId(
-    String(router.query.shopId)
-  );
+
   const { onClickMoveToPage } = useMoveToPage();
 
   return (
@@ -64,17 +61,25 @@ export const ShopDetail = (props: IShopDetailProps): JSX.Element => {
               )}
             />
           </S.ShopReservationBtn>
-          {review?.fetchReviewsByShopId.map((el) => (
-            <Comment
-              key={el.id}
-              contents={el.contents}
-              date={el.createdAt}
-              rate={el.star}
-              state={true}
-              iconView={true}
-              shopId={String(router.query.shopId)}
-            ></Comment>
-          ))}
+          {data?.fetchShop?.reservation?.map((el, index) =>
+            el.review !== null ? (
+              <Comment
+                key={el.id}
+                contents={data.fetchShop.reservation?.[index].review?.contents}
+                date={el.review?.createdAt}
+                rate={el.review?.star}
+                state={true}
+                iconView={true}
+                shopId={String(router.query.shopId)}
+                name={data.fetchShop.reservation?.[index].user.name}
+                image={String(data.fetchShop.reservation?.[index].user.image)}
+              ></Comment>
+            ) : (
+              <div key={index}>
+                <div></div>
+              </div>
+            )
+          )}
         </S.ShopDetailWrapper>
       </S.ShopDetailModal>
     </>

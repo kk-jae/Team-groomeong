@@ -8,7 +8,7 @@ export const DogSelect = (props: any): JSX.Element => {
     dataDog?.fetchUserDogs.map((el) => ({ value: el.name, id: el.id })),
   ];
 
-  const onChange = (id: any): void => {
+  const onChange = (value: any, id: any): void => {
     props.setDogId(id.id);
   };
 
