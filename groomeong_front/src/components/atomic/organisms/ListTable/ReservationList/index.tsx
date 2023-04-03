@@ -1,7 +1,11 @@
 import * as S from "./index.style";
 import { ReservationTable } from "../../../atoms/ReservationTable";
+import { UseQueryFetchReservationByUser } from "../../../../commons/hooks/query/UseQueryFetchReservationByUserId";
+import { isSameDate } from "../../../../commons/libraries/GetTimeStamp";
 
 export const ReservationList = (): JSX.Element => {
+  const { data } = UseQueryFetchReservationByUser();
+  console.log(isSameDate(data?.fetchReservationsByUser.at(-1)?.date));
   return (
     <>
       <S.ReservationListWrapper>
@@ -19,7 +23,14 @@ export const ReservationList = (): JSX.Element => {
                 <th>예약 취소</th>
               </tr>
             </thead>
-            <ReservationTable></ReservationTable>
+            {!isSameDate(data?.fetchReservationsByUser.at(-1)?.date) &&
+            data?.fetchReservationsByUser[0]?.date !== undefined ? (
+              <ReservationTable></ReservationTable>
+            ) : (
+              <>
+                <th colSpan={5}>현재 등록된 예약이 없습니다</th>
+              </>
+            )}
           </table>
         </S.Table>
       </S.ReservationListWrapper>
