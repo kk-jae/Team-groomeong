@@ -13,7 +13,7 @@ const MapTemplate = (): JSX.Element => {
       {isLoaded ? (
         <>
           <Map />
-          <MapList />
+          {/* <MapList /> */}
         </>
       ) : (
         <></>

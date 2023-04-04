@@ -112,6 +112,7 @@ export const ContentsWrapper = styled(Div)`
 
 export const ContentsButton = styled(motion.button)`
   ${GS.Label.Medium}
+  z-index: 10000;
   color: ${GS.base.secondary};
   border: none;
   outline: none;
