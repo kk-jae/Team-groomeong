@@ -34,7 +34,7 @@ export const ImgDiv = styled(Div)<IImgDiv>`
   background-size: ${({ url }) => (url === "" ? "54px" : "contain")};
   background-repeat: no-repeat;
   background-position: center;
-  background-color: ${GS.base.primary};
+  background-color: ${({ url }) => (url === "" ? `${GS.base.primary}` : "white")};
   width: 84px;
   height: 84px;
   padding: 16px;
