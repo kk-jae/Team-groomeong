@@ -10,7 +10,6 @@ export const useMapListBox = (shop: IAutocompleteShopsOutput) => {
 
   useEffect(() => {
     if (pos !== null) {
-      console.log("pos??");
       mapInfo.map?.setZoom(17);
       mapInfo.map?.panTo(pos);
     } else if (polygonInfo.bounds !== null) {
