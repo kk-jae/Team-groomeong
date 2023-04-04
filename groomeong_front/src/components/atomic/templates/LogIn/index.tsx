@@ -7,24 +7,15 @@ import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 import { useLogInButton } from "../../../commons/hooks/custom/useLogIn";
 import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import PageHeader from "../../atoms/PageHeader";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 export const LogInTemplate = (): JSX.Element => {
-  const router = useRouter();
   const method = useForm({
     mode: "onChange",
   });
 
   const { onClickMoveToPage } = useMoveToPage();
   const { onClickHomePageLogIn } = useLogInButton();
-
-  const onClickGoogleLogin = () => {
-    void router.push("https://groomeong.shop/login/google");
-  };
-
-  const onClickKakaoLogin = async () => {
-    void router.push("https://groomeong.shop/login/kakao");
-  };
 
   return (
     <Background>
@@ -52,14 +43,12 @@ export const LogInTemplate = (): JSX.Element => {
         </FormProvider>
         <S.LogInBottom>
           <S.LogInBottomSocial>
-            <S.LoginLogo
-              onClick={onClickGoogleLogin}
-              src="/image/icon-google.png"
-            />
-            <S.LoginLogo
-              onClick={onClickKakaoLogin}
-              src="/image/icon-kakao-talk.png"
-            />
+            <Link href={"https://groomeong.shop/login/google"}>
+              <S.LoginLogo src="/image/icon-google.png" />
+            </Link>
+            <Link href={"https://groomeong.shop/login/kakao"}>
+              <S.LoginLogo src="/image/icon-kakao-talk.png" />
+            </Link>
           </S.LogInBottomSocial>
           <S.LogInBottomSighUp>
             <S.LogInBottomSighUpTop>

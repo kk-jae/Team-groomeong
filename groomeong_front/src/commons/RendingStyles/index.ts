@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import styled from "@emotion/styled";
 import * as GS from "../../../theme/global";
+import { mediaQueries } from "../../components/commons/libraries/MediaQueries";
 
 interface IProps {
   position: number;
@@ -8,59 +9,122 @@ interface IProps {
 
 export const Container = styled.div`
   width: 100vw;
-  height: 2300vh;
-  overflow: hidden;
-  color: white;
+  height: 500vh;
+  color: black;
   font-family: "Pretendard";
-  cursor: none;
+  background-color: white;
   transition: all 0.08s ease-in-out;
+  background-color: white;
+  cursor: none;
+
+  ${mediaQueries("phone")} {
+    height: 260vh;
+  }
+  ${mediaQueries("tablet")} {
+    height: 260vh;
+  }
 `;
 
-export const Page1 = styled.div<IProps>`
-  position: fixed;
+export const Page = styled.div<IProps>`
   width: 100%;
+`;
+
+export const Wrapper = styled.div<IProps>`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
+export const First = styled.div<IProps>`
+  width: 100vw;
   height: 100vh;
-  background-size: cover;
-  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   transform: scale(
-    ${(props) => (props.position ? `${1 + props.position / 5000}` : 1)}
-  );
-  display: ${(props) => (props.position >= 960 ? "none" : "flex")};
-  border-radius: ${(props) => `${props.position / 30}%`};
+      ${(props) => (props.position < 0 ? "1" : `${1 - props.position / 1800}`)}
+    )
+    rotate(
+      ${(props) => (props.position < 0 ? "0" : `${props.position / 50}deg`)}
+    );
+  opacity: ${(props) =>
+    props.position <= 150 ? "1" : `${1 - (props.position - 150) / 1000}`};
+
+  ${mediaQueries("phone")} {
+    flex-direction: column;
+    height: 80vh;
+    transform: none;
+    opacity: 1;
+  }
+  ${mediaQueries("tablet")} {
+    height: 80vh;
+    flex-direction: column;
+    transform: none;
+    opacity: 1;
+  }
 `;
 
-export const Img1 = styled.img`
+export const First_Text_Wrapper = styled.div`
   position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  animation: backTextImg 2.5s ease;
-  transform: scale(0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  right: 10vw;
+  top: 70vh;
+  gap: 1vh;
 
-  @keyframes backTextImg {
+  ${mediaQueries("phone")} {
+    top: 30vh;
+    right: 5vw;
+  }
+  ${mediaQueries("tablet")} {
+    top: 30vh;
+    right: 5vw;
+  }
+`;
+
+export const First_sub_Text = styled.div<IProps>`
+  font-weight: 600;
+  font-size: 1.8vw;
+  text-align: end;
+  animation-name: firstSubTextDisable, firstSubTextOpacity;
+  animation-duration: 1s, 1.8s;
+  animation-timing-function: ease, ease-in-out;
+  animation-delay: 0s, 1s;
+
+  @keyframes firstSubTextDisable {
     0% {
-      transform: scale(8);
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes firstSubTextOpacity {
+    0% {
+      opacity: 0;
     }
 
     100% {
-      transform: scale(0.75);
+      opacity: 1;
     }
   }
 `;
-export const Img2 = styled.img`
-  position: absolute;
-  top: 11%;
-  right: 0.5%;
-  width: 38%;
-  height: 38%;
-  animation-name: dog, dog1, dog2;
-  animation-duration: 2.6s, 1s, 2s;
-  animation-timing-function: ease, ease-in-out, ease-in-out;
-  animation-delay: 0s, 2.5s, 6s;
-  animation-iteration-count: 1, 1, infinite;
-  animation-direction: normal, normal, alternate-reverse;
 
-  @keyframes dog {
+export const First_Text = styled.div<IProps>`
+  font-size: 5.8vw;
+  font-weight: 800;
+  animation-name: firstTextDisable, firstTextOpacity;
+  animation-duration: 1s, 1.5s;
+  animation-timing-function: ease, ease-in-out;
+  animation-delay: 0s, 1s;
+
+  @keyframes firstTextDisable {
     0% {
       opacity: 0;
     }
@@ -68,105 +132,377 @@ export const Img2 = styled.img`
       opacity: 0;
     }
   }
-
-  @keyframes dog1 {
+  @keyframes firstTextOpacity {
     0% {
       opacity: 0;
-      transform: translateY(30px);
     }
     100% {
       opacity: 1;
+    }
+  }
+`;
+
+export const First_Img_Wrapper = styled.div`
+  position: relative;
+  animation: imgWrapper 2s ease-in-out infinite alternate-reverse;
+
+  @keyframes imgWrapper {
+    0% {
+      transform: rotate(1deg);
+    }
+    100% {
+      transform: rotate(-1deg);
+    }
+  }
+`;
+
+export const First_Back_Img = styled.img<IProps>`
+  position: absolute;
+  width: 40vw;
+  height: 60vh;
+  top: -19vh;
+  left: -39vw;
+  animation: firstBack 0.4s ease-in-out;
+
+  @keyframes firstBack {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  ${mediaQueries("phone")} {
+    height: 18vh;
+  }
+  ${mediaQueries("tablet")} {
+    height: 18vh;
+  }
+`;
+export const First_Dog_Img = styled.img<IProps>`
+  width: 30vw;
+  height: 75vh;
+  top: -33.5vh;
+  left: -32vw;
+  position: absolute;
+  animation: firstDog 1s ease-in-out;
+
+  ${mediaQueries("phone")} {
+    height: 30vh;
+    top: -30.5vh;
+  }
+  ${mediaQueries("tablet")} {
+    height: 30vh;
+    top: -30.5vh;
+  }
+
+  @keyframes firstDog {
+    0% {
+      opacity: 0;
+      height: 0vh;
+      transform: translateY(80vh);
+    }
+
+    70% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      height: 75vh;
       transform: translateY(0);
     }
   }
+`;
 
-  @keyframes dog2 {
+export const Second = styled.div<IProps>`
+  position: relative;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  opacity: ${(props) =>
+    props.position >= 1050 ? `${1 + (1050 - props.position) / 2000}` : `1`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+    height: 50vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+    height: 50vh;
+  }
+`;
+
+export const Second_Text_Wrapper = styled.div`
+  position: absolute;
+  top: 17vh;
+  left: 4vw;
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+    top: -28vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+    top: -28vh;
+  }
+`;
+
+export const Second_Main_Text = styled.div<IProps>`
+  width: 50vw;
+  font-size: 4vw;
+  font-weight: 800;
+  padding-bottom: 5vh;
+  opacity: ${(props) =>
+    props.position >= 200 ? `${(props.position - 200) / 800}` : `0`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+    padding-bottom: 2vh;
+  }
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+  }
+`;
+export const Second_Sub_Text = styled.div<IProps>`
+  font-size: 1.2vw;
+  font-weight: 700;
+  opacity: ${(props) =>
+    props.position >= 280 ? `${(props.position - 280) / 1000}` : `0`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+  }
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+  }
+`;
+
+export const Second_Img_Wrapper = styled.div<IProps>`
+  position: relative;
+  opacity: ${(props) =>
+    props.position >= 50 ? `${(props.position - 50) / 800}` : `0`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+    top: -40vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+    top: -40vh;
+  }
+`;
+export const Second_Img_Dog = styled.img<IProps>`
+  position: absolute;
+  width: 18vw;
+  right: -64vw;
+  top: 28.5vh;
+  z-index: 1;
+  transform: translateY(
+      ${(props) =>
+        props.position <= 800 ? `${(props.position - 800) / 10}vh` : 0}
+    )
+    rotate(
+      ${(props) =>
+        props.position <= 800 ? `${-((props.position - 800) / 10)}deg` : 0}
+    );
+
+  ${mediaQueries("phone")} {
+    transform: none;
+    top: 22%;
+  }
+  ${mediaQueries("tablet")} {
+    transform: none;
+    top: 22%;
+  }
+`;
+export const Second_Img_Table = styled.img<IProps>`
+  position: absolute;
+  width: 22vw;
+  right: -65vw;
+  top: 59.3vh;
+  z-index: 1;
+  transform: translateY(
+      ${(props) =>
+        props.position <= 800 ? `${(props.position - 800) / 10}vh` : 0}
+    )
+    rotate(
+      ${(props) =>
+        props.position <= 800 ? `${(props.position - 800) / 10}deg` : 0}
+    );
+
+  ${mediaQueries("phone")} {
+    transform: none;
+    top: 40%;
+  }
+  ${mediaQueries("tablet")} {
+    transform: none;
+    top: 40%;
+  }
+`;
+export const Second_Img_Back = styled.img<IProps>`
+  position: absolute;
+  width: 50vw;
+  right: -83vw;
+  top: 20vh;
+  z-index: 0;
+
+  ${mediaQueries("phone")} {
+    top: 20%;
+    left: 28vw;
+    z-index: -2;
+  }
+  ${mediaQueries("tablet")} {
+    top: 20%;
+    z-index: -2;
+  }
+`;
+export const Second_Img_Women = styled.img<IProps>`
+  position: absolute;
+  width: 23vw;
+  right: -89vw;
+  top: 13.5vh;
+  z-index: 1;
+  animation: imgWrapper 1s ease-in-out infinite alternate-reverse;
+
+  ${mediaQueries("phone")} {
+    top: 18%;
+  }
+  ${mediaQueries("tablet")} {
+    top: 18%;
+  }
+
+  @keyframes imgWrapper {
     0% {
-      transform: rotate(3deg);
+      transform: rotate(1deg);
     }
 
     100% {
-      transform: rotate(0deg);
+      transform: rotate(-1deg);
     }
   }
 `;
 
-export const FlyAway1 = styled.img`
-  position: absolute;
-  width: 13.5%;
-  height: 27%;
-  top: 3%;
-  left: 23%;
-  transform: translate(0px, 0px) rotate(15deg);
-  animation: fly1 5.9s ease-in-out;
+export const Third = styled.div<IProps>`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-  @keyframes fly1 {
-    0% {
-      transform: translate(-6000px, -11000px) rotate(0deg);
-    }
-
-    100% {
-      transform: translate(0px, 0px) rotate(15deg);
-    }
+  ${mediaQueries("phone")} {
+    height: 80vh;
+  }
+  ${mediaQueries("tablet")} {
+    height: 80vh;
+    transform: translateY(-28vh);
   }
 `;
 
-export const FlyAway2 = styled.img`
+export const Third_Img_Wrapper = styled.div<IProps>`
+  position: relative;
+`;
+export const Third_Img_Back = styled.img<IProps>`
   position: absolute;
-  width: 13.5%;
-  height: 27%;
-  top: 9%;
-  right: 5%;
-  transform: rotate(-30deg);
-  animation: fly2 4.4s ease-in-out;
+  width: 100vw;
+  height: 270vh;
+  top: -90vh;
 
-  @keyframes fly2 {
-    0% {
-      transform: translate(7000px, -21000px) rotate(0deg);
-    }
-
-    100% {
-      transform: translate(0, 0) rotate(-30deg);
-    }
+  ${mediaQueries("phone")} {
+    top: -80vh;
+    height: 100vh;
+  }
+  ${mediaQueries("tablet")} {
+    top: -80vh;
+    height: 100vh;
   }
 `;
-export const FlyAway3 = styled.img`
-  position: absolute;
-  width: 13.5%;
-  height: 27%;
-  bottom: 3%;
-  left: 5%;
-  transform: rotate(-15deg);
-  animation: fly3 4.9s ease-in-out;
-
-  @keyframes fly3 {
-    0% {
-      transform: translate(-6000px, 13000px) rotate(0deg);
-    }
-
-    100% {
-      transform: translate(0, 0) rotate(-15deg);
-    }
+export const Third_Img_Map = styled.img<IProps>`
+  width: 40vw;
+  transform: translateX(
+    ${(props) =>
+      props.position <= 1800 ? `${(props.position - 1800) / 30}vw` : 0}
+  );
+  ${mediaQueries("phone")} {
+    transform: none;
+    transform: translateX();
+    transform: translateY(-50vh);
+  }
+  ${mediaQueries("tablet")} {
+    transform: none;
+    transform: translateX(0);
+    transform: translateY(-50vh);
   }
 `;
 
-export const FlyAway4 = styled.img<IProps>`
-  position: absolute;
-  width: 13.5%;
-  height: 27%;
-  bottom: 4%;
-  right: 35%;
-  transform: rotate(-10deg);
-  animation: fly4 5.5s ease-in-out;
+export const Third_Text_Wrapper = styled.div<IProps>`
+  width: 100vw;
+  margin-right: 10vw;
+  padding-bottom: 32vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 555;
+  opacity: ${(props) =>
+    props.position > 800 ? `${(props.position - 800) / 1000}` : `0`};
 
-  @keyframes fly4 {
-    0% {
-      transform: translate(5000px, 12000px) rotate(0deg);
-    }
+  ${mediaQueries("phone")} {
+    opacity: 1;
+    transform: translateY(-35vh);
+  }
 
-    100% {
-      transform: translate(0, 0) rotate(-10deg);
-    }
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+    transform: translateY(-35vh);
+  }
+`;
+
+export const Third_Main_Text = styled.div<IProps>`
+  text-align: end;
+  color: white;
+  font-size: 4.5vw;
+  font-weight: 800;
+  padding-bottom: 7vh;
+
+  ${mediaQueries("phone")} {
+    padding-bottom: 2vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    padding-bottom: 2vh;
+  }
+`;
+export const Third_Sub_Text = styled.div<IProps>`
+  text-align: end;
+  font-size: 1.5vw;
+  color: white;
+  font-weight: 700;
+`;
+
+export const Fourth = styled.div<IProps>`
+  color: white;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  z-index: 2;
+  position: relative;
+
+  ${mediaQueries("phone")} {
+    height: 0vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    height: 0vh;
   }
 `;
 
@@ -174,6 +510,152 @@ interface IPropsCursor {
   x: number;
   y: number;
 }
+export const Fourth_Text_Wrapper = styled.div<IProps>`
+  width: 100vw;
+  position: relative;
+  opacity: ${(props) =>
+    props.position > 1500 ? `${(props.position - 1500) / 800}` : `0`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+    top: -70vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+    top: -70vh;
+  }
+`;
+export const Fourth_Main_Text = styled.div<IProps>`
+  font-size: 4.5vw;
+  position: absolute;
+  top: -25vh;
+  left: 10vw;
+  font-weight: 800;
+`;
+export const Fourth_Sub_Text = styled.div<IProps>`
+  font-size: 1.5vw;
+  position: absolute;
+  left: 10vw;
+  top: -2vh;
+  font-weight: 700;
+
+  ${mediaQueries("phone")} {
+    top: -17vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    top: -17vh;
+  }
+`;
+
+export const Fourth_Img_Wrapper = styled.div<IProps>`
+  position: relative;
+
+  ${mediaQueries("phone")} {
+    top: -52vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    top: -52vh;
+  }
+`;
+
+export const Fourth_Img_Reservation = styled.img<IProps>`
+  position: absolute;
+  width: 35vw;
+  top: -50vh;
+  right: -38vw;
+  transform: translateY(
+    ${(props) =>
+      props.position <= 2610 ? `${-((props.position - 2610) / 30)}vw` : 0}
+  );
+  ${mediaQueries("phone")} {
+    transform: none;
+  }
+
+  ${mediaQueries("tablet")} {
+    transform: none;
+  }
+`;
+
+export const Fifth = styled.div<IProps>`
+  width: 100vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  opacity: ${(props) =>
+    props.position >= 2800 ? `${(props.position - 2800) / 400}` : `0`};
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+    position: absolute;
+    top: 152vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+    position: absolute;
+    top: 152vh;
+  }
+`;
+
+export const Fifth_Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25vh;
+  overflow: hidden;
+
+  ${mediaQueries("phone")} {
+    padding: 0;
+  }
+
+  ${mediaQueries("tablet")} {
+    padding: 0;
+  }
+`;
+
+export const Fifth_Img_Wrapper = styled.div``;
+
+export const Fifth_Img = styled.img`
+  width: 22vw;
+`;
+
+export const Fifth_Text_Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const Fifth_Main_Text = styled.div`
+  font-size: 4.5vw;
+  font-weight: 800;
+  padding-top: 5vh;
+`;
+export const Fifth_SubButton_Text = styled.div<IProps>`
+  font-size: 1.3vw;
+  font-weight: 700;
+  padding-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  :hover {
+    font-weight: 1000;
+  }
+`;
+
+export const Icon = styled.span`
+  color: ${GS.base.primary};
+  padding-left: 0.3vw;
+  padding-bottom: 0.3vh;
+  font-size: 1.5vw;
+`;
 
 export const Scroll = styled.div<IPropsCursor>`
   z-index: 9999;
@@ -185,19 +667,23 @@ export const Scroll = styled.div<IPropsCursor>`
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  color: #454552;
+  /* color: #454552; */
+  color: ${GS.base.secondary};
+  /* background-color: rgba(232, 90, 113, 0.65); */
+  background-color: ${GS.base.tertiary};
+  opacity: 0.9;
+  font-weight: 700;
   transform: translate(
     ${(props) => `${props.x}px`},
     ${(props) => `${props.y}px`}
   );
   transition: all 0.08s ease;
-  background-color: rgba(244, 244, 244, 0.88);
   font-weight: 700;
   font-size: 14px;
   animation-name: disable, cursor;
-  animation-duration: 6s, 0.5s;
+  animation-duration: 2s, 0.8s;
   animation-timing-function: ease, ease-in-out;
-  animation-delay: 0s, 6s;
+  animation-delay: 0s, 2s;
 
   @keyframes disable {
     0% {
@@ -215,6 +701,13 @@ export const Scroll = styled.div<IPropsCursor>`
       opacity: 1;
     }
   }
+  ${mediaQueries("phone")} {
+    display: none;
+  }
+
+  ${mediaQueries("tablet")} {
+    display: none;
+  }
 `;
 
 export const Scroll_Text = styled.div`
@@ -223,388 +716,4 @@ export const Scroll_Text = styled.div`
 export const Scroll_Icon = styled.div`
   position: absolute;
   top: 72px;
-`;
-
-export const Page2 = styled.div<IProps>`
-  position: fixed;
-  width: 100%;
-  /* height: 200vh; */
-  background-color: ${GS.base.primary};
-  opacity: ${(props) => (props.position ? `${props.position / 1000}` : 0)};
-`;
-
-export const Shop = styled.div<IProps>`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: ${GS.base.primary};
-`;
-
-export const Shop_Detail = styled.div<IProps>`
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  transform: translateY(
-    ${(props) =>
-      props.position >= 3720 ? `${9 + (props.position - 3720) / 30}vh` : "8vh"}
-  );
-`;
-
-export const Shop_Img = styled.img<IProps>`
-  width: 42%;
-  height: auto;
-  opacity: ${(props) =>
-    props.position >= 2300 ? `${(props.position - 2300) / 1000}` : `0`};
-`;
-
-export const Shop_Text = styled.div<IProps>`
-  font-weight: 600;
-  font-size: 3vw;
-  opacity: ${(props) =>
-    props.position >= 1200 ? `${(props.position - 1200) / 1000}` : `0`};
-`;
-
-export const Reservation_Detail = styled.div<IProps>`
-  width: 100%;
-  height: 80vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  /* padding-left: 28%; */
-  transform: translateY(
-    ${(props) =>
-      props.position >= 4000
-        ? `${-159 + (props.position - 4000) / 30}vh`
-        : "-160vh"}
-  );
-  opacity: ${(props) =>
-    props.position >= 4000 ? `${(props.position - 4000) / 1000}` : `0`};
-`;
-
-export const Reservation_Text = styled.div`
-  font-size: 3vw;
-  font-weight: 600;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-`;
-
-export const Reservation_Text_One = styled.div<IProps>`
-  opacity: ${(props) =>
-    props.position >= 4000 ? `${(props.position - 4000) / 1000}` : `0`};
-`;
-export const Reservation_Text_Two = styled.div<IProps>`
-  opacity: ${(props) =>
-    props.position >= 5000 ? `${(props.position - 5000) / 1000}` : `0`};
-`;
-
-export const Reservation_Img = styled.img`
-  width: 20%;
-  height: auto;
-  margin-right: 13.5vw;
-`;
-
-export const Review_Detail = styled.div<IProps>`
-  width: 100%;
-  height: 80vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  transform: translateY(
-    ${(props) =>
-      props.position >= 6800
-        ? `${-249 + (props.position - 6800) / 30}vh`
-        : "-250vh"}
-  );
-  opacity: ${(props) =>
-    props.position >= 6800 ? `${(props.position - 6800) / 1000}` : `0`};
-`;
-
-export const Review_Img = styled.img`
-  width: 35%;
-  height: auto;
-  margin-left: 4vw;
-`;
-
-export const Review_Text = styled.div`
-  font-size: 3vw;
-  font-weight: 600;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-`;
-
-export const Review_Text_One = styled.div<IProps>`
-  opacity: ${(props) =>
-    props.position >= 8200 ? `${(props.position - 8200) / 1000}` : `0`};
-`;
-export const Review_Text_Two = styled.div<IProps>`
-  opacity: ${(props) =>
-    props.position >= 8600 ? `${(props.position - 8600) / 1000}` : `0`};
-`;
-
-export const Introduce_Detail = styled.div<IProps>`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transform: translateY(-260vh);
-  font-weight: 500;
-  position: relative;
-`;
-export const Introduce_subTitle = styled.div<IProps>`
-  font-size: 3vw;
-  position: relative;
-  /* padding-right: 12vw;
-  padding-bottom: 3vh; */
-  left: -6.2vw;
-  top: -1vh;
-`;
-
-export const Introduce_Title = styled.div<IProps>`
-  position: relative;
-  font-size: 3vw;
-  right: -7vw;
-  top: 1vh;
-  opacity: ${(props) =>
-    props.position >= 14000 ? `${(props.position - 14000) / 1000}` : `0`};
-`;
-export const Logo = styled.span<IProps>`
-  font-size: 5vw;
-  font-weight: 700;
-`;
-
-export const Introduce_Img = styled.img<IProps>`
-  width: 5vw;
-  position: absolute;
-  top: -2.5vh;
-  opacity: ${(props) =>
-    props.position >= 10500 ? `${(props.position - 10500) / 1000}` : `0`};
-`;
-
-export const Introduce_Bottom = styled.div<IProps>`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  bottom: 4vh;
-  opacity: ${(props) =>
-    props.position >= 15500 ? `${(props.position - 15500) / 1000}` : `0`};
-`;
-
-export const LastLogo = styled.img<IProps>`
-  width: 20vw;
-  cursor: pointer;
-  :hover {
-    transform: scale(1.05);
-  }
-`;
-export const ClickBtn = styled.img<IProps>`
-  width: 4vw;
-  transform: rotate(180deg);
-  animation: click 1s ease-out infinite;
-
-  @keyframes click {
-    0% {
-      transform: rotate(180deg) translateY(5px);
-    }
-    100% {
-      transform: rotate(180deg) translateY(-8px);
-    }
-  }
-`;
-
-export const Bubble = styled.div<IProps>`
-  z-index: -1;
-  width: 18vw;
-  height: 36vh;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -70vh;
-  left: 4vw;
-  /* transform: translateY(0); */
-  transform: translateY(
-    ${(props) =>
-      props.position >= 2800 ? `${1 + (props.position - 3000) / 20}vh` : "0vh"}
-  );
-  opacity: ${(props) =>
-    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
-`;
-export const Bubble2 = styled.div<IProps>`
-  z-index: -1;
-  width: 68vw;
-  height: 136vh;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -150vh;
-  right: -33vw;
-  transform: translateY(
-    ${(props) =>
-      props.position >= 1001 ? `${1 + (props.position - 1001) / 70}vh` : "0vh"}
-  );
-  opacity: ${(props) =>
-    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
-`;
-export const Bubble3 = styled.div<IProps>`
-  z-index: -1;
-  width: 21vw;
-  height: 42vh;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -40vh;
-  left: 30vw;
-  transform: translateY(
-    ${(props) =>
-      props.position >= 1001 ? `${1 + (props.position - 1600) / 50}vh` : "0vh"}
-  );
-  opacity: ${(props) =>
-    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
-`;
-export const Bubble4 = styled.div<IProps>`
-  z-index: -1;
-  width: 16vw;
-  height: 32vh;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  bottom: 110vh;
-  left: -6vw;
-  transform: translateY(
-    ${(props) =>
-      props.position >= 1001 ? `${1 + (props.position - 1600) / 20}vh` : "0vh"}
-  );
-
-  opacity: ${(props) =>
-    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
-`;
-export const Bubble5 = styled.div<IProps>`
-  z-index: -1;
-  width: 50vw;
-  height: 100vh;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -510vh;
-  right: -8vw;
-  opacity: ${(props) =>
-    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
-
-  transform: translateY(
-    ${(props) =>
-      props.position >= 1001 ? `${1 + (props.position - 1600) / 30}vh` : "0vh"}
-  );
-`;
-
-export const Bubble6 = styled.div<IProps>`
-  z-index: -1;
-  width: 20vw;
-  height: 40vh;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -380vh;
-  left: 18vw;
-  transform: translateY(
-    ${(props) =>
-      props.position >= 1001 ? `${1 + (props.position - 1600) / 20}vh` : "0vh"}
-  );
-  opacity: ${(props) =>
-    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
-`;
-export const Bubble7 = styled.div<IProps>`
-  z-index: -1;
-  width: 15vw;
-  height: 30vh;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -700vh;
-  left: 20vw;
-  transform: translateY(
-    ${(props) =>
-      props.position >= 1001 ? `${1 + (props.position - 1600) / 20}vh` : "0vh"}
-  );
-  opacity: ${(props) =>
-    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
-`;
-export const Bubble8 = styled.div<IProps>`
-  z-index: -1;
-  width: 10vw;
-  height: 20vh;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -500vh;
-  right: 20vw;
-  transform: translateY(
-    ${(props) =>
-      props.position >= 1001 ? `${1 + (props.position - 1600) / 40}vh` : "0vh"}
-  );
-  opacity: ${(props) =>
-    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
-`;
-export const Bubble9 = styled.div<IProps>`
-  z-index: -1;
-  width: 40vw;
-  height: 80vh;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -500vh;
-  left: -15vw;
-  transform: translateY(
-    ${(props) =>
-      props.position >= 1001 ? `${1 + (props.position - 1600) / 60}vh` : "0vh"}
-  );
-  opacity: ${(props) =>
-    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
-`;
-
-export const Bubble10 = styled.div<IProps>`
-  z-index: -1;
-  width: 10vw;
-  height: 20vh;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -500vh;
-  right: 20vw;
-  transform: translateY(
-    ${(props) =>
-      props.position >= 1001 ? `${1 + (props.position - 1600) / 120}vh` : "0vh"}
-  );
-  opacity: ${(props) =>
-    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
-`;
-
-export const Bubble11 = styled.div<IProps>`
-  z-index: -1;
-  width: 30vw;
-  height: 60vh;
-  border-radius: 50%;
-  background-color: #80baff;
-  position: absolute;
-  top: -650vh;
-  left: 20vw;
-  transform: translateY(
-    ${(props) =>
-      props.position >= 1001 ? `${1 + (props.position - 1600) / 80}vh` : "0vh"}
-  );
-  opacity: ${(props) =>
-    props.position >= 1001 ? `${(props.position - 1001) / 1000}` : `0`};
 `;

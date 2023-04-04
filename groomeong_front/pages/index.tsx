@@ -38,96 +38,118 @@ export default function Rending() {
     <>
       <S.Container onMouseMove={onMouse}>
         <S.Scroll x={x} y={y}>
-          <S.Scroll_Text>SCROLL </S.Scroll_Text>
+          <S.Scroll_Text>SCROLL</S.Scroll_Text>
           <S.Scroll_Icon>
             <ArrowDownward />
           </S.Scroll_Icon>
         </S.Scroll>
-        <S.Page1 position={position}>
-          <S.Img1 src="/image/img_not_character.svg" />
-          <S.Img2 src="/image/img-character-dog.svg" />
-          {/* <S.FlyAway1 src="/image/img_1.jpg" />
-          <S.FlyAway2 src="/image/img_2.jpg" />
-          <S.FlyAway3 src="/image/img_3.jpg" />
-          <S.FlyAway4 src="/image/img_4.jpg" position={position} /> */}
-        </S.Page1>
-        <S.Page2 position={position}>
-          <S.Shop position={position}>
-            <S.Shop_Detail position={position}>
-              <S.Bubble position={position}></S.Bubble>
-              <S.Bubble2 position={position}></S.Bubble2>
-              <S.Bubble3 position={position}></S.Bubble3>
-              <S.Bubble4 position={position}></S.Bubble4>
-              <S.Bubble5 position={position}></S.Bubble5>
-              <S.Bubble6 position={position}></S.Bubble6>
-              <S.Bubble7 position={position}></S.Bubble7>
-              <S.Bubble8 position={position}></S.Bubble8>
-              <S.Bubble9 position={position}></S.Bubble9>
-              <S.Bubble10 position={position}></S.Bubble10>
-              <S.Bubble11 position={position}></S.Bubble11>
-              <S.Shop_Text position={position}>
-                가까운 반려견 미용샵 찾으시나요?
-              </S.Shop_Text>
-              <S.Shop_Img src="image/img_shop.png" position={position} />
-            </S.Shop_Detail>
-            <S.Reservation_Detail position={position}>
-              <S.Reservation_Text>
-                <S.Reservation_Text_One position={position}>
-                  내 주변 미용샵 검색부터
-                </S.Reservation_Text_One>
-                <S.Reservation_Text_Two position={position}>
-                  실시간 예약은 물론
-                </S.Reservation_Text_Two>
-              </S.Reservation_Text>
-              <S.Reservation_Img src="image/img_reservation.png" />
-            </S.Reservation_Detail>
-            <S.Review_Detail position={position}>
-              <S.Review_Img src="image/img_review.png" />
-              <S.Review_Text>
-                <S.Review_Text_One position={position}>
-                  실제 이용 후기가 담긴
-                </S.Review_Text_One>
-                <S.Review_Text_Two position={position}>
-                  <span style={{ fontSize: "80px" }}>찐! </span> 리뷰 확인까지
-                </S.Review_Text_Two>
-              </S.Review_Text>
-            </S.Review_Detail>
-            <S.Introduce_Detail position={position}>
-              <S.Introduce_subTitle position={position}>
-                <span
-                  style={{
-                    opacity: (position - 11555) / 800,
-                  }}
-                >
-                  사장님도,
-                </span>{" "}
-                <span
-                  style={{
-                    opacity: (position - 13000) / 800,
-                  }}
-                >
-                  견주님도
-                </span>
-                <S.Introduce_Img
-                  src="/image/icon-magnify_white.svg"
+        <S.Page position={position}>
+          <S.Wrapper position={position}>
+            <S.First position={position}>
+              <S.First_Img_Wrapper>
+                <S.First_Back_Img
+                  src="image/img_first_back.png"
                   position={position}
                 />
-              </S.Introduce_subTitle>
-              <S.Introduce_Title position={position}>
-                <S.Logo position={position}>그루멍</S.Logo>
-                에서 만나요 !
-              </S.Introduce_Title>
-              <S.Introduce_Bottom position={position}>
-                <S.ClickBtn position={position} src="/image/img_click.png" />
-                <S.LastLogo
+                <S.First_Dog_Img
+                  src="image/img_first_dog.png"
                   position={position}
-                  src="/image/img_Groomeong_white.png"
-                  onClick={onClickMoveToPage("/home")}
                 />
-              </S.Introduce_Bottom>
-            </S.Introduce_Detail>
-          </S.Shop>
-        </S.Page2>
+              </S.First_Img_Wrapper>
+              <S.First_Text_Wrapper>
+                <S.First_sub_Text position={position}>
+                  반려견을 더욱 사랑스럽게, 더욱 건강하게
+                </S.First_sub_Text>
+                <S.First_Text position={position}>GROOMEONG</S.First_Text>
+              </S.First_Text_Wrapper>
+            </S.First>
+            <S.Second position={position}>
+              <S.Second_Text_Wrapper>
+                <S.Second_Main_Text position={position}>
+                  가까운 반려견 미용샵을 <br />
+                  찾으시나요?
+                </S.Second_Main_Text>
+                <S.Second_Sub_Text position={position}>
+                  우리 동네 반려견 미용샵 찾기, <br /> GROOMENONG과 함께!
+                </S.Second_Sub_Text>
+              </S.Second_Text_Wrapper>
+              <S.Second_Img_Wrapper position={position}>
+                <S.Second_Img_Dog
+                  src="image/img_second_dog.png"
+                  position={position}
+                />
+                <S.Second_Img_Table
+                  src="image/img_second_table.png"
+                  position={position}
+                />
+                <S.Second_Img_Back
+                  src="image/img_second_back.png"
+                  position={position}
+                />
+                <S.Second_Img_Women
+                  src="image/img_second_women.png"
+                  position={position}
+                />
+              </S.Second_Img_Wrapper>
+            </S.Second>
+            <S.Third position={position}>
+              <S.Third_Img_Wrapper position={position}>
+                <S.Third_Img_Back
+                  position={position}
+                  src="/image/img_third_back.png"
+                />
+                <S.Third_Img_Map
+                  position={position}
+                  src="/image/img_third_map.png"
+                />
+              </S.Third_Img_Wrapper>
+              <S.Third_Text_Wrapper position={position}>
+                <S.Third_Main_Text position={position}>
+                  지도 검색을 통한 <br />
+                  미용샵 모아보기
+                </S.Third_Main_Text>
+                <S.Third_Sub_Text position={position}>
+                  생생한 리뷰와 별점, <br />
+                  나에게 적합한 미용샵을 한눈에!
+                </S.Third_Sub_Text>
+              </S.Third_Text_Wrapper>
+            </S.Third>
+            <S.Fourth position={position}>
+              <S.Fourth_Text_Wrapper position={position}>
+                <S.Fourth_Main_Text position={position}>
+                  편리한 예약 <br /> 서비스
+                </S.Fourth_Main_Text>
+                <S.Fourth_Sub_Text position={position}>
+                  실시간 예약은 물론, <br />
+                  지난 예약 히스토리까지!
+                </S.Fourth_Sub_Text>
+              </S.Fourth_Text_Wrapper>
+              <S.Fourth_Img_Wrapper position={position}>
+                <S.Fourth_Img_Reservation
+                  src="/image/img_fourth_reservation.png"
+                  position={position}
+                />
+              </S.Fourth_Img_Wrapper>
+            </S.Fourth>
+            <S.Fifth position={position}>
+              <S.Fifth_Wrapper>
+                <S.Fifth_Img_Wrapper>
+                  <S.Fifth_Img src="/image/img_fifth_logo.png" />
+                </S.Fifth_Img_Wrapper>
+                <S.Fifth_Text_Wrapper>
+                  <S.Fifth_Main_Text>이 모든 것을 그루멍에서</S.Fifth_Main_Text>
+                  <S.Fifth_SubButton_Text
+                    onClick={onClickMoveToPage("/home")}
+                    position={position}
+                  >
+                    웹 사이트 바로가기
+                    <S.Icon>{" > "}</S.Icon>
+                  </S.Fifth_SubButton_Text>
+                </S.Fifth_Text_Wrapper>
+              </S.Fifth_Wrapper>
+            </S.Fifth>
+          </S.Wrapper>
+        </S.Page>
       </S.Container>
     </>
   );

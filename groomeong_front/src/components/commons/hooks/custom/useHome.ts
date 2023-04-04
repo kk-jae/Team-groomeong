@@ -1,5 +1,5 @@
-import { mapState, searchState } from "./../../../../commons/Store/index";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { mapState } from "./../../../../commons/Store/index";
+import { useRecoilValue } from "recoil";
 import { FixedSizeList as List } from "react-window";
 import UseQueryAutocomplateShops from "../query/UseQueryAutocompleteShops";
 import { useDebounceOnchage } from "./useDebounceOnchage";
