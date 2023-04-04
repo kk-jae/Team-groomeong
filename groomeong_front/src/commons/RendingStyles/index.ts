@@ -76,6 +76,15 @@ export const First_Text_Wrapper = styled.div`
   right: 10vw;
   top: 70vh;
   gap: 1vh;
+
+  ${mediaQueries("phone")} {
+    top: 30vh;
+    right: 5vw;
+  }
+  ${mediaQueries("tablet")} {
+    top: 30vh;
+    right: 5vw;
+  }
 `;
 
 export const First_sub_Text = styled.div<IProps>`
@@ -152,6 +161,13 @@ export const First_Back_Img = styled.img<IProps>`
   height: 60vh;
   top: -19vh;
   left: -39vw;
+
+  ${mediaQueries("phone")} {
+    height: 19vh;
+  }
+  ${mediaQueries("tablet")} {
+    height: 19vh;
+  }
 `;
 export const First_Dog_Img = styled.img<IProps>`
   width: 30vw;
@@ -160,6 +176,15 @@ export const First_Dog_Img = styled.img<IProps>`
   left: -32vw;
   position: absolute;
   animation: firstDog 2s ease-in-out;
+
+  ${mediaQueries("phone")} {
+    height: 36vh;
+    top: -35vh;
+  }
+  ${mediaQueries("tablet")} {
+    height: 36vh;
+    top: -35vh;
+  }
 
   @keyframes firstDog {
     0% {
@@ -192,12 +217,12 @@ export const Second = styled.div<IProps>`
 
   ${mediaQueries("phone")} {
     opacity: 1;
-    height: 80vh;
+    height: 50vh;
   }
 
   ${mediaQueries("tablet")} {
-    height: 80vh;
     opacity: 1;
+    height: 50vh;
   }
 `;
 
@@ -205,6 +230,16 @@ export const Second_Text_Wrapper = styled.div`
   position: absolute;
   top: 17vh;
   left: 4vw;
+
+  ${mediaQueries("phone")} {
+    opacity: 1;
+    top: -28vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    opacity: 1;
+    top: -28vh;
+  }
 `;
 
 export const Second_Main_Text = styled.div<IProps>`
@@ -244,9 +279,12 @@ export const Second_Img_Wrapper = styled.div<IProps>`
 
   ${mediaQueries("phone")} {
     opacity: 1;
+    top: -40vh;
   }
+
   ${mediaQueries("tablet")} {
     opacity: 1;
+    top: -40vh;
   }
 `;
 export const Second_Img_Dog = styled.img<IProps>`
@@ -289,12 +327,12 @@ export const Second_Img_Table = styled.img<IProps>`
     );
 
   ${mediaQueries("phone")} {
-    display: none;
     transform: none;
+    top: 40%;
   }
   ${mediaQueries("tablet")} {
     transform: none;
-    display: none;
+    top: 40%;
   }
 `;
 export const Second_Img_Back = styled.img<IProps>`
@@ -305,10 +343,13 @@ export const Second_Img_Back = styled.img<IProps>`
   z-index: 0;
 
   ${mediaQueries("phone")} {
-    display: none;
+    top: 20%;
+    left: 28vw;
+    z-index: -2;
   }
   ${mediaQueries("tablet")} {
-    display: none;
+    top: 20%;
+    z-index: -2;
   }
 `;
 export const Second_Img_Women = styled.img<IProps>`
@@ -318,6 +359,13 @@ export const Second_Img_Women = styled.img<IProps>`
   top: 13.5vh;
   z-index: 1;
   animation: imgWrapper 1s ease-in-out infinite alternate-reverse;
+
+  ${mediaQueries("phone")} {
+    top: 18%;
+  }
+  ${mediaQueries("tablet")} {
+    top: 18%;
+  }
 
   @keyframes imgWrapper {
     0% {
@@ -357,12 +405,12 @@ export const Third_Img_Back = styled.img<IProps>`
   top: -90vh;
 
   ${mediaQueries("phone")} {
-    top: -100vh;
-    height: 170vh;
+    top: -80vh;
+    height: 100vh;
   }
   ${mediaQueries("tablet")} {
-    top: -100vh;
-    height: 170vh;
+    top: -80vh;
+    height: 100vh;
   }
 `;
 export const Third_Img_Map = styled.img<IProps>`
@@ -374,12 +422,12 @@ export const Third_Img_Map = styled.img<IProps>`
   ${mediaQueries("phone")} {
     transform: none;
     transform: translateX();
-    transform: translateX(-15vh);
+    transform: translateY(-50vh);
   }
   ${mediaQueries("tablet")} {
     transform: none;
     transform: translateX(0);
-    transform: translateY(-15vh);
+    transform: translateY(-50vh);
   }
 `;
 
@@ -395,10 +443,12 @@ export const Third_Text_Wrapper = styled.div<IProps>`
 
   ${mediaQueries("phone")} {
     opacity: 1;
+    transform: translateY(-35vh);
   }
 
   ${mediaQueries("tablet")} {
     opacity: 1;
+    transform: translateY(-35vh);
   }
 `;
 
@@ -457,10 +507,12 @@ export const Fourth_Text_Wrapper = styled.div<IProps>`
 
   ${mediaQueries("phone")} {
     opacity: 1;
+    top: -70vh;
   }
 
   ${mediaQueries("tablet")} {
     opacity: 1;
+    top: -70vh;
   }
 `;
 export const Fourth_Main_Text = styled.div<IProps>`
@@ -469,14 +521,6 @@ export const Fourth_Main_Text = styled.div<IProps>`
   top: -25vh;
   left: 10vw;
   font-weight: 800;
-
-  ${mediaQueries("phone")} {
-    top: -32vh;
-  }
-
-  ${mediaQueries("tablet")} {
-    top: -32vh;
-  }
 `;
 export const Fourth_Sub_Text = styled.div<IProps>`
   font-size: 1.5vw;
@@ -486,16 +530,24 @@ export const Fourth_Sub_Text = styled.div<IProps>`
   font-weight: 700;
 
   ${mediaQueries("phone")} {
-    top: -25vh;
+    top: -17vh;
   }
 
   ${mediaQueries("tablet")} {
-    top: -25vh;
+    top: -17vh;
   }
 `;
 
 export const Fourth_Img_Wrapper = styled.div<IProps>`
   position: relative;
+
+  ${mediaQueries("phone")} {
+    top: -52vh;
+  }
+
+  ${mediaQueries("tablet")} {
+    top: -52vh;
+  }
 `;
 
 export const Fourth_Img_Reservation = styled.img<IProps>`
