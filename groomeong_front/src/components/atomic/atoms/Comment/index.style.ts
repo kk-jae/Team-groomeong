@@ -55,6 +55,10 @@ export const TextArea_TopBox_Profile = styled.div`
     ${GS.Paragraph.Medium}
     margin-right: 32px;
   }
+  ${mediaQueries("phone")} {
+    ${GS.Paragraph.Small}
+    margin-right: 8px;
+  }
 `;
 
 export const TextArea_Profile_Icon = styled.div`
@@ -75,6 +79,9 @@ export const TextArea_Profile_Icon = styled.div`
     /* border: 1px solid ${GS.border.borderTransparent}; */
     border-radius: 50px;
     object-fit: contain;
+  }
+  ${mediaQueries("phone")} {
+    display: none;
   }
 `;
 

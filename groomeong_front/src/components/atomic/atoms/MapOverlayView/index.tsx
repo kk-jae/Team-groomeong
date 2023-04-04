@@ -10,11 +10,7 @@ interface IMapOverlayViewProps extends Omit<OverlayViewProps, "mapPaneName"> {
 
 const MapOverlayView = (props: IMapOverlayViewProps) => {
   return (
-    <OverlayView
-      position={props.position}
-      zIndex={10000}
-      mapPaneName="overlayMouseTarget"
-    >
+    <OverlayView position={props.position} mapPaneName="overlayMouseTarget">
       {props.isClicked ? (
         <MapOverlayViewWrapper
           variants={V.OverlayViewVariants}

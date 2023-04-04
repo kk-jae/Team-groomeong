@@ -60,6 +60,7 @@ const useMapPolygon = (map: IDataProps, codes: number[]) => {
   };
 
   const onClickpolygon = (e: google.maps.MapMouseEvent) => {
+    console.log("plygon");
     e.domEvent.stopPropagation();
     setIsActive(true);
     setMapInfo((prev: IMapState) => ({

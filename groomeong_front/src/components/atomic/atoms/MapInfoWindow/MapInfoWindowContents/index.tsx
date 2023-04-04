@@ -1,36 +1,32 @@
-import * as V from "../index.variants";
-import * as GS from "../../../../../../theme/global";
-import {
+import { IAutocompleteShopsOutput } from "../../../../../commons/types/generated/types"
+import useInfoWindow from "../../../../commons/hooks/custom/useInfoWindow"
+import * as GS from "../../../../../../theme/global"
+import { 
+  Div, 
+  Divider,
+} from "../../../../commons/style"
+import { StarRate } from "../../StarRate"
+import { 
+  H3,
+  Span,
   ContentsButton,
   ContentsWrapper,
-  Div,
-  Divider,
-  H3,
   HighlightSpan,
-  Span,
   TitleWrapper,
-} from "../index.style";
-import { StarRate } from "../../StarRate";
-import useMapOverlayView from "../../../../commons/hooks/custom/useMapOverlayView";
-import { IAutocompleteShopsOutput } from "../../../../../commons/types/generated/types";
+} from "../index.style"
+import { ContentWrapperVariants, DividerVariants, TitleWrapperVariants } from "./index.variants"
 
-interface IMapOverlayViewContetnsProps {
-  shop?: IAutocompleteShopsOutput;
+interface IMapInfoWindowContentsProps {
+  autoShop: IAutocompleteShopsOutput
 }
 
-export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
-  const { shop, onClickMoveToPage } = useMapOverlayView(props.shop);
-
-  const reviewCount = [];
-
-  if (shop?.reservation?.length !== 0) {
-    shop?.reservation?.map((el) => reviewCount.push(el.review));
-  }
+const MapInfoWindowContents = ({ autoShop }: IMapInfoWindowContentsProps) => {
+  const { shop, onClickMoveToPage, reviewCount } = useInfoWindow(autoShop)
 
   return (
     <>
       <TitleWrapper
-        variants={V.TitleWrapperVariants}
+        variants={TitleWrapperVariants}
         initial={"initial"}
         animate={"visible"}
       >
@@ -48,7 +44,7 @@ export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
             </HighlightSpan>
           </Div>
         </Div>
-        <Div justyfyContents="flex-start" alignItems="center">
+        <Div style={{ width: "100%"}} justyfyContents="space-between" alignItems="center">
           <Span className="phoneDisable" right="16px">
             <span>리뷰 ({reviewCount.length})건</span>
           </Span>
@@ -56,12 +52,12 @@ export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
         </Div>
       </TitleWrapper>
       <Divider
-        variants={V.DividerVariants}
+        variants={DividerVariants}
         initial={"initial"}
         animate={"visible"}
       />
       <ContentsWrapper
-        variants={V.ContentWrapperVariants}
+        variants={ContentWrapperVariants}
         initial={"initial"}
         animate={"visible"}
       >
@@ -95,5 +91,7 @@ export const MapOverlayVeiwContents = (props: IMapOverlayViewContetnsProps) => {
         </Div>
       </ContentsWrapper>
     </>
-  );
-};
+  )
+}
+
+export default MapInfoWindowContents

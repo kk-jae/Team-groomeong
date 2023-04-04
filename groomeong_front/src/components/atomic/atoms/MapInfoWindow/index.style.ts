@@ -1,54 +1,30 @@
+import { InfoWindowF } from "@react-google-maps/api";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 import * as GS from "../../../../../theme/global";
 import { mediaQueries } from "../../../commons/libraries/MediaQueries";
+import * as S from "../../../commons/style";
 
-interface IDivProps {
-  left?: string;
-  right?: string;
-  top?: string;
-  bottom?: string;
-  direction?: string;
-  justyfyContents?: string;
-  alignItems?: string;
-}
+export const InfoWindowWrapper = styled(S.Div)`
+  min-width: 240px;
+  flex-direction: column;
+  padding: 32px;
+  border-radius: 8px;
+  background-color: ${GS.base.secondary};
 
-interface ISpanProps {
-  left?: string;
-  right?: string;
-  top?: string;
-  bottom?: string;
-}
-
-export const Div = styled(motion.div)<IDivProps>`
-  display: flex;
-  padding-left: ${({ left }) => left ?? null};
-  padding-right: ${({ right }) => right ?? null};
-  padding-top: ${({ top }) => top ?? null};
-  padding-bottom: ${({ bottom }) => bottom ?? null};
-  flex-direction: ${({ direction }) => direction ?? "row"};
-  justify-content: ${({ justyfyContents }) => justyfyContents ?? "flex-start"};
-  align-items: ${({ alignItems }) => alignItems ?? "flex-start"};
-
-  .phoneDisable {
-    ${mediaQueries("phone")} {
-      display: none;
-    }
-  }
-
-  .css-gg5brn {
-    ${mediaQueries("phone")} {
-      font-size: 16px;
-    }
+  ${mediaQueries("phone")} {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
   }
 `;
 
-export const TitleWrapper = styled(Div)`
+export const TitleWrapper = styled(S.Div)`
   width: 100%;
   flex-direction: column;
 `;
 
-export const MapOverlayViewWrapper = styled(Div)`
+export const MapOverlayViewWrapper = styled(S.Div)`
   position: fixed;
   z-index: 99999;
   min-width: 240px;
@@ -81,25 +57,31 @@ export const MapOverlayViewWrapper = styled(Div)`
 
 export const H3 = styled(motion.h3)`
   ${GS.Heading.Large}
-
+  width: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   ${mediaQueries("phone")} {
-    ${GS.Heading.Medium}
+    ${GS.Label.Large}
   }
 `;
 
-export const Divider = styled(Div)`
+export const Divider = styled(S.Div)`
   width: 100%;
   height: 1px;
   margin: 16px 0;
   background-color: ${GS.gray[100]};
 `;
 
-export const Span = styled(motion.span)<ISpanProps>`
+export const Span = styled(S.Span)`
   ${GS.Paragraph.Medium}
   padding-left: ${({ left }) => left ?? null};
   padding-right: ${({ right }) => right ?? null};
   padding-top: ${({ top }) => top ?? null};
   padding-bottom: ${({ bottom }) => bottom ?? null};
+  ${mediaQueries("phone")} {
+    ${GS.Paragraph.Small}
+  }
 `;
 
 export const HighlightSpan = styled(Span)`
@@ -107,7 +89,7 @@ export const HighlightSpan = styled(Span)`
   color: ${GS.base.primary};
 `;
 
-export const ContentsWrapper = styled(Div)`
+export const ContentsWrapper = styled(S.Div)`
   flex-direction: column;
 `;
 
@@ -119,4 +101,7 @@ export const ContentsButton = styled(motion.button)`
   padding: 8px 8px;
   background-color: ${GS.base.primary};
   cursor: pointer;
+`;
+
+export const StyledInfoWindow = styled(InfoWindowF)`
 `;

@@ -21,7 +21,7 @@ export const useMoveToPage = (): IuseMoveToPage => {
 
   const onClickMoveToPage =
     (url: string) => (e: MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
+      e.stopPropagation()
       void router.push(url);
       setMapInfo({
         isLoaded: false,
