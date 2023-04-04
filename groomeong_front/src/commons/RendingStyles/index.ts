@@ -9,18 +9,19 @@ interface IProps {
 
 export const Container = styled.div`
   width: 100vw;
-  height: 520vh;
+  height: 500vh;
   color: black;
   font-family: "Pretendard";
   background-color: white;
   transition: all 0.08s ease-in-out;
+  background-color: white;
   cursor: none;
 
   ${mediaQueries("phone")} {
-    height: 350vh;
+    height: 260vh;
   }
   ${mediaQueries("tablet")} {
-    height: 350vh;
+    height: 260vh;
   }
 `;
 
@@ -92,9 +93,9 @@ export const First_sub_Text = styled.div<IProps>`
   font-size: 1.8vw;
   text-align: end;
   animation-name: firstSubTextDisable, firstSubTextOpacity;
-  animation-duration: 2.5s, 2.5s;
+  animation-duration: 1s, 1.8s;
   animation-timing-function: ease, ease-in-out;
-  animation-delay: 0s, 2.5s;
+  animation-delay: 0s, 1s;
 
   @keyframes firstSubTextDisable {
     0% {
@@ -119,9 +120,9 @@ export const First_Text = styled.div<IProps>`
   font-size: 5.8vw;
   font-weight: 800;
   animation-name: firstTextDisable, firstTextOpacity;
-  animation-duration: 4.5s, 2s;
+  animation-duration: 1s, 1.5s;
   animation-timing-function: ease, ease-in-out;
-  animation-delay: 0s, 4.5s;
+  animation-delay: 0s, 1s;
 
   @keyframes firstTextDisable {
     0% {
@@ -161,12 +162,22 @@ export const First_Back_Img = styled.img<IProps>`
   height: 60vh;
   top: -19vh;
   left: -39vw;
+  animation: firstBack 0.4s ease-in-out;
+
+  @keyframes firstBack {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
   ${mediaQueries("phone")} {
-    height: 19vh;
+    height: 18vh;
   }
   ${mediaQueries("tablet")} {
-    height: 19vh;
+    height: 18vh;
   }
 `;
 export const First_Dog_Img = styled.img<IProps>`
@@ -175,15 +186,15 @@ export const First_Dog_Img = styled.img<IProps>`
   top: -33.5vh;
   left: -32vw;
   position: absolute;
-  animation: firstDog 2s ease-in-out;
+  animation: firstDog 1s ease-in-out;
 
   ${mediaQueries("phone")} {
-    height: 36vh;
-    top: -35vh;
+    height: 30vh;
+    top: -30.5vh;
   }
   ${mediaQueries("tablet")} {
-    height: 36vh;
-    top: -35vh;
+    height: 30vh;
+    top: -30.5vh;
   }
 
   @keyframes firstDog {
@@ -570,7 +581,7 @@ export const Fourth_Img_Reservation = styled.img<IProps>`
 
 export const Fifth = styled.div<IProps>`
   width: 100vw;
-  height: 100vh;
+  height: 60vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -580,10 +591,14 @@ export const Fifth = styled.div<IProps>`
 
   ${mediaQueries("phone")} {
     opacity: 1;
+    position: absolute;
+    top: 152vh;
   }
 
   ${mediaQueries("tablet")} {
     opacity: 1;
+    position: absolute;
+    top: 152vh;
   }
 `;
 
@@ -592,7 +607,9 @@ export const Fifth_Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 10vh;
+  padding-top: 25vh;
+  overflow: hidden;
+
   ${mediaQueries("phone")} {
     padding: 0;
   }
@@ -607,6 +624,7 @@ export const Fifth_Img_Wrapper = styled.div``;
 export const Fifth_Img = styled.img`
   width: 22vw;
 `;
+
 export const Fifth_Text_Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -649,19 +667,23 @@ export const Scroll = styled.div<IPropsCursor>`
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  color: #454552;
+  /* color: #454552; */
+  color: ${GS.base.secondary};
+  /* background-color: rgba(232, 90, 113, 0.65); */
+  background-color: ${GS.base.tertiary};
+  opacity: 0.9;
+  font-weight: 700;
   transform: translate(
     ${(props) => `${props.x}px`},
     ${(props) => `${props.y}px`}
   );
   transition: all 0.08s ease;
-  background-color: rgba(232, 90, 113, 0.65);
   font-weight: 700;
   font-size: 14px;
   animation-name: disable, cursor;
-  animation-duration: 6s, 0.5s;
+  animation-duration: 2s, 0.8s;
   animation-timing-function: ease, ease-in-out;
-  animation-delay: 0s, 6s;
+  animation-delay: 0s, 2s;
 
   @keyframes disable {
     0% {
