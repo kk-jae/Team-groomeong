@@ -13,12 +13,19 @@ import {
 import { MainPropupBoxWrapperVariants } from "./index.variants";
 
 export const HomeTemplate = (): JSX.Element => {
-  const { onChangeSearch, search, autoShops, List, onClickSearch, onkeyPressSearch } = useHome();
+  const {
+    onChangeSearch,
+    search,
+    autoShops,
+    List,
+    onClickSearch,
+    onkeyPressSearch,
+  } = useHome();
   return (
     <>
       <Background>
         <MainText>가까운 애견 미용샵, 그루멍에서 검색하세요</MainText>
-        <MainBody >
+        <MainBody>
           <SearchBar
             value={search}
             onKeyPress={onkeyPressSearch}
@@ -35,15 +42,15 @@ export const HomeTemplate = (): JSX.Element => {
                 animate={"animate"}
                 exit={"exit"}
               >
-                  <List
-                    height={400}
-                    itemCount={1}
-                    itemSize={4}
-                    width={"100%"}
-                    itemData={autoShops.autocompleteShops}
-                  >
-                    {Column}
-                  </List>
+                <List
+                  height={400}
+                  itemCount={1}
+                  itemSize={4}
+                  width={"100%"}
+                  itemData={autoShops.autocompleteShops}
+                >
+                  {Column}
+                </List>
               </MainPopupBoxWrapper>
             ) : (
               <MainPopupBoxWrapper
@@ -54,7 +61,7 @@ export const HomeTemplate = (): JSX.Element => {
               >
                 <MainPopupBox>
                   <MainPopupBoxContentsWrapper>
-                    찾는내용이 없습니다.
+                    찾는 내용이 없습니다.
                   </MainPopupBoxContentsWrapper>
                 </MainPopupBox>
               </MainPopupBoxWrapper>

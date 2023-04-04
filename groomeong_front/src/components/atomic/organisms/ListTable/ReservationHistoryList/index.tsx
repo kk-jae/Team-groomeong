@@ -1,11 +1,7 @@
-import { UseQueryFetchReservationByUser } from "../../../../commons/hooks/query/UseQueryFetchReservationByUserId";
-import { isSameDate } from "../../../../commons/libraries/GetTimeStamp";
 import { ReservationHistoryTable } from "../../../atoms/ReservationHistoryTable";
 import * as S from "./index.style";
 
 export const ReservationHistoryList = (): JSX.Element => {
-  const { data } = UseQueryFetchReservationByUser();
-
   return (
     <>
       <S.ReservationListWrapper>
@@ -23,13 +19,7 @@ export const ReservationHistoryList = (): JSX.Element => {
                 <th>리뷰 작성</th>
               </tr>
             </thead>
-            {!isSameDate(data?.fetchReservationsByUser[0]?.date) ? (
-              <ReservationHistoryTable></ReservationHistoryTable>
-            ) : (
-              <>
-                <th colSpan={5}>예약 히스토리가 없습니다</th>
-              </>
-            )}
+            <ReservationHistoryTable></ReservationHistoryTable>
           </table>
         </S.Table>
       </S.ReservationListWrapper>

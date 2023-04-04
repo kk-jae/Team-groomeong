@@ -37,6 +37,7 @@ export const MainBody = styled(S.Div)`
   flex-direction: column;
   background-color: #fff;
   border: 1px;
+  ${GS.Paragraph.Medium}
 
   ${mediaQueries("tablet")} {
     height: 80px;
