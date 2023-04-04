@@ -21,7 +21,7 @@ export const MapListSearchBarWrapper = styled(S.Div)`
 
   ${mediaQueries("phone")} {
     width: 100%;
-    top: 370px;
+    top: 72px;
   }
 `;
 
@@ -57,8 +57,10 @@ export const MapListBodyWrapper = styled(S.Div)`
   height: calc(100vh - 74px);
 
   ${mediaQueries("phone")} {
-    width: 100%;
-    top: 440px;
+    width: 90%;
+    height: 100vh;
+    background-color: rgb(239, 239, 239);
+    top: 0;
   }
 `;
 
@@ -84,15 +86,11 @@ export const MapListButton = styled(motion.button)`
   text-align: center;
   line-height: 40px;
   top: 50%;
-  left: 440px;
+  left: 100%;
   position: absolute;
   width: 24px;
   height: 62px;
   background-color: ${GS.base.secondary};
-
-  ${mediaQueries("phone")} {
-    display: none;
-  }
 `;
 
 export const ImgDiv = styled(motion.div)`
@@ -103,6 +101,10 @@ export const ImgDiv = styled(motion.div)`
   background-position: center;
   background-repeat: no-repeat;
   background-size: 326px;
+
+  ${mediaQueries("phone")} {
+    background-size: 240px;
+  }
 `;
 
 export const Span = styled(S.Span)`
@@ -112,4 +114,9 @@ export const Span = styled(S.Span)`
   left: 50%;
   transform: translate(-50%, -50%);
   color: ${GS.base.tertiary};
+
+  ${mediaQueries("phone")} {
+    top: 70%;
+    ${GS.Label.Medium}
+  }
 `;

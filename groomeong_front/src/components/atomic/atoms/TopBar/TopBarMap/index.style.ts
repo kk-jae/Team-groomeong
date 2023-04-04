@@ -15,6 +15,7 @@ export const TopBarBox = styled.div`
   justify-content: space-between;
   align-items: center;
   position: absolute;
+
   top: 0px;
   right: 64px;
 
@@ -37,6 +38,10 @@ export const TopBarBox = styled.div`
     100% {
       width: 100%;
     }
+  }
+
+  ${mediaQueries("phone")} {
+    background-color: #ffffff;
   }
 `;
 
