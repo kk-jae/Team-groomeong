@@ -7,25 +7,15 @@ import { useMoveToPage } from "../../../commons/hooks/custom/useMovedToPage";
 import { useLogInButton } from "../../../commons/hooks/custom/useLogIn";
 import { withPromiseVoidFunc } from "../../../../commons/Utils/withFunc";
 import PageHeader from "../../atoms/PageHeader";
-// import { useRouter } from "next/router";
 import Link from "next/link";
 
 export const LogInTemplate = (): JSX.Element => {
-  // const router = useRouter();
   const method = useForm({
     mode: "onChange",
   });
 
   const { onClickMoveToPage } = useMoveToPage();
   const { onClickHomePageLogIn } = useLogInButton();
-
-  // const onClickGoogleLogin = () => {
-  //   void router.push("https://groomeong.shop/login/google");
-  // };
-
-  // const onClickKakaoLogin = async () => {
-  //   void router.push("https://groomeong.shop/login/kakao");
-  // };
 
   return (
     <Background>

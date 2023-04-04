@@ -16,7 +16,6 @@ export const MapList = () => {
 
   useEffect(() => {
     if (mapInfo.isLoaded && shops != null) {
-      console.log('ttt', shops)
       const newBounds = new google.maps.LatLngBounds();
       shops.forEach((shop) => {
         newBounds.extend(getLatLng(shop.lat, shop.lng));
