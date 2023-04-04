@@ -2,7 +2,7 @@ import { ChangeEvent, KeyboardEvent, MouseEvent } from "react";
 import { InputContent, SearchBox, SearchButton } from "./index.styles";
 
 interface ISearchBarProps {
-  value: string;
+  value?: string;
   sizes: "mini" | "small" | "medium" | "large";
   placeholder: string;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
