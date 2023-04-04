@@ -37,16 +37,23 @@ export const SearchBox = styled.div`
     height: 80px;
   }
   ${mediaQueries("phone")} {
+    ${GS.Label.Small}
     height: 60px;
   }
 `;
 
 export const InputContent = styled.input`
+  outline: none;
   width: 100%;
   height: 100%;
   background-color: ${GS.base.secondary};
-  padding: 0px 44px;
+  padding: 24px 44px;
   border: 1px solid ${GS.border.borderPrimary};
+  ${GS.Label.Large}
+  ${mediaQueries("phone")} {
+    ${GS.Label.Small}
+    height: 60px;
+  }
 `;
 
 export const SearchButton = styled.button`

@@ -12,7 +12,6 @@ interface IMapListBoxProps {
 
 export const MapListBox = ({ shop }: IMapListBoxProps) => {
   const { onClickListBox, mapInfo } = useMapListBox(shop);
-  console.log(shop.id === mapInfo.shop?.id);
 
   return (
     <MapListBoxWrapper

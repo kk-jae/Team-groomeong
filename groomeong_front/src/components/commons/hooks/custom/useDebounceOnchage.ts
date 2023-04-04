@@ -1,14 +1,14 @@
 import { searchState } from "./../../../../commons/Store/index";
-import { ChangeEvent, useCallback, useState } from "react";
+import { ChangeEvent, useMemo, useState } from "react";
 import { debounce } from "lodash";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
 export const useDebounceOnchage = () => {
-  const setSearchState = useSetRecoilState(searchState);
+  const [ globalSearch, setSearchState ] = useRecoilState(searchState);
   const [search, setSearch] = useState<string>("");
 
-  const debounceFunc = useCallback(
-    debounce((search: string) => {
+  const debounceFunc = useMemo(
+    () => debounce((search: string) => {
       setSearchState(search);
     }, 500),
     []
@@ -22,5 +22,6 @@ export const useDebounceOnchage = () => {
   return {
     onChangeSearch,
     search,
+    globalSearch,
   };
 };
