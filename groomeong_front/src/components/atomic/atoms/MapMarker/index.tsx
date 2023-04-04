@@ -16,7 +16,7 @@ const MapMarker = (props: IMarkerProps) => {
   const { onClickMaker, markerRef } = useMaker(props.shop);
   const mapInfo = useRecoilValue(mapState);
   const isClicked = isEqual(mapInfo?.shop?.id, props.shop?.id);
-
+  console.log(markerRef);
   return (
     <Marker
       ref={markerRef}
@@ -30,18 +30,15 @@ const MapMarker = (props: IMarkerProps) => {
       onClick={onClickMaker}
       animation={isClicked ? 1 : undefined}
     >
-      <MapInfoWindow
-        shop={props.shop}
-        isClicked={isClicked}
-        marker={markerRef}
-      />
-      {/* <MapOverlayView
-        shop={props.shop}
-        isClicked={isClicked}
-        position={
-          new google.maps.LatLng(Number(props.position.lat), Number(props.position.lng))
-        }
-      /> */}
+      {markerRef.current !== null ? (
+        <MapInfoWindow
+          shop={props.shop}
+          isClicked={isClicked}
+          marker={markerRef}
+        />
+      ) : (
+        <></>
+      )}
     </Marker>
   );
 };
