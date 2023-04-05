@@ -635,7 +635,7 @@ export const Fifth_Main_Text = styled.div`
   font-weight: 800;
   padding-top: 5vh;
 `;
-export const Fifth_SubButton_Text = styled.button<IProps>`
+export const Fifth_SubButton_Text = styled.div<IProps>`
   font-size: 1.3vw;
   font-weight: 700;
   padding-top: 5vh;

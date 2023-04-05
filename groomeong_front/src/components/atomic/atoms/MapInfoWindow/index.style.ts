@@ -20,8 +20,9 @@ export const InfoWindowWrapper = styled(S.Div)`
 `;
 
 export const TitleWrapper = styled(S.Div)`
-  min-width: 424px;
+  min-width: 450px;
   flex-direction: column;
+
 `;
 
 export const MapOverlayViewWrapper = styled(S.Div)`

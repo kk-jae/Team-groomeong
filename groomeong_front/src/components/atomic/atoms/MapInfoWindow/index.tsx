@@ -1,7 +1,7 @@
 import { InfoWindowProps, Marker, InfoWindowF } from "@react-google-maps/api";
 import * as V from "./index.variants";
 import { IAutocompleteShopsOutput } from "../../../../commons/types/generated/types";
-import { InfoWindowWrapper, StyledInfoWindow } from "./index.style";
+import { InfoWindowWrapper } from "./index.style";
 import MapInfoWindowContents from "./MapInfoWindowContents";
 import { RefObject } from "react";
 
@@ -17,9 +17,7 @@ export const MapInfoWindow = (props: IMapInfoWindowProps) => {
       initial={"initial"}
       animate={"visible"}
     >
-      <InfoWindowF
-        anchor={props.marker.current?.marker}
-      >
+      <InfoWindowF anchor={props.marker.current?.marker}>
         <MapInfoWindowContents autoShop={props.shop} />
       </InfoWindowF>
     </InfoWindowWrapper>
