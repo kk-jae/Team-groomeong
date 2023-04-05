@@ -8,9 +8,9 @@ import { useRouter } from "next/router";
 import { MouseEvent } from "react";
 
 interface IuseMoveToPage {
-  onClickMoveToPage: (
+  onClickMoveToPage: <T>(
     url: string
-  ) => (e: MouseEvent<HTMLButtonElement>) => void;
+  ) => (e: MouseEvent<T>) => void;
 }
 
 export const useMoveToPage = (): IuseMoveToPage => {
@@ -20,7 +20,7 @@ export const useMoveToPage = (): IuseMoveToPage => {
   const setSearch = useSetRecoilState(searchState);
 
   const onClickMoveToPage =
-    (url: string) => (e: MouseEvent<HTMLButtonElement>) => {
+    <T>(url: string) => (e: MouseEvent<T>) => {
       e.stopPropagation()
       void router.push(url);
       setMapInfo({
