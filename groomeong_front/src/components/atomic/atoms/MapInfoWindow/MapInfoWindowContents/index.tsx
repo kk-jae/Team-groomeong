@@ -33,7 +33,7 @@ const MapInfoWindowContents = ({ autoShop }: IMapInfoWindowContentsProps) => {
         <Div style={{ width: "100%" }} justyfyContents="space-between">
           <H3>{shop?.name}</H3>
           <Div left="16px">
-            <Span className="phoneDisable" right={"8px"}>
+            <Span right={"8px"}>
               영업시간:{" "}
             </Span>
             <HighlightSpan className="phoneDisable">

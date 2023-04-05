@@ -250,6 +250,19 @@
   }
 }
 
+.gm-style-iw {
+  background-color: rgb(237, 28, 36);
+    border: 1px solid rgba(72, 181, 233, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+    color: rgb(255, 255, 255) !important;
+    font-family: gothambook;
+    text-align: center;
+    top: 15px !important;
+    width: 150px !important;
+}
+
+
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {

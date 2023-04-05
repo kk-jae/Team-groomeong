@@ -6,7 +6,7 @@ import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 import * as S from "../../../commons/style";
 
 export const InfoWindowWrapper = styled(S.Div)`
-  min-width: 240px;
+  min-width: 400px;
   flex-direction: column;
   padding: 32px;
   border-radius: 8px;
@@ -20,7 +20,7 @@ export const InfoWindowWrapper = styled(S.Div)`
 `;
 
 export const TitleWrapper = styled(S.Div)`
-  width: 100%;
+  min-width: 424px;
   flex-direction: column;
 `;
 
@@ -56,7 +56,7 @@ export const MapOverlayViewWrapper = styled(S.Div)`
 `;
 
 export const H3 = styled(motion.h3)`
-  ${GS.Heading.Large}
+  ${GS.Label.Large}
   width: 50%;
   overflow: hidden;
   white-space: nowrap;
@@ -74,11 +74,7 @@ export const Divider = styled(S.Div)`
 `;
 
 export const Span = styled(S.Span)`
-  ${GS.Paragraph.Medium}
-  padding-left: ${({ left }) => left ?? null};
-  padding-right: ${({ right }) => right ?? null};
-  padding-top: ${({ top }) => top ?? null};
-  padding-bottom: ${({ bottom }) => bottom ?? null};
+  font-size: 16px;
   ${mediaQueries("phone")} {
     ${GS.Paragraph.Small}
   }
@@ -103,5 +99,4 @@ export const ContentsButton = styled(motion.button)`
   cursor: pointer;
 `;
 
-export const StyledInfoWindow = styled(InfoWindowF)`
-`;
+export const StyledInfoWindow = styled(InfoWindowF)``;
