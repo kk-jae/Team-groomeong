@@ -97,9 +97,9 @@ export const TextArea_TopBox_Rate = styled.div`
   align-items: center;
   position: relative;
 
-  ${mediaQueries("tablet")} {
-    .css-gg5brn {
-      font-size: 20px;
+  .css-gg5brn {
+    ${mediaQueries("tablet")} {
+      font-size: 16px;
     }
   }
 `;
