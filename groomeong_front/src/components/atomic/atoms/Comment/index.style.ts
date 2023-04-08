@@ -54,6 +54,12 @@ export const TextArea_TopBox_Profile = styled.div`
     align-items: center;
     ${GS.Paragraph.Medium}
     margin-right: 32px;
+
+    ${mediaQueries("phone")} {
+      ${GS.Paragraph.Small}
+      margin-right: 2px;
+      width: 65%;
+    }
   }
   ${mediaQueries("phone")} {
     ${GS.Paragraph.Small}
@@ -80,6 +86,7 @@ export const TextArea_Profile_Icon = styled.div`
     border-radius: 50px;
     object-fit: contain;
   }
+
   ${mediaQueries("phone")} {
     display: none;
   }
@@ -91,6 +98,9 @@ export const TextArea_TopBox_Rate = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  ${mediaQueries("phone")} {
+    width: 100px;
+  }
 
   .ant-rate-disabled {
     ${mediaQueries("tablet")} {
@@ -116,6 +126,7 @@ export const TextArea_TopBox_Date = styled.div`
 
   ${mediaQueries("phone")} {
     ${GS.Paragraph.Small}
+    justify-content:center;
   }
 `;
 

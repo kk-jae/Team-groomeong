@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 import * as S from "../../../commons/style";
+import * as GS from "../../../../../theme/global";
 
 export const MapListBoxWrapper = styled(S.Div)`
   display: flex;
@@ -20,4 +21,14 @@ export const MapListBoxTitleWrapper = styled(S.Div)`
   justify-content: space-between;
   width: 100%;
   flex-direction: row;
+  .ant-rate-disabled {
+    ${mediaQueries("phone")} {
+      font-size: 12px;
+    }
+  }
+  h4 {
+    ${mediaQueries("phone")} {
+      ${GS.Label.Medium}
+    }
+  }
 `;

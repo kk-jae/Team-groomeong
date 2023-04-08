@@ -66,6 +66,15 @@ export const MainPopupBoxContentsWrapper = styled(S.Div)`
   align-items: center;
   width: 100%;
   justify-content: space-between;
+  ${GS.Paragraph.Medium}
+  ${mediaQueries("phone")} {
+    padding: 32px 28px;
+  }
+  .ant-rate-disabled {
+    ${mediaQueries("phone")} {
+      font-size: 12px;
+    }
+  }
 `;
 export const MainPopupBoxContentsButton = styled(motion.button)`
   border: none;
@@ -83,4 +92,11 @@ export const MainPopupBoxContentsButton = styled(motion.button)`
 export const MainPopupBoxContentsTitle = styled(S.Div)`
   padding-right: 32px;
   ${GS.Label.Medium}
+
+  ${mediaQueries("phone")} {
+    ${GS.Label.Small}
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `;
