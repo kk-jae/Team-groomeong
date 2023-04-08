@@ -27,6 +27,8 @@ export const ReservationHistoryTable = (): JSX.Element => {
     setOnReview(false);
   };
 
+  console.log(data?.fetchReservationsByUser);
+
   return (
     <>
       {data !== null ? (

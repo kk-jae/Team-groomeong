@@ -49,6 +49,8 @@ export const TitleWrapper = styled(Div)`
 `;
 
 export const MapOverlayViewWrapper = styled(Div)`
+  position: fixed;
+  z-index: 99999;
   min-width: 240px;
   flex-direction: column;
   padding: 32px;
@@ -56,7 +58,6 @@ export const MapOverlayViewWrapper = styled(Div)`
   background-color: ${GS.base.secondary};
   position: relative;
   top: 20%;
-  z-index: 100;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
   &::after {
     position: absolute;

@@ -61,6 +61,10 @@ export const TextArea_TopBox_Profile = styled.div`
       width: 65%;
     }
   }
+  ${mediaQueries("phone")} {
+    ${GS.Paragraph.Small}
+    margin-right: 8px;
+  }
 `;
 
 export const TextArea_Profile_Icon = styled.div`

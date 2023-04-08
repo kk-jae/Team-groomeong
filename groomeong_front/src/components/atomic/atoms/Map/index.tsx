@@ -32,12 +32,11 @@ export const Map = (): JSX.Element => {
         center={mapInfo?.codes.length === 0 ? center : undefined}
         zoom={11}
         onLoad={onLoad}
+        
       >
         <TopBarMap loggedIn={loggedIn}></TopBarMap>
         {geoData.map((map) => (
-          <>
             <MapPolygon key={v4()} codes={codes} map={map} />
-          </>
         ))}
         <div>
           {shops?.map((shop) => (

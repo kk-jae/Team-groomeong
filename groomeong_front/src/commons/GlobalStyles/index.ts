@@ -163,4 +163,14 @@ export const GlobalStyle = css`
   h5 {
     ${GS.Heading.Medium}
   }
+
+  button.gm-ui-hover-effect {
+    display: none !important;
+  }
+  .gm-style,
+  .gm-style-iw-d,
+  .gm-style-iw-c {
+    overflow: hidden !important;
+    padding: 1.4rem;
+  }
 `;
