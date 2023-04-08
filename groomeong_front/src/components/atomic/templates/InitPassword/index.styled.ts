@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQueries } from "../../../commons/libraries/MediaQueries";
 
 export const InitPasswordWrapper = styled.div`
   width: 1124px;
@@ -6,6 +7,11 @@ export const InitPasswordWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${mediaQueries("tablet")} {
+    width: 100%;
+    padding: 36px;
+  }
 `;
 
 export const InitPasswordForm = styled.form`

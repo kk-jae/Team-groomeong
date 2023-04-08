@@ -2,20 +2,21 @@ import React from "react";
 import { Marker, MarkerProps } from "@react-google-maps/api";
 import { isEqual } from "lodash";
 import { useMaker } from "../../../commons/hooks/custom/useMaker";
-import MapOverlayView from "../MapOverlayView";
+// import MapOverlayView from "../MapOverlayView";
 import { IAutocompleteShopsOutput } from "../../../../commons/types/generated/types";
 import { useRecoilValue } from "recoil";
 import { mapState } from "../../../../commons/Store";
+import { MapInfoWindow } from "../MapInfoWindow";
 
 interface IMarkerProps extends MarkerProps {
-  shop?: IAutocompleteShopsOutput;
+  shop: IAutocompleteShopsOutput;
 }
 
 const MapMarker = (props: IMarkerProps) => {
   const { onClickMaker, markerRef } = useMaker(props.shop);
   const mapInfo = useRecoilValue(mapState);
   const isClicked = isEqual(mapInfo?.shop?.id, props.shop?.id);
-
+  console.log(markerRef);
   return (
     <Marker
       ref={markerRef}
@@ -29,11 +30,15 @@ const MapMarker = (props: IMarkerProps) => {
       onClick={onClickMaker}
       animation={isClicked ? 1 : undefined}
     >
-      <MapOverlayView
-        shop={props.shop}
-        isClicked={isClicked}
-        position={props.position}
-      />
+      {markerRef.current !== null ? (
+        <MapInfoWindow
+          shop={props.shop}
+          isClicked={isClicked}
+          marker={markerRef}
+        />
+      ) : (
+        <></>
+      )}
     </Marker>
   );
 };

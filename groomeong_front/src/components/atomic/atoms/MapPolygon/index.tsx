@@ -1,4 +1,4 @@
-import { OverlayView, PolygonF } from "@react-google-maps/api";
+import { OverlayViewF, PolygonF } from "@react-google-maps/api";
 import { IDataProps } from "../../../commons/GeoData/getGeoData";
 import useMapPolygon from "../../../commons/hooks/custom/useMapPolygon";
 import {
@@ -24,7 +24,6 @@ const MapPolygon = (props: IMapPolygon) => {
     isActive,
   } = useMapPolygon(props.map, props.codes);
 
-
   return (
     <>
       <PolygonF
@@ -38,15 +37,15 @@ const MapPolygon = (props: IMapPolygon) => {
         onClick={onClickpolygon}
       />
       {polygonOption.fillColor !== "transparent" && !isActive ? (
-        <OverlayView mapPaneName="markerLayer" bounds={bounds}>
+        <OverlayViewF mapPaneName="markerLayer" bounds={bounds} zIndex={-9999}>
           <PolygonOverlayViewWrapper>
             <PolygonOverlayViewTitle animate={{ x: 100, opacity: 1 }}>
               {props.map.properties.name}
             </PolygonOverlayViewTitle>
           </PolygonOverlayViewWrapper>
-        </OverlayView>
+        </OverlayViewF>
       ) : isActive ? (
-        <OverlayView mapPaneName="overlayMouseTarget" bounds={bounds}>
+        <OverlayViewF mapPaneName="markerLayer" bounds={bounds}>
           <PolygonOverlayViewWrapper>
             <PolygonOverlayViewTitle
               initial={{ x: 0, opacity: 1 }}
@@ -56,7 +55,7 @@ const MapPolygon = (props: IMapPolygon) => {
               {props.map.properties.name}
             </PolygonOverlayViewTitle>
           </PolygonOverlayViewWrapper>
-        </OverlayView>
+        </OverlayViewF>
       ) : (
         <></>
       )}

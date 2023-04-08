@@ -14,6 +14,7 @@ export const useMaker = (shop?: IAutocompleteShopsOutput) => {
     e.domEvent.stopImmediatePropagation();
     setMapInfo((prev: IMapState) => ({
       ...prev,
+      marker: markerRef,
       shop,
     }));
     if (shop != null) {

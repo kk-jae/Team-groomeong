@@ -57,15 +57,15 @@ export const useMap = () => {
     }));
     setSearch("");
     if (mapInfo.shop != null) {
-    const pos = getLatLng(mapInfo.shop?.lat, mapInfo.shop?.lng);
-    if (pos !== null) {
-      mapInfo.map?.panTo(pos);
-    }
-    if (polygonInfo.bounds !== null) {
-      mapInfo.map?.fitBounds(polygonInfo.bounds);
-    } else {
-      mapInfo.map?.panTo(center);
-    }
+      const pos = getLatLng(mapInfo.shop?.lat, mapInfo.shop?.lng);
+      if (pos !== null) {
+        mapInfo.map?.panTo(pos);
+      }
+      if (polygonInfo.bounds !== null) {
+        mapInfo.map?.fitBounds(polygonInfo.bounds);
+      } else {
+        mapInfo.map?.panTo(center);
+      }
     }
   };
 
