@@ -98,7 +98,8 @@
 
 
 ## 예약 페이지
-![web_6_예약리스트_AdobeExpress (1)](https://user-images.githubusercontent.com/86145287/231501842-f9426ada-5ee4-4a97-9924-c92c7840e2e6.gif)
+![web_6_예약리스트_2_AdobeExpress](https://user-images.githubusercontent.com/86145287/231503325-87399981-0ada-4a76-bee1-b174f6ad6fcc.gif)
+
 
 
 
