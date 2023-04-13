@@ -101,6 +101,8 @@
 
 ## 예약 페이지
 
+![web_6_예약리스트_23](https://user-images.githubusercontent.com/86145287/231679872-30bb8b1f-c1a1-4948-a83f-33c9dce88a43.gif)
+
 
 
 
