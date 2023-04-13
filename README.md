@@ -67,7 +67,7 @@
 
 ## 지도
 
-- 서비스의 메인 기술인 지도는 Map, MapMarker, MapInfoWindow, MapPolygon, MapList, MapListBox 6개의 컴포넌트 및 기술 집합체입니다. 찾고 싶은 동네나 지역구를 검색하면 등록된 상점의 위도와 경도를 기준으로 marker가 띄워지며, marker를 클릭하면 MapList에서는 해당되는 상점을 찾아 띄웁니다. marker 위에는 infoWindow를 사용해 간단한 가게 정보를 표시합니다. 또한 지역구에 마우스 hover 하면 해당 지역구 경계선을 기준으로 polygon이 생성되는데요. 가까운 동네 반려견 미용샵을 찾는다는 취지이기 때문에 polygon 기능을 통해 유저가 거주하는 지역구 내의 미용샵을 추천하는 기능을 탑재했습니다. polygon 클릭 시 지도가 zoom 되며 해당 지역구 내의 미용샵이 리스트에 표시됩니다.
+- 서비스의 메인 기술인 지도는 Map, MapMarker, MapInfoWindow, MapPolygon, MapList, MapListBox 6개의 컴포넌트 및 기술 집합체입니다. 찾고 싶은 동네나 지역구를 검색하면 등록된 상점의 위도와 경도를 기준으로 marker가 띄워지며, marker를 클릭하면 MapList에서는 해당되는 상점을 찾아 띄웁니다. marker 위에는 infoWindow를 사용해 간단한 가게 정보를 표시합니다. 또한 지역구에 마우스 hover 하면 해당 지역구 경계선을 기준으로 polygon이 생성되는데요. 가까운 동네 반려견 미용샵을 찾는다는 취지이기 때문에 polygon 기능을 통해 유저가 거주하는 지역구 내의 미용샵을 추천하는 기능을 탑재했습니다. polygon 클릭 시 지도가 zoom 되며 해당 지역구 내의 미용샵이 리스트가 별점이 높은 순으로 표시됩니다.
 
 ## 애자일
 
