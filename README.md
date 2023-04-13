@@ -97,6 +97,7 @@
 
 
 ## 지도
+![web_map_333](https://user-images.githubusercontent.com/86145287/231682366-d8992bef-efd2-4f35-a76c-fb69b9a626f7.gif)
 
 
 ## 예약 페이지
